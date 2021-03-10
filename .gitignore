@@ -1,0 +1,23 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+/imap-frontend/node_modules
+/imap-frontend/.pnp
+/imap-frontend/.pnp.js
+
+# testing
+/imap-frontend/coverage
+
+# production
+/imap-frontend/build
+
+# misc
+/imap-frontend/.DS_Store
+/imap-frontend/.env.local
+/imap-frontend/.env.development.local
+/imap-frontend/.env.test.local
+/imap-frontend/.env.production.local
+
+/imap-frontend/npm-debug.log*
+/imap-frontend/yarn-debug.log*
+/imap-frontend/yarn-error.log*

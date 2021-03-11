@@ -10,6 +10,7 @@ app.use(cors()) // Use this after the variable declaration
 
 // Routes
 const userRoutes = require('./routes/user');
+const issueRoutes = require('./routes/issues');
 
 // Environment Vars
 env.config();
@@ -29,6 +30,7 @@ mongoose.connect(
 });
 
 app.use('/api',userRoutes); // prefixing all api's with keyword api
+app.use('/api',issueRoutes);
 
 app.listen(process.env.PORT, ()=>{
     console.log(`Server is running on port: ${process.env.PORT}`);

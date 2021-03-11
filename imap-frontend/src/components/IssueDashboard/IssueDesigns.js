@@ -35,7 +35,7 @@ export const IssueHead = styled.header`
 export const IssueBox = styled(Link)`
   background: #fff;
   display: flex;
-  width: 100%;
+  width: 95%;
   min-height: 80px;
   justify-content: flex-start;
   text-decoration: none;
@@ -62,9 +62,10 @@ export const IssueAccessory = styled.section`
   background: #fff;
   display: flex;
   flex-wrap: wrap;
+  flex-direction: column;
   width: ${({ likeComments }) => (likeComments ? '80px' : '30px')};
   padding: 5px;
-  justify-content: flex-start;
+  justify-content: space-between;
   align-items: center;
   margin: 5px;
 `;

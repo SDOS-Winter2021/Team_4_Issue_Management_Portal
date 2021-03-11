@@ -119,7 +119,7 @@ export const SidebarWrap = styled.div`
  padding: 20px;
  padding-left: 0px;
  list-style: none;
- height: 60px;
+ height: 30px;
  text-decoration: none;
  font-size: 18px;
 `;
@@ -135,7 +135,7 @@ export const SidebarLink = styled(Link)`
   align-items: center;
   padding: 20px;
   list-style: none;
-  height: 60px;
+  height: 30px;
   text-decoration: none;
   font-size: 18px;
 

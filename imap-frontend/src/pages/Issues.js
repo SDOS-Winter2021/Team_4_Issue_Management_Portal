@@ -35,7 +35,7 @@ function Issues({profile, issues, page}){
                 {/* <Profile onClick={showProfile} style={{position:'relative'}}>
                     <FaIcons.FaSort />
                 </Profile> */}
-                {/* <SearchBar page={page}/> */}
+                <SearchBar page={page}/>
               </section>
               
           </IssueBox> 

@@ -1,0 +1,27 @@
+{
+  "name": "imap-backend",
+  "version": "1.0.0",
+  "description": "Backend of Portal",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon ./src/index-server.js"
+  },
+  "author": "Nandini",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-jwt": "^6.0.0",
+    "express-validator": "^6.10.0",
+    "google-auth-library": "^7.0.2",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.11.15",
+    "nodemon": "^2.0.7"
+  },
+  "devDependencies": {
+    "eslint": "^7.21.0",
+    "eslint-plugin-react": "^7.22.0"
+  }
+}

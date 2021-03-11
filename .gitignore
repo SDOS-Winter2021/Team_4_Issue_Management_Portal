@@ -21,3 +21,8 @@
 /imap-frontend/npm-debug.log*
 /imap-frontend/yarn-debug.log*
 /imap-frontend/yarn-error.log*
+
+/imap-backend/node_modules
+/imap-backend/.env
+/imap-backend/.eslintrc.js
+/imap-backend/package-lock.json

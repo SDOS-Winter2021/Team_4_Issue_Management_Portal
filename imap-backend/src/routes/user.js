@@ -6,4 +6,3 @@ router.post('/googlelogin', googlelogin)
 router.post('/updateRole', updateRole)
 
 module.exports = router;
-

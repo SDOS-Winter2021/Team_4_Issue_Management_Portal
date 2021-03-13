@@ -1,11 +1,34 @@
 import React, {Component} from 'react';
 import './Login.css';
+import axios from 'axios';
 import Footer from '../components/Footer/Footer.js';
 import Header from '../components/Header/Header.js';
 import GoogleButton from 'react-google-button';
+import GoogleLogin from 'react-google-login';
+
+const responseSuccessGoogle = (response) => {
+  axios({
+    method: "POST", 
+    url: "http://localhost:5000/api/googlelogin",
+    data: {tokenId : response.tokenId},
+  }).then(response => {
+    console.log("response",response);
+  });
+}
+
+const responseErrorGoogle = (response) => {
+
+}
 
 export default class Login extends Component {
+
   render(){
+    const customStyle = {
+      textAlign:'center',
+      alignItems:'center',
+      borderRadius: '90px',
+        justifyContent: "center",
+     }
     return (
       <div className="page-container">
           <Header />
@@ -25,7 +48,16 @@ export default class Login extends Component {
                   </div>
                   <div className="container-fluid">
                     <div className="row">
-                      <GoogleButton />
+                    <GoogleLogin
+                      render={renderProps => (
+                          <GoogleButton onClick={renderProps.onClick}/>
+                      )}
+                      clientId="xxx"
+                      buttonText="Login with google"
+                      onSuccess={responseSuccessGoogle}
+                      onFailure={responseErrorGoogle}
+                      cookiePolicy={'single_host_origin'}
+                    />
                     </div>
                   </div>
                 </div>

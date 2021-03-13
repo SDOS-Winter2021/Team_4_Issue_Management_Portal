@@ -23,12 +23,6 @@ const responseErrorGoogle = (response) => {
 export default class Login extends Component {
 
   render(){
-    const customStyle = {
-      textAlign:'center',
-      alignItems:'center',
-      borderRadius: '90px',
-        justifyContent: "center",
-     }
     return (
       <div className="page-container">
           <Header />

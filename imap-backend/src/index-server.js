@@ -29,8 +29,8 @@ mongoose.connect(
     console.log("Database is connected now!");
 });
 
-app.use('/api',userRoutes); // prefixing all api's with keyword api
-app.use('/api',issueRoutes);
+app.use('/login',userRoutes); // prefixing all api's with keyword api
+app.use('/dashboard',issueRoutes);
 
 app.listen(process.env.PORT, ()=>{
     console.log(`Server is running on port: ${process.env.PORT}`);

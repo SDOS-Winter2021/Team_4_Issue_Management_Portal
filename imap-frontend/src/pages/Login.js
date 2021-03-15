@@ -9,7 +9,7 @@ import GoogleLogin from 'react-google-login';
 const responseSuccessGoogle = (response) => {
   axios({
     method: "POST", 
-    url: "http://localhost:5000/api/googlelogin",
+    url: "http://localhost:5000/login/googlelogin",
     data: {tokenId : response.tokenId},
   }).then(response => {
     console.log("response",response);

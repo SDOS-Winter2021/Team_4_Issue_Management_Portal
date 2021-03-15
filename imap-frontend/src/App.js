@@ -23,7 +23,7 @@ function App() {
         <Route path='/' exact render={(props) => <Login />} />
         <Route path='/dashboard' exact render={(props) => <Dashboard profile={profile}/>} />
         <Route path='/support' exact render={(props) => <Support profile={profile} page={'Support'}/>} />
-         <Route path='/issues' exact render={(props) => <Issues profile={profile} issues={DummyIssues} page={'Issues'}/>} />
+         <Route path='/issues' exact render={(props) => <Issues profile={profile} page={'Issues'}/>} />
          <Route path='/announcements' exact render={(props) => <Issues profile={profile} issues={DummyAnnouncements} page={'Announcements'}/>} />
          <Route path='/indIssue' exact component={IndividualIssue}/>
       </Switch>

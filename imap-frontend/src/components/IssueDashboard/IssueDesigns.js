@@ -15,7 +15,6 @@ export const IssueContainer = styled.section`
   margin-left: ${({ notMobileView }) => (notMobileView ? '250px' : '0')};
   transition: 300ms;
   width: ${({ notMobileView }) => (notMobileView ? 'calc(100% - 250px)' : '100%')}; 
-  padding: 10px;
   justify-content: flex-start;
   align-items: flex-start;
 `;
@@ -40,7 +39,7 @@ export const IssueBox = styled(Link)`
   justify-content: flex-start;
   text-decoration: none;
   color: #121212;
-  margin: 5px;
+  margin: 5px 5px 5px 20px;
   margin-bottom: 0px;
   border-bottom: 5px solid #eee;
 

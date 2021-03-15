@@ -1,5 +1,6 @@
 import { useMediaPredicate } from 'react-media-hook';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import Header from '../components/Navigation/Header';
 import {Profile} from '../components/Navigation/NavigationDesigns';
 import * as FaIcons from 'react-icons/fa';
@@ -10,7 +11,7 @@ import SearchBar from '../components/IssueDashboard/SearchBar';
 
 
 
-function Issues({profile, issues, page}){
+function Issues({profile, page}){
     const notMobileView = useMediaPredicate("(min-width: 800px)");
     const [sidebar, setSidebar] = useState(true);
     const showSidebar = () =>  setSidebar(!sidebar);
@@ -23,6 +24,17 @@ function Issues({profile, issues, page}){
 
     const [_showProfile, setShowProfile] = useState(false);
     const showProfile = () => setShowProfile(!_showProfile);
+
+    const [issues, setIssues] = useState([]);
+    useEffect(()=>{
+      axios.get("http://localhost:5000/dashboard/GetAllIssue")
+      .then(res => {
+        console.log(res.data);
+        setIssues(res.data);
+      })
+      .catch(err => console.log(err));
+
+    })
     
     return (
       <>

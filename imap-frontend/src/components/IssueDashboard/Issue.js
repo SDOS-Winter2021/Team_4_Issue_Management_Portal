@@ -57,19 +57,19 @@ const Issue = ({issue, isIssue, profile}) => {
         }}
       >
         {isIssue && <IssueAccessory style={{flexDirection: 'row'}}>
-          {issue.Resolved
+          {issue.Tags.Resolved
             ? <FaIcons.FaCheckSquare style={{color:'#6fad80'}}/>
             : <FaIcons.FaSpinner style={{color:'#ab6a6a'}}/>
           }
         </IssueAccessory>}
         <IssueTitle>
           <h3>{issue.Desc}</h3>    
-          <Labels labels={issue.Tags}/>
+          <Labels labels={issue.Filter}/>
         </IssueTitle>
         <IssueAccessories 
-          comments={issue.Comments.studId.length} 
-          likes={isIssue ? issue.Likes.length : 0} 
-          date={issue.Date} isIssue={isIssue}/>
+          comments={issue.Comments.userID.length}
+          likes={isIssue ? issue.Likes.studID.length : 0}
+          date={issue.createdAt.split("T")[0]} isIssue={isIssue}/>
       </IssueBox>
     </>
   );

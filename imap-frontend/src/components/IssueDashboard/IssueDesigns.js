@@ -89,10 +89,10 @@ export const Label = styled.div`
 `;
 
 export const filter_colors = {
-  Department: '#6fad80',
+  Dept: '#6fad80',
   Batch: '#5d829e',
   ConcernedDept: '#ab6a6a',
-  Programme: '#ccc97a',
+  ProgType: '#ccc97a',
   };
 
 

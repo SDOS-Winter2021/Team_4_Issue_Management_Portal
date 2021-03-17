@@ -17,6 +17,7 @@
     "react-google-login": "^5.2.2",
     "react-icons": "^4.1.0",
     "react-media-hook": "^0.4.9",
+    "react-modal": "^3.12.1",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.1",
     "styled-components": "^5.2.1",

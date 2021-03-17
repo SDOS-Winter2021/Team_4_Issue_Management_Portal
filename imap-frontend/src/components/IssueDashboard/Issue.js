@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { IssueBox, IssueTitle, IssueAccessory, Label, LabelBox, filter_colors } from './IssueDesigns'
 import * as FaIcons from 'react-icons/fa';
+import IndividualIssue from '../../pages/IndividualIssue';
 
-
-function LikeComments({icon, number}){
+export function LikeComments({icon, number}){
   return (
   <div style={{display: 'flex', alignItems: 'center'}}>
     {icon}
@@ -44,26 +44,20 @@ export function Labels({labels}){
   )
 };
 
-
 const Issue = ({issue, isIssue, profile}) => {
+  const [popupIssue, setPopup] = useState(false);
+  const handlePopIssue = () =>  setPopup(!popupIssue);
   return (
     <>
-      <IssueBox 
-        to={{
-          pathname: '/indIssue',
-          // state: {
-          //   issue:issue,
-          //   profile: profile}
-        }}
-      >
+      <IssueBox>
         {isIssue && <IssueAccessory style={{flexDirection: 'row'}}>
           {issue.Tags.Resolved
             ? <FaIcons.FaCheckSquare style={{color:'#6fad80'}}/>
             : <FaIcons.FaSpinner style={{color:'#ab6a6a'}}/>
           }
         </IssueAccessory>}
-        <IssueTitle>
-          <h3>{issue.Desc}</h3>    
+        <IssueTitle  onClick={handlePopIssue}>
+          <h3>{issue.Title}</h3>    
           <Labels labels={issue.Filter}/>
         </IssueTitle>
         <IssueAccessories 
@@ -71,6 +65,13 @@ const Issue = ({issue, isIssue, profile}) => {
           likes={isIssue ? issue.Likes.studID.length : 0}
           date={issue.createdAt.split("T")[0]} isIssue={isIssue}/>
       </IssueBox>
+
+      <IndividualIssue 
+        issue={issue}
+        popupIssue={popupIssue}
+        handlePopIssue={handlePopIssue}
+        isIssue={isIssue}
+      />
     </>
   );
 };

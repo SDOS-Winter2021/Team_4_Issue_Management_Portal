@@ -29,6 +29,7 @@ export const Profile = styled.button`
   padding: 7px 10px;
   background: #d1cac0;
   border-radius: 50%;
+  cursor: pointer;
 `;
 
 /**

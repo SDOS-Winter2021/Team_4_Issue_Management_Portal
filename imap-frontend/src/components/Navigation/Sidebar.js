@@ -15,7 +15,7 @@ function Sidebar({notMobileView, showSidebar, sidebar, page}){
   return (
     <>
       <IconContext.Provider value={{ color: '#fff' }}>
-        <SidebarNav sidebar={sidebar}>
+        <SidebarNav sidebar={notMobileView || sidebar}>
           <SidebarWrap>
             <LogoCompartment>
               <SidebarToggleIcon to='#'>

@@ -13,7 +13,7 @@ import CreateIssue from '../components/IssueDashboard/CreateIssue';
 
 function Issues({profile, page}){
     const notMobileView = useMediaPredicate("(min-width: 800px)");
-    const [sidebar, setSidebar] = useState(true);
+    const [sidebar, setSidebar] = useState(false);
     const showSidebar = () =>  setSidebar(!sidebar);
     const sidebarToggles = {
       notMobileView: notMobileView, 

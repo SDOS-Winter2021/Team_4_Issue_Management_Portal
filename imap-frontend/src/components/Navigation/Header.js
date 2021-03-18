@@ -20,7 +20,7 @@ const Header = ({profile, notMobileView, showSidebar, sidebar, page }) => {
     <>
       <NavHead>
         <SidebarToggleIcon to='#'>
-          {!notMobileView && <FaIcons.FaBars onClick={showSidebar} style={{color: '#666'}} />}
+          {<FaIcons.FaBars onClick={showSidebar} style={{color: '#666'}} />}
         </SidebarToggleIcon>
           <Profile onClick={showProfile}>
             <FaIcons.FaUser />

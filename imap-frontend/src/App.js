@@ -5,8 +5,9 @@ import Support from './pages/Support';
 import Dashboard from './pages/Dashboard';
 import IndividualIssue from './pages/IndividualIssue';
 import Login from './pages/Login';
+import axios from 'axios';
 
-
+axios.defaults.baseURL = "http://localhost:5000/";
 
 const profile = {
   'name': 'Dibya Gautam',
@@ -14,6 +15,7 @@ const profile = {
 
 
 function App() {
+
   return (
     <>
     <Router>

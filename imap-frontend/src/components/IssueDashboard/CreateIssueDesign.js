@@ -18,7 +18,7 @@ export const CreateButton = styled.button`
   -ms-flex-align: center;
   align-items: center;
   font-size: 24px;
-  font-size: 2rem;
+  font-size: 1.5rem;
   font-weight: 500;
   z-index: 5;
   display: -webkit-box;
@@ -39,10 +39,17 @@ export const CreateButton = styled.button`
   }
 `;
 
+export const ModalBody = styled.body`
+
+margin: 10px auto;
+padding: 10px 20px;
+background:red;
+border-radius: 8px;
+`;
 export const H1 = styled.h1`
   margin: 10px 0 30px 0;
   text-align: center;
-`
+`;
 export const Label = styled.label`
   display: block;
   margin-bottom: 8px;
@@ -50,21 +57,11 @@ export const Label = styled.label`
     font-weight: 300;
     display: inline;
   }
-`
+`;
 
-export const Input = styled.input`
-  background: rgba(255,255,255,0.1);
-  border: none;
-  font-size: 18px;
-  height: auto;
-  padding: 15px;
-  width: 98%;
-  background-color: #e8eeef;
-  color: #8a97a0;
-  margin-bottom: 30px;
-`
 
 export const SubmitButton = styled.button`
+
   padding: 15px 15px 15px 15px;
   color: #FFF;
   background-color:  #42A5F5;
@@ -75,16 +72,36 @@ export const SubmitButton = styled.button`
   border-radius: 5px;
   width: 100%;
   border:none;
-`
+
+`;
+
+export const Input = styled.input`
+
+  background: rgba(255,255,255,0.1);
+  border: none;
+  padding-left: 0.5em;
+  font-size: 20px;
+  height: 40px;
+  width: 100%;
+  background-color: #e8eeef;
+  color: #8a97a0;
+  box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
+  margin-bottom: 1em;
+  overflow: style;
+`;
 
 export const TextArea = styled.textarea`
-    background: rgba(255,255,255,0.1);
-    border: none;
-    font-size: 18px;
-    height: auto;
-    padding: 15px;
-    width: 98%;
-    background-color: #e8eeef;
-    color: #8a97a0;
-    margin-bottom: 30px;
-`
+
+  background: rgba(255,255,255,0.1);
+  border: none;
+  padding-top: 0.5em;
+  padding-left: 0.5em;
+  font-size: 16px;
+  height: 80px;
+  width: 100%;
+  background-color: #e8eeef;
+  color: #8a97a0;
+  box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
+  margin-bottom: 1.5em;
+  /* display: none; */
+`;

@@ -57,7 +57,7 @@ const Issue = ({issue, isIssue, profile}) => {
           }
         </IssueAccessory>}
         <IssueTitle  onClick={handlePopIssue}>
-          <h3>{issue.Title}</h3>    
+          <h3>{issue.IssueTitle}</h3>    
           <Labels labels={issue.Filter}/>
         </IssueTitle>
         <IssueAccessories 

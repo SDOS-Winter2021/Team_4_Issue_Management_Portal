@@ -88,6 +88,18 @@ export const Label = styled.div`
   margin: 5px;
 `;
 
+export const IssueStatusLabel = styled.div`
+  background: ${({color}) => (color)};  
+  display: flex;
+  align-items: center;
+  font-size: 8px;
+  border-radius: 12px;
+  margin: 5px;
+  height: 15px;
+  padding:2px 8px;
+  color: #eee;
+`;
+
 export const filter_colors = {
   Dept: '#6fad80',
   Batch: '#5d829e',

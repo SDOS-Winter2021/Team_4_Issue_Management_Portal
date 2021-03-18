@@ -66,12 +66,15 @@ const Issue = ({issue, isIssue, profile}) => {
           date={issue.createdAt.split("T")[0]} isIssue={isIssue}/>
       </IssueBox>
 
-      <IndividualIssue 
-        issue={issue}
-        popupIssue={popupIssue}
-        handlePopIssue={handlePopIssue}
-        isIssue={isIssue}
-      />
+      {popupIssue &&
+        <IndividualIssue
+          issue={issue}
+          popupIssue={popupIssue}
+          handlePopIssue={handlePopIssue}
+          isIssue={isIssue}
+        />
+      }
+
     </>
   );
 };

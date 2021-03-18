@@ -27,7 +27,7 @@ function Issues({profile, page}){
 
     const [issues, setIssues] = useState([]);
     useEffect(()=>{
-      axios.get("http://localhost:5000/dashboard/GetAllIssue")
+      axios.get("dashboard/GetAllIssue")
       .then(res => {
         console.log(res.data);
         setIssues(res.data);

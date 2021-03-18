@@ -35,7 +35,7 @@ function  CommentBox({commenter, comment}){
     )
 }
 
-function IssueTitleNDesc({issue, handlePopIssue}){
+function IssueTitleNDesc({issue}){
   return(
     <>
       <div style={{display:'flex'}}>
@@ -44,9 +44,7 @@ function IssueTitleNDesc({issue, handlePopIssue}){
             <h1>Please Extend the break</h1>
             <Labels labels={issue.Filter}/>
         </IssueContainer>
-        <Profile onClick={handlePopIssue}>
-          <FaIcons.FaTimes />
-        </Profile>   
+
       </div>
       <IssueContainer style={{borderBottom: '2px solid #ccc'}}>
         <p>{issue.Desc}</p>
@@ -79,7 +77,7 @@ function LikesNComments({issue, isIssue}){
   )
 }
 const customStyles = {
-  overlay: {zIndex: 1000}
+  overlay: {zIndex: 100}
 };
 
 function IndividualIssue({issue, popupIssue, handlePopIssue, isIssue}){
@@ -87,7 +85,10 @@ function IndividualIssue({issue, popupIssue, handlePopIssue, isIssue}){
     return (
       <>
         <Modal isOpen={popupIssue} style={customStyles}>
-          <IssueTitleNDesc issue={issue} handlePopIssue={handlePopIssue}/>
+        <Profile onClick={handlePopIssue}>
+          <FaIcons.FaTimes />
+        </Profile>
+          <IssueTitleNDesc issue={issue}/>
           <LikesNComments issue={issue} isIssue={isIssue}/>
           <IssueContainer>
             {issue.Comments.userID.map((commenter, index) => {

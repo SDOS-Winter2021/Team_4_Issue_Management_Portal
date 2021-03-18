@@ -34,7 +34,7 @@ function Issues({profile, page}){
       })
       .catch(err => console.log(err));
 
-    })
+    }, [])
     
     return (
       <>

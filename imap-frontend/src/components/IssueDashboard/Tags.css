@@ -45,8 +45,7 @@
   }
   
   .react-tags__search {
-    display: inline-block;
-  
+    display:inline-table;
     /* match tag layout */
     padding: 7px 2px;
     margin-bottom: 6px;
@@ -66,13 +65,11 @@
   .react-tags__search-input {
     /* prevent autoresize overflowing the container */
     max-width: 100%;
-  
     /* remove styles and layout from this element */
     margin: 0;
     padding: 0;
     border: 0;
-    outline: none;
-  
+    outline:none;
     /* match the font styles */
     background-color:  #f4f7f8;
     font-size: inherit;
@@ -80,11 +77,11 @@
   }
   
   .react-tags__search-input::-ms-clear {
-    display: none;
+    display: block;
   }
   
   .react-tags__suggestions {
-    position:absolute;
+    position:relative;
     top: 100%;
     left: 0;
     width: 100%;
@@ -100,6 +97,7 @@
   
   .react-tags__suggestions ul {
     margin: 4px -1px;
+    display : block;
     padding: 0;
     list-style: none;
     background: white;

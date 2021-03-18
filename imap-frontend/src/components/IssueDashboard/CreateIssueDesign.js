@@ -7,7 +7,7 @@ export const CreateButton = styled.button`
   width: 70px;
   background: #42A5F5;
   border-radius: 50%;
-  position: absolute;
+  position: fixed;
   color: #fff;
   -webkit-box-pack: center;
   -webkit-justify-content: center;

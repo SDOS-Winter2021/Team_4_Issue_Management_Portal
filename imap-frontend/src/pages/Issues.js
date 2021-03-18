@@ -4,7 +4,7 @@ import axios from 'axios';
 import Header from '../components/Navigation/Header';
 import {Profile} from '../components/Navigation/NavigationDesigns';
 import * as FaIcons from 'react-icons/fa';
-import { IssueContainer, IssueBox } from '../components/IssueDashboard/IssueDesigns'
+import { IssueContainer, IssueBox, TitleSearchContainer,TitleContainer,SearchContainer } from '../components/IssueDashboard/IssueDesigns'
 import Issue from '../components/IssueDashboard/Issue';
 import SearchBar from '../components/IssueDashboard/SearchBar';
 import CreateIssue from '../components/IssueDashboard/CreateIssue';
@@ -40,17 +40,14 @@ function Issues({profile, page}){
       <>
         <Header profile={profile} {...sidebarToggles} isIssue={isIssue} page={page}/>
         <IssueContainer notMobileView={notMobileView}>
-          <IssueBox style={{border: '0px', cursor:'default', justifyContent: 'space-between'}}>
-              <h1>{page}</h1>
-              <section style={{display:'flex'}}>
-                
-                {/* <Profile onClick={showProfile} style={{position:'relative'}}>
-                    <FaIcons.FaSort />
-                </Profile> */}
-                <SearchBar page={page}/>
-              </section>
-              
-          </IssueBox> 
+          <TitleSearchContainer>
+            <TitleContainer>{page}</TitleContainer>
+            <SearchContainer><SearchBar page={page}/></SearchContainer>
+          </TitleSearchContainer>
+          <hr style={{width:"100%"}}></hr>
+          {/* <Profile onClick={showProfile} style={{position:'relative'}}>
+              <FaIcons.FaSort />
+          </Profile> */}
         {issues.map((issue, index) => {
             return <Issue issue={issue} key={index} isIssue={isIssue} profile={profile}/>;
         })}

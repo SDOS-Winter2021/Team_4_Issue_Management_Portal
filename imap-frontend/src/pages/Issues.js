@@ -7,7 +7,7 @@ import * as FaIcons from 'react-icons/fa';
 import { IssueContainer, IssueBox } from '../components/IssueDashboard/IssueDesigns'
 import Issue from '../components/IssueDashboard/Issue';
 import SearchBar from '../components/IssueDashboard/SearchBar';
-
+import CreateIssue from '../components/IssueDashboard/CreateIssue';
 
 
 
@@ -55,6 +55,7 @@ function Issues({profile, page}){
             return <Issue issue={issue} key={index} isIssue={isIssue} profile={profile}/>;
         })}
         </IssueContainer>
+        <CreateIssue></CreateIssue>
       </>
     );
   };

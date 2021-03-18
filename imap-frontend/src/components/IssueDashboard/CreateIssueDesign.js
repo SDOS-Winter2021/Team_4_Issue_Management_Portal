@@ -28,6 +28,7 @@ export const CreateButton = styled.button`
   -webkit-transition: all .2s ease-out;
   transition: all .2s ease-out;
   cursor: pointer;
+  outline: none;
 
   &:hover {
     background: #64B5F6;
@@ -36,6 +37,7 @@ export const CreateButton = styled.button`
     transform: scale(1.1);
     -webkit-transition: all .2s ease-out;
     transition: all .2s ease-out;
+    outline: none;
   }
 `;
 

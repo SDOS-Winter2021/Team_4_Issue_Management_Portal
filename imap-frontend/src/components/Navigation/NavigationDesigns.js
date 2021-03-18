@@ -76,7 +76,7 @@ export const DropdownLabel = styled(Link)`
  */
 export const SidebarToggleIcon = styled(Link)`
   margin-left: 1rem;
-  font-size: 2rem;
+  font-size: 1.5rem;
   height: 60px;
   display: flex;
   justify-content: flex-start;

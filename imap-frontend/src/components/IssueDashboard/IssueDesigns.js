@@ -31,6 +31,29 @@ export const IssueHead = styled.header`
   align-items: center;
 `;
 
+export const TitleSearchContainer = styled.section`
+  width: 100%;
+  font-size: 24px;
+  display: flex;
+  position: relative;
+`;
+
+export const TitleContainer = styled.section`
+  display: flex;
+  position: inherit;
+  padding-left: 10px;
+  padding-top: 3px;
+  
+  width: 50%;
+`;
+export const SearchContainer = styled.section`
+  display: flex;
+  position: inherit;
+  justify-content: right;
+  width: 50%;
+  
+`;
+
 export const IssueBox = styled(Link)`
   background: #fff;
   display: flex;
@@ -47,6 +70,9 @@ export const IssueBox = styled(Link)`
       border-left: 4px solid #632ce4;
       cursor: pointer;
     }
+  &:focus {
+    outline : none;
+  }
 `;
 
 export const IssueTitle = styled.section`
@@ -106,7 +132,5 @@ export const filter_colors = {
   ConcernedDept: '#ab6a6a',
   ProgType: '#ccc97a',
   };
-
-
 
 

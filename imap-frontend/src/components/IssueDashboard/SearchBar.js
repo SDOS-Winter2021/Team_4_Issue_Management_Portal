@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import * as FaIcons from 'react-icons/fa';
 import Autosuggest from 'react-autosuggest';
+import theme from './theme.css'
 
 const issues = [
     {

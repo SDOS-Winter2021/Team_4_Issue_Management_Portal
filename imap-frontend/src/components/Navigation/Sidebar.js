@@ -27,7 +27,7 @@ function Sidebar({notMobileView, showSidebar, sidebar, page}){
             </LogoCompartment>
             <LogoCompartment/>
             
-            <div style={{overflowY: 'scroll', height: 'calc(100vh - 120px)'}}>
+            <div style={{overflowY: 'auto', height: 'calc(100vh - 120px)'}}>
               {SidebarData.map((item, index) => {
                 return <SubMenu item={item} key={index} page={page}/>
               })}

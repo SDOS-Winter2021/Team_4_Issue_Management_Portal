@@ -1,61 +1,101 @@
-import { useMediaPredicate } from 'react-media-hook';
-import React, { useState, useEffect } from 'react';
-import Header from '../components/Navigation/Header';
-import { IssueContainer, IssueTitle } from '../components/IssueDashboard/IssueDesigns'
+import { IssueContainer, IssueTitle, IssueAccessory } from '../components/IssueDashboard/IssueDesigns'
+import {LikeComments} from '../components/IssueDashboard/Issue'
 import {Labels} from '../components/IssueDashboard/Issue'
-import {useLocation} from "react-router-dom";
+import {Profile} from '../components/Navigation/NavigationDesigns'
+import Modal from 'react-modal';
+import * as FaIcons from 'react-icons/fa'
 
-const issue = {
-        IssueID: 123,
-        StudentID: 1234,
-        Date: '20 Feb, 2020',
-        Title: "ERP doesn't have some courses. I couldn't find courses like SDOS, Machine Learning and computer Vision. \
-                I am from 2018 batch CSE department. Others are facing the same issue. Please update the ERP",
-        Desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-        Likes:[122,2312,123,12,123],
-        Comments:{studId: ['nandini@iiitd.ac.in', 'nanda@iiitd.ac.in'],
-                    comment: ['+1','Facing the same issue']},
-        Tags:{
-            Batch:[2018, 2019],
-            Department:['CSE', 'CSD'],
-            ConcernedDept:['Academics'],
-            Programme:[],
-        },
-        Archived: false,
-        Resolved: false,
+Modal.setAppElement('#root');
+
+const commentMap = {
+  '2': 'dibya18282@iiitd.ac.in',
+  '3': 'nandini18002@iiitd.ac.in',
+  '21': 'tanya10293@iiitd.ac.in',
+  '5': 'pruthwi18092@iiitd.ac.in',
+  '6': 'prat18009@iiitd.ac.in',
+  '7': 'vibhu18012@iiitd.ac.in',
+  '8': 'ranya18292@iiitd.ac.in',
 }
 
 function  CommentBox({commenter, comment}){
     return(
-    <IssueTitle style={{padding:'0', border: '2px solid gray'}}>
-        <IssueTitle style={{backgroundColor:'lightblue', margin:'0', borderBottom: '2px solid gray'}}>{commenter}</IssueTitle>
-        <IssueTitle style={{backgroundColor:'lightgray', margin:'0', padding:'10px'}}>{comment}</IssueTitle>
-    </IssueTitle>
+    <div style={{display:'flex', width:'100%'}}>
+      <IssueAccessory style={{marginTop:'20px',
+                              height:'20px',
+                              width: '20px',
+                              borderRadius:'50%', 
+                              backgroundColor:'#aaa'}}>
+        <FaIcons.FaUser/>
+      </IssueAccessory>
+      <IssueContainer style={{border: '0px solid gray', marginBottom: '15px'}}>
+          <IssueTitle style={{fontWeight:'bold'}}>{commentMap[commenter]}</IssueTitle>
+          <IssueTitle style={{paddingLeft: '15px'}}>{comment}</IssueTitle>
+      </IssueContainer>
+    </div>
     )
 }
 
-function IndividualIssue(profile){
-    const notMobileView = useMediaPredicate("(min-width: 800px)");
-    const [sidebar, setSidebar] = useState(true);
-    const showSidebar = () =>  setSidebar(!sidebar);
-    const sidebarToggles = {
-      notMobileView: notMobileView, 
-      showSidebar: showSidebar,
-      sidebar: sidebar,
-    }
+function IssueTitleNDesc({issue, handlePopIssue}){
+  return(
+    <>
+      <div style={{display:'flex'}}>
+        <IssueContainer>
+            {/* <h1>{issue.Title}</h1>     */}
+            <h1>Please Extend the break</h1>
+            <Labels labels={issue.Filter}/>
+        </IssueContainer>
+        <Profile onClick={handlePopIssue}>
+          <FaIcons.FaTimes />
+        </Profile>   
+      </div>
+      <IssueContainer style={{borderBottom: '2px solid #ccc'}}>
+        <p>{issue.Desc}</p>
+      </IssueContainer>
+    </>
+
+  )
+}
+
+function LikesNComments({issue, isIssue}){
+  return (
+    <>
+      <IssueContainer style={{borderBottom: '2px solid #ccc'}}>
+        { isIssue && 
+          <div style={{padding:'10px'}}>
+            <LikeComments 
+              icon={<FaIcons.FaThumbsUp style={{color:'gray'}}/>} 
+              number={issue.Likes.studID.length}
+            />
+          </div>
+        }
+        <div style={{padding:'10px'}}>
+          <LikeComments 
+            icon={<FaIcons.FaComments style={{color:'gray'}}/>}
+            number={issue.Comments.userID.length}
+          />
+        </div>
+      </IssueContainer>
+    </>
+  )
+}
+const customStyles = {
+  overlay: {zIndex: 1000}
+};
+
+function IndividualIssue({issue, popupIssue, handlePopIssue, isIssue}){
+    console.log(issue.Comments)
     return (
       <>
-        <Header profile={profile} {...sidebarToggles} page={'indIssue'}/>
-        <IssueContainer notMobileView={notMobileView}>
-            <h3>{issue.Title}</h3>    
-            <Labels labels={issue.Tags}/>
-            <p>{issue.Desc}</p>
-            {issue.Comments.studId.map((commenter, index) => {
+        <Modal isOpen={popupIssue} style={customStyles}>
+          <IssueTitleNDesc issue={issue} handlePopIssue={handlePopIssue}/>
+          <LikesNComments issue={issue} isIssue={isIssue}/>
+          <IssueContainer>
+            {issue.Comments.userID.map((commenter, index) => {
                 const comment = issue.Comments.comment[index];
                 return (<CommentBox commenter={commenter} comment={comment} />);
             })}
-            {/* <CommentBox comment={''}/> */}
-        </IssueContainer>
+          </IssueContainer>
+        </Modal>
       </>
     );
   };

@@ -31,17 +31,36 @@ This portal will have the following major functionalities.
 
 To get a local copy up and running follow these simple steps.
 
-1. Clone the repository, navigate to `imap-frontend/`.
+1. Clone the repository.
 
-2. Run `npm install`
+2. Add your Google Client ID in `imap-frontend/src/Key.js`
 
-3. Run `npm start`
+Note: For generating a Google CLient ID, refer to this [link](https://developers.google.com/adwords/api/docs/guides/authentication).
 
-4. Navigate to `imap-backend/`
+3. Navigate to `imap-frontend`.
 
-5. Run `npm install`
+4. Run `npm install` 
 
-6. Run `npm start`
+5. Run `npm start`
+
+6. Generate your MongoDB URI.
+
+Note: For generating a Mongo URI refer to this [link](https://docs.mongodb.com/guides/server/drivers/)
+
+7. Navigate to `imap-backend/` in a separate command prompt.
+
+  ```
+  $ vim .env
+  ```
+  ```
+  PORT=5000
+  MONGO_URI=YOUR_MONGO_URI
+  GOOGLE_OAUTH=YOUR_GOOGLE_CLIENT_ID
+  ```
+
+8. Run `npm install`
+
+9. Run `npm start`
 
 Navigate to http://localhost:3000 to view the client side.
  

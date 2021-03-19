@@ -123,6 +123,7 @@ export const Input = styled.input`
   box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
   margin-bottom: 1em;
   overflow: style;
+  
   @media (min-width:200px) and (max-width:540px){
     background: rgba(255,255,255,0.1);
     border: none;

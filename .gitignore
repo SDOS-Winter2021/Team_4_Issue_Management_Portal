@@ -28,3 +28,6 @@
 /imap-backend/.env
 /imap-backend/.eslintrc.js
 /imap-backend/package-lock.json
+
+package-lock.json
+/node_modules

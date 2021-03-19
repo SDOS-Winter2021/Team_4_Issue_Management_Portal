@@ -61,8 +61,8 @@ const Issue = ({issue, isIssue, profile}) => {
           <Labels labels={issue.Filter}/>
         </IssueTitle>
         <IssueAccessories 
-          comments={issue.Comments.userID.length}
-          likes={isIssue ? issue.Likes.studID.length : 0}
+          comments={issue.Comments.userEmail.length}
+          likes={isIssue ? issue.Likes.studEmail.length : 0}
           date={issue.createdAt.split("T")[0]} isIssue={isIssue}/>
       </IssueBox>
 

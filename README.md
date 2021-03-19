@@ -27,7 +27,7 @@ This portal will have the following major functionalities.
 
 10.  Email notification when new announcement is posted or liked issues are updated.
 
-## 2. Instructions
+## 3. Instructions
 
 To get a local copy up and running follow these simple steps.
 

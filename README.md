@@ -37,7 +37,7 @@ To get a local copy up and running follow these simple steps.
 
 3. Run `npm start`
 
-4. Navigate to `server/`
+4. Navigate to `imap-backend/`
 
 5. Run `npm install`
 

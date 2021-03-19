@@ -41,7 +41,7 @@ export const TitleSearchContainer = styled.section`
 export const TitleContainer = styled.section`
   display: flex;
   position: inherit;
-  padding-left: 10px;
+  padding-left: 30px;
   padding-top: 3px;
   
   width: 50%;

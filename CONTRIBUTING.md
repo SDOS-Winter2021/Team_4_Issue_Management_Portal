@@ -1,12 +1,12 @@
-Contributing.md
+### Contributing.md
 
-Getting started
+#### Getting started
 
 This site is powered by Node.js. MERN stack is used as the technical stack for this project.
 Check out the existing issues before creating your own issue.
 If you wish to make a change, discuss it first by creating an issue.
 
-To make changes
+#### To make changes
 
 Fork the repository. This can be done using Github Desktop or using command line.
 

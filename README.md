@@ -45,7 +45,7 @@ Note: For generating a Google Client ID, refer to this [link](https://developers
 
 6. Generate your MongoDB URI.
 
-Note: For generating a Mongo URI refer to this [link](https://docs.mongodb.com/guides/server/drivers/)
+Note: For generating a Mongo URI, refer to this [link](https://docs.mongodb.com/guides/server/drivers/)
 
 7. Navigate to `imap-backend/` in a separate command prompt.
 

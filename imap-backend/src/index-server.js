@@ -17,7 +17,7 @@ const announcementRoutes = require('./routes/announcements');
 env.config();
 
 // Connecting to Database
-const mongoUri = `mongodb+srv://${process.env.MONGO_DB_USER}:${process.env.MONGO_DB_PASSWORD}@cluster0.ogq2c.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`
+const mongoUri = process.env.MONGO_URI
 mongoose.connect(
     mongoUri, 
     {

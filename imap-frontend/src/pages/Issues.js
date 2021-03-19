@@ -44,7 +44,7 @@ function Issues({profile, page}){
             <TitleContainer>{page}</TitleContainer>
             <SearchContainer><SearchBar page={page}/></SearchContainer>
           </TitleSearchContainer>
-          <hr style={{width:"100%"}}></hr>
+          <hr style={{width:"100%", marginTop: "10px",border: "3px solid #eee"}}></hr>
           {/* <Profile onClick={showProfile} style={{position:'relative'}}>
               <FaIcons.FaSort />
           </Profile> */}

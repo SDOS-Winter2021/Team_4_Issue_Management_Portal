@@ -1,6 +1,5 @@
-import styled from 'styled-components';
-import { Link } from 'react-router-dom';
-
+import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 // CSS for NavBar
 
@@ -21,7 +20,7 @@ export const NavHead = styled.header`
  * Styling for the Profile Button on NavBar.
  */
 export const Profile = styled.button`
-  position: absolute; 
+  position: absolute;
   right: 0;
   margin: 20px;
   border: none;
@@ -42,8 +41,8 @@ export const ProfileDropdown = styled.nav`
   justify-content: center;
   position: fixed;
   top: 60px;
-  visibility: ${({ showProfile }) => (showProfile ? 'visible' : 'hidden')};
-  right: 5px; 
+  visibility: ${({ showProfile }) => (showProfile ? "visible" : "hidden")};
+  right: 5px;
   transition: 350ms;
   z-index: 10;
 `;
@@ -95,10 +94,9 @@ export const SidebarNav = styled.nav`
   justify-content: center;
   position: fixed;
   top: 0;
-  left: ${({ sidebar }) => (sidebar ? '0' : '-100%')};
+  left: ${({ sidebar }) => (sidebar ? "0" : "-100%")};
   transition: 350ms;
   z-index: 10;
-  
 `;
 
 /**
@@ -108,21 +106,20 @@ export const SidebarWrap = styled.div`
   width: 100%;
 `;
 
-
 // CSS for components within Sidebar
 
 /**
  * Component on the sidebar that holds logo and sidebar toggle.
  */
- export const LogoCompartment = styled.div`
- color: #e1e9fc;
- justify-content: space-between;
- padding: 20px;
- padding-left: 0px;
- list-style: none;
- height: 30px;
- text-decoration: none;
- font-size: 18px;
+export const LogoCompartment = styled.div`
+  color: #e1e9fc;
+  justify-content: space-between;
+  padding: 20px;
+  padding-left: 0px;
+  list-style: none;
+  height: 30px;
+  text-decoration: none;
+  font-size: 18px;
 `;
 
 /**
@@ -131,7 +128,7 @@ export const SidebarWrap = styled.div`
 export const SidebarLink = styled(Link)`
   display: flex;
   color: #e1e9fc;
-  background: ${({ isPage }) => (isPage ? '#252831' : ' #0e0057')};
+  background: ${({ isPage }) => (isPage ? "#252831" : " #0e0057")};
   justify-content: space-between;
   align-items: center;
   padding: 20px;
@@ -153,7 +150,6 @@ export const SidebarLink = styled(Link)`
 export const SidebarLabel = styled.span`
   margin-left: 16px;
 `;
-
 
 /**
  * Text Labels that appear inside Filter Label.
@@ -180,4 +176,3 @@ export const FilterOptLabel = styled.span`
     cursor: pointer;
   }
 `;
-

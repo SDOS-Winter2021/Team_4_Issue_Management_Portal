@@ -55,13 +55,12 @@
     background-color: #ddd;
   }
   
-  @media screen and (min-width: 220px) and (max-width:540px){
+  @media screen and (min-width: 200px) and (max-width:540px){
     .react-autosuggest__container {
       position:absolute;
       width: 100%;
       display: grid;
       justify-items: right;
-      /* padding-top: 4px; */
       margin-right: 0;
     }
     .react-autosuggest__input {
@@ -87,15 +86,18 @@
       list-style-type: none;
     }
     .react-autosuggest__suggestions-container--open {
+      margin-right: 1.4em;
       display:block;
       background-color :white;
+      padding : 0px 0px;
       height : auto;
       width: 50%;
       font-size: 12px;
+
     }
     .react-autosuggest__suggestion {
       cursor: pointer;
-      padding: 10px 20px;
+      padding: 4px 6px;
     }
     .react-autosuggest__suggestion--highlighted {
       background-color: #ddd;

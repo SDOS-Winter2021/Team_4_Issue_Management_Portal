@@ -17,7 +17,7 @@ const CreateIssue = ()  => {
     const programmeSuggestions = [{ id: 1, name: "B-Tech" },{ id: 2, name: "M-Tech" }, {id: 2, name: "PhD"}]
       
     const customStyle = {
-        content: {"border":"none","maxWidth":"50%","margin":"10px auto","padding":"10px 20px","background":"#f4f7f8","borderRadius":"8px"},
+        content: {"border":"none","maxWidth":"50%","margin":"10px auto","padding":"10px 20px 0px","background":"#f4f7f8","borderRadius":"8px"},
         overlay: {"zIndex":"1000"}
     }
     

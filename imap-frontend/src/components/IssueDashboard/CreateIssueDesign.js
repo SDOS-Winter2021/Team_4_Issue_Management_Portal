@@ -39,6 +39,14 @@ export const CreateButton = styled.button`
     transition: all .2s ease-out;
     outline: none;
   }
+
+  @media (min-width:200px) and (max-width:540px){
+    bottom:40px;
+    right:40px;
+    height: 50px;
+    width: 50px;
+  }
+
 `;
 
 export const ModalBody = styled.body`
@@ -48,9 +56,16 @@ padding: 10px 20px;
 background:red;
 border-radius: 8px;
 `;
+
 export const H1 = styled.h1`
   margin: 10px 0 30px 0;
   text-align: center;
+  @media (min-width:200px) and (max-width:540px){
+    margin: 10px 0 10px 0;
+    text-align: center;
+    font-size: 20px;
+
+  }
 `;
 export const Label = styled.label`
   display: block;
@@ -58,6 +73,11 @@ export const Label = styled.label`
   .light {
     font-weight: 300;
     display: inline;
+  }
+  @media (min-width:200px) and (max-width:540px){
+    display: block;
+    margin-bottom: 2px;
+    font-size: 14px;
   }
 `;
 
@@ -75,6 +95,19 @@ export const SubmitButton = styled.button`
   width: 100%;
   border:none;
 
+  @media (min-width:200px) and (max-width:540px){
+    padding: 5px 5px 5px 5px;
+    color: #FFF;
+    background-color: #42A5F5;
+    font-size: 15px;
+    margin-top: 6px;
+    text-align: center;
+    font-style: normal;
+    border-radius: 5px;
+    width: 100%;
+    border:none;
+  }
+
 `;
 
 export const Input = styled.input`
@@ -90,6 +123,21 @@ export const Input = styled.input`
   box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
   margin-bottom: 1em;
   overflow: style;
+  
+  @media (min-width:200px) and (max-width:540px){
+    background: rgba(255,255,255,0.1);
+    border: none;
+    padding-left: 0.5em;
+    font-size: 14px;
+    height: 25px;
+    width: 100%;
+    background-color: #e8eeef;
+    color: #8a97a0;
+    box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
+    margin-bottom: 0.5em;
+    overflow: style;
+  }
+
 `;
 
 export const TextArea = styled.textarea`
@@ -106,4 +154,19 @@ export const TextArea = styled.textarea`
   box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
   margin-bottom: 1.5em;
   /* display: none; */
+  @media (min-width:200px) and (max-width:540px){
+    background: rgba(255,255,255,0.1);
+    border: none;
+    padding-top: 0.5em;
+    padding-left: 0.5em;
+    font-size: 12px;
+    height: 40px;
+    width: 100%;
+    background-color: #e8eeef;
+    color: #8a97a0;
+    box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
+    margin-bottom: 0.5em;
+
+  }
+  
 `;

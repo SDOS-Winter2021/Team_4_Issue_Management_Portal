@@ -11,6 +11,7 @@ app.use(cors()) // Use this after the variable declaration
 // Routes
 const userRoutes = require('./routes/user');
 const issueRoutes = require('./routes/issues');
+const announcementRoutes = require('./routes/announcements');
 
 // Environment Vars
 env.config();
@@ -31,7 +32,7 @@ mongoose.connect(
 
 app.use('/login',userRoutes); // prefixing all api's with keyword api
 app.use('/dashboard',issueRoutes);
-
+app.use('/announcement',announcementRoutes);
 app.listen(process.env.PORT, ()=>{
     console.log(`Server is running on port: ${process.env.PORT}`);
 });

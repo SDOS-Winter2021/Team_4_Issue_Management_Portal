@@ -4,6 +4,7 @@
 /imap-frontend/node_modules
 /imap-frontend/.pnp
 /imap-frontend/.pnp.js
+/imap-frontend/package-lock.json
 
 # testing
 /imap-frontend/coverage
@@ -12,6 +13,7 @@
 /imap-frontend/build
 
 # misc
+/imap-frontend/.eslintcache
 /imap-frontend/.DS_Store
 /imap-frontend/.env.local
 /imap-frontend/.env.development.local

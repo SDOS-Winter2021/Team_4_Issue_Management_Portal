@@ -35,7 +35,7 @@ To get a local copy up and running follow these simple steps.
 
 2. Add your Google Client ID in `imap-frontend/src/Key.js`
 
-Note: For generating a Google CLient ID, refer to this [link](https://developers.google.com/adwords/api/docs/guides/authentication).
+Note: For generating a Google Client ID, refer to this [link](https://developers.google.com/adwords/api/docs/guides/authentication).
 
 3. Navigate to `imap-frontend`.
 

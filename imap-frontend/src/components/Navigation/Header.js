@@ -1,13 +1,16 @@
-import * as FaIcons from 'react-icons/fa'
-import React, { useState } from 'react'
-import PropTypes from 'prop-types'
-import Sidebar from './Sidebar'
-import { NavHead, Profile, ProfileDropdown, DropdownLabel,
-     SidebarToggleIcon } from './NavigationDesigns'
+import * as FaIcons from "react-icons/fa";
+import React, { useState } from "react";
+import PropTypes from "prop-types";
+import Sidebar from "./Sidebar";
+import {
+  NavHead,
+  Profile,
+  ProfileDropdown,
+  DropdownLabel,
+  SidebarToggleIcon,
+} from "./NavigationDesigns";
 
-
-
-const Header = ({profile, notMobileView, showSidebar, sidebar, page }) => {
+const Header = ({ profile, notMobileView, showSidebar, sidebar, page }) => {
   /**
    * Toggles the visibility of the dropdown menu that contains
    * the profile information.
@@ -19,21 +22,26 @@ const Header = ({profile, notMobileView, showSidebar, sidebar, page }) => {
   return (
     <>
       <NavHead>
-        <SidebarToggleIcon to='#'>
-          {<FaIcons.FaBars onClick={showSidebar} style={{color: '#666'}} />}
+        <SidebarToggleIcon to="#">
+          {<FaIcons.FaBars onClick={showSidebar} style={{ color: "#666" }} />}
         </SidebarToggleIcon>
-          <Profile onClick={showProfile}>
-            <FaIcons.FaUser />
-          </Profile>
+        <Profile onClick={showProfile}>
+          <FaIcons.FaUser />
+        </Profile>
       </NavHead>
-      
-      <Sidebar notMobileView = {notMobileView} showSidebar= {showSidebar} sidebar={sidebar} page={page}/>
+
+      <Sidebar
+        notMobileView={notMobileView}
+        showSidebar={showSidebar}
+        sidebar={sidebar}
+        page={page}
+      />
       <ProfileDropdown showProfile={_showProfile}>
         <DropdownLabel>{profile.name}</DropdownLabel>
         <DropdownLabel>Logout</DropdownLabel>
       </ProfileDropdown>
     </>
-  )
+  );
 };
 
 Header.propTypes = {
@@ -44,7 +52,7 @@ Header.propTypes = {
   profile: PropTypes.object,
 
   /**
-   * Boolean that state whether the current screen dimension 
+   * Boolean that state whether the current screen dimension
    * is a mobile phone resolution. It is set to `false` if it has
    * a smaller dimension than a given threshold.
    */
@@ -64,6 +72,6 @@ Header.propTypes = {
    * Name of the page that is currently being rendered.
    */
   page: PropTypes.string,
-}
+};
 
 export default Header;

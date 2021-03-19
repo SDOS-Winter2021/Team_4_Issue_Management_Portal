@@ -1,5 +1,5 @@
-import React from 'react';
+import React from "react";
 
 export const Key = {
-    GoogleClientID : "YOUR_GOOGLE_CLIENT_ID"
-}
+  GoogleClientID: "YOUR_GOOGLE_CLIENT_ID",
+};

@@ -1,5 +1,5 @@
-import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 /** Styling the container that holds all the components
  * for an issue.
@@ -11,21 +11,20 @@ export const IssueContainer = styled.section`
   overflow-x: hidden;
   display: flex;
   flex-wrap: wrap;
-  margin-top:10px;
-  margin-left: ${({ notMobileView }) => (notMobileView ? '250px' : '0')};
+  margin-top: 10px;
+  margin-left: ${({ notMobileView }) => (notMobileView ? "250px" : "0")};
   transition: 300ms;
-  width: ${({ notMobileView }) => (notMobileView ? 'calc(100% - 250px)' : '100%')}; 
+  width: ${({ notMobileView }) =>
+    notMobileView ? "calc(100% - 250px)" : "100%"};
   justify-content: flex-start;
   align-items: flex-start;
 `;
-
-
 
 export const IssueHead = styled.header`
   background: #fff;
   display: flex;
   width: 100%;
-  margin-top:10px;
+  margin-top: 10px;
   padding: 10px;
   height: 80px;
   align-items: center;
@@ -43,7 +42,7 @@ export const TitleContainer = styled.section`
   position: inherit;
   padding-left: 30px;
   padding-top: 3px;
-  
+
   width: 50%;
 `;
 export const SearchContainer = styled.section`
@@ -51,7 +50,6 @@ export const SearchContainer = styled.section`
   position: inherit;
   justify-content: right;
   width: 50%;
-  
 `;
 
 export const IssueBox = styled(Link)`
@@ -67,17 +65,17 @@ export const IssueBox = styled(Link)`
   border-bottom: 5px solid #eee;
 
   &:hover {
-      border-left: 4px solid #632ce4;
-      cursor: pointer;
-    }
+    border-left: 4px solid #632ce4;
+    cursor: pointer;
+  }
   &:focus {
-    outline : none;
+    outline: none;
   }
 `;
 
 export const IssueTitle = styled.section`
   background: #fff;
-  width: 100%; 
+  width: 100%;
   padding: 5px;
   align-items: top;
   margin: 5px;
@@ -88,7 +86,7 @@ export const IssueAccessory = styled.section`
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
-  width: ${({ likeComments }) => (likeComments ? '80px' : '30px')};
+  width: ${({ likeComments }) => (likeComments ? "80px" : "30px")};
   padding: 5px;
   justify-content: space-between;
   align-items: center;
@@ -97,14 +95,14 @@ export const IssueAccessory = styled.section`
 
 export const LabelBox = styled.section`
   background: #fff;
-  width: 100%; 
+  width: 100%;
   padding: 0px;
   align-items: top;
   margin-right: 5px;
 `;
 
 export const Label = styled.div`
-  background: ${({color}) => (color)};  
+  background: ${({ color }) => color};
   min-width: 20px;
   display: inline-block;
   padding: 6px;
@@ -115,22 +113,20 @@ export const Label = styled.div`
 `;
 
 export const IssueStatusLabel = styled.div`
-  background: ${({color}) => (color)};  
+  background: ${({ color }) => color};
   display: flex;
   align-items: center;
   font-size: 8px;
   border-radius: 12px;
   margin: 5px;
   height: 15px;
-  padding:2px 8px;
+  padding: 2px 8px;
   color: #eee;
 `;
 
 export const filter_colors = {
-  Dept: '#6fad80',
-  Batch: '#5d829e',
-  ConcernedDept: '#ab6a6a',
-  ProgType: '#ccc97a',
-  };
-
-
+  Dept: "#6fad80",
+  Batch: "#5d829e",
+  ConcernedDept: "#ab6a6a",
+  ProgType: "#ccc97a",
+};

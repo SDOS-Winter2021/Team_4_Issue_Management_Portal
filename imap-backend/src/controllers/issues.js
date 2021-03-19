@@ -1,2 +1,2 @@
 //tanya
-const Issues=require('../models/issues');
+const Issues = require("../models/issues");

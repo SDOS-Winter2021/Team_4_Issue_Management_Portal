@@ -26,3 +26,20 @@ This portal will have the following major functionalities.
 9.  Authentication using IIITD account.
 
 10.  Email notification when new announcement is posted or liked issues are updated.
+
+## 2. Instructions
+
+To get a local copy up and running follow these simple steps.
+
+1. Clone the repository, navigate to `imap-frontend/`.
+
+2. Run `npm install`
+
+3. Run `npm start`
+
+4. Navidate to server/, run `npm install`
+
+5. Run `npm start`
+
+Navigate to http://localhost:3000 to view the client side.
+ 

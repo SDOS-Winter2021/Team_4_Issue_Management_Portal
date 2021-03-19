@@ -2,7 +2,7 @@
   "devDependencies": {
     "prettier": "^2.2.1"
   },
-  "scripts":{
-  	"lint": "prettier --write ."
+  "scripts": {
+    "lint": "prettier --write ."
   }
 }

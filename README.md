@@ -53,9 +53,9 @@ Note: For generating a Mongo URI refer to this [link](https://docs.mongodb.com/g
   $ vim .env
   ```
   ```
-  PORT=5000
-  MONGO_URI=YOUR_MONGO_URI
-  GOOGLE_OAUTH=YOUR_GOOGLE_CLIENT_ID
+  PORT = 5000
+  MONGO_URI = YOUR_MONGO_URI
+  GOOGLE_OAUTH = YOUR_GOOGLE_CLIENT_ID
   ```
 
 8. Run `npm install`

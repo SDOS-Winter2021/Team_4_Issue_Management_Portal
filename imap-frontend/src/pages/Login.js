@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import './Login.css';
+import {Key} from '../Key';
 import axios from 'axios';
 import Footer from '../components/Footer/Footer.js';
 import Header from '../components/Header/Header.js';
@@ -50,7 +51,7 @@ const Login = ()=> {
                     render={renderProps => (
                         <GoogleButton onClick={renderProps.onClick}/>
                     )}
-                    clientId="467073240996-7bevbo5lbdkqi5ikoslqdrt669ff9ln5.apps.googleusercontent.com"
+                    clientId={Key.GoogleClientID}
                     buttonText="Login with google"
                     onSuccess={responseSuccessGoogle}
                     onFailure={responseErrorGoogle}

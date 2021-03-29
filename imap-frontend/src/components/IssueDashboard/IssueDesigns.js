@@ -99,7 +99,8 @@ export const LabelBox = styled.section`
 `;
 
 export const Label = styled.div`
-  background: ${({ color }) => color};
+  background: ${({ bgcolor }) => bgcolor};
+  color: ${({ color }) => color};
   min-width: 20px;
   display: inline-block;
   padding: 6px;
@@ -118,12 +119,12 @@ export const IssueStatusLabel = styled.div`
   margin: 5px;
   height: 15px;
   padding: 2px 8px;
-  color: #eee;
+  color: #fff;
 `;
 
 export const filter_colors = {
-  Dept: "#6fad80",
-  Batch: "#5d829e",
-  ConcernedDept: "#ab6a6a",
-  ProgType: "#ccc97a",
+  Dept: ["#BAC3DD", "#fff"],
+  Batch: ["#0075ca", "#fff"],
+  ConcernedDept: ["#D2D179", "#000"],
+  ProgType: ["#FBCA04", "#000"],
 };

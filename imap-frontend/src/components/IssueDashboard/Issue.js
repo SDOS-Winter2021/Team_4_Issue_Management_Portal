@@ -54,7 +54,14 @@ export function Labels({ labels }) {
         return (
           <>
             {labels[key].map((tag) => {
-              return <Label color={filter_colors[key]}>{tag}</Label>;
+              return (
+                <Label
+                  bgcolor={filter_colors[key][0]}
+                  color={filter_colors[key][1]}
+                >
+                  {tag}
+                </Label>
+              );
             })}
           </>
         );

@@ -84,7 +84,10 @@ function LikesNComments({
     <>
       <IssueContainer style={{ borderBottom: "2px solid #ccc" }}>
         {isIssue && (
-          <div style={{ padding: "10px", cursor: "pointer" }} onClick={setLike}>
+          <div
+            style={{ padding: "10px", cursor: "pointer", fontSize: "20px" }}
+            onClick={setLike}
+          >
             <LikeComments
               icon={
                 <FaIcons.FaThumbsUp
@@ -96,7 +99,7 @@ function LikesNComments({
           </div>
         )}
         <div
-          style={{ padding: "10px", cursor: "pointer" }}
+          style={{ padding: "10px", cursor: "pointer", fontSize: "20px" }}
           onClick={setComment}
         >
           <LikeComments
@@ -113,23 +116,29 @@ function LikesNComments({
   );
 }
 
-function IndividualIssue({ issue, popupIssue, handlePopIssue, isIssue }) {
-  console.log(issue.Comments);
-  const [like, setLike] = useState(false);
-  const setLikeFunc = () => setLike(!like);
+function IndividualIssue({
+  issue,
+  popupIssue,
+  handlePopIssue,
+  isIssue,
+  isMobileView,
+}) {
+  const likes_list = issue.Likes.studEmail;
+  const uid = "demo@iiitd.ac.in";
+  const has_liked = likes_list.indexOf(uid) > 0;
+  const [like, setLike] = useState(has_liked);
+  const setLikeFunc = () => {
+    setLike(!like);
+    !like ? likes_list.push(uid) : likes_list.pop(uid);
+  };
+
   const [comment, setComment] = useState(false);
   const setCommFunc = () => setComment(!comment);
-  const likeCommentProp = {
-    setLike: setLikeFunc,
-    setComment: setCommFunc,
-  };
+
   return (
     <>
       {console.log(like, comment)}
-      <Modal
-        isOpen={popupIssue}
-        style={{ overlay: { zIndex: 100, width: "100%" } }}
-      >
+      <Modal isOpen={popupIssue} style={{ overlay: { zIndex: "1001" } }}>
         <Profile onClick={handlePopIssue}>
           <FaIcons.FaTimes />
         </Profile>

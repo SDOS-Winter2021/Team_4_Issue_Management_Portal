@@ -122,6 +122,16 @@ export const IssueStatusLabel = styled.div`
   color: #fff;
 `;
 
+export const SubmitButton = styled.button`
+  margin-left: 5px;
+  border: none;
+  font-size: 18px;
+  padding: 5px 10px;
+  background: #78c8fa;
+  border-radius: 30%;
+  cursor: pointer;
+`;
+
 export const filter_colors = {
   Dept: ["#BAC3DD", "#fff"],
   Batch: ["#0075ca", "#fff"],

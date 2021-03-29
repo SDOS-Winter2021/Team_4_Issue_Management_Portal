@@ -3,10 +3,12 @@ import {
   IssueTitle,
   IssueAccessory,
 } from "../components/IssueDashboard/IssueDesigns";
-import { LikeComments } from "../components/IssueDashboard/Issue";
-import { Labels } from "../components/IssueDashboard/Issue";
+import { LikeComments, Labels } from "../components/IssueDashboard/Issue";
 import { Profile } from "../components/Navigation/NavigationDesigns";
-import { IssueStatusLabel } from "../components/IssueDashboard/IssueDesigns";
+import {
+  IssueStatusLabel,
+  SubmitButton,
+} from "../components/IssueDashboard/IssueDesigns";
 import Modal from "react-modal";
 import * as FaIcons from "react-icons/fa";
 import React, { useState } from "react";
@@ -132,12 +134,23 @@ function IndividualIssue({
     !like ? likes_list.push(uid) : likes_list.pop(uid);
   };
 
-  const [comment, setComment] = useState(false);
-  const setCommFunc = () => setComment(!comment);
+  const [commentArea, setComment] = useState(false);
+  const setCommFunc = () => setComment(!commentArea);
+  const [userComment, _readComment] = useState("");
+  const readComment = (e) => _readComment(e.target.value);
+
+  const addComment = () => {
+    if (userComment !== "") {
+      console.log(userComment);
+      issue.Comments.comment.push(userComment);
+      issue.Comments.userEmail.push(uid);
+      console.log(issue.Comments);
+      setCommFunc();
+    }
+  };
 
   return (
     <>
-      {console.log(like, comment)}
       <Modal isOpen={popupIssue} style={{ overlay: { zIndex: "1001" } }}>
         <Profile onClick={handlePopIssue}>
           <FaIcons.FaTimes />
@@ -149,9 +162,9 @@ function IndividualIssue({
           setComment={setCommFunc}
           setLike={setLikeFunc}
           like={like}
-          comment={comment}
+          comment={commentArea}
         />
-        {comment && (
+        {commentArea && (
           <IssueContainer
             style={{ backgroundColor: "#fff", padding: "10px 0px" }}
           >
@@ -159,7 +172,11 @@ function IndividualIssue({
               type="text"
               placeholder="Add a comment"
               style={{ width: "70%" }}
+              onChange={readComment}
             />
+            <SubmitButton onClick={addComment}>
+              <FaIcons.FaPaperPlane />
+            </SubmitButton>
           </IssueContainer>
         )}
         <IssueContainer>

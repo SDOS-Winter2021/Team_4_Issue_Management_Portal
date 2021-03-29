@@ -38,7 +38,7 @@ const Header = ({ profile, notMobileView, showSidebar, sidebar, page }) => {
       />
       <ProfileDropdown showProfile={_showProfile}>
         <DropdownLabel>{profile.name}</DropdownLabel>
-        <DropdownLabel>Logout</DropdownLabel>
+        <DropdownLabel to={"/"}>Logout</DropdownLabel>
       </ProfileDropdown>
     </>
   );

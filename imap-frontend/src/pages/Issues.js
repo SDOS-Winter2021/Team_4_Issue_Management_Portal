@@ -68,6 +68,7 @@ function Issues({ profile, page }) {
               key={index}
               isIssue={isIssue}
               profile={profile}
+              notMobileView={notMobileView}
             />
           );
         })}

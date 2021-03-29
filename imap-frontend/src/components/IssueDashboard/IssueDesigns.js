@@ -53,7 +53,6 @@ export const SearchContainer = styled.section`
 `;
 
 export const IssueBox = styled(Link)`
-  background: #fff;
   display: flex;
   width: 95%;
   min-height: 80px;
@@ -65,7 +64,8 @@ export const IssueBox = styled(Link)`
   border-bottom: 5px solid #eee;
 
   &:hover {
-    border-left: 4px solid #632ce4;
+    border-left: 4px solid #ccc;
+    background: #f5f5f5;
     cursor: pointer;
   }
   &:focus {
@@ -74,7 +74,6 @@ export const IssueBox = styled(Link)`
 `;
 
 export const IssueTitle = styled.section`
-  background: #fff;
   width: 100%;
   padding: 5px;
   align-items: top;
@@ -82,7 +81,6 @@ export const IssueTitle = styled.section`
 `;
 
 export const IssueAccessory = styled.section`
-  background: #fff;
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
@@ -94,7 +92,6 @@ export const IssueAccessory = styled.section`
 `;
 
 export const LabelBox = styled.section`
-  background: #fff;
   width: 100%;
   padding: 0px;
   align-items: top;

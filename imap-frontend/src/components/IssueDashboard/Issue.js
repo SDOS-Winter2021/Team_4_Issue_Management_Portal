@@ -63,7 +63,7 @@ export function Labels({ labels }) {
   );
 }
 
-const Issue = ({ issue, isIssue, profile }) => {
+const Issue = ({ issue, isIssue, profile, notMobileView }) => {
   const [popupIssue, setPopup] = useState(false);
   const handlePopIssue = () => setPopup(!popupIssue);
   return (
@@ -96,6 +96,7 @@ const Issue = ({ issue, isIssue, profile }) => {
           popupIssue={popupIssue}
           handlePopIssue={handlePopIssue}
           isIssue={isIssue}
+          isMobileView={!notMobileView}
         />
       )}
     </>

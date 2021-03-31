@@ -1,6 +1,6 @@
-import React from "react";
-import "./Tags.css";
-import ReactTags from "react-tag-autocomplete";
+import React from 'react';
+import './Tags.css';
+import ReactTags from 'react-tag-autocomplete';
 
 class Tags extends React.Component {
   constructor(props) {
@@ -9,6 +9,9 @@ class Tags extends React.Component {
       update: props.update,
       tags: [],
       suggestions: props.suggestions,
+
+      placeholder:
+        props.suggestions[0].name + ', ' + props.suggestions[1].name + ' ...',
     };
     this.reactTags = React.createRef();
   }
@@ -24,7 +27,7 @@ class Tags extends React.Component {
   onAddition(tag) {
     const tags_ = [].concat(this.state.tags, tag);
     this.setState({ tags: tags_ });
-    console.log(tags_, "child");
+    console.log(tags_, 'child');
     this.state.update(tags_);
   }
 
@@ -33,6 +36,7 @@ class Tags extends React.Component {
       <ReactTags
         ref={this.reactTags}
         tags={this.state.tags}
+        placeholderText={this.state.placeholder}
         suggestions={this.state.suggestions}
         noSuggestionsText="No matching tags"
         onDelete={this.onDelete.bind(this)}

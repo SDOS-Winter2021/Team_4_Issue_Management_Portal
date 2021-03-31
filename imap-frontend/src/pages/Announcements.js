@@ -4,38 +4,38 @@ import axios from "axios";
 import Header from "../components/Navigation/Header";
 import AllIssues from "../components/IssueDashboard/AllIssues";
 
-function Issues({ profile }) {
+function Announcements({ profile }) {
   const notMobileView = useMediaPredicate("(min-width: 800px)");
   const [sidebar, setSidebar] = useState(false);
   const showSidebar = () => setSidebar(!sidebar);
-  const page = "Issues";
-  const isIssue = true;
+  const page = "Announcements";
+  const isIssue = false;
 
-  const [issues, setIssues] = useState([]);
+  const [announcements, setAnnouncements] = useState([]);
   useEffect(() => {
     axios
       .get("dashboard/GetAllIssue")
       .then((res) => {
         console.log(res.data);
-        setIssues(res.data);
+        setAnnouncements(res.data);
       })
       .catch((err) => console.log(err));
   }, []);
 
-  const allIssuesProps = {
+  const allAnouncementsProps = {
     notMobileView: notMobileView,
     profile: profile,
     isIssue: isIssue,
     page: page,
-    issues: issues,
+    issues: announcements,
   };
   const sidebarToggles = {
     notMobileView: notMobileView,
     showSidebar: showSidebar,
     sidebar: sidebar,
   };
-  console.log(issues, "*****************");
 
+  console.log(announcements);
   return (
     <>
       <Header
@@ -44,9 +44,9 @@ function Issues({ profile }) {
         isIssue={isIssue}
         page={page}
       />
-      <AllIssues {...allIssuesProps} />
+      <AllIssues {...allAnouncementsProps} />
     </>
   );
 }
 
-export default Issues;
+export default Announcements;

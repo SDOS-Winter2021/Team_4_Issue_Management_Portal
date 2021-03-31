@@ -39,7 +39,7 @@ function CommentBox({ commenter, comment }) {
   );
 }
 
-function IssueTitleNDesc({ issue }) {
+function IssueTitleNDesc({ issue, isIssue }) {
   return (
     <>
       <div style={{ display: "flex" }}>
@@ -52,17 +52,21 @@ function IssueTitleNDesc({ issue }) {
               flexWrap: "wrap",
             }}
           >
-            {issue.IssueTitle}
-            <IssueStatusLabel color={issue.Tags.Resolved ? "green" : "red"}>
-              {issue.Tags.Resolved ? (
-                <FaIcons.FaCheckCircle />
-              ) : (
-                <FaIcons.FaExclamationCircle />
-              )}
-              <p style={{ paddingLeft: "8px" }}>
-                {issue.Tags.Resolved ? "Resolved" : "Pending"}
-              </p>
-            </IssueStatusLabel>
+            {/* {issue.IssueTitle} */}
+            {isIssue && <h3>{issue.IssueTitle}</h3>}
+            {!isIssue && <h3>{issue.AnnouncementTitle}</h3>}
+            {isIssue && (
+              <IssueStatusLabel color={issue.Tags.Resolved ? "green" : "red"}>
+                {issue.Tags.Resolved ? (
+                  <FaIcons.FaCheckCircle />
+                ) : (
+                  <FaIcons.FaExclamationCircle />
+                )}
+                <p style={{ paddingLeft: "8px" }}>
+                  {issue.Tags.Resolved ? "Resolved" : "Pending"}
+                </p>
+              </IssueStatusLabel>
+            )}
           </h1>
           <Labels labels={issue.Filter} />
         </IssueContainer>
@@ -125,13 +129,13 @@ function IndividualIssue({
   isIssue,
   isMobileView,
 }) {
-  const likes_list = issue.Likes.studEmail;
   const uid = "demo@iiitd.ac.in";
-  const has_liked = likes_list.indexOf(uid) > 0;
+  const likes_list = isIssue ? issue.Likes.studEmail : [];
+  const has_liked = isIssue ? likes_list.indexOf(uid) > 0 : false;
   const [like, setLike] = useState(has_liked);
   const setLikeFunc = () => {
     setLike(!like);
-    !like ? likes_list.push(uid) : likes_list.pop(uid);
+    if (isIssue) !like ? likes_list.push(uid) : likes_list.pop(uid);
   };
 
   const [commentArea, setComment] = useState(false);

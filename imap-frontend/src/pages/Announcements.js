@@ -14,7 +14,7 @@ function Announcements({ profile }) {
   const [announcements, setAnnouncements] = useState([]);
   useEffect(() => {
     axios
-      .get("dashboard/GetAllIssue")
+      .get("/announcement/GetAllAnnouncements")
       .then((res) => {
         console.log(res.data);
         setAnnouncements(res.data);

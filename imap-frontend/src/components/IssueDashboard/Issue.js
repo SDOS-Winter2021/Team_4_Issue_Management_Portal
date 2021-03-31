@@ -86,7 +86,8 @@ const Issue = ({ issue, isIssue, profile, notMobileView }) => {
           </IssueAccessory>
         )}
         <IssueTitle onClick={handlePopIssue}>
-          <h3>{issue.IssueTitle}</h3>
+          {isIssue && <h3>{issue.IssueTitle}</h3>}
+          {!isIssue && <h3>{issue.AnnouncementTitle}</h3>}
           <Labels labels={issue.Filter} />
         </IssueTitle>
         <IssueAccessories

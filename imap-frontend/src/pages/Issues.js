@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Header from "../components/Navigation/Header";
 import AllIssues from "../components/IssueDashboard/AllIssues";
+import { filtersName } from "../components/Navigation/SidebarData";
 
 function Issues({ profile }) {
   const notMobileView = useMediaPredicate("(min-width: 800px)");
@@ -16,7 +17,6 @@ function Issues({ profile }) {
     axios
       .get("dashboard/GetAllIssue")
       .then((res) => {
-        console.log(res.data);
         setIssues(res.data);
       })
       .catch((err) => console.log(err));
@@ -28,13 +28,13 @@ function Issues({ profile }) {
     isIssue: isIssue,
     page: page,
     issues: issues,
+    filtersName: filtersName,
   };
   const sidebarToggles = {
     notMobileView: notMobileView,
     showSidebar: showSidebar,
     sidebar: sidebar,
   };
-  console.log(issues, "*****************");
 
   return (
     <>
@@ -43,6 +43,7 @@ function Issues({ profile }) {
         {...sidebarToggles}
         isIssue={isIssue}
         page={page}
+        filterNames={filtersName}
       />
       <AllIssues {...allIssuesProps} />
     </>

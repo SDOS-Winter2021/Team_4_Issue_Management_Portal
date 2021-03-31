@@ -144,6 +144,25 @@ export const SidebarLink = styled(Link)`
   }
 `;
 
+export const SidebarNoLink = styled.span`
+  display: flex;
+  color: #e1e9fc;
+  background: ${({ isPage }) => (isPage ? "#252831" : " #0e0057")};
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  list-style: none;
+  height: 30px;
+  text-decoration: none;
+  font-size: 18px;
+
+  &:hover {
+    background: #252831;
+    border-left: 4px solid #632ce4;
+    cursor: pointer;
+  }
+`;
+
 /**
  * Text Labels that appear on sidebar.
  */

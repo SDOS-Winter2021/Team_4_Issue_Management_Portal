@@ -22,109 +22,95 @@ export const SidebarData = [
     title: "Filters",
     path: "#",
     icon: <FaIcons.FaFilter />,
-
     iconClosed: <RiIcons.RiArrowDownSFill />,
-    iconOpened: <RiIcons.RiArrowUpSFill />,
-
-    doublesubNav: [
-      {
-        title: "Batch",
-        icon: <FaIcons.FaSquare />,
-        iconClosed: <RiIcons.RiArrowDownSFill />,
-        iconOpened: <RiIcons.RiArrowUpSFill />,
-
-        subNav: [
-          {
-            title: "2020",
-            isChecked: false,
-          },
-          {
-            title: "2019",
-            isChecked: false,
-          },
-          {
-            title: "2018",
-            isChecked: false,
-          },
-          {
-            title: "2017",
-            isChecked: false,
-          },
-        ],
-      },
-      {
-        title: "Branch",
-        icon: <FaIcons.FaSquare />,
-        iconClosed: <RiIcons.RiArrowDownSFill />,
-        iconOpened: <RiIcons.RiArrowUpSFill />,
-        subNav: [
-          {
-            title: "CSE",
-            isChecked: false,
-          },
-          {
-            title: "CSD",
-            isChecked: false,
-          },
-          {
-            title: "CSSS",
-            isChecked: false,
-          },
-          {
-            title: "ECE",
-            isChecked: false,
-          },
-          {
-            title: "CSAI",
-            isChecked: false,
-          },
-        ],
-      },
-      {
-        title: "Department",
-        icon: <FaIcons.FaSquare />,
-        iconClosed: <RiIcons.RiArrowDownSFill />,
-        iconOpened: <RiIcons.RiArrowUpSFill />,
-        subNav: [
-          {
-            title: "Academics",
-            isChecked: false,
-          },
-          {
-            title: "Finance",
-            isChecked: false,
-          },
-          {
-            title: "Placement",
-            isChecked: false,
-          },
-        ],
-      },
-      {
-        title: "Programme",
-        icon: <FaIcons.FaSquare />,
-        iconClosed: <RiIcons.RiArrowDownSFill />,
-        iconOpened: <RiIcons.RiArrowUpSFill />,
-        subNav: [
-          {
-            title: "B.Tech",
-            isChecked: false,
-          },
-          {
-            title: "M.Tech",
-            isChecked: false,
-          },
-          {
-            title: "PHD",
-            isChecked: false,
-          },
-        ],
-      },
-    ],
+    iconOpened: <RiIcons.RiCheckboxCircleFill style={{ color: "#81de8d" }} />,
   },
   {
     title: "Support",
     path: "/support",
     icon: <IoIcons.IoMdHelpCircle />,
+  },
+];
+
+export const filtersName = [
+  {
+    title: "Batch",
+    filterDetails: [
+      {
+        title: "2020",
+        isChecked: false,
+      },
+      {
+        title: "2019",
+        isChecked: false,
+      },
+      {
+        title: "2018",
+        isChecked: false,
+      },
+      {
+        title: "2017",
+        isChecked: false,
+      },
+    ],
+  },
+  {
+    title: "Department",
+    filterDetails: [
+      {
+        title: "CSE",
+        isChecked: false,
+      },
+      {
+        title: "CSD",
+        isChecked: false,
+      },
+      {
+        title: "CSSS",
+        isChecked: false,
+      },
+      {
+        title: "ECE",
+        isChecked: false,
+      },
+      {
+        title: "CSAI",
+        isChecked: false,
+      },
+    ],
+  },
+  {
+    title: "Administration",
+    filterDetails: [
+      {
+        title: "Academics",
+        isChecked: false,
+      },
+      {
+        title: "Finance",
+        isChecked: false,
+      },
+      {
+        title: "Placement",
+        isChecked: false,
+      },
+    ],
+  },
+  {
+    title: "Programs",
+    filterDetails: [
+      {
+        title: "Btech",
+        isChecked: false,
+      },
+      {
+        title: "Mtech",
+        isChecked: false,
+      },
+      {
+        title: "PhD",
+        isChecked: false,
+      },
+    ],
   },
 ];

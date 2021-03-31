@@ -10,7 +10,14 @@ import {
   SidebarToggleIcon,
 } from "./NavigationDesigns";
 
-const Header = ({ profile, notMobileView, showSidebar, sidebar, page }) => {
+const Header = ({
+  profile,
+  notMobileView,
+  showSidebar,
+  sidebar,
+  page,
+  filterNames,
+}) => {
   /**
    * Toggles the visibility of the dropdown menu that contains
    * the profile information.
@@ -35,10 +42,11 @@ const Header = ({ profile, notMobileView, showSidebar, sidebar, page }) => {
         showSidebar={showSidebar}
         sidebar={sidebar}
         page={page}
+        filterNames={filterNames}
       />
       <ProfileDropdown showProfile={_showProfile}>
         <DropdownLabel>{profile.name}</DropdownLabel>
-        <DropdownLabel to={"/"}>Logout</DropdownLabel>
+        <DropdownLabel to="/">Logout</DropdownLabel>
       </ProfileDropdown>
     </>
   );

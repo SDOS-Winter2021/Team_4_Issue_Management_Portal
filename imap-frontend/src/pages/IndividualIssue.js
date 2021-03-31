@@ -53,8 +53,8 @@ function IssueTitleNDesc({ issue, isIssue }) {
             }}
           >
             {/* {issue.IssueTitle} */}
-            {isIssue && <h3>{issue.IssueTitle}</h3>}
-            {!isIssue && <h3>{issue.AnnouncementTitle}</h3>}
+            {isIssue && issue.IssueTitle}
+            {!isIssue && issue.AnnouncementTitle}
             {isIssue && (
               <IssueStatusLabel color={issue.Tags.Resolved ? "green" : "red"}>
                 {issue.Tags.Resolved ? (
@@ -159,7 +159,7 @@ function IndividualIssue({
         <Profile onClick={handlePopIssue}>
           <FaIcons.FaTimes />
         </Profile>
-        <IssueTitleNDesc issue={issue} />
+        <IssueTitleNDesc issue={issue} isIssue={isIssue} />
         <LikesNComments
           issue={issue}
           isIssue={isIssue}

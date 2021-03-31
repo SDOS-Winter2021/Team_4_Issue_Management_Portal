@@ -2,11 +2,13 @@ import React, { useState } from "react";
 import Checkbox from "react-checkbox-component";
 import {
   SidebarLink,
+  SidebarNoLink,
   SidebarLabel,
   FilterLabel,
   FilterOptLabel,
 } from "./NavigationDesigns";
 import PropTypes from "prop-types";
+import * as RiIcons from "react-icons/ri";
 
 /**
  * Create checkbox component for the given item. Helper function for SubMenu.
@@ -40,21 +42,21 @@ function Filter({ filter }) {
   const _showFilter = () => _setSubnav(!_setfilter);
   return (
     <>
-      <SidebarLink to={filter.path} onClick={filter.subNav && _showFilter}>
+      <SidebarNoLink onClick={_showFilter}>
         <div>
           <FilterLabel>{filter.title}</FilterLabel>
         </div>
         <div>
-          {filter.subNav && _setfilter
-            ? filter.iconOpened
-            : filter.subNav
-            ? filter.iconClosed
-            : null}
+          {filter.filterDetails && _setfilter ? (
+            <RiIcons.RiArrowUpSFill />
+          ) : filter.filterDetails ? (
+            <RiIcons.RiArrowDownSFill />
+          ) : null}
         </div>
-      </SidebarLink>
+      </SidebarNoLink>
 
       {_setfilter &&
-        filter.subNav.map((item, index) => {
+        filter.filterDetails.map((item, index) => {
           return (
             <FilterOptLabel>
               <CheckboxItem item={item} />
@@ -69,7 +71,7 @@ function Filter({ filter }) {
  * Returns the individual components on the sidebar,
  * with their dropdown components, if required.
  */
-function SubMenu({ item, page }) {
+function SubMenu({ item, page, filtersName }) {
   /**
    * State to toggle the dropdown options of submenu components.
    */
@@ -80,12 +82,13 @@ function SubMenu({ item, page }) {
    * that is currently being displayed.
    */
   const isPage = item.title === page;
+  const isFilter = item.title === "Filters";
 
   return (
     <>
       <SidebarLink
         to={item.path}
-        onClick={item.doublesubNav && showSubnav}
+        onClick={isFilter ? showSubnav : () => {}}
         isPage={isPage}
       >
         <div>
@@ -93,16 +96,17 @@ function SubMenu({ item, page }) {
           <SidebarLabel>{item.title}</SidebarLabel>
         </div>
         <div>
-          {item.doublesubNav && subnav
+          {isFilter && subnav
             ? item.iconOpened
-            : item.doublesubNav
+            : filtersName
             ? item.iconClosed
             : null}
         </div>
       </SidebarLink>
 
       {subnav &&
-        item.doublesubNav.map((filter, index) => {
+        isFilter &&
+        filtersName.map((filter, index) => {
           return <Filter filter={filter} key={index} />;
         })}
     </>
@@ -120,6 +124,12 @@ SubMenu.propTypes = {
    * Name of the page that is currently being rendered.
    */
   page: PropTypes.string,
+
+  /**
+   * Object containing the information for the filters
+   * to be displayed in the sidebar.
+   */
+  filtersName: PropTypes.array,
 };
 
 export default SubMenu;

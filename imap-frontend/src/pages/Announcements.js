@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Header from "../components/Navigation/Header";
 import AllIssues from "../components/IssueDashboard/AllIssues";
+import { filtersName } from "../components/Navigation/SidebarData";
 
 function Announcements({ profile }) {
   const notMobileView = useMediaPredicate("(min-width: 800px)");
@@ -28,6 +29,7 @@ function Announcements({ profile }) {
     isIssue: isIssue,
     page: page,
     issues: announcements,
+    filtersName: filtersName,
   };
   const sidebarToggles = {
     notMobileView: notMobileView,
@@ -43,6 +45,7 @@ function Announcements({ profile }) {
         {...sidebarToggles}
         isIssue={isIssue}
         page={page}
+        filterNames={filtersName}
       />
       <AllIssues {...allAnouncementsProps} />
     </>

@@ -16,7 +16,7 @@ import PropTypes from "prop-types";
 /**
  * returns the entire sidebar components.
  */
-function Sidebar({ notMobileView, showSidebar, sidebar, page }) {
+function Sidebar({ notMobileView, showSidebar, sidebar, page, filterNames }) {
   return (
     <>
       <IconContext.Provider value={{ color: "#fff" }}>
@@ -43,7 +43,14 @@ function Sidebar({ notMobileView, showSidebar, sidebar, page }) {
 
             <div style={{ overflowY: "auto", height: "calc(100vh - 120px)" }}>
               {SidebarData.map((item, index) => {
-                return <SubMenu item={item} key={index} page={page} />;
+                return (
+                  <SubMenu
+                    item={item}
+                    key={index}
+                    page={page}
+                    filtersName={filterNames}
+                  />
+                );
               })}
             </div>
           </SidebarWrap>

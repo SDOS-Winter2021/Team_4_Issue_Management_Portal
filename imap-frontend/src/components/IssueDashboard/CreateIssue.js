@@ -10,7 +10,7 @@ import {
   SubmitButton,
 } from "./CreateIssueDesign";
 
-const CreateIssue = () => {
+const CreateIssue = ({page}) => {
   const [branch, setBranch] = useState([]);
   const [batch, setBatch] = useState([]);
   const [dept, setDept] = useState([]);
@@ -67,7 +67,7 @@ const CreateIssue = () => {
         >
           X
         </button>
-        <H1> Create New Issue</H1>
+        <H1> Create New  {page} </H1>
 
         <fieldset style={{ marginRight: "5%", border: "none" }}>
           <Label for="Title">Title:</Label>

@@ -37,7 +37,7 @@ function AllIssues({ notMobileView, profile, page, issues }) {
           );
         })}
       </IssueContainer>
-      <CreateIssue></CreateIssue>
+      <CreateIssue page={page}></CreateIssue>
     </>
   );
 }

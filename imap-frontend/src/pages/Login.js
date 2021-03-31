@@ -1,27 +1,30 @@
-import React, { Component } from "react";
-import "./Login.css";
-import { Key } from "../Key";
-import axios from "axios";
-import Footer from "../components/Footer/Footer.js";
-import Header from "../components/Header/Header.js";
-import GoogleButton from "react-google-button";
-import GoogleLogin from "react-google-login";
-import { useHistory } from "react-router-dom";
+import React, { Component, useContext } from 'react';
+import './Login.css';
+import { Key } from '../Key';
+import axios from 'axios';
+import Footer from '../components/Footer/Footer.js';
+import Header from '../components/Header/Header.js';
+import GoogleButton from 'react-google-button';
+import GoogleLogin from 'react-google-login';
+import { useHistory } from 'react-router-dom';
+import { AuthContext } from '../context/auth-context';
 
 const Login = () => {
   let history = useHistory();
+  const { setLoggedIn, setUserData } = useContext(AuthContext);
   const responseSuccessGoogle = (response) => {
     axios({
-      method: "POST",
-      url: "login/googlelogin",
+      method: 'POST',
+      url: 'login/googlelogin',
       data: { tokenId: response.tokenId },
     }).then((response) => {
-      history.push("/issues");
+      setLoggedIn(true);
+      setUserData(response.data);
+      // fetch issues
+      history.push('/issues');
     });
   };
-
   const responseErrorGoogle = (response) => {};
-
   return (
     <div className="page-container">
       <Header />
@@ -49,7 +52,7 @@ const Login = () => {
                     buttonText="Login with google"
                     onSuccess={responseSuccessGoogle}
                     onFailure={responseErrorGoogle}
-                    cookiePolicy={"single_host_origin"}
+                    cookiePolicy={'single_host_origin'}
                   />
                 </div>
               </div>

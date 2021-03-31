@@ -1,9 +1,9 @@
 import "./App.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Issues from "./pages/Issues";
+import Announcements from "./pages/Announcements";
 import Support from "./pages/Support";
 import Dashboard from "./pages/Dashboard";
-import IndividualIssue from "./pages/IndividualIssue";
 import Login from "./pages/Login";
 import axios from "axios";
 
@@ -27,21 +27,18 @@ function App() {
           <Route
             path="/support"
             exact
-            render={(props) => <Support profile={profile} page={"Support"} />}
+            render={(props) => <Support profile={profile} />}
           />
           <Route
             path="/issues"
             exact
-            render={(props) => <Issues profile={profile} page={"Issues"} />}
+            render={(props) => <Issues profile={profile} />}
           />
           <Route
             path="/announcements"
             exact
-            render={(props) => (
-              <Issues profile={profile} page={"Announcements"} />
-            )}
+            render={(props) => <Announcements profile={profile} />}
           />
-          <Route path="/indIssue" exact component={IndividualIssue} />
         </Switch>
       </Router>
     </>

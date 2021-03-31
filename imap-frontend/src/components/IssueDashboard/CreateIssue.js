@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
-import Modal from 'react-modal';
-import Tags from './Tags';
+import React, { useEffect, useState } from "react";
+import Modal from "react-modal";
+import Tags from "./Tags";
 import {
   CreateButton,
   H1,
@@ -8,7 +8,7 @@ import {
   Input,
   TextArea,
   SubmitButton,
-} from './CreateIssueDesign';
+} from "./CreateIssueDesign";
 
 const CreateIssue = ({ page }) => {
   const [branch, setBranch] = useState([]);
@@ -18,37 +18,37 @@ const CreateIssue = ({ page }) => {
   const [isPopup, setIsPopup] = useState(false);
 
   const branchSuggestions = [
-    { id: 1, name: 'CSE' },
-    { id: 2, name: 'CSAM' },
-    { id: 3, name: 'CSD' },
-    { id: 4, name: 'ECE' },
+    { id: 1, name: "CSE" },
+    { id: 2, name: "CSAM" },
+    { id: 3, name: "CSD" },
+    { id: 4, name: "ECE" },
   ];
   const batchSuggestions = [
-    { id: 1, name: '2018' },
-    { id: 2, name: '2019' },
-    { id: 3, name: '2020' },
-    { id: 4, name: '2021' },
+    { id: 1, name: "2018" },
+    { id: 2, name: "2019" },
+    { id: 3, name: "2020" },
+    { id: 4, name: "2021" },
   ];
   const deptSuggestions = [
-    { id: 1, name: 'Academic' },
-    { id: 2, name: 'Financial' },
+    { id: 1, name: "Academic" },
+    { id: 2, name: "Financial" },
   ];
   const programmeSuggestions = [
-    { id: 1, name: 'B-Tech' },
-    { id: 2, name: 'M-Tech' },
-    { id: 2, name: 'PhD' },
+    { id: 1, name: "B-Tech" },
+    { id: 2, name: "M-Tech" },
+    { id: 2, name: "PhD" },
   ];
 
   const customStyle = {
     content: {
-      border: 'none',
-      maxWidth: '50%',
-      margin: '10px auto',
-      padding: '10px 20px 0px',
-      background: '#f4f7f8',
-      borderRadius: '8px',
+      border: "none",
+      maxWidth: "50%",
+      margin: "10px auto",
+      padding: "10px 20px 0px",
+      background: "#f4f7f8",
+      borderRadius: "8px",
     },
-    overlay: { zIndex: '1000' },
+    overlay: { zIndex: "1000" },
   };
 
   let popup = null;
@@ -57,11 +57,11 @@ const CreateIssue = ({ page }) => {
       <Modal style={customStyle} isOpen={isPopup} ariaHideApp={false}>
         <button
           style={{
-            background: '#f4f7f8',
-            position: 'absolute',
-            border: 'none',
-            top: '10px',
-            right: '10px',
+            background: "#f4f7f8",
+            position: "absolute",
+            border: "none",
+            top: "10px",
+            right: "10px",
           }}
           onClick={() => setIsPopup(false)}
         >
@@ -69,7 +69,7 @@ const CreateIssue = ({ page }) => {
         </button>
         <H1> Create New {page} </H1>
 
-        <fieldset style={{ marginRight: '5%', border: 'none' }}>
+        <fieldset style={{ marginRight: "5%", border: "none" }}>
           <Label for="Title">Title:</Label>
           <Input type="text" id="title" />
 

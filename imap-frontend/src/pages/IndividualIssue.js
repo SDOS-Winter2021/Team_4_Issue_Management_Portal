@@ -152,7 +152,7 @@ function IndividualIssue({
       setCommFunc();
     }
   };
-  console.log("apple");
+
   return (
     <>
       <Modal isOpen={popupIssue} style={{ overlay: { zIndex: "1001" } }}>

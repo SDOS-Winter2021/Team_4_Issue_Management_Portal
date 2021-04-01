@@ -1,27 +1,44 @@
-import React, { Component, useContext } from 'react';
-import './Login.css';
-import { Key } from '../Key';
-import axios from 'axios';
-import Footer from '../components/Footer/Footer.js';
-import Header from '../components/Header/Header.js';
-import GoogleButton from 'react-google-button';
-import GoogleLogin from 'react-google-login';
-import { useHistory } from 'react-router-dom';
-import { AuthContext } from '../context/auth-context';
+import React, { Component, useContext } from "react";
+import "./Login.css";
+import { Key } from "../Key";
+import axios from "axios";
+import Footer from "../components/Footer/Footer.js";
+import Header from "../components/Header/Header.js";
+import GoogleButton from "react-google-button";
+import GoogleLogin from "react-google-login";
+import { useHistory } from "react-router-dom";
+import { AuthContext } from "../context/auth-context";
 
 const Login = () => {
   let history = useHistory();
-  const { setLoggedIn, setUserData } = useContext(AuthContext);
+  const { getIssuesData, getAnnouncementsData } = useContext(AuthContext);
   const responseSuccessGoogle = (response) => {
     axios({
-      method: 'POST',
-      url: 'login/googlelogin',
+      method: "POST",
+      url: "login/googlelogin",
       data: { tokenId: response.tokenId },
     }).then((response) => {
-      setLoggedIn(true);
-      setUserData(response.data);
-      // fetch issues
-      history.push('/issues');
+      var run = async () => {
+        try {
+          await localStorage.setItem("loggedIn", true);
+          await localStorage.setItem("userData", response.data);
+          const issueData = await getIssuesData();
+          const announcementData = await getAnnouncementsData();
+          await localStorage.setItem(
+            "allIssuesData",
+            JSON.stringify(issueData)
+          );
+
+          await localStorage.setItem(
+            "allAnnouncementsData",
+            JSON.stringify(announcementData)
+          );
+          history.push("/issues");
+        } catch (err) {
+          console.log(err);
+        }
+      };
+      run();
     });
   };
   const responseErrorGoogle = (response) => {};
@@ -52,7 +69,7 @@ const Login = () => {
                     buttonText="Login with google"
                     onSuccess={responseSuccessGoogle}
                     onFailure={responseErrorGoogle}
-                    cookiePolicy={'single_host_origin'}
+                    cookiePolicy={"single_host_origin"}
                   />
                 </div>
               </div>

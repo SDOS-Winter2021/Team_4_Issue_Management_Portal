@@ -14,7 +14,6 @@ function AllIssues({ notMobileView, profile, page, issues, filtersName }) {
   const isIssue = page === "Issues";
   const showIssues = FilterIssues(filtersName, issues);
   console.log(showIssues);
-
   return (
     <>
       <IssueContainer notMobileView={notMobileView}>

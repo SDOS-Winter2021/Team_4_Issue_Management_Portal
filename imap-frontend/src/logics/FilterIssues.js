@@ -21,6 +21,7 @@ function matchFilters(issueF, selectedF) {
 }
 
 export default function FilterIssues(filters, issues) {
+  issues = issues === undefined ? [] : issues;
   var showIssues = [];
   for (var i = 0; i < issues.length; i++) {
     var issueFilters = issues[i].Filter;

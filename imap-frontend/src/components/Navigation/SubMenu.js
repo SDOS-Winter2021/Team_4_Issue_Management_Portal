@@ -13,7 +13,7 @@ import * as RiIcons from "react-icons/ri";
 /**
  * Create checkbox component for the given item. Helper function for SubMenu.
  */
-function CheckboxItem({ item }) {
+function CheckboxItem({ item, setFilterState }) {
   /**
    * State to toggle the checkbox options.
    */
@@ -21,6 +21,7 @@ function CheckboxItem({ item }) {
   const checkboxHandler = (newVal) => {
     setCheckBox(newVal);
     item.isChecked = newVal;
+    setFilterState();
   };
   return (
     <>
@@ -34,12 +35,12 @@ function CheckboxItem({ item }) {
  * returns the Filter options in the dropdown menu of
  * `Filters`. Helper function for SubMenu.
  */
-function Filter({ filter }) {
+function Filter({ filter, setFilterState }) {
   /**
    * State to toggle the dropdown options of Filter components.
    */
-  const [_setfilter, _setSubnav] = useState(false);
-  const _showFilter = () => _setSubnav(!_setfilter);
+  const [_usefilter, _setSubnav] = useState(false);
+  const _showFilter = () => _setSubnav(!_usefilter);
   return (
     <>
       <SidebarNoLink onClick={_showFilter}>
@@ -47,7 +48,7 @@ function Filter({ filter }) {
           <FilterLabel>{filter.title}</FilterLabel>
         </div>
         <div>
-          {filter.filterDetails && _setfilter ? (
+          {filter.filterDetails && _usefilter ? (
             <RiIcons.RiArrowUpSFill />
           ) : filter.filterDetails ? (
             <RiIcons.RiArrowDownSFill />
@@ -55,11 +56,11 @@ function Filter({ filter }) {
         </div>
       </SidebarNoLink>
 
-      {_setfilter &&
+      {_usefilter &&
         filter.filterDetails.map((item, index) => {
           return (
             <FilterOptLabel>
-              <CheckboxItem item={item} />
+              <CheckboxItem item={item} setFilterState={setFilterState} />
             </FilterOptLabel>
           );
         })}
@@ -71,7 +72,7 @@ function Filter({ filter }) {
  * Returns the individual components on the sidebar,
  * with their dropdown components, if required.
  */
-function SubMenu({ item, page, filtersName }) {
+function SubMenu({ item, page, filtersName, setFilterState }) {
   /**
    * State to toggle the dropdown options of submenu components.
    */
@@ -107,7 +108,13 @@ function SubMenu({ item, page, filtersName }) {
       {subnav &&
         isFilter &&
         filtersName.map((filter, index) => {
-          return <Filter filter={filter} key={index} />;
+          return (
+            <Filter
+              filter={filter}
+              key={index}
+              setFilterState={setFilterState}
+            />
+          );
         })}
     </>
   );

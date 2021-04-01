@@ -17,6 +17,7 @@ const Header = ({
   sidebar,
   page,
   filterNames,
+  setFilterState,
 }) => {
   /**
    * Toggles the visibility of the dropdown menu that contains
@@ -25,6 +26,7 @@ const Header = ({
    */
   const [_showProfile, setShowProfile] = useState(false);
   const showProfile = () => setShowProfile(!_showProfile);
+  console.log(setFilterState, "000");
 
   return (
     <>
@@ -43,6 +45,7 @@ const Header = ({
         sidebar={sidebar}
         page={page}
         filterNames={filterNames}
+        setFilterState={setFilterState}
       />
       <ProfileDropdown showProfile={_showProfile}>
         <DropdownLabel>{profile.name}</DropdownLabel>
@@ -80,6 +83,8 @@ Header.propTypes = {
    * Name of the page that is currently being rendered.
    */
   page: PropTypes.string,
+
+  setFilterState: PropTypes.func,
 };
 
 export default Header;

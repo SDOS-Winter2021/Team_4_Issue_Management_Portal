@@ -12,6 +12,9 @@ function Issues({ profile }) {
   const page = "Issues";
   const isIssue = true;
 
+  const [filterState, _setFilterState] = useState(false);
+  const setFilterState = () => _setFilterState(!filterState);
+
   const [issues, setIssues] = useState([]);
   useEffect(() => {
     axios
@@ -35,6 +38,7 @@ function Issues({ profile }) {
     showSidebar: showSidebar,
     sidebar: sidebar,
   };
+  console.log(setFilterState, "000111");
 
   return (
     <>
@@ -44,6 +48,7 @@ function Issues({ profile }) {
         isIssue={isIssue}
         page={page}
         filterNames={filtersName}
+        setFilterState={setFilterState}
       />
       <AllIssues {...allIssuesProps} />
     </>

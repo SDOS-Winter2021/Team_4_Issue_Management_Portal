@@ -24,7 +24,6 @@ const Login = () => {
           await localStorage.setItem("userData", response.data);
           const issueData = await getIssuesData();
           const announcementData = await getAnnouncementsData();
-          console.log("yyyy");
           console.log(announcementData, "xxx");
           await localStorage.setItem(
             "allIssuesData",

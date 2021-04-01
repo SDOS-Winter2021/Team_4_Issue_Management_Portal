@@ -16,7 +16,14 @@ import PropTypes from "prop-types";
 /**
  * returns the entire sidebar components.
  */
-function Sidebar({ notMobileView, showSidebar, sidebar, page, filterNames }) {
+function Sidebar({
+  notMobileView,
+  showSidebar,
+  sidebar,
+  page,
+  filterNames,
+  setFilterState,
+}) {
   return (
     <>
       <IconContext.Provider value={{ color: "#fff" }}>
@@ -49,6 +56,7 @@ function Sidebar({ notMobileView, showSidebar, sidebar, page, filterNames }) {
                     key={index}
                     page={page}
                     filtersName={filterNames}
+                    setFilterState={setFilterState}
                   />
                 );
               })}

@@ -12,6 +12,9 @@ function Announcements({ profile }) {
   const page = "Announcements";
   const isIssue = false;
 
+  const [filterState, _setFilterState] = useState(false);
+  const setFilterState = () => _setFilterState(!filterState);
+
   const [announcements, setAnnouncements] = useState([]);
   useEffect(() => {
     axios
@@ -46,6 +49,7 @@ function Announcements({ profile }) {
         isIssue={isIssue}
         page={page}
         filterNames={filtersName}
+        setFilterState={setFilterState}
       />
       <AllIssues {...allAnouncementsProps} />
     </>

@@ -21,7 +21,7 @@ function AllIssues({ notMobileView, profile, page, issues, filtersName }) {
         <TitleSearchContainer>
           <TitleContainer>{page}</TitleContainer>
           <SearchContainer>
-            <SearchBar page={page} />
+            <SearchBar page={page} issues={issues} />
           </SearchContainer>
         </TitleSearchContainer>
         <hr

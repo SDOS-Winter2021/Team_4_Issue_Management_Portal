@@ -36,9 +36,6 @@ export default function getTopIssues(userQuery, issues){
             (issue) => 
               parseInt(issue.IssueID) === parseInt(topIssueID)
           );
-        // var topIssue_ = {
-        //     name: topIssue[0].IssueTitle
-        // }
         topIssues.push(topIssue[0])
     }
     return topIssues

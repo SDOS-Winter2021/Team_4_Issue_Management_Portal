@@ -1,49 +1,28 @@
 import React, { useState } from "react";
-import * as FaIcons from "react-icons/fa";
 import Autosuggest from "react-autosuggest";
 import theme from "./SearchBar.css";
+import getTopIssues from "../../logics/SearchIssues"
 
-const issues = [
-  {
-    name: "Fee portal not working",
-  },
-  {
-    name: "Fee portal not working",
-  },
-  {
-    name: "Fee portal not working",
-  },
-  {
-    name: "Fee portal not working",
-  },
-  {
-    name: "Issues with fee portal",
-  },
-];
 
-const SearchBar = ({ page }) => {
+const SearchBar = ({ page, issues }) => {
   const [suggestions, setSuggestions] = useState([]);
   const [value, setValue] = useState("");
 
   const getSuggestions = (value) => {
     const inputValue = value.trim().toLowerCase();
-    const inputLength = inputValue.length;
 
-    return inputLength === 0
+    return inputValue.length === 0
       ? []
-      : issues.filter(
-          (issue) =>
-            issue.name.toLowerCase().slice(0, inputLength) === inputValue
-        );
+      :  getTopIssues(inputValue, issues) 
   };
 
-  const getSuggestionValue = (suggestion) => suggestion.name;
+  const getSuggestionValue = (suggestion) => suggestion.IssueTitle;
 
   function onChange(event, { newValue }) {
     setValue(newValue);
   }
 
-  const renderSuggestion = (suggestion) => <p>{suggestion.name}</p>;
+  const renderSuggestion = (suggestion) => <p>{suggestion.IssueTitle}</p>;
 
   const onSuggestionsFetchRequested = ({ value }) => {
     setSuggestions(getSuggestions(value));

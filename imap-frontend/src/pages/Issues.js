@@ -1,11 +1,16 @@
 import { useMediaPredicate } from "react-media-hook";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
+import { AuthContext } from "../context/auth-context";
 import Header from "../components/Navigation/Header";
 import AllIssues from "../components/IssueDashboard/AllIssues";
 import { filtersName } from "../components/Navigation/SidebarData";
 
 function Issues({ profile }) {
+  const { tryLocalLogin, allIssuesData } = useContext(AuthContext);
+  useEffect(async () => {
+    tryLocalLogin();
+  }, []);
   const notMobileView = useMediaPredicate("(min-width: 800px)");
   const [sidebar, setSidebar] = useState(false);
   const showSidebar = () => setSidebar(!sidebar);
@@ -14,23 +19,14 @@ function Issues({ profile }) {
 
   const [filterState, _setFilterState] = useState(false);
   const setFilterState = () => _setFilterState(!filterState);
-
   const [issues, setIssues] = useState([]);
-  useEffect(() => {
-    axios
-      .get("dashboard/GetAllIssue")
-      .then((res) => {
-        setIssues(res.data);
-      })
-      .catch((err) => console.log(err));
-  }, []);
 
   const allIssuesProps = {
     notMobileView: notMobileView,
     profile: profile,
     isIssue: isIssue,
     page: page,
-    issues: issues,
+    issues: allIssuesData,
     filtersName: filtersName,
   };
   const sidebarToggles = {

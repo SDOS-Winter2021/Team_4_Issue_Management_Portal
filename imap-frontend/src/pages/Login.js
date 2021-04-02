@@ -28,7 +28,6 @@ const Login = () => {
             "allIssuesData",
             JSON.stringify(issueData)
           );
-          console.log(issueData, "aaaaaa");
           await localStorage.setItem(
             "allAnnouncementsData",
             JSON.stringify(announcementData)

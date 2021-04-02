@@ -1,40 +1,40 @@
 import React, { useState } from "react";
 import Autosuggest from "react-autosuggest";
 import theme from "./SearchBar.css";
-import getTopIssues from "../../logics/SearchIssues";
+import getTopIssues, { getSearchedIssue } from "../../logics/SearchIssues";
 import { IssueTitle } from "../IssueDashboard/IssueDesigns";
 import { Labels } from "../IssueDashboard/Issue";
 import IndividualIssue from "../../pages/IndividualIssue";
 
 const SearchBar = ({ page, issues }) => {
+  const isIssue = page === "Issues";
   const [suggestions, setSuggestions] = useState([]);
   const [value, setValue] = useState("");
 
   const [popupIssue, setPopup] = useState(false);
-  const handlePopIssue = () => setPopup(!popupIssue);
+  const handlePopIssue = () => {
+    popupIssue && setValue("");
+    setPopup(!popupIssue);
+  };
 
   const getSuggestions = (value) => {
     const inputValue = value.trim().toLowerCase();
-
     return inputValue.length === 0 ? [] : getTopIssues(inputValue, issues);
   };
 
-  const getSuggestionValue = (suggestion) => suggestion.IssueTitle;
+  const getSuggestionValue = (suggestion) => suggestion._id;
 
   function onChange(event, { newValue }) {
     setValue(newValue);
   }
 
   const renderSuggestion = (suggestion) => (
-    <IssueTitle onClick={() => {}}>
-      <h3>
-        {suggestion.IssueTitle}
-        <p style={{ color: "gray", fontSize: "10px", fontWeight: "normal" }}>
-          {suggestion.createdAt.split("T")[0]}
-        </p>
-      </h3>
-      <Labels labels={suggestion.Filter} />
-    </IssueTitle>
+    <h3>
+      {suggestion.Title}
+      <p style={{ color: "gray", fontSize: "10px", fontWeight: "normal" }}>
+        {suggestion.createdAt.split("T")[0]}
+      </p>
+    </h3>
   );
 
   const onSuggestionsFetchRequested = ({ value }) => {
@@ -49,9 +49,8 @@ const SearchBar = ({ page, issues }) => {
     event,
     { suggestion, suggestionValue, suggestionIndex, sectionIndex, method }
   ) => {
-    console.log(suggestion, popupIssue);
+    setValue("#ID-" + suggestionValue);
     handlePopIssue();
-    console.log(popupIssue);
   };
 
   const inputProps = {
@@ -61,6 +60,11 @@ const SearchBar = ({ page, issues }) => {
     type: "search",
   };
 
+  const indIssue = getSearchedIssue(value, issues);
+  const showIndIssue =
+    value.startsWith("#ID-") &&
+    popupIssue &&
+    !(indIssue === undefined || indIssue.length == 0);
   return (
     <>
       <Autosuggest
@@ -72,6 +76,15 @@ const SearchBar = ({ page, issues }) => {
         onSuggestionSelected={onSuggestionSelected}
         inputProps={inputProps}
       />
+      {showIndIssue && (
+        <IndividualIssue
+          issue={indIssue[0]}
+          popupIssue={popupIssue}
+          handlePopIssue={handlePopIssue}
+          isIssue={isIssue}
+          isMobileView={false}
+        />
+      )}
     </>
   );
 };

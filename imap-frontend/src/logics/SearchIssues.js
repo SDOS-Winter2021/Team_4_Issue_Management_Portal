@@ -9,9 +9,9 @@ function SearchIssues(userQuery, issues) {
   let issueWithScore = {};
   userQuery = userQuery.toLowerCase().split(" ");
   for (let i = 0; i < issues.length; i++) {
-    var issueTitle = issues[i].IssueTitle.toLowerCase().split(" ");
+    var issueTitle = issues[i].Title.toLowerCase().split(" ");
     var numCommonWords = findNumCommonWords(issueTitle, userQuery);
-    issueWithScore[issues[i].IssueID] = numCommonWords;
+    issueWithScore[issues[i]._id] = numCommonWords;
   }
 
   var keyValues = [];
@@ -31,10 +31,24 @@ export default function getTopIssues(userQuery, issues) {
   var topIssueIDs = SearchIssues(userQuery, issues);
   for (var i = 0; i < topIssueIDs.length; i++) {
     var topIssueID = topIssueIDs[i][0];
-    var topIssue = issues.filter(
-      (issue) => parseInt(issue.IssueID) === parseInt(topIssueID)
-    );
+    var topIssue = issues.filter((issue) => issue._id === topIssueID);
     topIssues.push(topIssue[0]);
   }
   return topIssues;
+}
+
+export function getSearchedIssue(query, issues) {
+  var id = "";
+  try {
+    id = query.split("-")[1];
+  } catch (err) {
+    return [];
+  }
+  var issue = [];
+  for (var i = 0; i < issues.length; i++) {
+    if (issues[i]._id === id) {
+      issue.push(issues[i]);
+    }
+  }
+  return issue;
 }

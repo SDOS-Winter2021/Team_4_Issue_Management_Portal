@@ -39,7 +39,7 @@ function CommentBox({ commenter, comment }) {
   );
 }
 
-function IssueTitleNDesc({ issue, isIssue }) {
+function IssueTitleNDesc({ issue, isIssue, setResolved, resolved }) {
   return (
     <>
       <div style={{ display: "flex" }}>
@@ -52,18 +52,22 @@ function IssueTitleNDesc({ issue, isIssue }) {
               flexWrap: "wrap",
             }}
           >
-            {/* {issue.IssueTitle} */}
-            {isIssue && issue.IssueTitle}
-            {!isIssue && issue.AnnouncementTitle}
+            {issue.Title}
             {isIssue && (
-              <IssueStatusLabel color={issue.Tags.Resolved ? "green" : "red"}>
-                {issue.Tags.Resolved ? (
+              <IssueStatusLabel
+                style={{ cursor: "pointer" }}
+                color={resolved ? "green" : "red"}
+                onClick={() => {
+                  setResolved();
+                }}
+              >
+                {resolved ? (
                   <FaIcons.FaCheckCircle />
                 ) : (
                   <FaIcons.FaExclamationCircle />
                 )}
                 <p style={{ paddingLeft: "8px" }}>
-                  {issue.Tags.Resolved ? "Resolved" : "Pending"}
+                  {resolved ? "Resolved" : "Pending"}
                 </p>
               </IssueStatusLabel>
             )}
@@ -153,13 +157,26 @@ function IndividualIssue({
     }
   };
 
+  const [resolved, _setResolved] = useState(
+    isIssue ? issue.Tags.Resolved : false
+  );
+  const setResolved = () => {
+    _setResolved(!resolved);
+    issue.Tags.Resolved = resolved;
+  };
+
   return (
     <>
       <Modal isOpen={popupIssue} style={{ overlay: { zIndex: "1001" } }}>
         <Profile onClick={handlePopIssue}>
           <FaIcons.FaTimes />
         </Profile>
-        <IssueTitleNDesc issue={issue} isIssue={isIssue} />
+        <IssueTitleNDesc
+          issue={issue}
+          isIssue={isIssue}
+          resolved={resolved}
+          setResolved={setResolved}
+        />
         <LikesNComments
           issue={issue}
           isIssue={isIssue}

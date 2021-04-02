@@ -29,9 +29,9 @@ const issueSchema = new mongoose.Schema(
     },
     Filter: {
       Batch: [{ type: String }],
-      Dept: [{ type: String }],
-      ProgType: [{ type: String }],
-      // concernedDept:String,
+      Department: [{ type: String }],
+      Programs: [{ type: String }],
+      Administration:String,
     },
     Tags: {
       Public: Boolean,

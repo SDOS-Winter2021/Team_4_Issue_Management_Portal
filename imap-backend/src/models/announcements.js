@@ -26,9 +26,9 @@ const announcementSchema = new mongoose.Schema(
     },
     Filter: {
       Batch: [{ type: String }],
-      Dept: [{ type: String }],
-      ProgType: [{ type: String }],
-      // concernedDept:String,
+      Department: [{ type: String }],
+      Programs: [{ type: String }],
+      Administration:String,
     },
   },
   { timestamps: true }

@@ -2,8 +2,8 @@ const express = require("express");
 const router = express.Router();
 const issues = require("../models/issues");
 
-router.get("/addIssue", (req, res) => {
-  var studID = 1;
+router.post("/addIssue", (req, res) => {
+  var email = 1;
   var title = "Midsem break";
   var desc = "Extend Midsem break please";
   var likeArr = [1, 3, 21];
@@ -12,53 +12,31 @@ router.get("/addIssue", (req, res) => {
   var batch = ["2018", "2019", "2020"];
   var dept = [];
   var prog = ["Btech", "Mtech"];
+  var admin= "Finance"
   var public = true;
   var resolved = false;
   const issue = new issues({
-    // IssueID:1,
-    // StudentID: studID,
-    // Desc:desc,
-    // IssueTitle:title,
-    // Likes: {studID:likeArr},
-    // Comments:{
-    //     userID:comArr,
-    //     comment:comments
-    // },
-    // Filter:{
-    // 	Batch:batch,
-    // 	Dept: dept,
-    // 	ProgType:prog,
-    // 	// concernedDept:String,
-    // },
-    // Tags:{
-    // 	Public: public,
-    // 	Resolved: resolved
-    // },
-    // Archived:false
-
-    IssueID: 142,
-    StudentEmail: "tanya18109@iiitd.ac.in",
-    IssueTitle: "Ye le part 2 bhi lele pawri nahi ho rahi",
-    Desc:
-      "Please reduce number of quizzes and everything man at this point mai sirf bakwas likh rahi hoon kyunki I have run out of issues or maybe I am too lazy to think of issues cuz no one can ever RUN out of issues, am I right? lol",
-    Likes: ["tanya18109@iiitd.ac.in", "dibya18282@iiitd.ac.in"],
-    // Likes:['tanya18109@iiitd.ac.in'],
-    Comments: {
-      //comID:[1,2],
-      userEmail: ["tanya18109@iiitd.ac.in", "dibya18282@iiitd.ac.in"],
-      comment: ["+1", "Facing the same issue"],
+    
+    userEmail: email,
+    Desc:desc,
+    Title:title,
+    Likes: {studEmail:likeArr},
+    Comments:{
+        userEmail:comArr,
+        comment:comments
     },
-    Filter: {
+     Filter: {
       Batch: batch,
-      Dept: dept,
-      ProgType: prog,
-      // concernedDept:String,
+      Department:dept,
+      Programs: prog,
+      Administration:admin,
     },
-    Tags: {
-      Public: true,
-      Resolved: false,
+    Tags:{
+    	Public: public,
+    	Resolved: resolved
     },
-    Archived: false,
+    Archived:false
+   
   });
   issue
     .save()

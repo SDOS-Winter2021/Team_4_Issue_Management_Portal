@@ -7,7 +7,7 @@ import { Labels } from "../IssueDashboard/Issue";
 import IndividualIssue from "../../pages/IndividualIssue";
 
 const SearchBar = ({ page, issues }) => {
-  const isIssue = page === "Issue";
+  const isIssue = page === "Issues";
   const [suggestions, setSuggestions] = useState([]);
   const [value, setValue] = useState("");
 

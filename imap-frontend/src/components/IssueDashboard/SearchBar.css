@@ -23,6 +23,7 @@
 .react-autosuggest__input--open {
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
+  width: 100%;
 }
 
 .react-autosuggest__suggestions-container {
@@ -31,9 +32,9 @@
 
 .react-autosuggest__suggestions-container--open {
   display: block;
-  background-color: white;
+  background-color: rgb(243, 240, 240);
   height: auto;
-  width: 50%;
+  width: 100%;
   font-size: 14px;
   margin-right: 8%;
 }
@@ -47,7 +48,8 @@
 .react-autosuggest__suggestion {
   cursor: pointer;
   padding: 10px 20px;
-  border: 1px solid #f2f4f5;
+  border: 1px solid #959da1;
+  border-top: 0px;
 }
 
 .react-autosuggest__suggestion--highlighted {

@@ -41,7 +41,6 @@ router.post("/addIssue", (req, res) => {
     Archived:false
    
   });
-  console.log(issue,"backendddd");
     issue
     .save()
     .then((result) => {

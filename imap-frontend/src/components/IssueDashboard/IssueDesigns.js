@@ -133,8 +133,8 @@ export const SubmitButton = styled.button`
 `;
 
 export const filter_colors = {
-  Dept: ["#BAC3DD", "#000"],
+  Department: ["#BAC3DD", "#000"],
   Batch: ["#0075ca", "#fff"],
-  ConcernedDept: ["#D2D179", "#000"],
-  ProgType: ["#FBCA04", "#000"],
+  Administration: ["#D2D179", "#000"],
+  Programs: ["#FBCA04", "#000"],
 };

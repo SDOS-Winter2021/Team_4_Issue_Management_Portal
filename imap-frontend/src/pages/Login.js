@@ -21,14 +21,14 @@ const Login = () => {
       var run = async () => {
         try {
           await localStorage.setItem("loggedIn", true);
-          await localStorage.setItem("userData", response.data);
+          await localStorage.setItem("userData", JSON.stringify(response.data));
           const issueData = await getIssuesData();
           const announcementData = await getAnnouncementsData();
           await localStorage.setItem(
             "allIssuesData",
             JSON.stringify(issueData)
           );
-
+          console.log(issueData, "aaaaaa");
           await localStorage.setItem(
             "allAnnouncementsData",
             JSON.stringify(announcementData)

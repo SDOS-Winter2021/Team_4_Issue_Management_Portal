@@ -3,18 +3,21 @@ const router = express.Router();
 const issues = require("../models/issues");
 
 router.post("/addIssue", (req, res) => {
-  var email = 1;
-  var title = "Midsem break";
-  var desc = "Extend Midsem break please";
-  var likeArr = [1, 3, 21];
-  var comArr = [2, 3, 21];
-  var comments = ["+1", "Yes same issue", "Dont Agree"];
-  var batch = ["2018", "2019", "2020"];
-  var dept = [];
-  var prog = ["Btech", "Mtech"];
-  var admin= "Finance"
+
+
+  var email = req.body.studentEmailID;
+  var title = req.body.title;
+  var desc = req.body.description;
+  var likeArr = [];
+  var comArr = [];
+  var comments = [];
+  var batch = req.body.batch;
+  var dept = req.body.department;
+  var prog = req.body.programs;
+  var admin= req.body.administration;
   var public = true;
   var resolved = false;
+  console.log(admin, "aaaaa",typeof admin);
   const issue = new issues({
     
     userEmail: email,
@@ -38,7 +41,8 @@ router.post("/addIssue", (req, res) => {
     Archived:false
    
   });
-  issue
+  console.log(issue,"backendddd");
+    issue
     .save()
     .then((result) => {
       res.send(result);

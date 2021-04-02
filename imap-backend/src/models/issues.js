@@ -31,7 +31,7 @@ const issueSchema = new mongoose.Schema(
       Batch: [{ type: String }],
       Department: [{ type: String }],
       Programs: [{ type: String }],
-      Administration:String,
+      Administration:[{type: String}],
     },
     Tags: {
       Public: Boolean,

@@ -3,6 +3,34 @@ import axios from "axios";
 
 const AuthContext = createContext();
 
+const addIssueDb = async (props) => {
+  console.log(props);
+  try {
+    const res = await axios.post("dashboard/addIssue", props);
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+const updateIssueDb = async (props) => {
+  if (props.type == "Like") {
+    try {
+    } catch (err) {
+      console.log(err);
+    }
+  } else if (props.type == "Comment") {
+    try {
+    } catch (err) {
+      console.log(err);
+    }
+  } else if (props.type == "Status") {
+    try {
+    } catch (err) {
+      console.log(err);
+    }
+  }
+};
+
 const getIssuesData = async () => {
   try {
     const res = await axios.get("dashboard/GetAllIssue");
@@ -30,7 +58,9 @@ const AuthProvider = (props) => {
   const tryLocalLogin = async () => {
     try {
       const loggedIn = await localStorage.getItem("loggedIn");
-      const userData = await localStorage.getItem("userData");
+      const userData = await JSON.parse(
+        localStorage.getItem("userData") || "{}"
+      );
       const allIssues = await JSON.parse(
         localStorage.getItem("allIssuesData") || "[]"
       );
@@ -57,6 +87,7 @@ const AuthProvider = (props) => {
     setAllAnnouncementsData,
     getAnnouncementsData,
     tryLocalLogin,
+    addIssueDb,
   };
 
   return (

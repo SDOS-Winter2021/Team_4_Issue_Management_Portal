@@ -2,14 +2,14 @@ const mongoose = require("mongoose");
 
 const announcementSchema = new mongoose.Schema(
   {
-    AnnouncementID: {
+    ID: {
       type: Number,
       required: true,
       trim: true,
       unique: true,
       index: true,
     },
-    AdminID: {
+    userEmail: {
       type: Number,
       required: true,
       trim: true,
@@ -20,7 +20,7 @@ const announcementSchema = new mongoose.Schema(
       trim: true,
       required: true,
     },
-    AnnouncementTitle: {
+    Title: {
       type: String,
       trim: true,
       required: true,

@@ -2,14 +2,14 @@ const mongoose = require("mongoose");
 
 const issueSchema = new mongoose.Schema(
   {
-    IssueID: {
+    ID: {
       type: Number,
       required: true,
       trim: true,
       unique: true,
       index: true,
     },
-    StudentEmail: {
+    userEmail: {
       type: String,
       required: true,
       trim: true,
@@ -20,7 +20,7 @@ const issueSchema = new mongoose.Schema(
       trim: true,
       required: true,
     },
-    IssueTitle: {
+    Title: {
       type: String,
       trim: true,
       required: true,

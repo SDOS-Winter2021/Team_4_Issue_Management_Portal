@@ -2,13 +2,7 @@ const mongoose = require("mongoose");
 
 const issueSchema = new mongoose.Schema(
   {
-    ID: {
-      type: Number,
-      required: true,
-      trim: true,
-      unique: true,
-      index: true,
-    },
+    
     userEmail: {
       type: String,
       required: true,

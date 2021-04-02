@@ -2,15 +2,9 @@ const mongoose = require("mongoose");
 
 const announcementSchema = new mongoose.Schema(
   {
-    ID: {
-      type: Number,
-      required: true,
-      trim: true,
-      unique: true,
-      index: true,
-    },
+    
     userEmail: {
-      type: Number,
+      type: String,
       required: true,
       trim: true,
       index: true,

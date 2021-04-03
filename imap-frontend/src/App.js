@@ -10,9 +10,6 @@ import axios from "axios";
 import SocketBack from "./logics/socketBackend";
 
 axios.defaults.baseURL = "http://localhost:5000/";
-const profile = {
-  name: "Dibya Gautam",
-};
 
 function App() {
   SocketBack();
@@ -24,31 +21,27 @@ function App() {
           <Route
             path="/dashboard"
             exact
-            render={(props) => <Dashboard profile={profile} />}
+            render={(props) => <Dashboard />}
           />
           <Route
             path="/support"
             exact
-            render={(props) => <Support profile={profile} />}
+            render={(props) => <Support/>}
           />
           <Route
             path="/issues"
             exact
-            render={(props) => <Issues profile={profile} />}
+            render={(props) => <Issues />}
           />
           <Route
             path="/announcements"
             exact
-            render={(props) => <Announcements profile={profile} />}
+            render={(props) => <Announcements />}
           />
         </Switch>
       </Router>
     </>
   );
 }
-
-App.defaultProps = {
-  profile: profile,
-};
 
 export default App;

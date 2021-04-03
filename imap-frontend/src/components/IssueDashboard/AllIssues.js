@@ -10,7 +10,7 @@ import SearchBar from "./SearchBar";
 import CreateIssue from "./CreateIssue";
 import FilterIssues from "../../logics/FilterIssues";
 
-function AllIssues({ notMobileView, profile, page, issues, filtersName }) {
+function AllIssues({ notMobileView, page, issues, filtersName }) {
   const isIssue = page === "Issues";
   const showIssues = FilterIssues(filtersName, issues);
   console.log(showIssues);
@@ -34,7 +34,6 @@ function AllIssues({ notMobileView, profile, page, issues, filtersName }) {
                 issue={issue}
                 key={index}
                 isIssue={isIssue}
-                profile={profile}
                 notMobileView={notMobileView}
               />
             );

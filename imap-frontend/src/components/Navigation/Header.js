@@ -1,5 +1,6 @@
 import * as FaIcons from "react-icons/fa";
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { AuthContext } from '../../context/auth-context'
 import PropTypes from "prop-types";
 import Sidebar from "./Sidebar";
 import {
@@ -11,7 +12,6 @@ import {
 } from "./NavigationDesigns";
 
 const Header = ({
-  profile,
   notMobileView,
   showSidebar,
   sidebar,
@@ -26,7 +26,7 @@ const Header = ({
    */
   const [_showProfile, setShowProfile] = useState(false);
   const showProfile = () => setShowProfile(!_showProfile);
-  console.log(setFilterState, "000");
+  const { userData } = useContext(AuthContext);
 
   return (
     <>
@@ -48,7 +48,7 @@ const Header = ({
         setFilterState={setFilterState}
       />
       <ProfileDropdown showProfile={_showProfile}>
-        <DropdownLabel>{profile.name}</DropdownLabel>
+        <DropdownLabel>{userData.user.name}</DropdownLabel>
         <DropdownLabel to="/">Logout</DropdownLabel>
       </ProfileDropdown>
     </>
@@ -56,12 +56,6 @@ const Header = ({
 };
 
 Header.propTypes = {
-  /**
-   * Object containing the details about the person who
-   * is logged in.
-   */
-  profile: PropTypes.object,
-
   /**
    * Boolean that state whether the current screen dimension
    * is a mobile phone resolution. It is set to `false` if it has

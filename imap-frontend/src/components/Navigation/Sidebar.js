@@ -70,12 +70,6 @@ function Sidebar({
 
 Sidebar.propTypes = {
   /**
-   * Object containing the details about the person who
-   * is logged in.
-   */
-  profile: PropTypes.object,
-
-  /**
    * Boolean that state whether the current screen dimension
    * is a mobile phone resolution. It is set to `false` if it has
    * a smaller dimension than a given threshold.

@@ -70,7 +70,7 @@ export function Labels({ labels }) {
   );
 }
 
-const Issue = ({ issue, isIssue, profile, notMobileView }) => {
+const Issue = ({ issue, isIssue, notMobileView }) => {
   const [popupIssue, setPopup] = useState(false);
   const handlePopIssue = () => setPopup(!popupIssue);
   return (

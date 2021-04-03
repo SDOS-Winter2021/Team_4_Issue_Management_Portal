@@ -6,7 +6,7 @@ import Header from "../components/Navigation/Header";
 import AllIssues from "../components/IssueDashboard/AllIssues";
 import { filtersName } from "../components/Navigation/SidebarData";
 
-function Announcements({ profile }) {
+function Announcements() {
   const { tryLocalLogin, allAnnouncementsData } = useContext(AuthContext);
   useEffect(async () => {
     tryLocalLogin();
@@ -24,7 +24,6 @@ function Announcements({ profile }) {
 
   const allAnouncementsProps = {
     notMobileView: notMobileView,
-    profile: profile,
     isIssue: isIssue,
     page: page,
     issues: allAnnouncementsData,
@@ -40,7 +39,6 @@ function Announcements({ profile }) {
   return (
     <>
       <Header
-        profile={profile}
         {...sidebarToggles}
         isIssue={isIssue}
         page={page}

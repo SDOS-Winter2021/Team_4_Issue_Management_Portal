@@ -12,7 +12,7 @@ import {
 } from "./CreateIssueDesign";
 
 const CreateIssue = ({ page }) => {
-  const { addIssueDb, userData } = useContext(AuthContext);
+  const { addIssueDb, userData, addAnnouncementDb } = useContext(AuthContext);
 
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
@@ -56,15 +56,27 @@ const CreateIssue = ({ page }) => {
     const programs_ = [];
     programs.forEach((element) => programs_.push(element.name));
     setIsPopup(false);
-    await addIssueDb({
-      studentEmailID: userData.user.email,
-      title: title_,
-      description: description_,
-      batch: batch_,
-      department: department_,
-      administration: administration_,
-      programs: programs_,
-    });
+    if (page == "Issues") {
+      await addIssueDb({
+        studentEmailID: userData.user.email,
+        title: title_,
+        description: description_,
+        batch: batch_,
+        department: department_,
+        administration: administration_,
+        programs: programs_,
+      });
+    } else {
+      await addAnnouncementDb({
+        studentEmailID: userData.user.email,
+        title: title_,
+        description: description_,
+        batch: batch_,
+        department: department_,
+        administration: administration_,
+        programs: programs_,
+      });
+    }
   };
 
   const customStyle = {

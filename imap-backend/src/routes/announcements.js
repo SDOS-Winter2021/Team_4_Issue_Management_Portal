@@ -2,33 +2,36 @@ const express = require("express");
 const router = express.Router();
 const announcements = require("../models/announcements");
 
-router.get("/addAnnouncements", (req, res) => {
-  var adminID = 1;
-  var title = "Midsem break";
-  var desc = "Midsem break extended";
-  var comArr = [2, 3, 21];
-  var comments = ["Thanks", "+1", "+1"];
-  var batch = ["2018", "2019"];
-  var dept = [""];
-  var prog = ["Btech"];
+router.post("/addAnnouncements", (req, res) => {
 
-  const announcement = new announcements({
-    AnnouncementID: 12,
-    AdminID: adminID,
-    Desc: desc,
-    AnnouncementTitle: title,
-    Comments: {
-      userID: comArr,
-      comment: comments,
+  var email = req.body.studentEmailID;
+  var title = req.body.title;
+  var desc = req.body.description;
+  var comArr = [];
+  var comments = [];
+  var batch = req.body.batch;
+  var dept = req.body.department;
+  var prog = req.body.programs;
+  var admin= req.body.administration;
+  
+  const issue = new announcements({
+    
+    userEmail: email,
+    Desc:desc,
+    Title:title,
+    Comments:{
+        userEmail:comArr,
+        comment:comments
     },
-    Filter: {
+     Filter: {
       Batch: batch,
-      Dept: dept,
-      ProgType: prog,
-      // concernedDept:String,
+      Department:dept,
+      Programs: prog,
+      Administration:admin,
     },
+   
   });
-  announcement
+    issue
     .save()
     .then((result) => {
       res.send(result);
@@ -36,6 +39,7 @@ router.get("/addAnnouncements", (req, res) => {
     .catch((err) => {
       console.log(err);
     });
+  
 });
 
 router.get("/GetAllAnnouncements", (req, res) => {

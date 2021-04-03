@@ -7,13 +7,13 @@ import { Link } from "react-router-dom";
  * Styling for the Navigation bar on the top.
  */
 export const NavHead = styled.header`
-  background:  #f2eee9;
+  background: #f2eee9;
   height: 60px;
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  width:100%
-  top:0;
+  width: 100%;
+  top: 0;
 `;
 
 /**

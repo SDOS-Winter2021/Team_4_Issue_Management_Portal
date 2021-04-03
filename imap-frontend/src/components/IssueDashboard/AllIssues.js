@@ -9,6 +9,7 @@ import Issue from "./Issue";
 import SearchBar from "./SearchBar";
 import CreateIssue from "./CreateIssue";
 import FilterIssues from "../../logics/FilterIssues";
+import ErrorNotif from "./ErrorNotif";
 
 function AllIssues({ notMobileView, profile, page, issues, filtersName }) {
   const isIssue = page === "Issues";
@@ -42,6 +43,7 @@ function AllIssues({ notMobileView, profile, page, issues, filtersName }) {
         })}
       </IssueContainer>
       <CreateIssue page={page}></CreateIssue>
+      {/* <ErrorNotif /> */}
     </>
   );
 }

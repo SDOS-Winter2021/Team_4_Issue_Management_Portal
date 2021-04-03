@@ -18,14 +18,19 @@ function CheckboxItem({ item, setFilterState }) {
    * State to toggle the checkbox options.
    */
   const [checked, setCheckBox] = useState(item.isChecked);
-  const checkboxHandler = (newVal) => {
-    setCheckBox(newVal);
-    item.isChecked = newVal;
+  const checkboxHandler = () => {
+    setCheckBox(!checked);
+    item.isChecked = !checked;
     setFilterState();
   };
   return (
     <>
-      <Checkbox isChecked={checked} onChange={checkboxHandler} color="gray" />
+      <input
+        type="checkbox"
+        name={item.title}
+        onClick={checkboxHandler}
+        checked={checked}
+      />
       <SidebarLabel>{item.title}</SidebarLabel>
     </>
   );

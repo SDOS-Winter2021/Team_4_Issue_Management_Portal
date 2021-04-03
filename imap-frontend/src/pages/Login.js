@@ -28,7 +28,6 @@ const Login = () => {
             "allIssuesData",
             JSON.stringify(issueData)
           );
-          console.log(issueData, "aaaaaa");
           await localStorage.setItem(
             "allAnnouncementsData",
             JSON.stringify(announcementData)
@@ -41,7 +40,9 @@ const Login = () => {
       run();
     });
   };
-  const responseErrorGoogle = (response) => {};
+  const responseErrorGoogle = (response) => {
+    console.log(response);
+  };
   return (
     <div className="page-container">
       <Header />

@@ -17,7 +17,6 @@ router.post("/addIssue", (req, res) => {
   var admin= req.body.administration;
   var public = true;
   var resolved = false;
-  console.log(admin, "aaaaa",typeof admin);
   const issue = new issues({
     
     userEmail: email,
@@ -41,7 +40,6 @@ router.post("/addIssue", (req, res) => {
     Archived:false
    
   });
-  console.log(issue,"backendddd");
     issue
     .save()
     .then((result) => {

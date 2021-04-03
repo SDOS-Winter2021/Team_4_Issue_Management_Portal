@@ -111,12 +111,11 @@ router.get("/FilteredAnnouncement", (req, res) => {
     });
 });
 
-router.get("/CommentedAnnouncement/:id", (req, res) => {
-  var c = "Agreed yes.";
-  var cid = 8;
+router.post("/CommentedAnnouncement/:id", (req, res) => {
+  
   announcements
     .findByIdAndUpdate(req.params.id, {
-      $push: { "Comments.comment": c, "Comments.userID": cid },
+      $push: { "Comments.comment": req.body.userComment, "Comments.userEmail": req.body.userEmail},
     })
     .then((result) => {
       res.send(result);

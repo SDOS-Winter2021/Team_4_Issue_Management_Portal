@@ -4,7 +4,6 @@ const issues = require("../models/issues");
 
 router.post("/addIssue", (req, res) => {
 
-
   var email = req.body.studentEmailID;
   var title = req.body.title;
   var desc = req.body.description;
@@ -121,10 +120,9 @@ router.get("/FilteredIssue", (req, res) => {
     });
 });
 
-router.get("/LikedIssue/:id", (req, res) => {
-  var lid = 8;
+router.post("/LikedIssue/:id", (req, res) => {
   issues
-    .findByIdAndUpdate(req.params.id, { $push: { "Likes.studID": lid } })
+    .findByIdAndUpdate(req.params.id, { $push: { "Likes.studEmail": req.body.userEmail} })
     .then((result) => {
       res.send(result);
     })
@@ -133,12 +131,10 @@ router.get("/LikedIssue/:id", (req, res) => {
     });
 });
 
-router.get("/CommentedIssue/:id", (req, res) => {
-  var c = "Agreed yes.";
-  var cid = 8;
+router.post("/CommentedIssue/:id", (req, res) => {
   issues
     .findByIdAndUpdate(req.params.id, {
-      $push: { "Comments.comment": c, "Comments.userEmail": c },
+      $push: { "Comments.comment": req.body.userComment, "Comments.userEmail":  req.body.userEmail },
     })
     .then((result) => {
       res.send(result);

@@ -40,7 +40,9 @@ const Login = () => {
       run();
     });
   };
-  const responseErrorGoogle = (response) => {};
+  const responseErrorGoogle = (response) => {
+    console.log(response);
+  };
   return (
     <div className="page-container">
       <Header />

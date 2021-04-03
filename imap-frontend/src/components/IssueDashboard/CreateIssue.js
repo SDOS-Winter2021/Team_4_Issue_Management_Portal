@@ -55,7 +55,7 @@ const CreateIssue = ({ page }) => {
     administration.forEach((element) => administration_.push(element.name));
     const programs_ = [];
     programs.forEach((element) => programs_.push(element.name));
-
+    setIsPopup(false);
     await addIssueDb({
       studentEmailID: userData.user.email,
       title: title_,
@@ -65,7 +65,6 @@ const CreateIssue = ({ page }) => {
       administration: administration_,
       programs: programs_,
     });
-    setIsPopup(false);
   };
 
   const customStyle = {

@@ -1,20 +1,21 @@
-import './App.css';
-import React, { Component, useContext } from 'react';
+import "./App.css";
+import React, { Component, useContext, useEffect } from "react";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import Issues from "./pages/Issues";
+import Announcements from "./pages/Announcements";
+import Support from "./pages/Support";
+import Dashboard from "./pages/Dashboard";
+import Login from "./pages/Login";
+import axios from "axios";
+import SocketBack from "./logics/socketBackend";
 
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import Issues from './pages/Issues';
-import Announcements from './pages/Announcements';
-import Support from './pages/Support';
-import Dashboard from './pages/Dashboard';
-import Login from './pages/Login';
-import axios from 'axios';
-
-axios.defaults.baseURL = 'http://localhost:5000/';
+axios.defaults.baseURL = "http://localhost:5000/";
 const profile = {
-  name: 'Dibya Gautam',
+  name: "Dibya Gautam",
 };
 
 function App() {
+  SocketBack();
   return (
     <>
       <Router>

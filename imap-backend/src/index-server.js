@@ -49,6 +49,8 @@ connection.once("open", () => {
   console.log("Setting change streams");
   const issuesChangeStream = connection.collection("issues").watch();
   stream.issueStream(issuesChangeStream, io);
+  const announcementsChangeStream = connection.collection("announcements").watch();
+  stream.announcementStream(announcementsChangeStream, io);
 });
 
 app.use("/login", userRoutes); // prefixing all api's with keyword api

@@ -4,9 +4,16 @@ import axios from "axios";
 const AuthContext = createContext();
 
 const addIssueDb = async (props) => {
-  console.log(props);
   try {
     const res = await axios.post("dashboard/addIssue", props);
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+const addAnnouncementDb = async (props) => {
+  try {
+    const res = await axios.post("announcement/addAnnouncements", props);
   } catch (err) {
     console.log(err);
   }
@@ -88,6 +95,7 @@ const AuthProvider = (props) => {
     getAnnouncementsData,
     tryLocalLogin,
     addIssueDb,
+    addAnnouncementDb,
   };
 
   return (

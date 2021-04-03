@@ -22,16 +22,34 @@ const addAnnouncementDb = async (props) => {
 const updateIssueDb = async (props) => {
   if (props.type == "Like") {
     try {
+      const res = await axios.post(`dashboard/LikedIssue/${props._id}`, props);
     } catch (err) {
       console.log(err);
     }
   } else if (props.type == "Comment") {
     try {
+      const res = await axios.post(
+        `dashboard/CommentedIssue/${props._id}`,
+        props
+      );
     } catch (err) {
       console.log(err);
     }
   } else if (props.type == "Status") {
     try {
+    } catch (err) {
+      console.log(err);
+    }
+  }
+};
+
+const updateAnnouncementDb = async (props) => {
+  if (props.type == "Comment") {
+    try {
+      const res = await axios.post(
+        `announcement/CommentedAnnouncement/${props._id}`,
+        props
+      );
     } catch (err) {
       console.log(err);
     }
@@ -96,6 +114,8 @@ const AuthProvider = (props) => {
     tryLocalLogin,
     addIssueDb,
     addAnnouncementDb,
+    updateIssueDb,
+    updateAnnouncementDb,
   };
 
   return (

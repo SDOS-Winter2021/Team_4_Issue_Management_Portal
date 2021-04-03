@@ -23,7 +23,29 @@ function SocketBack() {
       }
     });
 
+    socket.on("updateIssue", async (issue_) => {
+      try {
+        const issueData = await getIssuesData();
+        await localStorage.setItem("allIssuesData", JSON.stringify(issueData));
+        tryLocalLogin();
+      } catch (err) {
+        console.log(err);
+      }
+    });
+
     socket.on("newAnnouncement", async (issue_) => {
+      try {
+        const announcementData = await getAnnouncementsData();
+        await localStorage.setItem(
+          "allAnnouncementsData",
+          JSON.stringify(announcementData)
+        );
+        tryLocalLogin();
+      } catch (err) {
+        console.log(err);
+      }
+    });
+    socket.on("updateAnnouncement", async (issue_) => {
       try {
         const announcementData = await getAnnouncementsData();
         await localStorage.setItem(

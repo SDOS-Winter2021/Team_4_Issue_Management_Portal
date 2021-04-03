@@ -12,7 +12,7 @@ import {
 import Modal from "react-modal";
 import * as FaIcons from "react-icons/fa";
 import React, { useState, useContext } from "react";
-import { AuthContext } from '../context/auth-context';
+import { AuthContext } from "../context/auth-context";
 
 Modal.setAppElement("#root");
 
@@ -134,14 +134,19 @@ function IndividualIssue({
   isIssue,
   isMobileView,
 }) {
-  const { userData } = useContext(AuthContext);
-  const uid = userData.user.email;
+  const { userData, updateIssueDb, updateAnnouncementDb } = useContext(
+    AuthContext
+  );
+  const userEmail = userData.user.email;
   const likes_list = isIssue ? issue.Likes.studEmail : [];
-  const has_liked = isIssue ? likes_list.indexOf(uid) > 0 : false;
+  const has_liked = isIssue ? likes_list.indexOf(userEmail) > 0 : false;
   const [like, setLike] = useState(has_liked);
-  const setLikeFunc = () => {
+  const setLikeFunc = async () => {
     setLike(!like);
-    if (isIssue) !like ? likes_list.push(uid) : likes_list.pop(uid);
+    const _id = issue._id;
+    if (isIssue) !like ? likes_list.push(userEmail) : likes_list.pop(userEmail);
+    const type = "Like";
+    await updateIssueDb({ userEmail, type, _id });
   };
 
   const [commentArea, setComment] = useState(false);
@@ -149,13 +154,20 @@ function IndividualIssue({
   const [userComment, _readComment] = useState("");
   const readComment = (e) => _readComment(e.target.value);
 
-  const addComment = () => {
+  const addComment = async () => {
     if (userComment !== "") {
       console.log(userComment);
       issue.Comments.comment.push(userComment);
-      issue.Comments.userEmail.push(uid);
+      issue.Comments.userEmail.push(userEmail);
       console.log(issue.Comments);
       setCommFunc();
+      const type = "Comment";
+      const _id = issue._id;
+      if (isIssue) {
+        await updateIssueDb({ userEmail, type, _id, userComment });
+      } else {
+        await updateAnnouncementDb({ userEmail, type, _id, userComment });
+      }
     }
   };
 

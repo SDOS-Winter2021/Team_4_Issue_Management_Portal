@@ -11,7 +11,8 @@ import {
 } from "../components/IssueDashboard/IssueDesigns";
 import Modal from "react-modal";
 import * as FaIcons from "react-icons/fa";
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { AuthContext } from '../context/auth-context';
 
 Modal.setAppElement("#root");
 
@@ -133,7 +134,8 @@ function IndividualIssue({
   isIssue,
   isMobileView,
 }) {
-  const uid = "demo@iiitd.ac.in";
+  const { userData } = useContext(AuthContext);
+  const uid = userData.user.email;
   const likes_list = isIssue ? issue.Likes.studEmail : [];
   const has_liked = isIssue ? likes_list.indexOf(uid) > 0 : false;
   const [like, setLike] = useState(has_liked);
@@ -162,7 +164,6 @@ function IndividualIssue({
   );
   const setResolved = () => {
     _setResolved(!resolved);
-    issue.Tags.Resolved = resolved;
   };
 
   return (

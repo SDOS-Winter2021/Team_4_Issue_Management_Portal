@@ -11,7 +11,7 @@ import CreateIssue from "./CreateIssue";
 import FilterIssues from "../../logics/FilterIssues";
 import ErrorNotif from "./ErrorNotif";
 
-function AllIssues({ notMobileView, profile, page, issues, filtersName }) {
+function AllIssues({ notMobileView, page, issues, filtersName }) {
   const isIssue = page === "Issues";
   const showIssues = FilterIssues(filtersName, issues);
   console.log(showIssues);
@@ -35,7 +35,6 @@ function AllIssues({ notMobileView, profile, page, issues, filtersName }) {
                 issue={issue}
                 key={index}
                 isIssue={isIssue}
-                profile={profile}
                 notMobileView={notMobileView}
               />
             );

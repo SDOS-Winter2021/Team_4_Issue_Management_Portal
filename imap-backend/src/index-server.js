@@ -13,7 +13,7 @@ app.use(cors()); // Use this after the variable declaration
 const userRoutes = require("./routes/user");
 const issueRoutes = require("./routes/issues");
 const announcementRoutes = require("./routes/announcements");
-
+const filterRoutes = require("./routes/filters");
 // Environment Vars
 env.config();
 
@@ -54,4 +54,5 @@ connection.once("open", () => {
 app.use("/login", userRoutes); // prefixing all api's with keyword api
 app.use("/dashboard", issueRoutes);
 app.use("/announcement", announcementRoutes);
+app.use("/filter", filterRoutes);
 server.listen(process.env.PORT, () => console.log(`Server now running on port ${process.env.PORT}!`));

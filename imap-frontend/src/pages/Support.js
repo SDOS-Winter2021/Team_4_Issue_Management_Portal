@@ -25,7 +25,7 @@ function Support(props) {
           wordWrap: "break-word",
           width: "70%",
           marginLeft: 260,
-          fontFamily: "Nunito",
+          fontFamily: "Ubuntu",
           fontSize: 16,
         }}
       >

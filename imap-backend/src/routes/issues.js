@@ -56,7 +56,6 @@ router.get("/GetAllIssue", (req, res) => {
     .sort({ createdAt: -1 })
     .then((result) => {
       res.send(result);
-      //res.render('page_name',{issues:result})
     })
     .catch((err) => {
       console.log(err);
@@ -68,7 +67,6 @@ router.get("/GetAllIssue/:id", (req, res) => {
     .findByIdAndDelete(req.params.id)
     .then((result) => {
       res.send(result);
-      //res.render('page_name',{issues:result})
     })
     .catch((err) => {
       console.log(err);
@@ -80,7 +78,6 @@ router.get("/Issue", (req, res) => {
     .find({ StudentID: 2 })
     .then((result) => {
       res.send(result);
-      //res.render('page_name',{issues:result})
     })
     .catch((err) => {
       console.log(err);
@@ -92,7 +89,6 @@ router.get("/LikedIssue", (req, res) => {
     .find({ "Likes.studID": 2 })
     .then((result) => {
       res.send(result);
-      //res.render('page_name',{issues:result})
     })
     .catch((err) => {
       console.log(err);
@@ -104,7 +100,6 @@ router.get("/CommentedIssue", (req, res) => {
     .find({ "Comments.userID": 2 })
     .then((result) => {
       res.send(result);
-      //res.render('page_name',{issues:result})
     })
     .catch((err) => {
       console.log(err);
@@ -120,7 +115,6 @@ router.get("/FilteredIssue", (req, res) => {
     .sort({ createdAt: -1 })
     .then((result) => {
       res.send(result);
-      //res.render('page_name',{issues:result})
     })
     .catch((err) => {
       console.log(err);
@@ -133,7 +127,6 @@ router.get("/LikedIssue/:id", (req, res) => {
     .findByIdAndUpdate(req.params.id, { $push: { "Likes.studID": lid } })
     .then((result) => {
       res.send(result);
-      //res.render('page_name',{issues:result})
     })
     .catch((err) => {
       console.log(err);
@@ -149,7 +142,6 @@ router.get("/CommentedIssue/:id", (req, res) => {
     })
     .then((result) => {
       res.send(result);
-      //res.render('page_name',{issues:result})
     })
     .catch((err) => {
       console.log(err);
@@ -161,7 +153,6 @@ router.get("/ResolveIssue/:id", (req, res) => {
     .findByIdAndUpdate(req.params.id, { "Tags.Resolved": true })
     .then((result) => {
       res.send(result);
-      //res.render('page_name',{issues:result})
     })
     .catch((err) => {
       console.log(err);

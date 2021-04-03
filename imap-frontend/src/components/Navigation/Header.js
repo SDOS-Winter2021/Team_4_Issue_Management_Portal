@@ -1,6 +1,6 @@
 import * as FaIcons from "react-icons/fa";
-import React, { useState, useContext } from "react";
-import { AuthContext } from '../../context/auth-context'
+import React, { useState, useContext, useEffect } from "react";
+import { AuthContext } from "../../context/auth-context";
 import PropTypes from "prop-types";
 import Sidebar from "./Sidebar";
 import {
@@ -24,10 +24,12 @@ const Header = ({
    * the profile information.
    * Is fired when the profile icon is clicked.
    */
+  const { userData, tryLocalLogin } = useContext(AuthContext);
+  useEffect(() => {
+    tryLocalLogin();
+  }, []);
   const [_showProfile, setShowProfile] = useState(false);
   const showProfile = () => setShowProfile(!_showProfile);
-  const { userData } = useContext(AuthContext);
-
   return (
     <>
       <NavHead>
@@ -38,7 +40,6 @@ const Header = ({
           <FaIcons.FaUser />
         </Profile>
       </NavHead>
-
       <Sidebar
         notMobileView={notMobileView}
         showSidebar={showSidebar}
@@ -47,8 +48,9 @@ const Header = ({
         filterNames={filterNames}
         setFilterState={setFilterState}
       />
+
       <ProfileDropdown showProfile={_showProfile}>
-        <DropdownLabel>{userData.user.name}</DropdownLabel>
+        <DropdownLabel>{userData.user ? userData.user.name : ""}</DropdownLabel>
         <DropdownLabel to="/">Logout</DropdownLabel>
       </ProfileDropdown>
     </>

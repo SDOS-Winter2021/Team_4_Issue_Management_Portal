@@ -174,7 +174,7 @@ export const SidebarLabel = styled.span`
  * Text Labels that appear inside Filter Label.
  */
 export const FilterLabel = styled.span`
-  margin-left: 50px;
+  margin-left: 45px;
 `;
 
 /**
@@ -183,12 +183,12 @@ export const FilterLabel = styled.span`
 export const FilterOptLabel = styled.span`
   background: #0e0057;
   height: 40px;
-  padding-left: 5rem;
+  padding-left: 2rem;
   display: flex;
   align-items: center;
   text-decoration: none;
   color: #f5f5f5;
-  font-size: 18px;
+  font-size: 16px;
 
   &:hover {
     background: #632ce4;

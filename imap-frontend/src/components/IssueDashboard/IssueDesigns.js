@@ -33,16 +33,19 @@ export const IssueHead = styled.header`
 export const TitleSearchContainer = styled.section`
   width: 100%;
   font-size: 24px;
+  font-weight: 500;
   display: flex;
   position: relative;
+  @media screen and (min-width: 200px) and (max-width: 430px) {
+    font-size: 18px;
+  }
 `;
 
 export const TitleContainer = styled.section`
   display: flex;
   position: inherit;
-  padding-left: 30px;
+  padding-left: 10px;
   padding-top: 3px;
-
   width: 50%;
 `;
 export const SearchContainer = styled.section`

@@ -1,4 +1,3 @@
-import React from "react";
 import {
   IssueContainer,
   TitleSearchContainer,
@@ -10,11 +9,15 @@ import SearchBar from "./SearchBar";
 import CreateIssue from "./CreateIssue";
 import FilterIssues from "../../logics/FilterIssues";
 import ErrorNotif from "./ErrorNotif";
+import React, { useState, useContext } from "react";
+import { AuthContext } from "../../context/auth-context";
 
 function AllIssues({ notMobileView, page, issues, filtersName }) {
   const isIssue = page === "Issues";
   const showIssues = FilterIssues(filtersName, issues);
-  console.log(showIssues);
+  const { userData } = useContext(AuthContext);
+  const isAdmin = userData.user.role !== "student";
+
   return (
     <>
       <IssueContainer notMobileView={notMobileView}>
@@ -41,7 +44,8 @@ function AllIssues({ notMobileView, page, issues, filtersName }) {
           }
         })}
       </IssueContainer>
-      <CreateIssue page={page}></CreateIssue>
+      {isIssue && !isAdmin && <CreateIssue page={page}></CreateIssue>}
+      {!isIssue && isAdmin && <CreateIssue page={page}></CreateIssue>}
       {/* <ErrorNotif /> */}
     </>
   );

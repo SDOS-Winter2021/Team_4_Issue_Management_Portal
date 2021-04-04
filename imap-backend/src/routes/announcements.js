@@ -3,7 +3,6 @@ const router = express.Router();
 const announcements = require("../models/announcements");
 
 router.post("/addAnnouncements", (req, res) => {
-
   var email = req.body.studentEmailID;
   var title = req.body.title;
   var desc = req.body.description;
@@ -12,26 +11,24 @@ router.post("/addAnnouncements", (req, res) => {
   var batch = req.body.batch;
   var dept = req.body.department;
   var prog = req.body.programs;
-  var admin= req.body.administration;
-  
+  var admin = req.body.administration;
+
   const issue = new announcements({
-    
     userEmail: email,
-    Desc:desc,
-    Title:title,
-    Comments:{
-        userEmail:comArr,
-        comment:comments
+    Desc: desc,
+    Title: title,
+    Comments: {
+      userEmail: comArr,
+      comment: comments,
     },
-     Filter: {
+    Filter: {
       Batch: batch,
-      Department:dept,
+      Department: dept,
       Programs: prog,
-      Administration:admin,
+      Administration: admin,
     },
-   
   });
-    issue
+  issue
     .save()
     .then((result) => {
       res.send(result);
@@ -39,7 +36,6 @@ router.post("/addAnnouncements", (req, res) => {
     .catch((err) => {
       console.log(err);
     });
-  
 });
 
 router.get("/GetAllAnnouncements", (req, res) => {
@@ -112,10 +108,12 @@ router.get("/FilteredAnnouncement", (req, res) => {
 });
 
 router.post("/CommentedAnnouncement/:id", (req, res) => {
-  
   announcements
     .findByIdAndUpdate(req.params.id, {
-      $push: { "Comments.comment": req.body.userComment, "Comments.userEmail": req.body.userEmail},
+      $push: {
+        "Comments.comment": req.body.userComment,
+        "Comments.userEmail": req.body.userEmail,
+      },
     })
     .then((result) => {
       res.send(result);

@@ -2,6 +2,7 @@ import React, { useEffect, useState, useContext } from "react";
 import { AuthContext } from "../../context/auth-context";
 import Modal from "react-modal";
 import Tags from "./Tags";
+import * as FaIcons from "react-icons/fa";
 import {
   CreateButton,
   H1,
@@ -82,7 +83,7 @@ const CreateIssue = ({ page }) => {
   const customStyle = {
     content: {
       border: "none",
-      maxWidth: "50%",
+      maxWidth: "800px",
       margin: "10px auto",
       padding: "10px 20px 0px",
       background: "#f4f7f8",
@@ -102,10 +103,11 @@ const CreateIssue = ({ page }) => {
             border: "none",
             top: "10px",
             right: "10px",
+            cursor: "pointer",
           }}
           onClick={() => setIsPopup(false)}
         >
-          X
+          <FaIcons.FaTimes />
         </button>
         <H1> Create New {page} </H1>
 
@@ -147,7 +149,11 @@ const CreateIssue = ({ page }) => {
           <Tags suggestions={programsSuggestions} update={setPrograms}></Tags>
           <br></br>
 
-          <SubmitButton onClick={handleSubmitIssue} type="submit">
+          <SubmitButton
+            onClick={handleSubmitIssue}
+            type="submit"
+            style={{ cursor: "pointer" }}
+          >
             Submit
           </SubmitButton>
         </fieldset>

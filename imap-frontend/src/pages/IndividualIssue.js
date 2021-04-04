@@ -70,13 +70,33 @@ function IndividualIssue({
   const setResolved = () => {
     _setResolved(!resolved);
   };
+  const customStyle = {
+    content: {
+      border: "none",
+      maxWidth: "1000px",
+      margin: "10px auto",
+      padding: "10px 20px 0px",
+      borderRadius: "8px",
+    },
+    overlay: { zIndex: "1001" },
+  };
 
   return (
     <>
-      <Modal isOpen={popupIssue} style={{ overlay: { zIndex: "1001" } }}>
-        <Profile onClick={handlePopIssue}>
+      <Modal isOpen={popupIssue} style={customStyle}>
+        <button
+          onClick={handlePopIssue}
+          style={{
+            position: "absolute",
+            border: "none",
+            top: "20px",
+            right: "10px",
+            cursor: "pointer",
+            padding: "3px",
+          }}
+        >
           <FaIcons.FaTimes />
-        </Profile>
+        </button>
         <IssueTitleNDesc
           issue={issue}
           isIssue={isIssue}

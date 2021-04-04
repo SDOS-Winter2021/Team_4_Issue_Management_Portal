@@ -1,11 +1,8 @@
-import {
-  IssueContainer,
-  IssueTitle,
-  IssueAccessory,
-  IssueStatusLabel,
-} from "../components/IssueDashboard/IssueDesigns";
+import { IssueContainer } from "../components/IssueDashboard/IssueDesigns";
 import CommentInput from "../components/IssuePopup/CommentInput";
-import { LikeComments, Labels } from "../components/IssueDashboard/Issue";
+import CommentBox from "../components/IssuePopup/CommentBox";
+import IssueTitleNDesc from "../components/IssuePopup/IssueTitleNDesc";
+import LikesNComments from "../components/IssuePopup/LikesNComments";
 import { Profile } from "../components/Navigation/NavigationDesigns";
 import Modal from "react-modal";
 import * as FaIcons from "react-icons/fa";
@@ -13,122 +10,6 @@ import React, { useState, useContext } from "react";
 import { AuthContext } from "../context/auth-context";
 
 if (process.env.NODE_ENV !== "test") Modal.setAppElement("#root");
-
-function CommentBox({ commenter, comment }) {
-  return (
-    <div style={{ display: "flex", width: "100%" }}>
-      <IssueAccessory
-        style={{
-          marginTop: "20px",
-          height: "20px",
-          width: "20px",
-          borderRadius: "50%",
-          backgroundColor: "#aaa",
-        }}
-      >
-        <FaIcons.FaUser />
-      </IssueAccessory>
-      <IssueContainer
-        style={{ border: "0px solid gray", marginBottom: "15px" }}
-      >
-        <IssueTitle style={{ fontWeight: "bold" }}>{commenter}</IssueTitle>
-        <IssueTitle style={{ paddingLeft: "15px" }}>{comment}</IssueTitle>
-      </IssueContainer>
-    </div>
-  );
-}
-
-function IssueTitleNDesc({ issue, isIssue, setResolved, resolved }) {
-  return (
-    <>
-      <div style={{ display: "flex" }}>
-        <IssueContainer
-          style={{ padding: "10px", display: "flex", flexDirection: "column" }}
-        >
-          <h1
-            style={{
-              marginRight: "10px",
-              margin: "5px",
-              display: "flex",
-              flexWrap: "wrap",
-            }}
-          >
-            {issue.Title}
-            {isIssue && (
-              <IssueStatusLabel
-                style={{ cursor: "pointer" }}
-                color={resolved ? "green" : "red"}
-                onClick={() => {
-                  setResolved();
-                }}
-              >
-                {resolved ? (
-                  <FaIcons.FaCheckCircle />
-                ) : (
-                  <FaIcons.FaExclamationCircle />
-                )}
-                <p style={{ paddingLeft: "8px" }}>
-                  {resolved ? "Resolved" : "Pending"}
-                </p>
-              </IssueStatusLabel>
-            )}
-          </h1>
-          <p style={{ fontSize: "12px", color: "gray" }}>
-            {issue.userEmail} | {issue.createdAt.split("T")[0]}
-          </p>
-          <Labels labels={issue.Filter} />
-        </IssueContainer>
-      </div>
-      <IssueContainer style={{ borderBottom: "2px solid #ccc" }}>
-        <p>{issue.Desc}</p>
-      </IssueContainer>
-    </>
-  );
-}
-
-function LikesNComments({
-  issue,
-  isIssue,
-  setComment,
-  setLike,
-  like,
-  comment,
-}) {
-  return (
-    <>
-      <IssueContainer style={{ borderBottom: "2px solid #ccc" }}>
-        {isIssue && (
-          <div
-            style={{ padding: "10px", cursor: "pointer", fontSize: "20px" }}
-            onClick={setLike}
-          >
-            <LikeComments
-              icon={
-                <FaIcons.FaThumbsUp
-                  style={like ? { color: "#323499" } : { color: "gray" }}
-                />
-              }
-              number={issue.Likes.studEmail.length}
-            />
-          </div>
-        )}
-        <div
-          style={{ padding: "10px", cursor: "pointer", fontSize: "20px" }}
-          onClick={setComment}
-        >
-          <LikeComments
-            icon={
-              <FaIcons.FaComments
-                style={comment ? { color: "#323499" } : { color: "gray" }}
-              />
-            }
-            number={issue.Comments.userEmail.length}
-          />
-        </div>
-      </IssueContainer>
-    </>
-  );
-}
 
 function IndividualIssue({
   issue,

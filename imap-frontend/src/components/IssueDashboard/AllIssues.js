@@ -9,14 +9,17 @@ import SearchBar from "./SearchBar";
 import CreateIssue from "./CreateIssue";
 import FilterIssues from "../../logics/FilterIssues";
 import ErrorNotif from "./ErrorNotif";
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { AuthContext } from "../../context/auth-context";
 
 function AllIssues({ notMobileView, page, issues, filtersName }) {
   const isIssue = page === "Issues";
   const showIssues = FilterIssues(filtersName, issues);
-  const { userData } = useContext(AuthContext);
-  const isAdmin = userData.user.role !== "student";
+  const { userData, tryLocalLogin } = useContext(AuthContext);
+  useEffect(() => {
+    tryLocalLogin();
+  }, []);
+  const isAdmin = userData.user ? userData.user.role !== "student" : false;
 
   return (
     <>

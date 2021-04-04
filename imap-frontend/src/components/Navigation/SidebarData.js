@@ -32,85 +32,45 @@ export const SidebarData = [
   },
 ];
 
-export const filtersName = [
-  {
-    title: "Batch",
-    filterDetails: [
-      {
-        title: "2020",
-        isChecked: false,
-      },
-      {
-        title: "2019",
-        isChecked: false,
-      },
-      {
-        title: "2018",
-        isChecked: false,
-      },
-      {
-        title: "2017",
-        isChecked: false,
-      },
-    ],
-  },
-  {
-    title: "Department",
-    filterDetails: [
-      {
-        title: "CSE",
-        isChecked: false,
-      },
-      {
-        title: "CSD",
-        isChecked: false,
-      },
-      {
-        title: "CSSS",
-        isChecked: false,
-      },
-      {
-        title: "ECE",
-        isChecked: false,
-      },
-      {
-        title: "CSAI",
-        isChecked: false,
-      },
-    ],
-  },
-  {
-    title: "Administration",
-    filterDetails: [
-      {
-        title: "Academics",
-        isChecked: false,
-      },
-      {
-        title: "Finance",
-        isChecked: false,
-      },
-      {
-        title: "Placement",
-        isChecked: false,
-      },
-    ],
-  },
-  {
-    title: "Programs",
-    filterDetails: [
-      {
-        title: "Btech",
-        isChecked: false,
-      },
-      {
-        title: "Mtech",
-        isChecked: false,
-      },
-      {
-        title: "PhD",
-        isChecked: false,
-      },
-    ],
-  },
-];
+const getFilterNames = (dbfilters) => {
+  var filtersName = [];
+  for (var key in dbfilters) {
+    var filter_i = { title: key, filterDetails: [] };
+    for (var i = 0; i < dbfilters[key].length; i++) {
+      var fil = { title: dbfilters[key][i], isChecked: false };
+      filter_i.filterDetails.push(fil);
+    }
+    filtersName.push(filter_i);
+  }
+  return filtersName;
+};
+
+const tags = {
+  Batch: ["2017", "2018", "2019", "2020"],
+  Department: [
+    "CSE",
+    "ECE",
+    "CSAM",
+    "CSD",
+    "CSB",
+    "CSSS",
+    "CSAI",
+    "CB",
+    "HCD",
+    "Maths",
+    "SSH",
+  ],
+  Programs: ["B-Tech", "M-Tech", "PhD"],
+  Administration: [
+    "Academic Section",
+    "HOD",
+    "Program Coordinator",
+    "Placements",
+    "Hostel and Mess",
+    "Co-Curricular",
+    "Self Growth / Community Work",
+    "Finance",
+    "Student Mentorship Program",
+  ],
+};
+export const filtersName = getFilterNames(tags);

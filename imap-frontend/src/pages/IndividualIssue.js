@@ -2,19 +2,18 @@ import {
   IssueContainer,
   IssueTitle,
   IssueAccessory,
+  IssueStatusLabel,
 } from "../components/IssueDashboard/IssueDesigns";
+import CommentInput from "../components/IssueDashboard/CommentInput";
 import { LikeComments, Labels } from "../components/IssueDashboard/Issue";
 import { Profile } from "../components/Navigation/NavigationDesigns";
-import {
-  IssueStatusLabel,
-  SubmitButton,
-} from "../components/IssueDashboard/IssueDesigns";
+import { SubmitButton } from "../components/IssueDashboard/IssueDesigns";
 import Modal from "react-modal";
 import * as FaIcons from "react-icons/fa";
 import React, { useState, useContext } from "react";
 import { AuthContext } from "../context/auth-context";
 
-Modal.setAppElement("#root");
+if (process.env.NODE_ENV !== "test") Modal.setAppElement("#root");
 
 function CommentBox({ commenter, comment }) {
   return (
@@ -208,27 +207,7 @@ function IndividualIssue({
           comment={commentArea}
         />
         {commentArea && (
-          <IssueContainer
-            style={{ backgroundColor: "#fff", padding: "10px 0px" }}
-          >
-            <input
-              type="text"
-              placeholder="Add a comment"
-              style={{
-                width: "70%",
-                height: "30px",
-                borderRadius: "5px",
-                paddingLeft: "1em",
-                borderWidth: "1px",
-                borderColor: "black",
-                outline: "none",
-              }}
-              onChange={readComment}
-            />
-            <SubmitButton onClick={addComment}>
-              <FaIcons.FaPaperPlane />
-            </SubmitButton>
-          </IssueContainer>
+          <CommentInput readComment={readComment} addComment={addComment} />
         )}
         <IssueContainer>
           {issue.Comments.userEmail.map((commenter, index) => {

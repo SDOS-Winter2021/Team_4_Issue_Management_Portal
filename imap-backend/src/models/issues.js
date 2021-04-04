@@ -2,7 +2,6 @@ const mongoose = require("mongoose");
 
 const issueSchema = new mongoose.Schema(
   {
-    
     userEmail: {
       type: String,
       required: true,
@@ -31,7 +30,7 @@ const issueSchema = new mongoose.Schema(
       Batch: [{ type: String }],
       Department: [{ type: String }],
       Programs: [{ type: String }],
-      Administration:[{type: String}],
+      Administration: [{ type: String }],
     },
     Tags: {
       Public: Boolean,

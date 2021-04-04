@@ -2,7 +2,6 @@ const mongoose = require("mongoose");
 
 const announcementSchema = new mongoose.Schema(
   {
-    
     userEmail: {
       type: String,
       required: true,
@@ -28,7 +27,7 @@ const announcementSchema = new mongoose.Schema(
       Batch: [{ type: String }],
       Department: [{ type: String }],
       Programs: [{ type: String }],
-      Administration:[{type:String}],
+      Administration: [{ type: String }],
     },
   },
   { timestamps: true }

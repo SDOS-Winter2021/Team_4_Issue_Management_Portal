@@ -3,7 +3,6 @@ const router = express.Router();
 const issues = require("../models/issues");
 
 router.post("/addIssue", (req, res) => {
-
   var email = req.body.studentEmailID;
   var title = req.body.title;
   var desc = req.body.description;
@@ -13,33 +12,31 @@ router.post("/addIssue", (req, res) => {
   var batch = req.body.batch;
   var dept = req.body.department;
   var prog = req.body.programs;
-  var admin= req.body.administration;
+  var admin = req.body.administration;
   var public = true;
   var resolved = false;
   const issue = new issues({
-    
     userEmail: email,
-    Desc:desc,
-    Title:title,
-    Likes: {studEmail:likeArr},
-    Comments:{
-        userEmail:comArr,
-        comment:comments
+    Desc: desc,
+    Title: title,
+    Likes: { studEmail: likeArr },
+    Comments: {
+      userEmail: comArr,
+      comment: comments,
     },
-     Filter: {
+    Filter: {
       Batch: batch,
-      Department:dept,
+      Department: dept,
       Programs: prog,
-      Administration:admin,
+      Administration: admin,
     },
-    Tags:{
-    	Public: public,
-    	Resolved: resolved
+    Tags: {
+      Public: public,
+      Resolved: resolved,
     },
-    Archived:false
-   
+    Archived: false,
   });
-    issue
+  issue
     .save()
     .then((result) => {
       res.send(result);
@@ -122,7 +119,9 @@ router.get("/FilteredIssue", (req, res) => {
 
 router.post("/LikedIssue/:id", (req, res) => {
   issues
-    .findByIdAndUpdate(req.params.id, { $push: { "Likes.studEmail": req.body.userEmail} })
+    .findByIdAndUpdate(req.params.id, {
+      $push: { "Likes.studEmail": req.body.userEmail },
+    })
     .then((result) => {
       res.send(result);
     })
@@ -134,7 +133,10 @@ router.post("/LikedIssue/:id", (req, res) => {
 router.post("/CommentedIssue/:id", (req, res) => {
   issues
     .findByIdAndUpdate(req.params.id, {
-      $push: { "Comments.comment": req.body.userComment, "Comments.userEmail":  req.body.userEmail },
+      $push: {
+        "Comments.comment": req.body.userComment,
+        "Comments.userEmail": req.body.userEmail,
+      },
     })
     .then((result) => {
       res.send(result);

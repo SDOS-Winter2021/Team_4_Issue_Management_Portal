@@ -18,21 +18,9 @@ function App() {
       <Router>
         <Switch>
           <Route path="/" exact render={(props) => <Login />} />
-          <Route
-            path="/dashboard"
-            exact
-            render={(props) => <Dashboard />}
-          />
-          <Route
-            path="/support"
-            exact
-            render={(props) => <Support/>}
-          />
-          <Route
-            path="/issues"
-            exact
-            render={(props) => <Issues />}
-          />
+          <Route path="/dashboard" exact render={(props) => <Dashboard />} />
+          <Route path="/support" exact render={(props) => <Support />} />
+          <Route path="/issues" exact render={(props) => <Issues />} />
           <Route
             path="/announcements"
             exact

@@ -28,6 +28,7 @@ function IndividualIssue({
   const [like, setLike] = useState(has_liked);
   const setLikeFunc = async () => {
     if (!isIssue) return;
+    if (has_liked) return;
     const _id = issue._id;
     setLike(!like);
     if (!like) {

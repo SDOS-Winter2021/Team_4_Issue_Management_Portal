@@ -68,9 +68,9 @@ const tags = {
     "Placements",
     "Hostel and Mess",
     "Co-Curricular",
-    "Self Growth / Community Work",
+    "SG/CW",
     "Finance",
-    "Student Mentorship Program",
+    "Mentorship Program",
   ],
 };
 export const filtersName = getFilterNames(tags);

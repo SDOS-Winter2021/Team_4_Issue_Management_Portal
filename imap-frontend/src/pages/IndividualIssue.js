@@ -44,7 +44,7 @@ function IssueTitleNDesc({ issue, isIssue, setResolved, resolved }) {
   return (
     <>
       <div style={{ display: "flex" }}>
-        <IssueContainer style={{ alignItems: "center", padding: "10px" }}>
+        <IssueContainer style={{ padding: "10px", display:"flex", flexDirection:"column" }}>
           <h1
             style={{
               marginRight: "10px",
@@ -73,12 +73,14 @@ function IssueTitleNDesc({ issue, isIssue, setResolved, resolved }) {
               </IssueStatusLabel>
             )}
           </h1>
+          <p style={{fontSize:"12px", color:"gray"}}>{issue.userEmail} | {issue.createdAt.split("T")[0]}</p>
           <Labels labels={issue.Filter} />
         </IssueContainer>
       </div>
-      <IssueContainer style={{ borderBottom: "2px solid #ccc" }}>
+      <IssueContainer style={{ borderBottom: "2px solid #ccc", display:"flex", flexDirection:"column" }}>
         <p>{issue.Desc}</p>
       </IssueContainer>
+
     </>
   );
 }
@@ -139,14 +141,17 @@ function IndividualIssue({
   );
   const userEmail = userData.user.email;
   const likes_list = isIssue ? issue.Likes.studEmail : [];
-  const has_liked = isIssue ? likes_list.indexOf(userEmail) > 0 : false;
+  const has_liked = isIssue ? likes_list.indexOf(userEmail) >= 0 : false;
+  console.log(has_liked, userEmail, likes_list)
   const [like, setLike] = useState(has_liked);
   const setLikeFunc = async () => {
-    setLike(!like);
     const _id = issue._id;
-    if (isIssue) !like ? likes_list.push(userEmail) : likes_list.pop(userEmail);
-    const type = "Like";
-    await updateIssueDb({ userEmail, type, _id });
+    if (!has_liked){
+      setLike(has_liked);
+      if (isIssue) !like ? likes_list.push(userEmail) : likes_list.pop(userEmail);
+      const type = "Like";
+      await updateIssueDb({ userEmail, type, _id });
+    }
   };
 
   const [commentArea, setComment] = useState(false);

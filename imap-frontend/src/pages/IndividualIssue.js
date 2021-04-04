@@ -77,7 +77,7 @@ function IssueTitleNDesc({ issue, isIssue, setResolved, resolved }) {
           <Labels labels={issue.Filter} />
         </IssueContainer>
       </div>
-      <IssueContainer style={{ borderBottom: "2px solid #ccc", display:"flex", flexDirection:"column" }}>
+      <IssueContainer style={{ borderBottom: "2px solid #ccc" }}>
         <p>{issue.Desc}</p>
       </IssueContainer>
 

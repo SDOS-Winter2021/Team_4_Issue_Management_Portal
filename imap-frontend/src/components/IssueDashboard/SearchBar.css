@@ -56,7 +56,7 @@
   background-color: #ddd;
 }
 
-@media screen and (min-width: 200px) and (max-width: 540px) {
+@media screen and (min-width: 200px) and (max-width: 430px) {
   .react-autosuggest__container {
     position: absolute;
     width: 100%;
@@ -67,12 +67,13 @@
   .react-autosuggest__input {
     margin-right: 1em;
     width: 80%;
-    height: 30px;
+    height: 25px;
     padding: 5px 5px;
     font-weight: 300;
     font-size: 16px;
     border: 1px solid #aaa;
     border-radius: 4px;
+    outline: none;
   }
   .react-autosuggest__input--focused {
     outline: none;
@@ -80,6 +81,7 @@
   .react-autosuggest__input--open {
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
+    width: 100%;
   }
   .react-autosuggest__suggestions-list {
     margin: 0;
@@ -92,7 +94,7 @@
     background-color: rgb(243, 240, 240);
     padding: 0px 0px;
     height: auto;
-    width: 80%;
+    width: 100%;
     font-size: 12px;
   }
   .react-autosuggest__suggestion {

@@ -1,4 +1,6 @@
-function findNumCommonWords(issueTitle, query) {
+export function findNumCommonWords(issueTitle, userQuery) {
+  const query = userQuery.toLowerCase().split(" ");
+  issueTitle = issueTitle.toLowerCase().split(" ");
   const filteredArray = issueTitle.filter((tword) => {
     return query.filter((qword) => tword.startsWith(qword)).length > 0;
   });
@@ -7,9 +9,8 @@ function findNumCommonWords(issueTitle, query) {
 
 function SearchIssues(userQuery, issues) {
   let issueWithScore = {};
-  userQuery = userQuery.toLowerCase().split(" ");
   for (let i = 0; i < issues.length; i++) {
-    var issueTitle = issues[i].Title.toLowerCase().split(" ");
+    var issueTitle = issues[i].Title;
     var numCommonWords = findNumCommonWords(issueTitle, userQuery);
     issueWithScore[issues[i]._id] = numCommonWords;
   }

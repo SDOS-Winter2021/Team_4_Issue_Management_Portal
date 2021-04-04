@@ -3,6 +3,11 @@ import axios from "axios";
 
 const AuthContext = createContext();
 
+const logout = async ({ history }) => {
+  await localStorage.clear();
+  history.push("/");
+};
+
 const addIssueDb = async (props) => {
   try {
     const res = await axios.post("dashboard/addIssue", props);
@@ -101,6 +106,7 @@ const AuthProvider = (props) => {
     }
   };
   const authContextValue = {
+    logout,
     loggedIn,
     setLoggedIn,
     userData,

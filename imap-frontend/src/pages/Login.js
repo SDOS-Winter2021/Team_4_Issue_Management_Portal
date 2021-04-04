@@ -1,17 +1,33 @@
-import React, { Component, useContext } from "react";
+import React, { Component, useContext, useEffect } from "react";
 import "./Login.css";
+
 import { Key } from "../Key";
 import axios from "axios";
 import Footer from "../components/Footer/Footer.js";
 import Header from "../components/Header/Header.js";
 import GoogleButton from "react-google-button";
 import GoogleLogin from "react-google-login";
-import { useHistory } from "react-router-dom";
+import { useHistory, Redirect } from "react-router-dom";
 import { AuthContext } from "../context/auth-context";
 
 const Login = () => {
   let history = useHistory();
-  const { getIssuesData, getAnnouncementsData } = useContext(AuthContext);
+  const {
+    getIssuesData,
+    getAnnouncementsData,
+    loggedIn,
+    tryLocalLogin,
+    setLoggedIn,
+  } = useContext(AuthContext);
+
+  useEffect(async () => {
+    let isAuth = await localStorage.getItem("loggedIn");
+    if (isAuth) {
+      history.push("/issues");
+    }
+    tryLocalLogin();
+  }, []);
+
   const responseSuccessGoogle = (response) => {
     axios({
       method: "POST",
@@ -20,6 +36,7 @@ const Login = () => {
     }).then((response) => {
       var run = async () => {
         try {
+          setLoggedIn(true);
           await localStorage.setItem("loggedIn", true);
           await localStorage.setItem("userData", JSON.stringify(response.data));
           const issueData = await getIssuesData();
@@ -32,6 +49,7 @@ const Login = () => {
             "allAnnouncementsData",
             JSON.stringify(announcementData)
           );
+
           history.push("/issues");
         } catch (err) {
           console.log(err);

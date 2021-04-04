@@ -27,13 +27,18 @@ function IndividualIssue({
   console.log(has_liked, userEmail, likes_list);
   const [like, setLike] = useState(has_liked);
   const setLikeFunc = async () => {
+    if (!isIssue) return;
+    if (has_liked) return;
     const _id = issue._id;
-    if (!has_liked) {
-      setLike(has_liked);
-      if (isIssue)
-        !like ? likes_list.push(userEmail) : likes_list.pop(userEmail);
+    setLike(!like);
+    if (!like) {
+      likes_list.push(userEmail);
       const type = "Like";
       await updateIssueDb({ userEmail, type, _id });
+    } else {
+      likes_list.pop(userEmail);
+      const type = "Unlike";
+      // await updateIssueDb({ userEmail, type, _id });
     }
   };
 

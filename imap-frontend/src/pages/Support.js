@@ -1,21 +1,27 @@
 import { useMediaPredicate } from "react-media-hook";
-import React, { useState } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import Header from "../components/Navigation/Header";
 
-function Support(props) {
+function Support() {
   const notMobileView = useMediaPredicate("(min-width: 800px)");
   const [sidebar, setSidebar] = useState(true);
   const showSidebar = () => setSidebar(!sidebar);
+  const page = "Support";
+
   const sidebarToggles = {
     notMobileView: notMobileView,
     showSidebar: showSidebar,
     sidebar: sidebar,
   };
-  const isIssue = props.page === "Issues";
 
   return (
     <>
-      <Header {...props} {...sidebarToggles} isIssue={isIssue} />
+      <Header
+        {...sidebarToggles}
+        page={page}
+        filterNames={[]}
+        setFilterState={() => {}}
+      />
       <div
         className="Instructions"
         style={{

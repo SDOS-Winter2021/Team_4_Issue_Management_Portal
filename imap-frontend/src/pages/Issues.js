@@ -39,7 +39,6 @@ function Issues() {
     <>
       <Header
         {...sidebarToggles}
-        isIssue={isIssue}
         page={page}
         filterNames={filtersName}
         setFilterState={setFilterState}

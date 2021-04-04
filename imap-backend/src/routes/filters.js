@@ -33,24 +33,11 @@ router.post("/GetFilters", (req, res) => {
   filters
     .find()
     .then((result) => {
-      console.log(result, "resss");
+      var filters = {};
       for (var i = 0; i < result.length; i++) {
-        if (result[i].Tags == "Batch") {
-          batch = result[i].Types;
-        } else if (result[i].Tags == "Department") {
-          department = result[i].Types;
-        } else if (result[i].Tags == "Programs") {
-          programs = result[i].Types;
-        } else {
-          administration = result[i].Types;
-        }
+        filters[result[i].Tags] = result[i].Types;
       }
-      res.json({
-        batch: batch,
-        department: department,
-        programs: programs,
-        administration: administration,
-      });
+      res.json(filters);
     })
     .catch((err) => {
       console.log(err);

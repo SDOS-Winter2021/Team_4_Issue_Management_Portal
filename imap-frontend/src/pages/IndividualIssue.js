@@ -4,10 +4,9 @@ import {
   IssueAccessory,
   IssueStatusLabel,
 } from "../components/IssueDashboard/IssueDesigns";
-import CommentInput from "../components/IssueDashboard/CommentInput";
+import CommentInput from "../components/IssuePopup/CommentInput";
 import { LikeComments, Labels } from "../components/IssueDashboard/Issue";
 import { Profile } from "../components/Navigation/NavigationDesigns";
-import { SubmitButton } from "../components/IssueDashboard/IssueDesigns";
 import Modal from "react-modal";
 import * as FaIcons from "react-icons/fa";
 import React, { useState, useContext } from "react";

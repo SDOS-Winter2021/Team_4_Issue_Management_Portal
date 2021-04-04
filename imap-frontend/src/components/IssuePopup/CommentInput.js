@@ -1,4 +1,4 @@
-import { IssueContainer, SubmitButton } from "./IssueDesigns";
+import { IssueContainer, SubmitButton } from "../IssueDashboard/IssueDesigns";
 import * as FaIcons from "react-icons/fa";
 
 const CommentInput = ({ readComment, addComment }) => {

@@ -210,7 +210,15 @@ function IndividualIssue({
             <input
               type="text"
               placeholder="Add a comment"
-              style={{ width: "70%" }}
+              style={{
+                width: "70%",
+                height: "30px",
+                borderRadius: "5px",
+                paddingLeft: "1em",
+                borderWidth: "1px",
+                borderColor: "black",
+                outline: "none",
+              }}
               onChange={readComment}
             />
             <SubmitButton onClick={addComment}>

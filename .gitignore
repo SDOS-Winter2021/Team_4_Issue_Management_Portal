@@ -24,6 +24,9 @@
 /imap-frontend/yarn-debug.log*
 /imap-frontend/yarn-error.log*
 
+/imap-frontend/src/Key.js
+
+
 /imap-backend/node_modules
 /imap-backend/.env
 /imap-backend/.eslintrc.js

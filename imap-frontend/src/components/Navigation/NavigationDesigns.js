@@ -62,7 +62,7 @@ export const DropdownLabel = styled(Link)`
   font-size: 14px;
 
   &:hover {
-    background: #0e0057;
+    background: #05009e;
     color: #fff;
     cursor: pointer;
   }
@@ -87,7 +87,7 @@ export const SidebarToggleIcon = styled(Link)`
  * Sidebar container
  */
 export const SidebarNav = styled.nav`
-  background: #0e0057;
+  background: #05009e;
   width: 250px;
   height: 100vh;
   display: flex;
@@ -128,7 +128,7 @@ export const LogoCompartment = styled.div`
 export const SidebarLink = styled(Link)`
   display: flex;
   color: #e1e9fc;
-  background: ${({ isPage }) => (isPage ? "#252831" : " #0e0057")};
+  background: ${({ isPage }) => (isPage ? "#252831" : " #05009e")};
   justify-content: space-between;
   align-items: center;
   padding: 20px;
@@ -147,7 +147,7 @@ export const SidebarLink = styled(Link)`
 export const SidebarNoLink = styled.span`
   display: flex;
   color: #e1e9fc;
-  background: ${({ isPage }) => (isPage ? "#252831" : " #0e0057")};
+  background: ${({ isPage }) => (isPage ? "#252831" : " #05009e")};
   justify-content: space-between;
   align-items: center;
   padding: 20px;
@@ -181,7 +181,7 @@ export const FilterLabel = styled.span`
  * Text Labels for individual filter options.
  */
 export const FilterOptLabel = styled.span`
-  background: #000000;
+  background: #0e0057;
   height: 40px;
   padding-left: 5rem;
   display: flex;

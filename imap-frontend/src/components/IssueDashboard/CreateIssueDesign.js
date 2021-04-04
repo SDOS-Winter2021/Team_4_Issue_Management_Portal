@@ -5,7 +5,7 @@ export const CreateButton = styled.button`
   right: 40px;
   height: 70px;
   width: 70px;
-  background: #42a5f5;
+  background: #05009e;
   border-radius: 50%;
   position: fixed;
   color: #fff;

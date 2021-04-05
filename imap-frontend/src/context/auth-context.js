@@ -79,9 +79,19 @@ const getAnnouncementsData = async () => {
   }
 };
 
+const getFiltersData = async () => {
+  try {
+    const res = await axios.get("/filter/GetFilters");
+    return res.data;
+  } catch (err) {
+    console.log(err);
+  }
+};
+
 const AuthProvider = (props) => {
   const [loggedIn, setLoggedIn] = useState(false);
   const [userData, setUserData] = useState([]);
+  const [allFiltersData, setAllFiltersData] = useState({});
   const [allIssuesData, setAllIssuesData] = useState([]);
   const [allAnnouncementsData, setAllAnnouncementsData] = useState([]);
 
@@ -97,10 +107,14 @@ const AuthProvider = (props) => {
       const allAnnouncements = await JSON.parse(
         localStorage.getItem("allAnnouncementsData") || "[]"
       );
+      const allFilters = await JSON.parse(
+        localStorage.getItem("allFiltersData") || "{}"
+      );
       setLoggedIn(loggedIn);
       setUserData(userData);
       setAllIssuesData(allIssues);
       setAllAnnouncementsData(allAnnouncements);
+      setAllFiltersData(allFilters);
     } catch (err) {
       console.log(err);
     }
@@ -117,6 +131,8 @@ const AuthProvider = (props) => {
     allAnnouncementsData,
     setAllAnnouncementsData,
     getAnnouncementsData,
+    allFiltersData,
+    getFiltersData,
     tryLocalLogin,
     addIssueDb,
     addAnnouncementDb,

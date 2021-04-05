@@ -18,6 +18,7 @@ const Login = () => {
     loggedIn,
     tryLocalLogin,
     setLoggedIn,
+    getFiltersData,
   } = useContext(AuthContext);
 
   useEffect(async () => {
@@ -39,8 +40,13 @@ const Login = () => {
           setLoggedIn(true);
           await localStorage.setItem("loggedIn", true);
           await localStorage.setItem("userData", JSON.stringify(response.data));
+          const filtersData = await getFiltersData();
           const issueData = await getIssuesData();
           const announcementData = await getAnnouncementsData();
+          await localStorage.setItem(
+            "allFiltersData",
+            JSON.stringify(filtersData)
+          );
           await localStorage.setItem(
             "allIssuesData",
             JSON.stringify(issueData)

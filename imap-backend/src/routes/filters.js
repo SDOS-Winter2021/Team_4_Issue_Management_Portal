@@ -29,7 +29,7 @@ router.post("/addFilter", (req, res) => {
     });
 });
 
-router.post("/GetFilters", (req, res) => {
+router.get("/GetFilters", (req, res) => {
   filters
     .find()
     .then((result) => {

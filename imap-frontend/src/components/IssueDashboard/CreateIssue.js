@@ -13,7 +13,16 @@ import {
 } from "./CreateIssueDesign";
 
 const CreateIssue = ({ page }) => {
-  const { addIssueDb, userData, addAnnouncementDb } = useContext(AuthContext);
+  const {
+    addIssueDb,
+    userData,
+    addAnnouncementDb,
+    allFiltersData,tryLocalLogin,
+  } = useContext(AuthContext);
+
+   useEffect(async () => {
+     tryLocalLogin();
+   }, []);
 
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
@@ -23,27 +32,30 @@ const CreateIssue = ({ page }) => {
   const [programs, setPrograms] = useState([]);
   const [isPopup, setIsPopup] = useState(false);
   const [branch, setBranch] = useState([]);
-  const batchSuggestions = [
-    { id: 1, name: "2018" },
-    { id: 2, name: "2019" },
-    { id: 3, name: "2020" },
-    { id: 4, name: "2021" },
-  ];
-  const departmentSuggestions = [
-    { id: 1, name: "CSE" },
-    { id: 2, name: "CSAM" },
-    { id: 3, name: "CSD" },
-    { id: 4, name: "ECE" },
-  ];
-  const administrationSuggestions = [
-    { id: 1, name: "Academic" },
-    { id: 2, name: "Financial" },
-  ];
-  const programsSuggestions = [
-    { id: 1, name: "B-Tech" },
-    { id: 2, name: "M-Tech" },
-    { id: 2, name: "PhD" },
-  ];
+
+  var batchSuggestions = [];
+  var departmentSuggestions = [];
+  const administrationSuggestions = [];
+  const programsSuggestions = [];
+
+
+  var batchS = allFiltersData.Batch ? allFiltersData.Batch: [];
+  var departmentS = allFiltersData.Department ? allFiltersData.Department : [];
+  var administrationS = allFiltersData.Administration ? allFiltersData.Administration: [];
+  var programsS = allFiltersData.Programs ? allFiltersData.Programs : [];
+   var i;
+  for (i = 0; i < batchS.length; i++) {
+    batchSuggestions.push({id: i, name: batchS[i]})
+  }
+  for (i = 0; i < departmentS.length; i++) {
+    departmentSuggestions.push({ id: i, name: departmentS[i] });
+  }
+  for (i = 0; i < administrationS.length; i++) {
+    administrationSuggestions.push({ id: i, name: administrationS[i] });
+  }
+  for (i = 0; i < programsS.length; i++) {
+    programsSuggestions.push({ id: i, name: programsS[i] });
+  }
 
   const handleSubmitIssue = async () => {
     const title_ = title;

@@ -9,9 +9,8 @@ class Tags extends React.Component {
       update: props.update,
       tags: [],
       suggestions: props.suggestions,
-
       placeholder:
-        props.suggestions[0].name + ", " + props.suggestions[1].name + " ...",
+        props.suggestions[0] ? props.suggestions[0].name + ", " + props.suggestions[1].name + " ..." : "",
     };
     this.reactTags = React.createRef();
   }

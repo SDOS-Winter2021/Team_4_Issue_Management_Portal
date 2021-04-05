@@ -3,6 +3,8 @@ import React, { useState, useContext, useEffect } from "react";
 import { AuthContext } from "../../context/auth-context";
 import PropTypes from "prop-types";
 import Sidebar from "./Sidebar";
+import { useHistory } from "react-router-dom";
+
 import {
   NavHead,
   Profile,
@@ -24,10 +26,11 @@ const Header = ({
    * the profile information.
    * Is fired when the profile icon is clicked.
    */
-  const { userData, tryLocalLogin } = useContext(AuthContext);
+  const { userData, tryLocalLogin, logout } = useContext(AuthContext);
   useEffect(() => {
     tryLocalLogin();
   }, []);
+  let history = useHistory();
   const [_showProfile, setShowProfile] = useState(false);
   const showProfile = () => setShowProfile(!_showProfile);
   return (
@@ -51,7 +54,9 @@ const Header = ({
 
       <ProfileDropdown showProfile={_showProfile}>
         <DropdownLabel>{userData.user ? userData.user.name : ""}</DropdownLabel>
-        <DropdownLabel to="/">Logout</DropdownLabel>
+        <DropdownLabel onClick={() => logout({ history })}>
+          Logout
+        </DropdownLabel>
       </ProfileDropdown>
     </>
   );

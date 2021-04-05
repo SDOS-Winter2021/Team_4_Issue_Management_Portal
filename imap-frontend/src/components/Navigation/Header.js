@@ -18,8 +18,8 @@ const Header = ({
   showSidebar,
   sidebar,
   page,
-  filterNames,
   setFilterState,
+  filterNames,
 }) => {
   /**
    * Toggles the visibility of the dropdown menu that contains
@@ -30,9 +30,11 @@ const Header = ({
   useEffect(() => {
     tryLocalLogin();
   }, []);
+
   let history = useHistory();
   const [_showProfile, setShowProfile] = useState(false);
   const showProfile = () => setShowProfile(!_showProfile);
+
   return (
     <>
       <NavHead>
@@ -48,8 +50,8 @@ const Header = ({
         showSidebar={showSidebar}
         sidebar={sidebar}
         page={page}
-        filterNames={filterNames}
         setFilterState={setFilterState}
+        filterNames={filterNames}
       />
 
       <ProfileDropdown showProfile={_showProfile}>

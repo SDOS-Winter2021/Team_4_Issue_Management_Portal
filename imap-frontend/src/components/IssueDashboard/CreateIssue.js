@@ -17,12 +17,13 @@ const CreateIssue = ({ page }) => {
     addIssueDb,
     userData,
     addAnnouncementDb,
-    allFiltersData,tryLocalLogin,
+    allFiltersData,
+    tryLocalLogin,
   } = useContext(AuthContext);
 
-   useEffect(async () => {
-     tryLocalLogin();
-   }, []);
+  useEffect(async () => {
+    tryLocalLogin();
+  }, []);
 
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
@@ -38,14 +39,15 @@ const CreateIssue = ({ page }) => {
   const administrationSuggestions = [];
   const programsSuggestions = [];
 
-
-  var batchS = allFiltersData.Batch ? allFiltersData.Batch: [];
+  var batchS = allFiltersData.Batch ? allFiltersData.Batch : [];
   var departmentS = allFiltersData.Department ? allFiltersData.Department : [];
-  var administrationS = allFiltersData.Administration ? allFiltersData.Administration: [];
+  var administrationS = allFiltersData.Administration
+    ? allFiltersData.Administration
+    : [];
   var programsS = allFiltersData.Programs ? allFiltersData.Programs : [];
-   var i;
+  var i;
   for (i = 0; i < batchS.length; i++) {
-    batchSuggestions.push({id: i, name: batchS[i]})
+    batchSuggestions.push({ id: i, name: batchS[i] });
   }
   for (i = 0; i < departmentS.length; i++) {
     departmentSuggestions.push({ id: i, name: departmentS[i] });

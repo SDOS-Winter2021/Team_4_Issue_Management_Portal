@@ -32,7 +32,7 @@ export const SidebarData = [
   },
 ];
 
-const getFilterNames = (dbfilters) => {
+export const getFilterNames = (dbfilters) => {
   var filtersName = [];
   for (var key in dbfilters) {
     var filter_i = { title: key, filterDetails: [] };
@@ -45,32 +45,10 @@ const getFilterNames = (dbfilters) => {
   return filtersName;
 };
 
-const tags = {
-  Batch: ["2017", "2018", "2019", "2020"],
-  Department: [
-    "CSE",
-    "ECE",
-    "CSAM",
-    "CSD",
-    "CSB",
-    "CSSS",
-    "CSAI",
-    "CB",
-    "HCD",
-    "Maths",
-    "SSH",
-  ],
-  Programs: ["B-Tech", "M-Tech", "PhD"],
-  Administration: [
-    "Academic Section",
-    "HOD",
-    "Program Coordinator",
-    "Placements",
-    "Hostel and Mess",
-    "Co-Curricular",
-    "SG/CW",
-    "Finance",
-    "Mentorship Program",
-  ],
+const tags = JSON.parse(localStorage.getItem("allFiltersData") || "{}");
+
+const SidebarD = async () => {
+  const t = await tags;
 };
-export const filtersName = getFilterNames(tags);
+SidebarD();
+export const filterNames = getFilterNames(tags);

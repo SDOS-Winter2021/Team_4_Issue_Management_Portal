@@ -3,7 +3,6 @@ import CommentInput from "../components/IssuePopup/CommentInput";
 import CommentBox from "../components/IssuePopup/CommentBox";
 import IssueTitleNDesc from "../components/IssuePopup/IssueTitleNDesc";
 import LikesNComments from "../components/IssuePopup/LikesNComments";
-import { Profile } from "../components/Navigation/NavigationDesigns";
 import Modal from "react-modal";
 import * as FaIcons from "react-icons/fa";
 import React, { useState, useContext } from "react";
@@ -78,7 +77,7 @@ function IndividualIssue({
       padding: "10px 20px 0px",
       borderRadius: "8px",
     },
-    overlay: { zIndex: "1001" },
+    overlay: { zIndex: "1001", backgroundColor: "rgba(52, 52, 52, 0.8)" },
   };
 
   return (

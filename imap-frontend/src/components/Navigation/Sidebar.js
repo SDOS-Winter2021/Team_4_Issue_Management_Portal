@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
 import * as AiIcons from "react-icons/ai";
 import { SidebarData } from "./SidebarData";
@@ -21,8 +21,8 @@ function Sidebar({
   showSidebar,
   sidebar,
   page,
-  filterNames,
   setFilterState,
+  filterNames,
 }) {
   return (
     <>
@@ -31,7 +31,7 @@ function Sidebar({
           <SidebarWrap>
             <LogoCompartment>
               <SidebarToggleIcon to="#">
-                <Link to="/">
+                <Link to="#">
                   <img
                     src={logo}
                     alt="Logo"

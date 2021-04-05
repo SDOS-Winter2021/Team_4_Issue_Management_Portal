@@ -4,7 +4,7 @@ import axios from "axios";
 import { AuthContext } from "../context/auth-context";
 import Header from "../components/Navigation/Header";
 import AllIssues from "../components/IssueDashboard/AllIssues";
-import { filtersName } from "../components/Navigation/SidebarData";
+import { filterNames } from "../components/Navigation/SidebarData";
 
 function Issues() {
   const { tryLocalLogin, allIssuesData } = useContext(AuthContext);
@@ -19,28 +19,26 @@ function Issues() {
 
   const [filterState, _setFilterState] = useState(false);
   const setFilterState = () => _setFilterState(!filterState);
-  const [issues, setIssues] = useState([]);
 
   const allIssuesProps = {
     notMobileView: notMobileView,
     isIssue: isIssue,
     page: page,
     issues: allIssuesData,
-    filtersName: filtersName,
+    filtersName: filterNames,
   };
   const sidebarToggles = {
     notMobileView: notMobileView,
     showSidebar: showSidebar,
     sidebar: sidebar,
   };
-  console.log(setFilterState, "000111");
 
   return (
     <>
       <Header
         {...sidebarToggles}
         page={page}
-        filterNames={filtersName}
+        filterNames={filterNames}
         setFilterState={setFilterState}
       />
       <AllIssues {...allIssuesProps} />

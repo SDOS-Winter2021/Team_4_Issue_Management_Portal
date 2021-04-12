@@ -15,13 +15,13 @@ module.exports = {
             Archived: change.fullDocument.Archived,
           };
 
-          io.of("/api/socket").emit("newIssue", issue_);
+          io.emit("newIssue", issue_);
           break;
 
         case "update":
           console.log("change in db: update issue");
           issue_ = {};
-          io.of("/api/socket").emit("updateIssue", issue_);
+          io.emit("updateIssue", issue_);
           break;
       }
     });
@@ -43,13 +43,13 @@ module.exports = {
             Archived: change.fullDocument.Archived,
           };
 
-          io.of("/api/socket").emit("newAnnouncement", announce_);
+          io.emit("newAnnouncement", announce_);
           break;
 
         case "update":
           console.log("change in db: update announcement");
           announce_ = {};
-          io.of("/api/socket").emit("updateAnnouncement", announce_);
+          io.emit("updateAnnouncement", announce_);
           break;
       }
     });

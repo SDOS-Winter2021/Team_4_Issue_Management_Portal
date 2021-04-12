@@ -21,7 +21,7 @@ env.config();
 const server = require("http").createServer(app);
 const io = require("socket.io")(server);
 
-io.of("/api/socket").on("connection", (socket) => {
+io.on("connection", (socket) => {
   console.log("socket.io: User connected: ", socket.id);
 
   socket.on("disconnect", () => {
@@ -58,6 +58,7 @@ app.use("/login", userRoutes); // prefixing all api's with keyword api
 app.use("/dashboard", issueRoutes);
 app.use("/announcement", announcementRoutes);
 app.use("/filter", filterRoutes);
-server.listen(process.env.PORT, () =>
-  console.log(`Server now running on port ${process.env.PORT}!`)
-);
+
+const port = 9005;
+
+server.listen(port, () => console.log(`Server now running on port ${port}!`));

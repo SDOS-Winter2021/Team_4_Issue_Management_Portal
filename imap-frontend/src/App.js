@@ -1,4 +1,5 @@
 import "./App.css";
+import URLs from "./URLs";
 import React, { Component, useContext, useEffect } from "react";
 import {
   BrowserRouter as Router,
@@ -15,7 +16,9 @@ import axios from "axios";
 import { AuthContext } from "./context/auth-context";
 import SocketBack from "./logics/socketBackend";
 
-axios.defaults.baseURL = "http://localhost:5000/";
+axios.defaults.baseURL = process.env.NODE_ENV === "production"
+    ? "/back/"
+    : "http://localhost:5000/";
 
 function PrivateRoute({ children, ...rest }) {
   return (

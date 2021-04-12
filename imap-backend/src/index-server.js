@@ -58,6 +58,10 @@ app.use("/login", userRoutes); // prefixing all api's with keyword api
 app.use("/dashboard", issueRoutes);
 app.use("/announcement", announcementRoutes);
 app.use("/filter", filterRoutes);
-server.listen(process.env.PORT, () =>
-  console.log(`Server now running on port ${process.env.PORT}!`)
+
+
+const port = process.env.NODE_ENV === 'production' ? (process.env.PORT || 3000) : 5000;
+
+server.listen(port, () =>
+  console.log(`Server now running on port ${port}!`)
 );

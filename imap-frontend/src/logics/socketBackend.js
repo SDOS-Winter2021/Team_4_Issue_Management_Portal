@@ -9,20 +9,16 @@ function SocketBack() {
   );
 
   useEffect(() => {
-	  console.log(`${URLs.socketURL}`, "*****888");
-   // const socket = io({
-   //   transports: ["websocket", "polling", "flashsocket"],
-   // });
     var socket;
-    console.log(`${URLs.socketURL}`)
-    try {
-    socket = io( { //`${URLs.socketURL}`, {
-      transports: ["websocket", "polling", "flashsocket"],
-    });
-	    console.log(socket, "sssssssssssss");
+    if (process.env.NODE_ENV === 'production'){
+      socket = io( {
+        transports: ["websocket", "polling", "flashsocket"],
+      });
     }
-    catch(err){
-      console.log(err, "socketttttttt");
+    else{
+      socket = io( `${URLs.socketURL}`, {
+        transports: ["websocket", "polling", "flashsocket"],
+      });
     }
 
     socket.on("newIssue", async (issue_) => {

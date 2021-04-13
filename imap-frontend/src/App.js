@@ -18,7 +18,7 @@ import SocketBack from "./logics/socketBackend";
 
 axios.defaults.baseURL = process.env.NODE_ENV === "production"
     ? "/back"
-    : "http://localhost:5000/";
+    : "http://localhost:9005/";
 
 function PrivateRoute({ children, ...rest }) {
   return (

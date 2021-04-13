@@ -1,7 +1,7 @@
 let URLs = {};
 let url = process.env.NODE_ENV === "production"
-? "/back"
-: "http://localhost:5000/api";
+? "/socket.io/"
+: "http://localhost:5000/";
 
 URLs = {
   socketURL: url,

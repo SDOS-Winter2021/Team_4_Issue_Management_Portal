@@ -9,9 +9,21 @@ function SocketBack() {
   );
 
   useEffect(() => {
-    const socket = io(`${URLs.socketURL}/socket`, {
+	  console.log(`${URLs.socketURL}`, "*****888");
+   // const socket = io({
+   //   transports: ["websocket", "polling", "flashsocket"],
+   // });
+    var socket;
+    console.log(`${URLs.socketURL}`)
+    try {
+    socket = io( { //`${URLs.socketURL}`, {
       transports: ["websocket", "polling", "flashsocket"],
     });
+	    console.log(socket, "sssssssssssss");
+    }
+    catch(err){
+      console.log(err, "socketttttttt");
+    }
 
     socket.on("newIssue", async (issue_) => {
       try {

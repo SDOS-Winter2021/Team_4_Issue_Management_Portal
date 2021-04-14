@@ -9,9 +9,17 @@ function SocketBack() {
   );
 
   useEffect(() => {
-    const socket = io(`${URLs.socketURL}/socket`, {
-      transports: ["websocket", "polling", "flashsocket"],
-    });
+    var socket;
+    if (process.env.NODE_ENV === 'production'){
+      socket = io( {
+        transports: ["websocket", "polling", "flashsocket"],
+      });
+    }
+    else{
+      socket = io( `${URLs.socketURL}`, {
+        transports: ["websocket", "polling", "flashsocket"],
+      });
+    }
 
     socket.on("newIssue", async (issue_) => {
       try {

@@ -1,8 +1,10 @@
 let URLs = {};
+let url = process.env.NODE_ENV === "production"
+? "/socket.io/"
+: "http://localhost:9005/";
 
 URLs = {
-  baseURL: "http://localhost:5000/api",
-  socketURL: "http://localhost:5000/api",
+  socketURL: url,
 };
 
 export default URLs;

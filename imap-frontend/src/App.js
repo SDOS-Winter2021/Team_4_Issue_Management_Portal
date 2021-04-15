@@ -16,6 +16,7 @@ import axios from "axios";
 import { AuthContext } from "./context/auth-context";
 import SocketBack from "./logics/socketBackend";
 
+
 axios.defaults.baseURL =
   process.env.NODE_ENV === "production" ? "/back" : "http://localhost:9005/";
 

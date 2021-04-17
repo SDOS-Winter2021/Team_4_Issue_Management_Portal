@@ -99,6 +99,7 @@ function IndividualIssue({
           resolved={resolved}
           setResolved={setResolved}
           isAdmin={isAdmin}
+          handlePopIssue={handlePopIssue}
         />
         <LikesNComments
           issue={issue}

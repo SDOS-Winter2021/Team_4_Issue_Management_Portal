@@ -135,6 +135,53 @@ export const SubmitButton = styled.button`
   cursor: pointer;
 `;
 
+export const MyPostLabels = styled.span`
+  background: #eee;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  padding: 0px 10px;
+  padding-right: 50px;
+  width: 100%;
+  text-decoration: none;
+  font-size: 16px;
+  border-bottom: ${({ selected }) =>
+    selected ? "2px solid blue" : "2px solid #eee"};
+
+  &:hover {
+    background: #ddd;
+    cursor: pointer;
+  }
+`;
+
+export const MyPostButtons = styled(Link)`
+    width: 300px;
+    height: 60px;
+    background: inherit;
+    color: #000;
+    position: relative;
+    margin-bottom: 25px;
+    margin-left: 25px;
+    border-radius: 32px;
+    text-align: center;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 18px;
+    transition: all 0.1s ease-in-out;
+    border: 2px solid #1f3b94;
+
+    &:hover {
+      opacity: 0.8;
+      box-shadow: -6px -6px 10px rgba(255, 255, 255, 0.8),
+        6px 6px 10px rgba(0, 0, 0, 0.2);
+    
+        &:active {
+          opacity: 1;
+          color: #aaa;
+        }
+
+`;
+
 export const filter_colors = {
   Department: ["#BAC3DD", "#000"],
   Batch: ["#0075ca", "#fff"],

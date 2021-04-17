@@ -31,7 +31,7 @@ function Sidebar({
           <SidebarWrap>
             <LogoCompartment>
               <SidebarToggleIcon to="#">
-                <Link to="#">
+                <Link to="/issues">
                   <img
                     src={logo}
                     alt="Logo"

@@ -7,7 +7,14 @@ import { Labels } from "../IssueDashboard/Issue";
 import NotifPopup from "../Notifications/NotifPopup";
 import React, { useState, useContext } from "react";
 
-function IssueTitleNDesc({ issue, isIssue, setResolved, resolved, isAdmin }) {
+function IssueTitleNDesc({
+  issue,
+  isIssue,
+  setResolved,
+  resolved,
+  isAdmin,
+  handlePopIssue,
+}) {
   const [resolvedWarn, _setResolvedWarn] = useState(false);
   const setResolvedWarn = () => _setResolvedWarn(!resolvedWarn);
   const [deleteWarn, _setDeleteWarn] = useState(false);
@@ -15,6 +22,7 @@ function IssueTitleNDesc({ issue, isIssue, setResolved, resolved, isAdmin }) {
 
   const deletePost = () => {
     console.log("deleteeeee");
+    handlePopIssue();
     setDeleteWarn();
   };
 

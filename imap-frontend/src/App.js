@@ -16,9 +16,9 @@ import axios from "axios";
 import { AuthContext } from "./context/auth-context";
 import SocketBack from "./logics/socketBackend";
 
-axios.defaults.baseURL = process.env.NODE_ENV === "production"
-    ? "/back/"
-    : "http://localhost:5000/";
+
+axios.defaults.baseURL =
+  process.env.NODE_ENV === "production" ? "/back" : "http://localhost:9005/";
 
 function PrivateRoute({ children, ...rest }) {
   return (

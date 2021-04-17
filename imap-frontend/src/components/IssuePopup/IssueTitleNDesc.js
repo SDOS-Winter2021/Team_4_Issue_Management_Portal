@@ -4,8 +4,20 @@ import {
 } from "../IssueDashboard/IssueDesigns";
 import * as FaIcons from "react-icons/fa";
 import { Labels } from "../IssueDashboard/Issue";
+import NotifPopup from "../Notifications/NotifPopup";
+import React, { useState, useContext } from "react";
 
-function IssueTitleNDesc({ issue, isIssue, setResolved, resolved }) {
+function IssueTitleNDesc({ issue, isIssue, setResolved, resolved, isAdmin }) {
+  const [resolvedWarn, _setResolvedWarn] = useState(false);
+  const setResolvedWarn = () => _setResolvedWarn(!resolvedWarn);
+  const [deleteWarn, _setDeleteWarn] = useState(false);
+  const setDeleteWarn = () => _setDeleteWarn(!deleteWarn);
+
+  const deletePost = () => {
+    console.log("deleteeeee");
+    setDeleteWarn();
+  };
+
   return (
     <>
       <div style={{ display: "flex" }}>
@@ -25,9 +37,7 @@ function IssueTitleNDesc({ issue, isIssue, setResolved, resolved }) {
               <IssueStatusLabel
                 style={{ cursor: "pointer" }}
                 color={resolved ? "green" : "red"}
-                onClick={() => {
-                  setResolved();
-                }}
+                onClick={isAdmin ? () => setResolvedWarn() : () => {}}
               >
                 {resolved ? (
                   <FaIcons.FaCheckCircle />
@@ -39,7 +49,34 @@ function IssueTitleNDesc({ issue, isIssue, setResolved, resolved }) {
                 </p>
               </IssueStatusLabel>
             )}
+            {isAdmin && (
+              <div
+                onClick={setDeleteWarn}
+                style={{
+                  padding: "0px 5px",
+                  cursor: "pointer",
+                }}
+              >
+                <FaIcons.FaTrashAlt style={{ color: "#8c513f" }} />
+              </div>
+            )}
           </h1>
+          {resolvedWarn && (
+            <NotifPopup
+              message={"The status of Issue will be changed"}
+              onClickFunc={setResolved}
+              popup={resolvedWarn}
+              handlePop={setResolvedWarn}
+            />
+          )}
+          {deleteWarn && (
+            <NotifPopup
+              message={"The post will be deleted. This cannot be undone."}
+              onClickFunc={deletePost}
+              popup={deleteWarn}
+              handlePop={setDeleteWarn}
+            />
+          )}
           <p style={{ fontSize: "12px", color: "gray" }}>
             {issue.userEmail} | {issue.createdAt.split("T")[0]}
           </p>

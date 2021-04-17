@@ -9,6 +9,11 @@ import * as RiIcons from "react-icons/ri";
  */
 export const SidebarData = [
   {
+    title: "Profile",
+    path: "/profile",
+    icon: <FaIcons.FaUser />,
+  },
+  {
     title: "Issues",
     path: "/issues",
     icon: <FaIcons.FaExclamationCircle />,

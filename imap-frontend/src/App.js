@@ -8,13 +8,16 @@ import {
   Redirect,
 } from "react-router-dom";
 import Issues from "./pages/Issues";
+import MyIssues from "./pages/MyIssues";
 import Announcements from "./pages/Announcements";
 import Support from "./pages/Support";
-import Dashboard from "./pages/Dashboard";
+import ProfilePage from "./pages/ProfilePage";
 import Login from "./pages/Login";
 import axios from "axios";
 import { AuthContext } from "./context/auth-context";
 import SocketBack from "./logics/socketBackend";
+import MyAnnouncements from "./pages/MyAnnouncements";
+import Admin from "./pages/Admin";
 
 
 axios.defaults.baseURL =
@@ -50,9 +53,9 @@ function App() {
       <Router>
         <Switch>
           <Route path="/" exact render={(props) => <Login />} />
-          <PrivateRoute path="/dashboard">
+          <PrivateRoute path="/profile">
             {" "}
-            <Dashboard />
+            <ProfilePage />
           </PrivateRoute>
           <PrivateRoute path="/support">
             {" "}
@@ -64,6 +67,18 @@ function App() {
           <PrivateRoute path="/announcements">
             {" "}
             <Announcements />
+          </PrivateRoute>
+          <PrivateRoute path="/myissues">
+            {" "}
+            <MyIssues />
+          </PrivateRoute>
+          <PrivateRoute path="/myannouncements">
+            {" "}
+            <MyAnnouncements />
+          </PrivateRoute>
+          <PrivateRoute path="/adminroles">
+            {" "}
+            <Admin />
           </PrivateRoute>
         </Switch>
       </Router>

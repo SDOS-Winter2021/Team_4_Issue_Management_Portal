@@ -87,8 +87,8 @@ function SubMenu({ item, page, filtersName, setFilterState }) {
    * Checks if the component being returned corresponds to the page
    * that is currently being displayed.
    */
-  const isPage = item.title === page;
   const isFilter = item.title === "Filters";
+  const isPage = item.title === page;
 
   return (
     <>

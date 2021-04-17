@@ -55,7 +55,9 @@ const Header = ({
       />
 
       <ProfileDropdown showProfile={_showProfile}>
-        <DropdownLabel>{userData.user ? userData.user.name : ""}</DropdownLabel>
+        <DropdownLabel to="/profile">
+          {userData.user ? userData.user.name : ""}
+        </DropdownLabel>
         <DropdownLabel onClick={() => logout({ history })}>
           Logout
         </DropdownLabel>

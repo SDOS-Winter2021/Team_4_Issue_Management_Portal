@@ -7,8 +7,6 @@ import {
   IssueContainer,
   MyPostButtons,
 } from "../components/IssueDashboard/IssueDesigns";
-import { DropdownLabel } from "../components/Navigation/NavigationDesigns";
-
 import Sidebar from "../components/Navigation/Sidebar";
 
 const style = {
@@ -54,7 +52,6 @@ const ProfilePage = () => {
         sidebar={sidebar}
         page={page}
         setFilterState={() => {}}
-        filterNames={[]}
       />
       <IssueContainer
         notMobileView={notMobileView}

@@ -19,7 +19,8 @@ const Header = ({
   sidebar,
   page,
   setFilterState,
-  filterNames,
+  selectedFilters,
+  applyFilter,
 }) => {
   /**
    * Toggles the visibility of the dropdown menu that contains
@@ -51,7 +52,8 @@ const Header = ({
         sidebar={sidebar}
         page={page}
         setFilterState={setFilterState}
-        filterNames={filterNames}
+        selectedFilters={selectedFilters}
+        applyFilter={applyFilter}
       />
 
       <ProfileDropdown showProfile={_showProfile}>

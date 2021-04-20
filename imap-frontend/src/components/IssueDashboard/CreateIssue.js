@@ -67,7 +67,7 @@ const CreateIssue = ({ page }) => {
     setAdministration([]);
     setPrograms([]);
     setIsPublic(true);
-  }
+  };
   const handleSubmitIssue = async () => {
     const title_ = title.trim();
     const description_ = description.trim();
@@ -91,8 +91,6 @@ const CreateIssue = ({ page }) => {
 
     setIsPopup(false);
     if (page == "Issues") {
-     
-
       await addIssueDb({
         studentEmailID: userData.user.email,
         title: title_,
@@ -103,7 +101,7 @@ const CreateIssue = ({ page }) => {
         administration: administration_,
         programs: programs_,
       });
-       clearData();
+      clearData();
     } else {
       await addAnnouncementDb({
         studentEmailID: userData.user.email,
@@ -126,7 +124,6 @@ const CreateIssue = ({ page }) => {
       padding: "10px 20px 0px",
       background: "#f4f7f8",
       borderRadius: "8px",
-     
     },
     overlay: { zIndex: "1000" },
   };

@@ -77,7 +77,23 @@ export const Label = styled.label`
     font-size: 14px;
   }
 `;
-
+export const LabelR = styled.label`
+  display: block;
+  margin-bottom: 8px;
+  .light {
+    font-weight: 300;
+    display: inline;
+  }
+  :after {
+    content: " *";
+    color: red;
+  }
+  @media (min-width: 200px) and (max-width: 540px) {
+    display: block;
+    margin-bottom: 2px;
+    font-size: 14px;
+  }
+`;
 export const SubmitButton = styled.button`
   padding: 15px 15px 15px 15px;
   color: #fff;

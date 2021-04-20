@@ -13,7 +13,7 @@ router.post("/addIssue", (req, res) => {
   var dept = req.body.department;
   var prog = req.body.programs;
   var admin = req.body.administration;
-  var public = true;
+  var public = req.body.isPublic;
   var resolved = false;
   const issue = new issues({
     userEmail: email,

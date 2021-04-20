@@ -10,6 +10,7 @@ import {
   Input,
   TextArea,
   SubmitButton,
+  LabelR,
 } from "./CreateIssueDesign";
 
 const CreateIssue = ({ page }) => {
@@ -32,7 +33,7 @@ const CreateIssue = ({ page }) => {
   const [administration, setAdministration] = useState([]);
   const [programs, setPrograms] = useState([]);
   const [isPopup, setIsPopup] = useState(false);
-  const [branch, setBranch] = useState([]);
+  const [isPublic, setIsPublic] = useState(true);
 
   var batchSuggestions = [];
   var departmentSuggestions = [];
@@ -58,10 +59,18 @@ const CreateIssue = ({ page }) => {
   for (i = 0; i < programsS.length; i++) {
     programsSuggestions.push({ id: i, name: programsS[i] });
   }
-
+  const clearData = () => {
+    setTitle("");
+    setDescription("");
+    setBatch([]);
+    setDepartment([]);
+    setAdministration([]);
+    setPrograms([]);
+    setIsPublic(true);
+  }
   const handleSubmitIssue = async () => {
-    const title_ = title;
-    const description_ = description;
+    const title_ = title.trim();
+    const description_ = description.trim();
     const batch_ = [];
     batch.forEach((element) => batch_.push(element.name));
     const department_ = [];
@@ -70,17 +79,31 @@ const CreateIssue = ({ page }) => {
     administration.forEach((element) => administration_.push(element.name));
     const programs_ = [];
     programs.forEach((element) => programs_.push(element.name));
+    const isPublic_ = isPublic;
+
+    if (title_ === "") {
+      alert("Title is mandatory");
+      return;
+    } else if (description_ === "") {
+      alert("Description is mandatory");
+      return;
+    }
+
     setIsPopup(false);
     if (page == "Issues") {
+     
+
       await addIssueDb({
         studentEmailID: userData.user.email,
         title: title_,
+        isPublic: isPublic_,
         description: description_,
         batch: batch_,
         department: department_,
         administration: administration_,
         programs: programs_,
       });
+       clearData();
     } else {
       await addAnnouncementDb({
         studentEmailID: userData.user.email,
@@ -91,6 +114,7 @@ const CreateIssue = ({ page }) => {
         administration: administration_,
         programs: programs_,
       });
+      clearData();
     }
   };
 
@@ -102,6 +126,7 @@ const CreateIssue = ({ page }) => {
       padding: "10px 20px 0px",
       background: "#f4f7f8",
       borderRadius: "8px",
+     
     },
     overlay: { zIndex: "1000" },
   };
@@ -126,43 +151,77 @@ const CreateIssue = ({ page }) => {
         <H1> Create New {page} </H1>
 
         <fieldset style={{ marginRight: "5%", border: "none" }}>
-          <Label for="Title">Title:</Label>
+          <LabelR for="Title">Title: </LabelR>
           <Input
             value={title}
             onChange={(evt) => setTitle(evt.target.value)}
             type="text"
             id="title"
           />
-
-          <Label for="Description">Description:</Label>
+          <LabelR for="Description">Description:</LabelR>
           <TextArea
             value={description}
             onChange={(evt) => setDescription(evt.target.value)}
             id="description"
           ></TextArea>
 
+          {{ page }.page === "Issues" && (
+            <>
+              {/* <Label> Public / Private</Label> */}
+              <br></br>
+              <br></br>
+              <tbody>
+                <tr>
+                  <td>
+                    <input
+                      type="radio"
+                      value="public"
+                      name="isPublic"
+                      onChange={() => setIsPublic(true)}
+                    />{" "}
+                    <Label
+                      style={{ display: "inline-block", paddingRight: "10px" }}
+                    >
+                      {" "}
+                      Public Issue
+                    </Label>
+                  </td>
+                  <td>
+                    <input
+                      type="radio"
+                      value="private"
+                      name="isPublic"
+                      onChange={() => setIsPublic(false)}
+                    />{" "}
+                    <Label style={{ display: "inline-block" }}>
+                      {" "}
+                      Private Issue{" "}
+                    </Label>
+                  </td>
+                </tr>
+              </tbody>
+              <br></br>
+            </>
+          )}
+
           <Label for="Batch">Batch:</Label>
           <Tags suggestions={batchSuggestions} update={setBatch}></Tags>
           <br></br>
-
           <Label for="Department">Department:</Label>
           <Tags
             suggestions={departmentSuggestions}
             update={setDepartment}
           ></Tags>
           <br></br>
-
           <Label for="Administration">Administration:</Label>
           <Tags
             suggestions={administrationSuggestions}
             update={setAdministration}
           ></Tags>
           <br></br>
-
           <Label for="Programs">Programs:</Label>
           <Tags suggestions={programsSuggestions} update={setPrograms}></Tags>
           <br></br>
-
           <SubmitButton
             onClick={handleSubmitIssue}
             type="submit"
@@ -170,6 +229,9 @@ const CreateIssue = ({ page }) => {
           >
             Submit
           </SubmitButton>
+          <Label style={{ marginTop: "10px" }}>
+            <i>Note: Private Issues are only visible to Admins.</i>
+          </Label>
         </fieldset>
       </Modal>
     );

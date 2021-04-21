@@ -52,6 +52,8 @@ const ProfilePage = () => {
         sidebar={sidebar}
         page={page}
         setFilterState={() => {}}
+        selectedFilters={{}}
+        applyFilter={() => {}}
       />
       <IssueContainer
         notMobileView={notMobileView}

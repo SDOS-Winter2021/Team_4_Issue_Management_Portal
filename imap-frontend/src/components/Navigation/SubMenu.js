@@ -104,6 +104,9 @@ function SubMenu({ item, page, setFilterState, selectedFilters, applyFilter }) {
    */
   const isFilter = item.title === "Filters";
   const isPage = item.title === page;
+  const isPosts =
+    page.toLowerCase().includes("issue") ||
+    page.toLowerCase().includes("announcement");
 
   return (
     <>
@@ -127,6 +130,7 @@ function SubMenu({ item, page, setFilterState, selectedFilters, applyFilter }) {
 
       {subnav &&
         isFilter &&
+        isPosts &&
         filterNames.map((filter, index) => {
           return (
             <Filter

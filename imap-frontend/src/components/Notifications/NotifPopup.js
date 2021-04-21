@@ -10,9 +10,10 @@ const customStyle = {
     border: "none",
     maxWidth: "300px",
     maxHeight: "300px",
-    margin: "10px auto",
+    margin: "auto",
     padding: "10px 20px 0px",
     borderRadius: "8px",
+    textAlign: "center",
   },
   overlay: { zIndex: "1001", backgroundColor: "rgba(52, 52, 52, 0.8)" },
 };
@@ -51,7 +52,12 @@ function NotifPopup({ message, onClickFunc, popup, handlePop }) {
           <SubmitButton
             onClick={proceedFunc}
             type="submit"
-            style={{ cursor: "pointer" }}
+            style={{
+              cursor: "pointer",
+              position: "absolute",
+              bottom: "40px",
+              width: "80%",
+            }}
           >
             Proceed
           </SubmitButton>

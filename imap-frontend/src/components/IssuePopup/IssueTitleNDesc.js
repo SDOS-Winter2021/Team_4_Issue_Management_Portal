@@ -57,15 +57,20 @@ function IssueTitleNDesc({
                 </p>
               </IssueStatusLabel>
             )}
+            {!issue.Tags.Public && (
+              <FaIcons.FaLock
+                style={{ color: "#aaa", width: "18px", paddingLeft: "10px" }}
+              />
+            )}
             {isAdmin && (
               <div
                 onClick={setDeleteWarn}
                 style={{
-                  padding: "0px 5px",
+                  paddingLeft: "15px",
                   cursor: "pointer",
                 }}
               >
-                <FaIcons.FaTrashAlt style={{ color: "#8c513f" }} />
+                <FaIcons.FaTrashAlt style={{ color: "#666", width: "18px" }} />
               </div>
             )}
           </h1>

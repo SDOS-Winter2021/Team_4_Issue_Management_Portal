@@ -57,7 +57,7 @@ function IssueTitleNDesc({
                 </p>
               </IssueStatusLabel>
             )}
-            {!issue.Tags.Public && (
+            {isIssue && !issue.Tags.Public && (
               <FaIcons.FaLock
                 style={{ color: "#aaa", width: "18px", paddingLeft: "10px" }}
               />

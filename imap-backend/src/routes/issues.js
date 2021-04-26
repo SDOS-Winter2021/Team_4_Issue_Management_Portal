@@ -1,13 +1,14 @@
 const express = require("express");
 const router = express.Router();
 const issues = require("../models/issues");
-const nodemailer=require('nodemailer');
-var transport= nodemailer.createTransport({
-    service: 'gmail',
-    auth:{
-        user:'no-reply-issuemanagement@iiitd.ac.in',
-        pass:'issue@404'
-    }
+const nodemailer = require("nodemailer");
+
+var transport = nodemailer.createTransport({
+  service: "gmail",
+  auth: {
+    user: "no-reply-issuemanagement@iiitd.ac.in",
+    pass: `${process.env.EMAIL_PASSWORD}`,
+  },
 });
 router.post("/addIssue", (req, res) => {
   var email = req.body.studentEmailID;
@@ -153,25 +154,28 @@ router.post("/CommentedIssue/:id", (req, res) => {
     });
 });
 
-router.get("/ResolveIssue/:id", (req, res) => {
+router.post("/ResolveIssue/:id", (req, res) => {
   issues
     .findByIdAndUpdate(req.params.id, { "Tags.Resolved": true })
     .then((result) => {
-      res.send(result);
-      var mail={
-            from: 'no-reply-issuemanagement@iiitd.ac.in',
-            to: req.params.email//'tanya18109@iiitd.ac.in,nandini18056@iiitd.ac.in,dibya18282@iiitd.ac.in,pruthwiraj18075@iiitd.ac.in',
-            subject: 'Issue Resolved - IMAP',
-            text: 'Hi there,\n Your Issue '+result.Title+' has been resolved. \n\n ------------------------ \n Issue Management Portal (IMAP)'
-        };
+      var mail = {
+        from: "no-reply-issuemanagement@iiitd.ac.in",
+        to: result.userEmail,
+        subject: "Issue Resolved - IMAP",
+        text:
+          "Hi there,\n Your Issue " +
+          result.Title +
+          " has been resolved. \n\n ------------------------ \n Issue Management Portal (IMAP)",
+      };
 
-        transport.sendMail(mail, function(error,info){
-            if(error){
-                console.log("error")
-            }else{
-                console.log("email send: "+info.response);
-            }
-        });
+      transport.sendMail(mail, function (error, info) {
+        if (error) {
+          console.log(error);
+        } else {
+          console.log("email send: " + info.response);
+        }
+      });
+      res.send(result);
     })
     .catch((err) => {
       console.log(err);

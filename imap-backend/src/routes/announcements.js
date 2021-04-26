@@ -51,7 +51,7 @@ router.get("/GetAllAnnouncements", (req, res) => {
     });
 });
 
-router.get("/DeleteAnnouncements/:id", (req, res) => {
+router.post("/deleteAnnouncement/:id", (req, res) => {
   announcements
     .findByIdAndDelete(req.params.id)
     .then((result) => {

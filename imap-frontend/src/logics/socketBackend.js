@@ -30,6 +30,16 @@ function SocketBack() {
       }
     });
 
+    socket.on("deleteIssue", async (issue_) => {
+      try {
+        const issueData = await getIssuesData();
+        await localStorage.setItem("allIssuesData", JSON.stringify(issueData));
+        tryLocalLogin();
+      } catch (err) {
+        console.log(err);
+      }
+    });
+
     socket.on("updateIssue", async (issue_) => {
       try {
         const issueData = await getIssuesData();
@@ -63,6 +73,18 @@ function SocketBack() {
       } catch (err) {
         console.log(err);
       }
+    });
+    socket.on("deleteAnnouncement", async (issue_) => {
+       try {
+         const announcementData = await getAnnouncementsData();
+         await localStorage.setItem(
+           "allAnnouncementsData",
+           JSON.stringify(announcementData)
+         );
+         tryLocalLogin();
+       } catch (err) {
+         console.log(err);
+       }
     });
   }, []);
 }

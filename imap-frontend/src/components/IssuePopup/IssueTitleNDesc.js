@@ -26,9 +26,12 @@ function IssueTitleNDesc({ issue, isIssue, isAdmin, handlePopIssue, page }) {
   const resolvePost = async() => {
     if (isAdmin) {
         await updateIssueDb({
+          email: issue.userEmail,
           id: issue._id,
           type: "Status",
         })
+
+
       _setResolved(true);
     }
 

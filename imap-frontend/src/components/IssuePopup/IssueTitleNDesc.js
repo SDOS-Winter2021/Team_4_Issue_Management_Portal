@@ -16,7 +16,9 @@ function IssueTitleNDesc({
   handlePopIssue,
 }) {
   const [resolvedWarn, _setResolvedWarn] = useState(false);
-  const setResolvedWarn = () => _setResolvedWarn(!resolvedWarn);
+  const setResolvedWarn = () => {
+    if (isAdmin) _setResolvedWarn(!resolvedWarn);
+  };
   const [deleteWarn, _setDeleteWarn] = useState(false);
   const setDeleteWarn = () => _setDeleteWarn(!deleteWarn);
 

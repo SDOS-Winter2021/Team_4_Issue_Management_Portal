@@ -32,7 +32,9 @@ const categories = [
 ];
 
 function MyAnnouncements() {
-  const { tryLocalLogin, allAnnouncementsData } = useContext(AuthContext);
+  const { tryLocalLogin, allAnnouncementsData, userData } = useContext(
+    AuthContext
+  );
   useEffect(async () => {
     tryLocalLogin();
   }, []);
@@ -70,7 +72,7 @@ function MyAnnouncements() {
     _setAnnounceCat(cat);
   };
 
-  const author = "dibya18282@iiitd.ac.in";
+  const author = userData.user ? userData.user.email : "";
   const showAnnounce = FilterIssues(selectedFilters, allAnnouncementsData);
   const commentedAnnounce = ArrayAND(
     showAnnounce,

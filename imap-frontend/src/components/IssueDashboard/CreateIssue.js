@@ -227,7 +227,9 @@ const CreateIssue = ({ page }) => {
             Submit
           </SubmitButton>
           <Label style={{ marginTop: "10px" }}>
-            <i>Note: Private Issues are only visible to Admins.</i>
+            {page === "Issues" && (
+              <i>Note: Private Issues are only visible to Admins.</i>
+            )}
           </Label>
         </fieldset>
       </Modal>

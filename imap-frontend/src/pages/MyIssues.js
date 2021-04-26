@@ -36,7 +36,7 @@ const categories = [
 ];
 
 function MyIssues() {
-  const { tryLocalLogin, allIssuesData } = useContext(AuthContext);
+  const { tryLocalLogin, allIssuesData, userData } = useContext(AuthContext);
   useEffect(async () => {
     tryLocalLogin();
   }, []);
@@ -74,7 +74,7 @@ function MyIssues() {
     _setIssueCat(cat);
   };
 
-  const author = "dibya18282@iiitd.ac.in";
+  const author = userData.user ? userData.user.email : "";
   const showIssues = FilterIssues(selectedFilters, allIssuesData);
   const likedIssues = ArrayAND(showIssues, LikedPost(allIssuesData, author));
   const commentedIssues = ArrayAND(

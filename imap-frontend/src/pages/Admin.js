@@ -1,6 +1,6 @@
 import { useMediaPredicate } from "react-media-hook";
+import styled from "styled-components";
 import React, { useState } from "react";
-import { filterNames } from "../components/Navigation/SidebarData";
 import Header from "../components/Navigation/Header";
 import { IssueContainer } from "../components/IssueDashboard/IssueDesigns";
 import {
@@ -9,17 +9,29 @@ import {
   Input,
   SubmitButton,
 } from "../components/IssueDashboard/CreateIssueDesign";
+
 import { Dropdown } from "semantic-ui-react";
 import "semantic-ui-css/components/dropdown.min.css";
 
 const roles = [
   { key: 1, value: "admin", text: "Admin" },
-  { key: 1, value: "student", text: "Student" },
+  { key: 2, value: "student", text: "Student" },
 ];
 const filters = [
   { key: 1, value: "batch", text: "Batch" },
-  { key: 1, value: "department", text: "Department" },
+  { key: 2, value: "department", text: "Department" },
+  { key: 3, value: "programs", text: "Programs" },
+  { key: 4, value: "admin", text: "Administration" },
 ];
+
+const StyledDropdown = styled(Dropdown)`
+  &.ui.selection.dropdown {
+    margin-left: 20px;
+    .menu.visible {
+      display: block;
+    }
+  }
+`;
 
 const Admin = () => {
   const notMobileView = useMediaPredicate("(min-width: 800px)");
@@ -59,24 +71,6 @@ const Admin = () => {
       >
         <H1>Admin Privileges</H1>
         <fieldset style={{ marginRight: "5%", border: "none" }}>
-          <Label for="MakeAdmin">Change Roles</Label>
-          <div style={{ display: "flex", flexDirection: "row" }}>
-            <Input
-              value={email}
-              onChange={(evt) => setEmail(evt.target.value)}
-              type="text"
-              placeholder="email ID"
-              id="title"
-            />
-            <Dropdown
-              placeholder="Change to"
-              search
-              selection
-              options={roles}
-              style={{ marginLeft: "20px", height: "30px" }}
-            />
-          </div>
-
           <Label for="AddFilter">Add Filters</Label>
           <div style={{ display: "flex", flexDirection: "row" }}>
             <Input
@@ -86,14 +80,31 @@ const Admin = () => {
               placeholder="filter"
               id="title"
             />
-            <Dropdown
+            <StyledDropdown
               placeholder="Filter type"
               search
               selection
-              options={filter}
-              style={{ marginLeft: "20px", height: "30px" }}
+              options={filters}
             />
           </div>
+
+          <Label for="MakeAdmin">Change Roles</Label>
+          <div style={{ display: "flex", flexDirection: "row" }}>
+            <Input
+              value={email}
+              onChange={(evt) => setEmail(evt.target.value)}
+              type="text"
+              placeholder="email ID"
+              id="title"
+            />
+            <StyledDropdown
+              placeholder="Change role"
+              search
+              selection
+              options={roles}
+            />
+          </div>
+
           <SubmitButton
             onClick={handleSubmitAdmin}
             type="submit"

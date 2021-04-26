@@ -4,10 +4,11 @@ import {
 } from "../IssueDashboard/IssueDesigns";
 import * as FaIcons from "react-icons/fa";
 import { Labels } from "../IssueDashboard/Issue";
+import { AuthContext } from "../../context/auth-context";
 import NotifPopup from "../Notifications/NotifPopup";
 import React, { useState, useContext } from "react";
 
-function IssueTitleNDesc({ issue, isIssue, isAdmin, handlePopIssue }) {
+function IssueTitleNDesc({ issue, isIssue, isAdmin, handlePopIssue, page }) {
   const [resolved, _setResolved] = useState(
     isIssue ? issue.Tags.Resolved : false
   );
@@ -19,13 +20,35 @@ function IssueTitleNDesc({ issue, isIssue, isAdmin, handlePopIssue }) {
 
   const [deleteWarn, _setDeleteWarn] = useState(false);
   const setDeleteWarn = () => _setDeleteWarn(!deleteWarn);
+  const { deleteIssueDb, deleteAnnouncementDb, updateIssueDb } = useContext(AuthContext);
 
-  const resolvePost = () => {
-    if (isAdmin) _setResolved(true);
+
+  const resolvePost = async() => {
+    if (isAdmin) {
+        await updateIssueDb({
+          id: issue._id,
+          type: "Status",
+        })
+      _setResolved(true);
+    }
+
   };
 
-  const deletePost = () => {
+
+  
+
+  const deletePost = async() => {
     console.log("deleteeeee");
+
+    if (isIssue) {
+       await deleteIssueDb({
+         id: issue._id,
+       });
+    } else {
+       await deleteAnnouncementDb({
+         id: issue._id,
+       });
+    }
     handlePopIssue();
     setDeleteWarn();
   };

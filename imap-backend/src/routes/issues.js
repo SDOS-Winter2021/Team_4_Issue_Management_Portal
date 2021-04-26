@@ -58,7 +58,7 @@ router.get("/GetAllIssue", (req, res) => {
     });
 });
 
-router.get("/GetAllIssue/:id", (req, res) => {
+router.post("/deleteIssue/:id", (req, res) => {
   issues
     .findByIdAndDelete(req.params.id)
     .then((result) => {
@@ -146,7 +146,7 @@ router.post("/CommentedIssue/:id", (req, res) => {
     });
 });
 
-router.get("/ResolveIssue/:id", (req, res) => {
+router.post("/ResolveIssue/:id", (req, res) => {
   issues
     .findByIdAndUpdate(req.params.id, { "Tags.Resolved": true })
     .then((result) => {

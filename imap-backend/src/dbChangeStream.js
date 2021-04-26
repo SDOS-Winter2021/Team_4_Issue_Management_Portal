@@ -23,6 +23,12 @@ module.exports = {
           issue_ = {};
           io.emit("updateIssue", issue_);
           break;
+
+        case "delete":
+          console.log("change in db: delete issue");
+          issue_ = {};
+          io.emit("deleteIssue", issue_);
+          break;
       }
     });
   },
@@ -50,6 +56,11 @@ module.exports = {
           console.log("change in db: update announcement");
           announce_ = {};
           io.emit("updateAnnouncement", announce_);
+          break;
+         case "delete":
+          console.log("change in db: delete issue");
+          issue_ = {};
+          io.emit("deleteAnnouncement", issue_);
           break;
       }
     });

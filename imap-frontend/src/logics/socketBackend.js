@@ -75,16 +75,16 @@ function SocketBack() {
       }
     });
     socket.on("deleteAnnouncement", async (issue_) => {
-       try {
-         const announcementData = await getAnnouncementsData();
-         await localStorage.setItem(
-           "allAnnouncementsData",
-           JSON.stringify(announcementData)
-         );
-         tryLocalLogin();
-       } catch (err) {
-         console.log(err);
-       }
+      try {
+        const announcementData = await getAnnouncementsData();
+        await localStorage.setItem(
+          "allAnnouncementsData",
+          JSON.stringify(announcementData)
+        );
+        tryLocalLogin();
+      } catch (err) {
+        console.log(err);
+      }
     });
   }, []);
 }

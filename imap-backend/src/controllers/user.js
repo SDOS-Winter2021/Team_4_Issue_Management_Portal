@@ -51,10 +51,9 @@ exports.googlelogin = (req, res) => {
 
 exports.updateRole = (req, res) => {
   const newRole = req.body.newRole;
-  const userId = req.body._id;
-  User.findByIdAndUpdate(userId, { role: newRole })
-    .then((response) => {
-      res.send(response);
+  User.findOneAndUpdate({ email: req.body.email }, { role: newRole })
+    .then((result) => {
+      res.send(result);
     })
     .catch((err) => {
       console.log(err);

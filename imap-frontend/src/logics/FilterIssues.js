@@ -1,23 +1,9 @@
 function getSelectedFilters(category, filters) {
-  let selectedFilters = [];
-  let allFilters = [];
-  for (var i = 0; i < filters.length; i++) {
-    let cat = filters[i].title;
-    if (cat === category) {
-      let catDetails = filters[i].filterDetails;
-      for (var j = 0; j < catDetails.length; j++) {
-        if (catDetails[j].isChecked) {
-          selectedFilters.push(catDetails[j].title);
-        }
-        allFilters.push(catDetails[j].title);
-      }
-    }
-  }
-  return selectedFilters;
+  return filters[category];
 }
 
 function matchFilters(issueF, selectedF) {
-  return selectedF.length === 0 || selectedF.every((e) => issueF.includes(e));
+  return selectedF.every((e) => issueF.includes(e)); // || selectedF.length === 0 ;
 }
 
 export default function FilterIssues(filters, issues) {

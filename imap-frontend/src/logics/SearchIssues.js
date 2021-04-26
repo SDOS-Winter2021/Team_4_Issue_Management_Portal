@@ -7,11 +7,12 @@ export function findNumCommonWords(issueTitle, userQuery) {
   return filteredArray.length;
 }
 
-function SearchIssues(userQuery, issues) {
+function SearchIssues(userQuery, issues, privateFilter) {
   let issueWithScore = {};
   for (let i = 0; i < issues.length; i++) {
     var issueTitle = issues[i].Title;
     var numCommonWords = findNumCommonWords(issueTitle, userQuery);
+    if (privateFilter !== null && !privateFilter[i]) numCommonWords = -1234;
     issueWithScore[issues[i]._id] = numCommonWords;
   }
 
@@ -27,9 +28,9 @@ function SearchIssues(userQuery, issues) {
   return keyValues;
 }
 
-export default function getTopIssues(userQuery, issues) {
+export default function getTopIssues(userQuery, issues, privateFilter) {
   var topIssues = [];
-  var topIssueIDs = SearchIssues(userQuery, issues);
+  var topIssueIDs = SearchIssues(userQuery, issues, privateFilter);
   for (var i = 0; i < topIssueIDs.length; i++) {
     var topIssueID = topIssueIDs[i][0];
     var topIssue = issues.filter((issue) => issue._id === topIssueID);

@@ -7,8 +7,6 @@ import {
   IssueContainer,
   MyPostButtons,
 } from "../components/IssueDashboard/IssueDesigns";
-import { DropdownLabel } from "../components/Navigation/NavigationDesigns";
-
 import Sidebar from "../components/Navigation/Sidebar";
 
 const style = {
@@ -41,7 +39,7 @@ const ProfilePage = () => {
     tryLocalLogin();
   }, []);
   const username = userData.user ? userData.user.name.split(" ")[0] : "";
-  const isAdmin = true; //userData.user? userData.user.role === 'admin' : false;
+  const isAdmin = userData.user ? userData.user.role === "admin" : false;
 
   return (
     <div style={style}>
@@ -54,7 +52,8 @@ const ProfilePage = () => {
         sidebar={sidebar}
         page={page}
         setFilterState={() => {}}
-        filterNames={[]}
+        selectedFilters={{}}
+        applyFilter={() => {}}
       />
       <IssueContainer
         notMobileView={notMobileView}

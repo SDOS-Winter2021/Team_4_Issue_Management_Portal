@@ -8,26 +8,39 @@ import Issue from "./Issue";
 import SearchBar from "./SearchBar";
 import CreateIssue from "./CreateIssue";
 import FilterIssues from "../../logics/FilterIssues";
-import ErrorNotif from "./ErrorNotif";
-import React, { useState, useContext, useEffect } from "react";
+import { ArrayAND } from "../../logics/PostCategorization";
+import PrivateFilter from "../../logics/PrivatePostFilter";
+import React, { useContext, useEffect } from "react";
 import { AuthContext } from "../../context/auth-context";
 
 function AllIssues({ notMobileView, page, issues, filtersName }) {
-  const isIssue = page === "Issues";
-  const showIssues = FilterIssues(filtersName, issues);
   const { userData, tryLocalLogin } = useContext(AuthContext);
+
   useEffect(() => {
     tryLocalLogin();
   }, []);
-  const isAdmin = userData.user ? userData.user.role !== "student" : false;
 
+  const isAdmin = userData.user ? userData.user.role !== "student" : false;
+  const email = userData.user ? userData.user.email : "";
+  const isIssue = page === "Issues";
+
+  var showIssues = FilterIssues(filtersName, issues);
+  var privateFilter = null;
+  if (isIssue) {
+    privateFilter = PrivateFilter(issues, email, isAdmin);
+    showIssues = ArrayAND(showIssues, privateFilter);
+  }
   return (
     <>
       <IssueContainer notMobileView={notMobileView}>
         <TitleSearchContainer>
           <TitleContainer>{page}</TitleContainer>
           <SearchContainer>
-            <SearchBar page={page} issues={issues} />
+            <SearchBar
+              page={page}
+              issues={issues}
+              privateFilter={privateFilter}
+            />
           </SearchContainer>
         </TitleSearchContainer>
         <hr

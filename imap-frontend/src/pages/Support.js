@@ -19,8 +19,9 @@ function Support() {
       <Header
         {...sidebarToggles}
         page={page}
-        filterNames={[]}
         setFilterState={() => {}}
+        selectedFilters={{}}
+        applyFilter={() => {}}
       />
       <div
         className="Instructions"

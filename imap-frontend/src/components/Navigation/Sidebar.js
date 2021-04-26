@@ -22,7 +22,8 @@ function Sidebar({
   sidebar,
   page,
   setFilterState,
-  filterNames,
+  selectedFilters,
+  applyFilter,
 }) {
   return (
     <>
@@ -55,8 +56,9 @@ function Sidebar({
                     item={item}
                     key={index}
                     page={page}
-                    filtersName={filterNames}
                     setFilterState={setFilterState}
+                    selectedFilters={selectedFilters}
+                    applyFilter={applyFilter}
                   />
                 );
               })}

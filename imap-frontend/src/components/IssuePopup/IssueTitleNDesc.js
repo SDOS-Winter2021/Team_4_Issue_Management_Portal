@@ -7,18 +7,21 @@ import { Labels } from "../IssueDashboard/Issue";
 import NotifPopup from "../Notifications/NotifPopup";
 import React, { useState, useContext } from "react";
 
-function IssueTitleNDesc({
-  issue,
-  isIssue,
-  setResolved,
-  resolved,
-  isAdmin,
-  handlePopIssue,
-}) {
+function IssueTitleNDesc({ issue, isIssue, isAdmin, handlePopIssue }) {
   const [resolvedWarn, _setResolvedWarn] = useState(false);
-  const setResolvedWarn = () => _setResolvedWarn(!resolvedWarn);
+  const setResolvedWarn = () => {
+    if (isAdmin) _setResolvedWarn(!resolvedWarn);
+  };
+
   const [deleteWarn, _setDeleteWarn] = useState(false);
   const setDeleteWarn = () => _setDeleteWarn(!deleteWarn);
+
+  const [resolved, _setResolved] = useState(
+    isIssue ? issue.Tags.Resolved : false
+  );
+  const resolvePost = () => {
+    if (isAdmin) _setResolved(!resolved);
+  };
 
   const deletePost = () => {
     console.log("deleteeeee");
@@ -57,22 +60,27 @@ function IssueTitleNDesc({
                 </p>
               </IssueStatusLabel>
             )}
+            {isIssue && !issue.Tags.Public && (
+              <FaIcons.FaLock
+                style={{ color: "#aaa", width: "18px", paddingLeft: "10px" }}
+              />
+            )}
             {isAdmin && (
               <div
                 onClick={setDeleteWarn}
                 style={{
-                  padding: "0px 5px",
+                  paddingLeft: "15px",
                   cursor: "pointer",
                 }}
               >
-                <FaIcons.FaTrashAlt style={{ color: "#8c513f" }} />
+                <FaIcons.FaTrashAlt style={{ color: "#666", width: "18px" }} />
               </div>
             )}
           </h1>
           {resolvedWarn && (
             <NotifPopup
               message={"The status of Issue will be changed"}
-              onClickFunc={setResolved}
+              onClickFunc={resolvePost}
               popup={resolvedWarn}
               handlePop={setResolvedWarn}
             />

@@ -1,10 +1,8 @@
 import { useMediaPredicate } from "react-media-hook";
 import React, { useState, useEffect, useContext } from "react";
-import axios from "axios";
 import { AuthContext } from "../context/auth-context";
 import Header from "../components/Navigation/Header";
 import AllIssues from "../components/IssueDashboard/AllIssues";
-import { filterNames } from "../components/Navigation/SidebarData";
 
 function Issues() {
   const { tryLocalLogin, allIssuesData } = useContext(AuthContext);
@@ -20,12 +18,24 @@ function Issues() {
   const [filterState, _setFilterState] = useState(false);
   const setFilterState = () => _setFilterState(!filterState);
 
+  const [selectedFilters, _applyFilter] = useState({
+    Batch: [],
+    Department: [],
+    Programs: [],
+    Administration: [],
+  });
+  const applyFilter = (type, filter) => {
+    const filList = selectedFilters[type];
+    if (filList.includes(filter)) filList.splice(filList.indexOf(filter), 1);
+    else filList.push(filter);
+  };
+
   const allIssuesProps = {
     notMobileView: notMobileView,
     isIssue: isIssue,
     page: page,
     issues: allIssuesData,
-    filtersName: filterNames,
+    filtersName: selectedFilters,
   };
   const sidebarToggles = {
     notMobileView: notMobileView,
@@ -38,8 +48,9 @@ function Issues() {
       <Header
         {...sidebarToggles}
         page={page}
-        filterNames={filterNames}
         setFilterState={setFilterState}
+        selectedFilters={selectedFilters}
+        applyFilter={applyFilter}
       />
       <AllIssues {...allIssuesProps} />
     </>

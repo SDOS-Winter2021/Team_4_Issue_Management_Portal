@@ -2,11 +2,9 @@ import React, { useState } from "react";
 import Autosuggest from "react-autosuggest";
 import theme from "./SearchBar.css";
 import getTopIssues, { getSearchedIssue } from "../../logics/SearchIssues";
-import { IssueTitle } from "../IssueDashboard/IssueDesigns";
-import { Labels } from "../IssueDashboard/Issue";
 import IndividualIssue from "../../pages/IndividualIssue";
 
-const SearchBar = ({ page, issues }) => {
+const SearchBar = ({ page, issues, privateFilter }) => {
   const isIssue = page === "Issues";
   const [suggestions, setSuggestions] = useState([]);
   const [value, setValue] = useState("");
@@ -19,7 +17,9 @@ const SearchBar = ({ page, issues }) => {
 
   const getSuggestions = (value) => {
     const inputValue = value.trim().toLowerCase();
-    return inputValue.length === 0 ? [] : getTopIssues(inputValue, issues);
+    return inputValue.length === 0
+      ? []
+      : getTopIssues(inputValue, issues, privateFilter);
   };
 
   const getSuggestionValue = (suggestion) => suggestion._id;

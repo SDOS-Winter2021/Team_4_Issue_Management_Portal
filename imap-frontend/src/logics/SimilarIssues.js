@@ -1,98 +1,98 @@
 function termFreqMap(str1) {
-    var words = str1.split(" ");
-    var termFreq = {};
-    words.forEach(function(w) {
-      w=lemmatize.adjective(lemmatize.noun(w.toLowerCase()))
-      termFreq[w] = (termFreq[w] || 0) + 1;
-    });
-    return termFreq;
+  var words = str1.split(" ");
+  var termFreq = {};
+  words.forEach(function (w) {
+    w = lemmatize.adjective(lemmatize.noun(w.toLowerCase()));
+    termFreq[w] = (termFreq[w] || 0) + 1;
+  });
+  return termFreq;
 }
 
 function addKeysToDict(map, dict) {
-    for (var key in map) {
-        dict[key] = true;
-    }
+  for (var key in map) {
+    dict[key] = true;
+  }
 }
 
 function termFreqMapToVector(map, dict) {
-    var termFreqVector = [];
-    for (var term in dict) {
-        termFreqVector.push(map[term] || 0);
-    }
-    return termFreqVector;
+  var termFreqVector = [];
+  for (var term in dict) {
+    termFreqVector.push(map[term] || 0);
+  }
+  return termFreqVector;
 }
 
 function vecDotProduct(vecA, vecB) {
-    var product = 0;
-    for (var i = 0; i < vecA.length; i++) {
-        product += vecA[i] * vecB[i];
-    }
-    return product;
+  var product = 0;
+  for (var i = 0; i < vecA.length; i++) {
+    product += vecA[i] * vecB[i];
+  }
+  return product;
 }
 
 function vecMagnitude(vec) {
-    var sum = 0;
-    for (var i = 0; i < vec.length; i++) {
-        sum += vec[i] * vec[i];
-    }
-    return Math.sqrt(sum);
+  var sum = 0;
+  for (var i = 0; i < vec.length; i++) {
+    sum += vec[i] * vec[i];
+  }
+  return Math.sqrt(sum);
 }
 
 function cosineSimilarity(vecA, vecB) {
-    return vecDotProduct(vecA, vecB) / (vecMagnitude(vecA) * vecMagnitude(vecB));
+  return vecDotProduct(vecA, vecB) / (vecMagnitude(vecA) * vecMagnitude(vecB));
 }
 
 function textCosineSimilarity(strA, strB) {
-    var termFreqA = termFreqMap(strA);
-    var termFreqB = termFreqMap(strB);
+  var termFreqA = termFreqMap(strA);
+  var termFreqB = termFreqMap(strB);
 
-    var dict = {};
-    addKeysToDict(termFreqA, dict);
-    addKeysToDict(termFreqB, dict);
+  var dict = {};
+  addKeysToDict(termFreqA, dict);
+  addKeysToDict(termFreqB, dict);
 
-    var termFreqVecA = termFreqMapToVector(termFreqA, dict);
-    var termFreqVecB = termFreqMapToVector(termFreqB, dict);
+  var termFreqVecA = termFreqMapToVector(termFreqA, dict);
+  var termFreqVecB = termFreqMapToVector(termFreqB, dict);
 
-    return cosineSimilarity(termFreqVecA, termFreqVecB);
+  return cosineSimilarity(termFreqVecA, termFreqVecB);
 }
 
-function preprocess(str){
-  str=str.split(" ");
+function preprocess(str) {
+  str = str.split(" ");
   var preprocessed = "";
   for (var i = 0; i < str.length; i += 1) {
-    word=lemmatize.verb( lemmatize.noun( str[i].toLowerCase()))
-    preprocessed+ = word;
+    word = lemmatize.verb(lemmatize.noun(str[i].toLowerCase()));
+    preprocessed += word;
   }
-    return preprocessed;
+  return preprocessed;
 }
 
-function Similar(strA,arr) {       //arr is array of issues object
-  iss=strA.Desc
-  issue=[]
-  arr=["Fee portal not working","Unable to pay fees","course not on erp"]
+function Similar(strA, arr) {
+  //arr is array of issues object
+  iss = strA.Desc;
+  issue = [];
+  arr = ["Fee portal not working", "Unable to pay fees", "course not on erp"];
   // console.log(lemmatize.noun( 'fees portal' ))
   // console.log(lemmatize.noun( 'Fees'.toLowerCase() ))
 
-     //res.send(result);
-  for(i=0;i<arr.length;i++){
+  //res.send(result);
+  for (i = 0; i < arr.length; i++) {
     // a=textCosineSimilarity(String(result[i].Desc),iss)
     // if(a!=0){
     //   console.log(a)
     //   issueID.push(String(result[i].Desc))
     // }
-    str=arr[i].Desc
-    str=preprocess(str)
-    a=textCosineSimilarity(str,iss)
+    str = arr[i].Desc;
+    str = preprocess(str);
+    a = textCosineSimilarity(str, iss);
     //console.log(a)
-    if(a>0.1){
-      issue.push(arr[i])
+    if (a > 0.1) {
+      issue.push(arr[i]);
     }
   }
   return issue;
-      // res.json({
-      //   allissue:arr,
-      //   currentissue:iss,
-      //   relatedissue:issueID
-      // })
-    
+  // res.json({
+  //   allissue:arr,
+  //   currentissue:iss,
+  //   relatedissue:issueID
+  // })
 }

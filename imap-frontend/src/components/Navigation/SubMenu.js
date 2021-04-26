@@ -9,18 +9,27 @@ import {
 } from "./NavigationDesigns";
 import PropTypes from "prop-types";
 import * as RiIcons from "react-icons/ri";
+import { filterNames } from "./SidebarData";
 
 /**
  * Create checkbox component for the given item. Helper function for SubMenu.
  */
-function CheckboxItem({ item, setFilterState }) {
+function CheckboxItem({
+  item,
+  setFilterState,
+  selectedFilter,
+  filterTitle,
+  applyFilter,
+}) {
   /**
    * State to toggle the checkbox options.
    */
-  const [checked, setCheckBox] = useState(item.isChecked);
+  const [checked, setCheckBox] = useState(
+    selectedFilter[filterTitle].includes(item.title)
+  );
   const checkboxHandler = () => {
     setCheckBox(!checked);
-    item.isChecked = !checked;
+    applyFilter(filterTitle, item.title);
     setFilterState();
   };
   return (
@@ -40,7 +49,7 @@ function CheckboxItem({ item, setFilterState }) {
  * returns the Filter options in the dropdown menu of
  * `Filters`. Helper function for SubMenu.
  */
-function Filter({ filter, setFilterState }) {
+function Filter({ filter, setFilterState, selectedFilters, applyFilter }) {
   /**
    * State to toggle the dropdown options of Filter components.
    */
@@ -65,7 +74,13 @@ function Filter({ filter, setFilterState }) {
         filter.filterDetails.map((item, index) => {
           return (
             <FilterOptLabel>
-              <CheckboxItem item={item} setFilterState={setFilterState} />
+              <CheckboxItem
+                item={item}
+                setFilterState={setFilterState}
+                selectedFilter={selectedFilters}
+                filterTitle={filter.title}
+                applyFilter={applyFilter}
+              />
             </FilterOptLabel>
           );
         })}
@@ -77,7 +92,7 @@ function Filter({ filter, setFilterState }) {
  * Returns the individual components on the sidebar,
  * with their dropdown components, if required.
  */
-function SubMenu({ item, page, filtersName, setFilterState }) {
+function SubMenu({ item, page, setFilterState, selectedFilters, applyFilter }) {
   /**
    * State to toggle the dropdown options of submenu components.
    */
@@ -89,6 +104,9 @@ function SubMenu({ item, page, filtersName, setFilterState }) {
    */
   const isFilter = item.title === "Filters";
   const isPage = item.title === page;
+  const isPosts =
+    page.toLowerCase().includes("issue") ||
+    page.toLowerCase().includes("announcement");
 
   return (
     <>
@@ -104,7 +122,7 @@ function SubMenu({ item, page, filtersName, setFilterState }) {
         <div>
           {isFilter && subnav
             ? item.iconOpened
-            : filtersName
+            : filterNames
             ? item.iconClosed
             : null}
         </div>
@@ -112,12 +130,15 @@ function SubMenu({ item, page, filtersName, setFilterState }) {
 
       {subnav &&
         isFilter &&
-        filtersName.map((filter, index) => {
+        isPosts &&
+        filterNames.map((filter, index) => {
           return (
             <Filter
               filter={filter}
               key={index}
               setFilterState={setFilterState}
+              selectedFilters={selectedFilters}
+              applyFilter={applyFilter}
             />
           );
         })}
@@ -136,12 +157,6 @@ SubMenu.propTypes = {
    * Name of the page that is currently being rendered.
    */
   page: PropTypes.string,
-
-  /**
-   * Object containing the information for the filters
-   * to be displayed in the sidebar.
-   */
-  filtersName: PropTypes.array,
 };
 
 export default SubMenu;

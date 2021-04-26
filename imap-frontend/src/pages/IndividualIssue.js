@@ -5,7 +5,6 @@ import IssueTitleNDesc from "../components/IssuePopup/IssueTitleNDesc";
 import LikesNComments from "../components/IssuePopup/LikesNComments";
 import { AddComment } from "../logics/AddComment";
 import { SetLike } from "../logics/LikePost";
-import NotifPopup from "../components/Notifications/NotifPopup";
 import Modal from "react-modal";
 import * as FaIcons from "react-icons/fa";
 import React, { useState, useContext } from "react";
@@ -35,7 +34,7 @@ function IndividualIssue({
     AuthContext
   );
   const userEmail = userData.user.email;
-  const isAdmin = true; //userData.user.role !== 'student';
+  const isAdmin = userData.user.role !== "student";
   const likes_list = isIssue ? issue.Likes.studEmail : [];
   const has_liked = isIssue ? likes_list.indexOf(userEmail) >= 0 : false;
 
@@ -70,13 +69,6 @@ function IndividualIssue({
     );
   };
 
-  const [resolved, _setResolved] = useState(
-    isIssue ? issue.Tags.Resolved : false
-  );
-  const setResolved = () => {
-    _setResolved(!resolved);
-  };
-
   return (
     <>
       <Modal isOpen={popupIssue} style={customStyle}>
@@ -96,8 +88,6 @@ function IndividualIssue({
         <IssueTitleNDesc
           issue={issue}
           isIssue={isIssue}
-          resolved={resolved}
-          setResolved={setResolved}
           isAdmin={isAdmin}
           handlePopIssue={handlePopIssue}
         />

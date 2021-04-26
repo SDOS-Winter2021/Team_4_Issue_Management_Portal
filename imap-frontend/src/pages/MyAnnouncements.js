@@ -2,7 +2,6 @@ import { useMediaPredicate } from "react-media-hook";
 import React, { useState, useEffect, useContext } from "react";
 import { AuthContext } from "../context/auth-context";
 import Header from "../components/Navigation/Header";
-import { filterNames } from "../components/Navigation/SidebarData";
 import FilterIssues from "../logics/FilterIssues";
 import {
   IssueContainer,
@@ -33,7 +32,9 @@ const categories = [
 ];
 
 function MyAnnouncements() {
-  const { tryLocalLogin, allAnnouncementsData } = useContext(AuthContext);
+  const { tryLocalLogin, allAnnouncementsData, userData } = useContext(
+    AuthContext
+  );
   useEffect(async () => {
     tryLocalLogin();
   }, []);
@@ -45,6 +46,18 @@ function MyAnnouncements() {
 
   const [filterState, _setFilterState] = useState(false);
   const setFilterState = () => _setFilterState(!filterState);
+
+  const [selectedFilters, _applyFilter] = useState({
+    Batch: [],
+    Department: [],
+    Programs: [],
+    Administration: [],
+  });
+  const applyFilter = (type, filter) => {
+    const filList = selectedFilters[type];
+    if (filList.includes(filter)) filList.splice(filList.indexOf(filter), 1);
+    else filList.push(filter);
+  };
 
   const sidebarToggles = {
     notMobileView: notMobileView,
@@ -59,8 +72,8 @@ function MyAnnouncements() {
     _setAnnounceCat(cat);
   };
 
-  const author = "dibya18282@iiitd.ac.in";
-  const showAnnounce = FilterIssues(filterNames, allAnnouncementsData);
+  const author = userData.user ? userData.user.email : "";
+  const showAnnounce = FilterIssues(selectedFilters, allAnnouncementsData);
   const commentedAnnounce = ArrayAND(
     showAnnounce,
     CommentedOnPost(allAnnouncementsData, author)
@@ -76,8 +89,9 @@ function MyAnnouncements() {
       <Header
         {...sidebarToggles}
         page={page}
-        filterNames={filterNames}
         setFilterState={setFilterState}
+        selectedFilters={selectedFilters}
+        applyFilter={applyFilter}
       />
       <IssueContainer notMobileView={notMobileView} style={{ padding: "20px" }}>
         <div style={{ display: "flex", justifyContent: "space-between" }}>

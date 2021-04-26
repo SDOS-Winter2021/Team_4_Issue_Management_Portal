@@ -45,8 +45,9 @@ const Admin = () => {
       <Header
         {...sidebarToggles}
         page={page}
-        filterNames={filterNames}
         setFilterState={() => {}}
+        selectedFilters={{}}
+        applyFilter={() => {}}
       />
       <IssueContainer
         notMobileView={notMobileView}

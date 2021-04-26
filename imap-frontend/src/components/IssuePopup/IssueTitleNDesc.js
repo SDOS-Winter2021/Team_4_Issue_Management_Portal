@@ -20,37 +20,33 @@ function IssueTitleNDesc({ issue, isIssue, isAdmin, handlePopIssue, page }) {
 
   const [deleteWarn, _setDeleteWarn] = useState(false);
   const setDeleteWarn = () => _setDeleteWarn(!deleteWarn);
-  const { deleteIssueDb, deleteAnnouncementDb, updateIssueDb } = useContext(AuthContext);
+  const { deleteIssueDb, deleteAnnouncementDb, updateIssueDb } = useContext(
+    AuthContext
+  );
 
-
-  const resolvePost = async() => {
+  const resolvePost = async () => {
     if (isAdmin) {
-        await updateIssueDb({
-          email: issue.userEmail,
-          id: issue._id,
-          type: "Status",
-        })
-
+      await updateIssueDb({
+        email: issue.userEmail,
+        id: issue._id,
+        type: "Status",
+      });
 
       _setResolved(true);
     }
-
   };
 
-
-  
-
-  const deletePost = async() => {
+  const deletePost = async () => {
     console.log("deleteeeee");
 
     if (isIssue) {
-       await deleteIssueDb({
-         id: issue._id,
-       });
+      await deleteIssueDb({
+        id: issue._id,
+      });
     } else {
-       await deleteAnnouncementDb({
-         id: issue._id,
-       });
+      await deleteAnnouncementDb({
+        id: issue._id,
+      });
     }
     handlePopIssue();
     setDeleteWarn();

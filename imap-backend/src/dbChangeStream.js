@@ -57,7 +57,7 @@ module.exports = {
           announce_ = {};
           io.emit("updateAnnouncement", announce_);
           break;
-         case "delete":
+        case "delete":
           console.log("change in db: delete issue");
           issue_ = {};
           io.emit("deleteAnnouncement", issue_);

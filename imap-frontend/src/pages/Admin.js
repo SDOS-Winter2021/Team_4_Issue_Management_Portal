@@ -1,6 +1,7 @@
 import { useMediaPredicate } from "react-media-hook";
 import styled from "styled-components";
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { AuthContext } from "../context/auth-context";
 import Header from "../components/Navigation/Header";
 import { IssueContainer } from "../components/IssueDashboard/IssueDesigns";
 import {
@@ -18,10 +19,10 @@ const roles = [
   { key: 2, value: "student", text: "Student" },
 ];
 const filters = [
-  { key: 1, value: "batch", text: "Batch" },
-  { key: 2, value: "department", text: "Department" },
-  { key: 3, value: "programs", text: "Programs" },
-  { key: 4, value: "admin", text: "Administration" },
+  { key: 1, value: "Batch", text: "Batch" },
+  { key: 2, value: "Department", text: "Department" },
+  { key: 3, value: "Programs", text: "Programs" },
+  { key: 4, value: "Administration", text: "Administration" },
 ];
 
 const StyledDropdown = styled(Dropdown)`
@@ -31,9 +32,10 @@ const StyledDropdown = styled(Dropdown)`
       display: block;
     }
   }
-`
+`;
 
 const Admin = () => {
+  const { updateRole } = useContext(AuthContext);
   const notMobileView = useMediaPredicate("(min-width: 800px)");
   const [sidebar, setSidebar] = useState(true);
   const showSidebar = () => setSidebar(!sidebar);
@@ -45,13 +47,20 @@ const Admin = () => {
   };
 
   const [email, setEmail] = useState("");
+  const [role, setRole] = useState("");
   const [filter, setFilter] = useState("");
+  const [filterType, setFilterType] = useState("");
+
   const handleSubmitAdmin = () => {
-    const email_ = email;
-    const filter_ = filter;
-    console.log(email_, "maillll");
-    console.log(filter_, "filter");
+    if (filter !== "" && filterType !== "") {
+      console.log(filter, filterType);
+    }
+    if (email !== "" && role !== "") {
+      updateRole({ email: email, newRole: role });
+      console.log(email, role);
+    }
   };
+
   return (
     <div>
       <Header
@@ -85,6 +94,7 @@ const Admin = () => {
               search
               selection
               options={filters}
+              onChange={(event, { value }) => setFilterType(value)}
             />
           </div>
 
@@ -102,6 +112,7 @@ const Admin = () => {
               search
               selection
               options={roles}
+              onChange={(event, { value }) => setRole(value)}
             />
           </div>
 

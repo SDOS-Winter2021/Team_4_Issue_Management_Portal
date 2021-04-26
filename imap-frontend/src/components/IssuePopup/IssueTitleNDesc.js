@@ -7,20 +7,21 @@ import { Labels } from "../IssueDashboard/Issue";
 import NotifPopup from "../Notifications/NotifPopup";
 import React, { useState, useContext } from "react";
 
-function IssueTitleNDesc({
-  issue,
-  isIssue,
-  setResolved,
-  resolved,
-  isAdmin,
-  handlePopIssue,
-}) {
+function IssueTitleNDesc({ issue, isIssue, isAdmin, handlePopIssue }) {
   const [resolvedWarn, _setResolvedWarn] = useState(false);
   const setResolvedWarn = () => {
     if (isAdmin) _setResolvedWarn(!resolvedWarn);
   };
+
   const [deleteWarn, _setDeleteWarn] = useState(false);
   const setDeleteWarn = () => _setDeleteWarn(!deleteWarn);
+
+  const [resolved, _setResolved] = useState(
+    isIssue ? issue.Tags.Resolved : false
+  );
+  const resolvePost = () => {
+    if (isAdmin) _setResolved(!resolved);
+  };
 
   const deletePost = () => {
     console.log("deleteeeee");
@@ -79,7 +80,7 @@ function IssueTitleNDesc({
           {resolvedWarn && (
             <NotifPopup
               message={"The status of Issue will be changed"}
-              onClickFunc={setResolved}
+              onClickFunc={resolvePost}
               popup={resolvedWarn}
               handlePop={setResolvedWarn}
             />

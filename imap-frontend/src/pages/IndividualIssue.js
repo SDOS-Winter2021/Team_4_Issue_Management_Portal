@@ -69,13 +69,6 @@ function IndividualIssue({
     );
   };
 
-  const [resolved, _setResolved] = useState(
-    isIssue ? issue.Tags.Resolved : false
-  );
-  const setResolved = () => {
-    if (isAdmin) _setResolved(!resolved);
-  };
-
   return (
     <>
       <Modal isOpen={popupIssue} style={customStyle}>
@@ -95,8 +88,6 @@ function IndividualIssue({
         <IssueTitleNDesc
           issue={issue}
           isIssue={isIssue}
-          resolved={resolved}
-          setResolved={setResolved}
           isAdmin={isAdmin}
           handlePopIssue={handlePopIssue}
         />

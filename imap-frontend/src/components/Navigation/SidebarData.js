@@ -49,11 +49,3 @@ export const getFilterNames = (dbfilters) => {
   }
   return filtersName;
 };
-
-const tags = JSON.parse(localStorage.getItem("allFiltersData") || "{}");
-
-const SidebarD = async () => {
-  const t = await tags;
-};
-SidebarD();
-export const filterNames = getFilterNames(tags);

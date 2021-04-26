@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import Checkbox from "react-checkbox-component";
+import React, { useEffect, useState, useContext } from "react";
+import { AuthContext } from "../../context/auth-context";
 import {
   SidebarLink,
   SidebarNoLink,
@@ -9,7 +9,7 @@ import {
 } from "./NavigationDesigns";
 import PropTypes from "prop-types";
 import * as RiIcons from "react-icons/ri";
-import { filterNames } from "./SidebarData";
+import { getFilterNames } from "./SidebarData";
 
 /**
  * Create checkbox component for the given item. Helper function for SubMenu.
@@ -107,6 +107,14 @@ function SubMenu({ item, page, setFilterState, selectedFilters, applyFilter }) {
   const isPosts =
     page.toLowerCase().includes("issue") ||
     page.toLowerCase().includes("announcement");
+
+  const { allFiltersData, tryLocalLogin } = useContext(AuthContext);
+
+  useEffect(async () => {
+    tryLocalLogin();
+  }, []);
+
+  const filterNames = getFilterNames(allFiltersData ? allFiltersData : {});
 
   return (
     <>

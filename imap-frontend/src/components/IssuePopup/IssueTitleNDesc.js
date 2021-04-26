@@ -8,19 +8,20 @@ import NotifPopup from "../Notifications/NotifPopup";
 import React, { useState, useContext } from "react";
 
 function IssueTitleNDesc({ issue, isIssue, isAdmin, handlePopIssue }) {
+  const [resolved, _setResolved] = useState(
+    isIssue ? issue.Tags.Resolved : false
+  );
+
   const [resolvedWarn, _setResolvedWarn] = useState(false);
   const setResolvedWarn = () => {
-    if (isAdmin) _setResolvedWarn(!resolvedWarn);
+    if (isAdmin && isIssue && !resolved) _setResolvedWarn(!resolvedWarn);
   };
 
   const [deleteWarn, _setDeleteWarn] = useState(false);
   const setDeleteWarn = () => _setDeleteWarn(!deleteWarn);
 
-  const [resolved, _setResolved] = useState(
-    isIssue ? issue.Tags.Resolved : false
-  );
   const resolvePost = () => {
-    if (isAdmin) _setResolved(!resolved);
+    if (isAdmin) _setResolved(true);
   };
 
   const deletePost = () => {

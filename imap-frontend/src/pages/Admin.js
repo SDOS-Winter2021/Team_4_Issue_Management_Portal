@@ -31,7 +31,7 @@ const StyledDropdown = styled(Dropdown)`
       display: block;
     }
   }
-`;
+`
 
 const Admin = () => {
   const notMobileView = useMediaPredicate("(min-width: 800px)");

@@ -117,11 +117,13 @@ export const IssueStatusLabel = styled.div`
   background: ${({ color }) => color};
   display: flex;
   align-items: center;
-  font-size: 8px;
-  border-radius: 12px;
+  justify-content: center;
+  font-size: 10px;
+  border-radius: 20px;
   margin: 5px;
-  height: 15px;
-  padding: 2px 8px;
+  height: 22px;
+  width: 70px;
+  /* padding: 3px 8px; */
   color: #fff;
 `;
 
@@ -155,15 +157,18 @@ export const MyPostLabels = styled.span`
 `;
 
 export const MyPostButtons = styled(Link)`
-    width: 300px;
-    height: 60px;
+    width: 20%;
+    height: 100%;
     background: inherit;
     color: #000;
     position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
     margin-bottom: 25px;
     margin-left: 25px;
     border-radius: 32px;
-    text-align: center;
     cursor: pointer;
     text-decoration: none;
     font-size: 18px;
@@ -179,6 +184,17 @@ export const MyPostButtons = styled(Link)`
           opacity: 1;
           color: #aaa;
         }
+    }
+    @media screen and (min-width: 470px) and (max-width: 960px) {
+      font-size: 14px;
+      width: 30%;
+    }
+
+    @media screen and (min-width: 150px) and (max-width: 470px) {
+      font-size: 11px;
+      width: 30%;
+    }
+
 
 `;
 

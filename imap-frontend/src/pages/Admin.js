@@ -1,6 +1,7 @@
 import { useMediaPredicate } from "react-media-hook";
 import styled from "styled-components";
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { AuthContext } from "../context/auth-context";
 import Header from "../components/Navigation/Header";
 import { IssueContainer } from "../components/IssueDashboard/IssueDesigns";
 import {
@@ -34,6 +35,7 @@ const StyledDropdown = styled(Dropdown)`
 `;
 
 const Admin = () => {
+  const { updateRole } = useContext(AuthContext);
   const notMobileView = useMediaPredicate("(min-width: 800px)");
   const [sidebar, setSidebar] = useState(true);
   const showSidebar = () => setSidebar(!sidebar);
@@ -54,6 +56,9 @@ const Admin = () => {
       console.log(filter, filterType);
     }
     if (email !== "" && role !== "") {
+
+      updateRole({ email: email, newRole: role });
+
       console.log(email, role);
     }
   };

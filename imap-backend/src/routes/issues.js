@@ -1,7 +1,15 @@
 const express = require("express");
 const router = express.Router();
 const issues = require("../models/issues");
+const nodemailer = require("nodemailer");
 
+var transport = nodemailer.createTransport({
+  service: "gmail",
+  auth: {
+    user: "no-reply-issuemanagement@iiitd.ac.in",
+    pass: `${process.env.EMAIL_PASSWORD}`,
+  },
+});
 router.post("/addIssue", (req, res) => {
   var email = req.body.studentEmailID;
   var title = req.body.title;
@@ -58,7 +66,7 @@ router.get("/GetAllIssue", (req, res) => {
     });
 });
 
-router.get("/GetAllIssue/:id", (req, res) => {
+router.post("/deleteIssue/:id", (req, res) => {
   issues
     .findByIdAndDelete(req.params.id)
     .then((result) => {
@@ -146,10 +154,27 @@ router.post("/CommentedIssue/:id", (req, res) => {
     });
 });
 
-router.get("/ResolveIssue/:id", (req, res) => {
+router.post("/ResolveIssue/:id", (req, res) => {
   issues
     .findByIdAndUpdate(req.params.id, { "Tags.Resolved": true })
     .then((result) => {
+      var mail = {
+        from: "no-reply-issuemanagement@iiitd.ac.in",
+        to: result.userEmail,
+        subject: "Issue Resolved - IMAP",
+        text:
+          "Hi there,\n Your Issue " +
+          result.Title +
+          " has been resolved. \n\n ------------------------ \n Issue Management Portal (IMAP)",
+      };
+
+      transport.sendMail(mail, function (error, info) {
+        if (error) {
+          console.log(error);
+        } else {
+          console.log("email send: " + info.response);
+        }
+      });
       res.send(result);
     })
     .catch((err) => {

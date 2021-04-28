@@ -8,6 +8,14 @@ const logout = async ({ history }) => {
   history.push("/");
 };
 
+const updateRole = async (props) => {
+  try {
+    const res = await axios.post("login/updateRole", props);
+  } catch (err) {
+    console.log(err);
+  }
+};
+
 const addIssueDb = async (props) => {
   try {
     const res = await axios.post("dashboard/addIssue", props);
@@ -42,6 +50,7 @@ const updateIssueDb = async (props) => {
     }
   } else if (props.type == "Status") {
     try {
+      const res = await axios.post(`dashboard/ResolveIssue/${props.id}`, props);
     } catch (err) {
       console.log(err);
     }
@@ -58,6 +67,25 @@ const updateAnnouncementDb = async (props) => {
     } catch (err) {
       console.log(err);
     }
+  }
+};
+
+const deleteIssueDb = async (props) => {
+  try {
+    const res = await axios.post(`dashboard/deleteIssue/${props.id}`, props);
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+const deleteAnnouncementDb = async (props) => {
+  try {
+    const res = await axios.post(
+      `announcement/deleteAnnouncement/${props.id}`,
+      props
+    );
+  } catch (err) {
+    console.log(err);
   }
 };
 
@@ -138,6 +166,9 @@ const AuthProvider = (props) => {
     addAnnouncementDb,
     updateIssueDb,
     updateAnnouncementDb,
+    deleteIssueDb,
+    deleteAnnouncementDb,
+    updateRole,
   };
 
   return (

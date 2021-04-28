@@ -182,6 +182,17 @@ export const MyPostButtons = styled(Link)`
 
 `;
 
+export const IssueCategorized = styled.div`
+  max-height: 70vh;
+  border: 2px solid #ccc;
+  width: 90%;
+  border-radius: 20px;
+  overflow-y: auto;
+  margin: 20px 0px;
+  padding: 20px;
+  text-align: left;
+`;
+
 export const filter_colors = {
   Department: ["#BAC3DD", "#000"],
   Batch: ["#0075ca", "#fff"],

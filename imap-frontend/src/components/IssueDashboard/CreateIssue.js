@@ -3,6 +3,7 @@ import { AuthContext } from "../../context/auth-context";
 import Modal from "react-modal";
 import Tags from "./Tags";
 import * as FaIcons from "react-icons/fa";
+import SimilarIssue from "../Notifications/SimilarIssue";
 import {
   CreateButton,
   H1,
@@ -26,14 +27,27 @@ const CreateIssue = ({ page }) => {
     tryLocalLogin();
   }, []);
 
+  const isIssue = page === "Issues";
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [batch, setBatch] = useState([]);
   const [department, setDepartment] = useState([]);
   const [administration, setAdministration] = useState([]);
   const [programs, setPrograms] = useState([]);
-  const [isPopup, setIsPopup] = useState(false);
   const [isPublic, setIsPublic] = useState(true);
+
+  const [isPopup, setIsPopup] = useState(false);
+  const [warningPopup, _setWarningPopup] = useState(false);
+  const setWarningPopup = () => {
+    if (title === "") {
+      alert("Title is mandatory");
+      return;
+    } else if (description === "") {
+      alert("Description is mandatory");
+      return;
+    }
+    _setWarningPopup(!warningPopup);
+  };
 
   var batchSuggestions = [];
   var departmentSuggestions = [];
@@ -80,14 +94,6 @@ const CreateIssue = ({ page }) => {
     const programs_ = [];
     programs.forEach((element) => programs_.push(element.name));
     const isPublic_ = isPublic;
-
-    if (title_ === "") {
-      alert("Title is mandatory");
-      return;
-    } else if (description_ === "") {
-      alert("Description is mandatory");
-      return;
-    }
 
     setIsPopup(false);
     if (page == "Issues") {
@@ -220,7 +226,7 @@ const CreateIssue = ({ page }) => {
           <Tags suggestions={programsSuggestions} update={setPrograms}></Tags>
           <br></br>
           <SubmitButton
-            onClick={handleSubmitIssue}
+            onClick={isIssue ? setWarningPopup : handleSubmitIssue}
             type="submit"
             style={{ cursor: "pointer" }}
           >
@@ -232,6 +238,15 @@ const CreateIssue = ({ page }) => {
             )}
           </Label>
         </fieldset>
+        {warningPopup && (
+          <SimilarIssue
+            title={title}
+            description={description}
+            onClickFunc={handleSubmitIssue}
+            popup={warningPopup}
+            handlePop={setWarningPopup}
+          />
+        )}
       </Modal>
     );
   }

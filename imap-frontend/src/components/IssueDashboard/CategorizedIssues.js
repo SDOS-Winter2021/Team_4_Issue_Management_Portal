@@ -1,16 +1,15 @@
 import Issue from "./Issue";
-const style = {
-  maxHeight: "70vh",
-  border: "2px solid #ccc",
-  width: "90%",
-  borderRadius: "20px",
-  overflowY: "auto",
-  margin: "20px 0px",
-  padding: "20px",
-};
-function CategorizedIssues({ issues, showIssues, isIssue, notMobileView }) {
+import { IssueCategorized } from "./IssueDesigns";
+
+function CategorizedIssues({
+  issues,
+  showIssues,
+  isIssue,
+  notMobileView,
+  style,
+}) {
   return (
-    <div style={style}>
+    <IssueCategorized style={style}>
       {issues.map((issue, index) => {
         if (showIssues[index]) {
           return (
@@ -23,7 +22,7 @@ function CategorizedIssues({ issues, showIssues, isIssue, notMobileView }) {
           );
         }
       })}
-    </div>
+    </IssueCategorized>
   );
 }
 

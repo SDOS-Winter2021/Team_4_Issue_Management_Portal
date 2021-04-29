@@ -68,23 +68,24 @@ function preprocess(str) {
 
 function Similar(arr,title,desc) {
   //arr is array of issues object
-  iss = title+" "+desc
+  iss = title.concat(" ".concat(desc))
 
   sim_issue=[]
   for (i = 0; i < arr.length; i++) {
     
-    str = arr[i].Title+" "+arr[i].Desc;
+    str = arr[i].Title.concat(" ".concat(arr[i].Desc));
     str = preprocess(str);
     a = textCosineSimilarity(str, iss);
 
     if (a > 0.1) {
       sim_issue.push((a,arr[i]));
     }
-    sort(sim_issue)
+    sim_issue.sort()
   }
   a=5
-  if(a>len(sim_issue)):
-    a=len(sim_issue)
-  return sim_issue[0:a];
+  if(a>sim_issue.length){
+    a=sim_issue.length
+  }
+  return sim_issue.slice(0:a);
  
 }

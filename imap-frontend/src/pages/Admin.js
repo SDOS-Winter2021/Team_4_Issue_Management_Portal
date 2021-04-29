@@ -1,6 +1,5 @@
 import { useMediaPredicate } from "react-media-hook";
 import styled from "styled-components";
-
 import React, { useState, useContext } from "react";
 import { AuthContext } from "../context/auth-context";
 import Header from "../components/Navigation/Header";
@@ -57,7 +56,6 @@ const Admin = () => {
       console.log(filter, filterType);
     }
     if (email !== "" && role !== "") {
-
       updateRole({ email: email, newRole: role });
       console.log(email, role);
     }

@@ -66,14 +66,12 @@ function preprocess(str) {
   return preprocessed;
 }
 
-function Similar(strA, arr) {
+function Similar(arr,title,desc) {
   //arr is array of issues object
-  iss = strA.Desc;
-  issue = [];
-  arr = ["Fee portal not working", "Unable to pay fees", "course not on erp"];
+  iss = title+" "+desc
   // console.log(lemmatize.noun( 'fees portal' ))
   // console.log(lemmatize.noun( 'Fees'.toLowerCase() ))
-
+  sim_issue=[]
   //res.send(result);
   for (i = 0; i < arr.length; i++) {
     // a=textCosineSimilarity(String(result[i].Desc),iss)
@@ -86,10 +84,11 @@ function Similar(strA, arr) {
     a = textCosineSimilarity(str, iss);
     //console.log(a)
     if (a > 0.1) {
-      issue.push(arr[i]);
+      sim_issue.push((a,arr[i]));
     }
+    sort(sim_issue)
   }
-  return issue;
+  return sim_issue[0:5];
   // res.json({
   //   allissue:arr,
   //   currentissue:iss,

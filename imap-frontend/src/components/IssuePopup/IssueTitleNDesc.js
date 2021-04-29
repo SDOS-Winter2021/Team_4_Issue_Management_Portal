@@ -96,7 +96,7 @@ function IssueTitleNDesc({ issue, isIssue, isAdmin, handlePopIssue, page }) {
                   cursor: "pointer",
                 }}
               >
-                <FaIcons.FaTrashAlt style={{ color: "#666", width: "18px" }} />
+                <FaIcons.FaTrashAlt style={{ color: "#666", width: "18px",height:"16px" }} />
               </div>
             )}
           </h1>

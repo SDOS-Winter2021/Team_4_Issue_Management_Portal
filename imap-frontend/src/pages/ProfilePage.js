@@ -14,12 +14,12 @@ const style = {
   background: "#dcedf7",
 };
 
-const textStyle = { fontSize: "10vh", margin: "0px 50px" };
+const textStyle = { fontSize: "20px", margin: "0px 30px" };
 const labelHolderStyle = {
   display: "flex",
   flexDirection: "row-reverse",
   height: "60px",
-  width: "80vw",
+  width: "100%",
 };
 
 const welcomeMsg = {
@@ -49,7 +49,7 @@ const ProfilePage = () => {
       <Sidebar
         notMobileView={notMobileView}
         showSidebar={showSidebar}
-        sidebar={sidebar}
+        sidebar={notMobileView || !sidebar}
         page={page}
         setFilterState={() => {}}
         selectedFilters={{}}
@@ -74,8 +74,7 @@ const ProfilePage = () => {
         </div>
         <div></div>
         <div style={{ marginTop: "50px" }}>
-          <h1 style={textStyle}>Welcome Back, </h1>
-          <h1 style={textStyle}>{username}</h1>
+          <h1 style={textStyle}>Welcome Back, {username} </h1>
         </div>
         <p style={{ position: "absolute", bottom: "2px", marginLeft: "10px" }}>
           {userData.user ? welcomeMsg[userData.user.role] : ""}{" "}

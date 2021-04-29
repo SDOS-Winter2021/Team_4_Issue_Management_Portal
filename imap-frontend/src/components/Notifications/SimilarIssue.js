@@ -4,6 +4,7 @@ import React, { useState, useContext, useEffect } from "react";
 import { SubmitButton } from "../IssueDashboard/CreateIssueDesign";
 import CategorizedIssues from "../IssueDashboard/CategorizedIssues";
 import { AuthContext } from "../../context/auth-context";
+import { GetTopSimilar } from "../../logics/SimilarIssues";
 
 if (process.env.NODE_ENV !== "test") Modal.setAppElement("#root");
 
@@ -32,7 +33,12 @@ function SimilarIssue({ title, description, onClickFunc, popup, handlePop }) {
 
   const [consentSigned, toggleConsent] = useState(false);
 
-  const similarIssues = [allIssuesData[0], allIssuesData[1], allIssuesData[2]];
+  const similarIssues = GetTopSimilar(
+    allIssuesData ? allIssuesData : [],
+    title,
+    description,
+    3
+  );
   const showIssues = new Array(similarIssues.length).fill(true);
 
   return (

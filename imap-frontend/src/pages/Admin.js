@@ -60,7 +60,6 @@ const Admin = () => {
       console.log(filter, filterType);
     }
     if (email !== "" && role !== "") {
-
       updateRole({ email: email, newRole: role });
 
       console.log(email, role);
@@ -86,19 +85,24 @@ const Admin = () => {
           height: "800px",
         }}
       >
-        <fieldset style={{border: "none" }}>
-        <H1>Admin Privileges</H1>
-        <br/>
+        <fieldset style={{ border: "none" }}>
+          <H1>Admin Privileges</H1>
+          <br />
           <Label for="AddFilter">Add Filters</Label>
-          <br/>
-          <div style={{ display: "flex", flexDirection: !notMobileView? "column":"row"}}>
+          <br />
+          <div
+            style={{
+              display: "flex",
+              flexDirection: !notMobileView ? "column" : "row",
+            }}
+          >
             <Input
               value={filter}
               onChange={(evt) => setFilter(evt.target.value)}
               type="text"
               placeholder="filter"
               id="title"
-              style={{marginLeft:"10px",width:"300px"}}
+              style={{ marginLeft: "10px", width: "300px" }}
             />
             <StyledDropdown
               placeholder="Filter type"
@@ -108,17 +112,22 @@ const Admin = () => {
               onChange={(event, { value }) => setFilterType(value)}
             />
           </div>
-          <br/>
+          <br />
           <Label for="MakeAdmin">Change Roles</Label>
-          <br/>
-          <div style={{ display: "flex", flexDirection: !notMobileView? "column":"row" }}>
+          <br />
+          <div
+            style={{
+              display: "flex",
+              flexDirection: !notMobileView ? "column" : "row",
+            }}
+          >
             <Input
               value={email}
               onChange={(evt) => setEmail(evt.target.value)}
               type="text"
               placeholder="email ID"
               id="title"
-              style={{marginLeft:"10px",width:"300px"}}
+              style={{ marginLeft: "10px", width: "300px" }}
             />
             <StyledDropdown
               placeholder="Change role"
@@ -138,13 +147,13 @@ const Admin = () => {
           </SubmitButton>
         </fieldset>
         {updateWarn && (
-            <NotifPopup
-              message={"Changes will be made."}
-              onClickFunc={handleSubmitAdmin}
-              popup={updateWarn}
-              handlePop={setUpdateWarn}
-            />
-          )}
+          <NotifPopup
+            message={"Changes will be made."}
+            onClickFunc={handleSubmitAdmin}
+            popup={updateWarn}
+            handlePop={setUpdateWarn}
+          />
+        )}
       </IssueContainer>
     </div>
   );

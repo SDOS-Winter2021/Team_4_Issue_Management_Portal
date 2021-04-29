@@ -36,6 +36,7 @@ export const TitleSearchContainer = styled.section`
   font-weight: 500;
   display: flex;
   position: relative;
+  padding: 30px 0 5px 5px;
   @media screen and (min-width: 200px) and (max-width: 430px) {
     font-size: 18px;
   }
@@ -158,44 +159,42 @@ export const MyPostLabels = styled.span`
 `;
 
 export const MyPostButtons = styled(Link)`
-    width: 20%;
-    height: 100%;
-    background: inherit;
-    color: #000;
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    margin-right: 10px;
-    border-radius: 32px;
-    cursor: pointer;
-    text-decoration: none;
-    font-size: 18px;
-    transition: all 0.1s ease-in-out;
-    border: 2px solid #1f3b94;
+  width: 20%;
+  height: 100%;
+  background: inherit;
+  color: #000;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin-right: 10px;
+  border-radius: 32px;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 18px;
+  transition: all 0.1s ease-in-out;
+  border: 2px solid #1f3b94;
 
-    &:hover {
-      opacity: 0.8;
-      box-shadow: -6px -6px 10px rgba(255, 255, 255, 0.8),
-        6px 6px 10px rgba(0, 0, 0, 0.2);
-    
-        &:active {
-          opacity: 1;
-          color: #aaa;
-        }
+  &:hover {
+    opacity: 0.8;
+    box-shadow: -6px -6px 10px rgba(255, 255, 255, 0.8),
+      6px 6px 10px rgba(0, 0, 0, 0.2);
+
+    &:active {
+      opacity: 1;
+      color: #aaa;
     }
-    @media screen and (min-width: 470px) and (max-width: 960px) {
-      font-size: 14px;
-      width: 30%;
-    }
+  }
+  @media screen and (min-width: 470px) and (max-width: 960px) {
+    font-size: 14px;
+    width: 30%;
+  }
 
-    @media screen and (min-width: 150px) and (max-width: 470px) {
-      font-size: 11px;
-      width: 30%;
-    }
-
-
+  @media screen and (min-width: 150px) and (max-width: 470px) {
+    font-size: 11px;
+    width: 30%;
+  }
 `;
 
 export const IssueCategorized = styled.div`

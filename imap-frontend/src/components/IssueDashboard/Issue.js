@@ -41,7 +41,9 @@ function IssueAccessories({ comments, likes, date, isIssue }) {
             number={comments}
           />
         </div>
-        <p style={{ fontSize: "10px",fontWeight:"bold", color: "gray" }}>{date}</p>
+        <p style={{ fontSize: "10px", fontWeight: "bold", color: "gray" }}>
+          {date}
+        </p>
       </IssueAccessory>
     </>
   );
@@ -79,7 +81,10 @@ const Issue = ({ issue, isIssue, notMobileView }) => {
         {isIssue && (
           <IssueAccessory style={{ flexDirection: "row" }}>
             {issue.Tags.Resolved ? (
-              <FaIcons.FaCheckSquare style={{ color: "#6fad80" }} title="Resolved"/>
+              <FaIcons.FaCheckSquare
+                style={{ color: "#6fad80" }}
+                title="Resolved"
+              />
             ) : (
               <FaIcons.FaSpinner style={{ color: "#ab6a6a" }} title="Pending" />
             )}

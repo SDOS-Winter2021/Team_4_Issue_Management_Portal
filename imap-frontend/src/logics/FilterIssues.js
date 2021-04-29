@@ -3,7 +3,8 @@ function getSelectedFilters(category, filters) {
 }
 
 function matchFilters(issueF, selectedF) {
-  return selectedF.every((e) => issueF.includes(e)); // || selectedF.length === 0 ;
+  if (selectedF.length === 0) return true;
+  return selectedF.every((e) => issueF.includes(e));
 }
 
 export default function FilterIssues(filters, issues) {
@@ -14,16 +15,11 @@ export default function FilterIssues(filters, issues) {
     var showIssue = true;
     for (let fName in issueFilters) {
       let selectedFilters = getSelectedFilters(fName, filters);
-      if (
-        !(
-          issueFilters[fName].length === 0 ||
-          matchFilters(issueFilters[fName], selectedFilters)
-        )
-      ) {
+      if (!matchFilters(issueFilters[fName], selectedFilters))
         showIssue = false;
-      }
     }
     showIssues.push(showIssue);
   }
+  console.log(showIssues);
   return showIssues;
 }

@@ -16,7 +16,7 @@ export const SidebarData = [
   {
     title: "Issues",
     path: "/issues",
-    icon: <FaIcons.FaExclamationCircle style={{paddingTop:"1px"}}/>,
+    icon: <FaIcons.FaExclamationCircle style={{ paddingTop: "1px" }} />,
   },
   {
     title: "Announcements",

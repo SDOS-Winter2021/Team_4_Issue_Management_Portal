@@ -4,6 +4,7 @@ import React, { useState, useContext } from "react";
 import { AuthContext } from "../context/auth-context";
 import Header from "../components/Navigation/Header";
 import { IssueContainer } from "../components/IssueDashboard/IssueDesigns";
+import NotifPopup from "../components//Notifications/NotifPopup";
 import {
   H1,
   Label,
@@ -51,14 +52,21 @@ const Admin = () => {
   const [filter, setFilter] = useState("");
   const [filterType, setFilterType] = useState("");
 
+  const [updateWarn, _setUpdateWarn] = useState(false);
+  const setUpdateWarn = () => _setUpdateWarn(!updateWarn);
+
   const handleSubmitAdmin = () => {
     if (filter !== "" && filterType !== "") {
       console.log(filter, filterType);
     }
     if (email !== "" && role !== "") {
+
       updateRole({ email: email, newRole: role });
+
       console.log(email, role);
     }
+    setFilter("");
+    setEmail("");
   };
 
   return (
@@ -122,13 +130,21 @@ const Admin = () => {
           </div>
 
           <SubmitButton
-            onClick={handleSubmitAdmin}
+            onClick={setUpdateWarn}
             type="submit"
             style={{ cursor: "pointer" }}
           >
             Submit
           </SubmitButton>
         </fieldset>
+        {updateWarn && (
+            <NotifPopup
+              message={"Changes will be made."}
+              onClickFunc={handleSubmitAdmin}
+              popup={updateWarn}
+              handlePop={setUpdateWarn}
+            />
+          )}
       </IssueContainer>
     </div>
   );

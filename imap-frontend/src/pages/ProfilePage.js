@@ -14,12 +14,13 @@ const style = {
   background: "#dcedf7",
 };
 
-const textStyle = { fontSize: "20px", margin: "0px 30px" };
+const textStyle = { fontSize: "40px", margin: "0px 30px" };
 const labelHolderStyle = {
   display: "flex",
   flexDirection: "row-reverse",
   height: "60px",
   width: "100%",
+  marginRight:"50%",
 };
 
 const welcomeMsg = {

@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import Autosuggest from "react-autosuggest";
-import theme from "./SearchBar.css";
+import "./SearchBar.css";
 import getTopIssues, { getSearchedIssue } from "../../logics/SearchIssues";
 import IndividualIssue from "../../pages/IndividualIssue";
+import * as FcIcons from "react-icons/fc"
 
 const SearchBar = ({ page, issues, privateFilter }) => {
   const isIssue = page === "Issues";
@@ -54,10 +55,11 @@ const SearchBar = ({ page, issues, privateFilter }) => {
   };
 
   const inputProps = {
-    placeholder: "Search",
+    placeholder: "Search...",
     value: value,
     onChange: onChange,
     type: "search",
+    icon : <FcIcons.FcSearch/>,
   };
 
   const indIssue = getSearchedIssue(value, issues);

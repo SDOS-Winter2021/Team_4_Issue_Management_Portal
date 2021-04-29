@@ -143,8 +143,8 @@ const CreateIssue = ({ page }) => {
             background: "#f4f7f8",
             position: "absolute",
             border: "none",
-            top: "10px",
-            right: "10px",
+            top: "20px",
+            right: "20px",
             cursor: "pointer",
           }}
           onClick={() => setIsPopup(false)}

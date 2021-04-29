@@ -5,7 +5,7 @@ export const CreateButton = styled.button`
   right: 40px;
   height: 70px;
   width: 70px;
-  background: #05009e;
+  background: #000;
   border-radius: 50%;
   position: fixed;
   color: #fff;
@@ -31,7 +31,7 @@ export const CreateButton = styled.button`
   outline: none;
 
   &:hover {
-    background: #64b5f6;
+    background: #3fada8;
     -webkit-transform: scale(1.1);
     -ms-transform: scale(1.1);
     transform: scale(1.1);

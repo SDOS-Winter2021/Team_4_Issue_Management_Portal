@@ -60,16 +60,17 @@ function IssueTitleNDesc({ issue, isIssue, isAdmin, handlePopIssue, page }) {
         >
           <h1
             style={{
-              marginRight: "10px",
+              marginRight: "20px",
               margin: "5px",
               display: "flex",
               flexWrap: "wrap",
+              fontSize:"30px"
             }}
           >
             {issue.Title}
             {isIssue && (
               <IssueStatusLabel
-                style={{ cursor: "pointer" }}
+                style={{ cursor: "pointer",marginLeft:"25px",width:"100px",height:"26px",borderRadius:"5px" }}
                 color={resolved ? "green" : "red"}
                 onClick={isAdmin ? () => setResolvedWarn() : () => {}}
               >
@@ -78,7 +79,7 @@ function IssueTitleNDesc({ issue, isIssue, isAdmin, handlePopIssue, page }) {
                 ) : (
                   <FaIcons.FaExclamationCircle />
                 )}
-                <p style={{ paddingLeft: "8px" }}>
+                <p style={{ paddingLeft: "8px",fontSize:"15px" }}>
                   {resolved ? "Resolved" : "Pending"}
                 </p>
               </IssueStatusLabel>
@@ -96,7 +97,7 @@ function IssueTitleNDesc({ issue, isIssue, isAdmin, handlePopIssue, page }) {
                   cursor: "pointer",
                 }}
               >
-                <FaIcons.FaTrashAlt style={{ color: "#666", width: "18px",height:"16px" }} />
+                <FaIcons.FaTrashAlt style={{ color: "#666", width: "18px",height:"22px" }} />
               </div>
             )}
           </h1>
@@ -117,7 +118,7 @@ function IssueTitleNDesc({ issue, isIssue, isAdmin, handlePopIssue, page }) {
             />
           )}
           <p style={{ fontSize: "12px", color: "gray" }}>
-            {issue.userEmail} | {issue.createdAt.split("T")[0]}
+            Created by: {issue.userEmail} | {issue.createdAt.split("T")[0]}
           </p>
           <Labels labels={issue.Filter} />
         </IssueContainer>

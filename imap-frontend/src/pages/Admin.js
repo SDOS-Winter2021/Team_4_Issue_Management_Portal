@@ -56,7 +56,9 @@ const Admin = () => {
       console.log(filter, filterType);
     }
     if (email !== "" && role !== "") {
+
       updateRole({ email: email, newRole: role });
+
       console.log(email, role);
     }
   };

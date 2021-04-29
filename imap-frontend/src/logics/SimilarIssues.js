@@ -66,33 +66,26 @@ function preprocess(str) {
   return preprocessed;
 }
 
-function Similar(strA, arr) {
+function Similar(arr,title,desc) {
   //arr is array of issues object
-  iss = strA.Desc;
-  issue = [];
-  arr = ["Fee portal not working", "Unable to pay fees", "course not on erp"];
-  // console.log(lemmatize.noun( 'fees portal' ))
-  // console.log(lemmatize.noun( 'Fees'.toLowerCase() ))
+  iss = title.concat(" ".concat(desc))
 
-  //res.send(result);
+  sim_issue=[]
   for (i = 0; i < arr.length; i++) {
-    // a=textCosineSimilarity(String(result[i].Desc),iss)
-    // if(a!=0){
-    //   console.log(a)
-    //   issueID.push(String(result[i].Desc))
-    // }
-    str = arr[i].Desc;
+    
+    str = arr[i].Title.concat(" ".concat(arr[i].Desc));
     str = preprocess(str);
     a = textCosineSimilarity(str, iss);
-    //console.log(a)
+
     if (a > 0.1) {
-      issue.push(arr[i]);
+      sim_issue.push((a,arr[i]));
     }
+    sim_issue.sort()
   }
-  return issue;
-  // res.json({
-  //   allissue:arr,
-  //   currentissue:iss,
-  //   relatedissue:issueID
-  // })
+  a=5
+  if(a>sim_issue.length){
+    a=sim_issue.length
+  }
+  return sim_issue.slice(0:a);
+ 
 }

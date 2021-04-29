@@ -43,14 +43,14 @@ export const TitleSearchContainer = styled.section`
 
 export const TitleContainer = styled.section`
   display: flex;
-  position: inherit;
+  position: relative;
   padding-left: 10px;
-  padding-top: 3px;
+  /* padding-top: 3px; */
   width: 50%;
 `;
 export const SearchContainer = styled.section`
   display: flex;
-  position: inherit;
+  position: relative;
   justify-content: right;
   width: 50%;
 `;
@@ -108,7 +108,8 @@ export const Label = styled.div`
   display: inline-block;
   padding: 6px;
   align-items: center;
-  font-size: 10px;
+  font-size: 12px;
+  font-weight: bold;
   border-radius: 12px;
   margin: 5px;
 `;
@@ -166,8 +167,7 @@ export const MyPostButtons = styled(Link)`
     align-items: center;
     justify-content: center;
     text-align: center;
-    margin-bottom: 25px;
-    margin-left: 25px;
+    margin-right: 10px;
     border-radius: 32px;
     cursor: pointer;
     text-decoration: none;
@@ -199,8 +199,8 @@ export const MyPostButtons = styled(Link)`
 `;
 
 export const filter_colors = {
-  Department: ["#BAC3DD", "#000"],
-  Batch: ["#0075ca", "#fff"],
-  Administration: ["#D2D179", "#000"],
-  Programs: ["#FBCA04", "#000"],
+  Department: ["#D79922", "#fff"],
+  Batch: ["#116466", "#fff"],
+  Administration: ["#4056A1", "#fff"],
+  Programs: ["#B7410E", "#fff"],
 };

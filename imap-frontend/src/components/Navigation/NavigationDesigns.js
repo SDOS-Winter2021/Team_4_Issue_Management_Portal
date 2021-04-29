@@ -39,7 +39,7 @@ export const ProfileDropdown = styled.nav`
   width: 150px;
   height: 80px;
   justify-content: center;
-  position: fixed;
+  position: absolute;
   top: 60px;
   visibility: ${({ showProfile }) => (showProfile ? "visible" : "hidden")};
   right: 5px;
@@ -56,13 +56,14 @@ export const DropdownLabel = styled(Link)`
   width: 150px;
   align-items: center;
   justify-content: center;
+  padding-left: 10px;
   display: flex;
   text-decoration: none;
-  color: #121212;
+  color: #000000;
   font-size: 14px;
 
   &:hover {
-    background: #05009e;
+    background: #3fada8;
     color: #fff;
     cursor: pointer;
   }
@@ -87,7 +88,7 @@ export const SidebarToggleIcon = styled(Link)`
  * Sidebar container
  */
 export const SidebarNav = styled.nav`
-  background: #05009e;
+  background: #3fada8;
   width: 250px;
   height: 100vh;
   display: flex;
@@ -112,10 +113,10 @@ export const SidebarWrap = styled.div`
  * Component on the sidebar that holds logo and sidebar toggle.
  */
 export const LogoCompartment = styled.div`
-  color: #e1e9fc;
+  color: #ffffff;
   justify-content: space-between;
   padding: 20px;
-  padding-left: 0px;
+  padding-left: 10px;
   list-style: none;
   height: 30px;
   text-decoration: none;
@@ -127,18 +128,19 @@ export const LogoCompartment = styled.div`
  */
 export const SidebarLink = styled(Link)`
   display: flex;
-  color: #e1e9fc;
-  background: ${({ isPage }) => (isPage ? "#252831" : " #05009e")};
+  color: #ffffff;
+  background: ${({ isPage }) => (isPage ? "#646466" : " #3fada8")};
   justify-content: space-between;
-  align-items: center;
+  align-items: left;
   padding: 20px;
   list-style: none;
-  height: 30px;
+  height: 25px;
   text-decoration: none;
-  font-size: 18px;
+  font-size: 20px;
+  font-weight: bold;
 
   &:hover {
-    background: #252831;
+    background: #646466;
     border-left: 4px solid #632ce4;
     cursor: pointer;
   }
@@ -146,18 +148,19 @@ export const SidebarLink = styled(Link)`
 
 export const SidebarNoLink = styled.span`
   display: flex;
-  color: #e1e9fc;
-  background: ${({ isPage }) => (isPage ? "#252831" : " #05009e")};
+  color: #ffffff;
+  background: ${({ isPage }) => (isPage ? "#646466" : " #3fada8")};
   justify-content: space-between;
   align-items: center;
   padding: 20px;
   list-style: none;
-  height: 30px;
+  height: 25px;
   text-decoration: none;
-  font-size: 18px;
+  font-size: 20px;
+  font-weight: bold;
 
   &:hover {
-    background: #252831;
+    background: #646466;
     border-left: 4px solid #632ce4;
     cursor: pointer;
   }
@@ -167,23 +170,23 @@ export const SidebarNoLink = styled.span`
  * Text Labels that appear on sidebar.
  */
 export const SidebarLabel = styled.span`
-  margin-left: 16px;
+  margin-left: 20px;
 `;
 
 /**
  * Text Labels that appear inside Filter Label.
  */
 export const FilterLabel = styled.span`
-  margin-left: 45px;
+  margin-left: 20px;
 `;
 
 /**
  * Text Labels for individual filter options.
  */
 export const FilterOptLabel = styled.span`
-  background: #0e0057;
+  background: #328f8a;
   height: 40px;
-  padding-left: 2rem;
+  padding-left: 2.5rem;
   display: flex;
   align-items: center;
   text-decoration: none;
@@ -191,7 +194,7 @@ export const FilterOptLabel = styled.span`
   font-size: 16px;
 
   &:hover {
-    background: #632ce4;
+    background: #646466;
     cursor: pointer;
   }
 `;

@@ -32,7 +32,7 @@ function Sidebar({
           <SidebarWrap>
             <LogoCompartment>
               <SidebarToggleIcon to="#">
-                <Link to="/issues">
+                <Link to="/profile">
                   <img
                     src={logo}
                     alt="Logo"

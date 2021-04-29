@@ -12,6 +12,7 @@ import { ArrayAND } from "../../logics/PostCategorization";
 import PrivateFilter from "../../logics/PrivatePostFilter";
 import React, { useContext, useEffect } from "react";
 import { AuthContext } from "../../context/auth-context";
+import * as FcIcons from "react-icons/fc"
 
 function AllIssues({ notMobileView, page, issues, filtersName }) {
   const { userData, tryLocalLogin } = useContext(AuthContext);

@@ -123,8 +123,8 @@ function SubMenu({ item, page, setFilterState, selectedFilters, applyFilter }) {
         onClick={isFilter ? showSubnav : () => {}}
         isPage={isPage}
       >
-        <div>
-          {item.icon}
+        <div style={{display:"flex"}}>
+          {item.icon} 
           <SidebarLabel>{item.title}</SidebarLabel>
         </div>
         <div>

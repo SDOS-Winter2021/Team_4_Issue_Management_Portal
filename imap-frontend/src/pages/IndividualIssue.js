@@ -78,7 +78,7 @@ function IndividualIssue({
             position: "absolute",
             border: "none",
             top: "20px",
-            right: "10px",
+            right: "20px",
             cursor: "pointer",
             padding: "3px",
           }}

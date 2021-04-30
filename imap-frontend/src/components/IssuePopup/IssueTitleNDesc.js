@@ -37,8 +37,6 @@ function IssueTitleNDesc({ issue, isIssue, isAdmin, handlePopIssue, page }) {
   };
 
   const deletePost = async () => {
-    console.log("deleteeeee");
-
     if (isIssue) {
       await deleteIssueDb({
         id: issue._id,

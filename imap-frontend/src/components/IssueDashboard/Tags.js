@@ -27,7 +27,6 @@ class Tags extends React.Component {
   onAddition(tag) {
     const tags_ = [].concat(this.state.tags, tag);
     this.setState({ tags: tags_ });
-    console.log(tags_, "child");
     this.state.update(tags_);
   }
 

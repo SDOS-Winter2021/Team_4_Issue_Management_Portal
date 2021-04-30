@@ -1,4 +1,16 @@
 module.exports = {
+  filterStream: function (filtersChangeStream, io) {
+    filtersChangeStream.on("change", (change) => {
+      switch (change.operationType) {
+        case "update":
+          console.log("change in db: insert filter");
+          const filter = [];
+          io.emit("updateFilter", filter);
+          break;
+      }
+    });
+  },
+
   issueStream: function (issuesChangeStream, io) {
     issuesChangeStream.on("change", (change) => {
       switch (change.operationType) {

@@ -20,7 +20,7 @@ const labelHolderStyle = {
   flexDirection: "row-reverse",
   height: "60px",
   width: "100%",
-  marginRight:"50%",
+  marginRight: "50%",
 };
 
 const welcomeMsg = {

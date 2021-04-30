@@ -4,9 +4,12 @@ import { useContext, useEffect } from "react";
 import { AuthContext } from "../context/auth-context";
 
 function SocketBack() {
-  const { getIssuesData, tryLocalLogin, getAnnouncementsData } = useContext(
-    AuthContext
-  );
+  const {
+    getIssuesData,
+    tryLocalLogin,
+    getAnnouncementsData,
+    getFiltersData,
+  } = useContext(AuthContext);
 
   useEffect(() => {
     var socket;
@@ -19,6 +22,19 @@ function SocketBack() {
         transports: ["websocket", "polling", "flashsocket"],
       });
     }
+
+    socket.on("updateFilter", async (props) => {
+      try {
+        const filterData = await getFiltersData();
+        await localStorage.setItem(
+          "allFiltersData",
+          JSON.stringify(filterData)
+        );
+        tryLocalLogin();
+      } catch (err) {
+        console.log(err);
+      }
+    });
 
     socket.on("newIssue", async (issue_) => {
       try {

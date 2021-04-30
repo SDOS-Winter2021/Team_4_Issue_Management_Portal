@@ -66,26 +66,24 @@ function preprocess(str) {
   return preprocessed;
 }
 
-function Similar(arr,title,desc) {
+function Similar(arr, title, desc) {
   //arr is array of issues object
-  iss = title.concat(" ".concat(desc))
+  iss = title.concat(" ".concat(desc));
 
-  sim_issue=[]
+  sim_issue = [];
   for (i = 0; i < arr.length; i++) {
-    
     str = arr[i].Title.concat(" ".concat(arr[i].Desc));
     str = preprocess(str);
     a = textCosineSimilarity(str, iss);
 
     if (a > 0.1) {
-      sim_issue.push((a,arr[i]));
+      sim_issue.push((a, arr[i]));
     }
-    sim_issue.sort()
+    sim_issue.sort();
   }
-  a=5
-  if(a>sim_issue.length){
-    a=sim_issue.length
+  a = 5;
+  if (a > sim_issue.length) {
+    a = sim_issue.length;
   }
-  return sim_issue.slice(0:a);
- 
+  return sim_issue.slice((0: a));
 }

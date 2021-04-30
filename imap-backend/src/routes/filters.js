@@ -30,23 +30,24 @@ router.get("/addFilter", (req, res) => {
 });
 
 router.post("/AddFilters", (req, res) => {
-  var name = "Batch";
-  var types = "2021"
+  var name = req.body.name;
+  var types = req.body.types;
   filters
-    .findOneAndUpdate({'Tags':name},{
-      $push: {
-        "Types": types,
-      },
-    })
+    .findOneAndUpdate(
+      { Tags: name },
+      {
+        $push: {
+          Types: types,
+        },
+      }
+    )
     .then((result) => {
-      res.send(result)
+      res.send(result);
     })
     .catch((err) => {
       console.log(err);
     });
-    
 });
-
 
 router.get("/GetFilters", (req, res) => {
   filters

@@ -3,7 +3,7 @@ import Autosuggest from "react-autosuggest";
 import "./SearchBar.css";
 import getTopIssues, { getSearchedIssue } from "../../logics/SearchIssues";
 import IndividualIssue from "../../pages/IndividualIssue";
-import * as FcIcons from "react-icons/fc"
+import * as FcIcons from "react-icons/fc";
 
 const SearchBar = ({ page, issues, privateFilter }) => {
   const isIssue = page === "Issues";
@@ -59,7 +59,7 @@ const SearchBar = ({ page, issues, privateFilter }) => {
     value: value,
     onChange: onChange,
     type: "search",
-    icon : <FcIcons.FcSearch/>,
+    icon: <FcIcons.FcSearch />,
   };
 
   const indIssue = getSearchedIssue(value, issues);

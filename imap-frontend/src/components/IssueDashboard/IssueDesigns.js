@@ -36,6 +36,7 @@ export const TitleSearchContainer = styled.section`
   font-weight: 500;
   display: flex;
   position: relative;
+  padding: 30px 0 5px 5px;
   @media screen and (min-width: 200px) and (max-width: 430px) {
     font-size: 18px;
   }

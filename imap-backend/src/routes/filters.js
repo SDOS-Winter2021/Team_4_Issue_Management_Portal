@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const filters = require("../models/filters");
 
-router.post("/addFilter", (req, res) => {
+router.get("/addFilter", (req, res) => {
   var name = "Administration";
   var types = [
     "Academic Section",
@@ -21,6 +21,26 @@ router.post("/addFilter", (req, res) => {
   });
   filter
     .save()
+    .then((result) => {
+      res.send(result);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+});
+
+router.post("/AddFilters", (req, res) => {
+  var name = req.body.name;
+  var types = req.body.types;
+  filters
+    .findOneAndUpdate(
+      { Tags: name },
+      {
+        $push: {
+          Types: types,
+        },
+      }
+    )
     .then((result) => {
       res.send(result);
     })

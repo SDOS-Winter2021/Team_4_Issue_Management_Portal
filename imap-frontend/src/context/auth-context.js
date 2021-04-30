@@ -116,6 +116,15 @@ const getFiltersData = async () => {
   }
 };
 
+const addFilter = async (props) => {
+  try {
+    const res = await axios.post("/filter/AddFilters", props);
+    return res.data;
+  } catch (err) {
+    console.log(err);
+  }
+};
+
 const AuthProvider = (props) => {
   const [loggedIn, setLoggedIn] = useState(false);
   const [userData, setUserData] = useState([]);
@@ -169,6 +178,7 @@ const AuthProvider = (props) => {
     deleteIssueDb,
     deleteAnnouncementDb,
     updateRole,
+    addFilter,
   };
 
   return (

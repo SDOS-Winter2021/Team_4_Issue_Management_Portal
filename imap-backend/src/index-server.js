@@ -46,6 +46,8 @@ const connection = mongoose.connection;
 connection.once("open", () => {
   console.log("MongoDB database connected");
   console.log("Setting change streams");
+  const filtersChangeStream = connection.collection("filters").watch();
+  stream.filterStream(filtersChangeStream, io);
   const issuesChangeStream = connection.collection("issues").watch();
   stream.issueStream(issuesChangeStream, io);
   const announcementsChangeStream = connection

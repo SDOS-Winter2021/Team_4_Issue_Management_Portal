@@ -36,7 +36,7 @@ const StyledDropdown = styled(Dropdown)`
 `;
 
 const Admin = () => {
-  const { updateRole } = useContext(AuthContext);
+  const { updateRole, addFilter } = useContext(AuthContext);
   const notMobileView = useMediaPredicate("(min-width: 800px)");
   const [sidebar, setSidebar] = useState(true);
   const showSidebar = () => setSidebar(!sidebar);
@@ -57,6 +57,7 @@ const Admin = () => {
 
   const handleSubmitAdmin = () => {
     if (filter !== "" && filterType !== "") {
+      addFilter({ types: filter, name: filterType });
       console.log(filter, filterType);
     }
     if (email !== "" && role !== "") {

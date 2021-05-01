@@ -94,24 +94,24 @@ const CreateIssue = ({ page }) => {
     setIsPublic(true);
   };
   const handleSubmitIssue = async () => {
+    if (!isIssue){
+      if (title === "") {
+        alert("Title is mandatory");
+        return;
+      } else if (description === "") {
+        alert("Description is mandatory");
+        return;
+      }
+    }
     const title_ = title.trim();
     const description_ = description.trim();
     const batch_ = [];
-    console.log("batch array");
     const batchset = new Set(batch);
-    console.log(batchset)
     const departmentset = new Set(department);
-    console.log("dept array");
-    console.log(departmentset)
     const administrationset = new Set(administration);
-    console.log("admin array");
-    console.log(administrationset)
     const programsset = new Set(programs);
-    console.log("prog array");
-    console.log(programsset)
     batchset.forEach((element) => {batch_.push(element)});
     const department_ = [];
-    
     departmentset.forEach((element) => {department_.push(element)});
     const administration_ = [];
     administrationset.forEach((element) => administration_.push(element));

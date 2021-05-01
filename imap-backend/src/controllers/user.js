@@ -13,6 +13,7 @@ var transport = nodemailer.createTransport({
     pass: `${process.env.EMAIL_PASSWORD}`,
   },
 });
+
 exports.googlelogin = (req, res) => {
   const tokenId = req.body.tokenId;
   client
@@ -22,26 +23,26 @@ exports.googlelogin = (req, res) => {
       if (email_verified && hd == "iiitd.ac.in") {
         User.findOne({ email }).exec((error, user) => {
           if (error) {
-            return res.status(400).json({
+            return res.json({
               message: "Something went wrong!",
             });
           } else {
             if (user) {
               console.log("existing user:", user);
-              res.json({ user: user });
+              res.json({ message: "Successful", user: user });
             } else {
               const n_user = new User({ name, email });
               n_user.save((error, data) => {
                 if (error) {
                   console.log(error);
-                  return res.status(400).json({
-                    message: error,
+                  return res.json({
+                    message: "Something went wrong!",
                   });
                 }
 
                 if (data) {
                   console.log("new user:", data);
-                  res.json({ user: data });
+                  res.json({ message: "Successful", user: data });
                 }
               });
             }
@@ -49,8 +50,8 @@ exports.googlelogin = (req, res) => {
         });
       } else if (hd != "iiitd.ac.in") {
         console.log("Use iiitd account...!");
-        return res.status(400).json({
-          message: "Use iiitd account...!",
+        return res.json({
+          message: "Use IIIT-D account!",
         });
       }
     });

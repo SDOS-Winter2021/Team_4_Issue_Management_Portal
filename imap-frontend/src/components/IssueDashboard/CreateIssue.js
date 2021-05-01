@@ -157,6 +157,7 @@ const CreateIssue = ({ page }) => {
           <LabelR for="Title">Title: </LabelR>
           <Input
             value={title}
+            maxLength="128"
             onChange={(evt) => setTitle(evt.target.value)}
             type="text"
             id="title"

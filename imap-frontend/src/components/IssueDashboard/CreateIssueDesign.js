@@ -128,7 +128,7 @@ export const Input = styled.input`
   height: 40px;
   width: 100%;
   background-color: #e8eeef;
-  color: #8a97a0;
+  color: #474747;
   box-shadow: 0 1px 0 rgba(0, 0, 0, 0.03) inset;
   margin-bottom: 1em;
   overflow: style;
@@ -141,7 +141,7 @@ export const Input = styled.input`
     height: 25px;
     width: 100%;
     background-color: #e8eeef;
-    color: #8a97a0;
+    color: #474747;
     box-shadow: 0 1px 0 rgba(0, 0, 0, 0.03) inset;
     margin-bottom: 0.5em;
     overflow: style;
@@ -157,7 +157,7 @@ export const TextArea = styled.textarea`
   height: 80px;
   width: 100%;
   background-color: #e8eeef;
-  color: #8a97a0;
+  color: #474747;
   box-shadow: 0 1px 0 rgba(0, 0, 0, 0.03) inset;
   margin-bottom: 1.5em;
   /* display: none; */
@@ -170,7 +170,7 @@ export const TextArea = styled.textarea`
     height: 40px;
     width: 100%;
     background-color: #e8eeef;
-    color: #8a97a0;
+    color: #474747;
     box-shadow: 0 1px 0 rgba(0, 0, 0, 0.03) inset;
     margin-bottom: 0.5em;
   }

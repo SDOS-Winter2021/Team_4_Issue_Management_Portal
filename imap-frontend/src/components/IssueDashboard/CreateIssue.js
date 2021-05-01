@@ -83,8 +83,8 @@ const CreateIssue = ({ page }) => {
   for (i = 0; i < programsS.length; i++) {
     programsSuggestions.push({ id: i, text: programsS[i], value: programsS[i] });
   }
+  
   const clearData = () => {
-    console.log("clearing....");
     setTitle("");
     setDescription("");
     setBatch([]);
@@ -93,6 +93,7 @@ const CreateIssue = ({ page }) => {
     setPrograms([]);
     setIsPublic(true);
   };
+
   const handleSubmitIssue = async () => {
     if (!isIssue){
       if (title === "") {

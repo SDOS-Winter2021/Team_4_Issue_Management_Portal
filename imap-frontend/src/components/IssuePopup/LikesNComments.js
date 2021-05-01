@@ -2,14 +2,7 @@ import { IssueContainer } from "../IssueDashboard/IssueDesigns";
 import { LikeComments } from "../IssueDashboard/Issue";
 import * as FaIcons from "react-icons/fa";
 
-function LikesNComments({
-  issue,
-  isIssue,
-  setComment,
-  setLike,
-  like,
-  comment,
-}) {
+function LikesNComments({ issue, isIssue, setLike, like }) {
   return (
     <>
       <IssueContainer style={{ borderBottom: "2px solid #ccc" }}>
@@ -28,16 +21,9 @@ function LikesNComments({
             />
           </div>
         )}
-        <div
-          style={{ padding: "10px", cursor: "pointer", fontSize: "20px" }}
-          onClick={setComment}
-        >
+        <div style={{ padding: "10px", cursor: "pointer", fontSize: "20px" }}>
           <LikeComments
-            icon={
-              <FaIcons.FaComments
-                style={comment ? { color: "#323499" } : { color: "gray" }}
-              />
-            }
+            icon={<FaIcons.FaComments style={{ color: "gray" }} />}
             number={issue.Comments.userEmail.length}
           />
         </div>

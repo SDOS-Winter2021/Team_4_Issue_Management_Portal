@@ -38,8 +38,6 @@ function IndividualIssue({
   const likes_list = isIssue ? issue.Likes.studEmail : [];
   const has_liked = isIssue ? likes_list.indexOf(userEmail) >= 0 : false;
 
-  const [commentArea, setComment] = useState(false);
-  const setCommFunc = () => setComment(!commentArea);
   const [userComment, _readComment] = useState("");
   const readComment = (e) => _readComment(e.target.value);
   const [like, setLike] = useState(has_liked);
@@ -58,7 +56,6 @@ function IndividualIssue({
   };
 
   const addComment = () => {
-    setCommFunc();
     AddComment(
       userComment,
       issue,
@@ -67,6 +64,7 @@ function IndividualIssue({
       updateIssueDb,
       updateAnnouncementDb
     );
+    _readComment("");
   };
 
   return (
@@ -94,14 +92,15 @@ function IndividualIssue({
         <LikesNComments
           issue={issue}
           isIssue={isIssue}
-          setComment={setCommFunc}
           setLike={setLikeFunc}
           like={like}
-          comment={commentArea}
         />
-        {commentArea && (
-          <CommentInput readComment={readComment} addComment={addComment} />
-        )}
+        <CommentInput
+          readComment={readComment}
+          userComment={userComment}
+          addComment={addComment}
+        />
+
         <IssueContainer>
           {issue.Comments.userEmail.map((commenter, index) => {
             const comment = issue.Comments.comment[index];

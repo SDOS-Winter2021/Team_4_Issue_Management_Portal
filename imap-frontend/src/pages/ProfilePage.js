@@ -25,8 +25,7 @@ const labelHolderStyle = {
 
 const welcomeMsg = {
   admin: "You are logged in as an Admin",
-  student:
-    "You are logged in as a Student. Please contact Admin BTech for admin privileges.",
+  student: "You are logged in as a Student.",
 };
 
 const ProfilePage = () => {

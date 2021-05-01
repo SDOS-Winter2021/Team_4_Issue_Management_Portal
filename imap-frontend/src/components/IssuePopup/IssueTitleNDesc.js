@@ -13,13 +13,10 @@ function IssueTitleNDesc({ issue, isIssue, isAdmin, handlePopIssue, page }) {
     isIssue ? issue.Tags.Resolved : false
   );
 
-  const [resolvedWarn, _setResolvedWarn] = useState(false);
-  const setResolvedWarn = () => {
-    if (isAdmin && isIssue && !resolved) _setResolvedWarn(!resolvedWarn);
-  };
+  const [resolvedWarn, setResolvedWarn] = useState(false);
+  const [deleteWarn, setDeleteWarn] = useState(false);
+  const [privateWarn, setPrivateWarn] = useState(false);
 
-  const [deleteWarn, _setDeleteWarn] = useState(false);
-  const setDeleteWarn = () => _setDeleteWarn(!deleteWarn);
   const { deleteIssueDb, deleteAnnouncementDb, updateIssueDb } = useContext(
     AuthContext
   );
@@ -37,8 +34,6 @@ function IssueTitleNDesc({ issue, isIssue, isAdmin, handlePopIssue, page }) {
   };
 
   const deletePost = async () => {
-    console.log("deleteeeee");
-
     if (isIssue) {
       await deleteIssueDb({
         id: issue._id,
@@ -50,6 +45,11 @@ function IssueTitleNDesc({ issue, isIssue, isAdmin, handlePopIssue, page }) {
     }
     handlePopIssue();
     setDeleteWarn();
+  };
+
+  const makePostPublic = () => {
+    console.log("make public");
+    issue.Tags.Public = true;
   };
 
   return (
@@ -78,7 +78,11 @@ function IssueTitleNDesc({ issue, isIssue, isAdmin, handlePopIssue, page }) {
                   borderRadius: "5px",
                 }}
                 color={resolved ? "green" : "red"}
-                onClick={isAdmin ? () => setResolvedWarn() : () => {}}
+                onClick={
+                  isAdmin && !resolved
+                    ? () => setResolvedWarn(!resolvedWarn)
+                    : () => {}
+                }
               >
                 {resolved ? (
                   <FaIcons.FaCheckCircle />
@@ -91,13 +95,23 @@ function IssueTitleNDesc({ issue, isIssue, isAdmin, handlePopIssue, page }) {
               </IssueStatusLabel>
             )}
             {isIssue && !issue.Tags.Public && (
-              <FaIcons.FaLock
-                style={{ color: "#aaa", width: "18px", paddingLeft: "10px" }}
-              />
+              <div
+                onClick={
+                  isAdmin ? () => setPrivateWarn(!privateWarn) : () => {}
+                }
+                style={{
+                  paddingLeft: "15px",
+                  cursor: "pointer",
+                }}
+              >
+                <FaIcons.FaLock
+                  style={{ color: "#aaa", width: "18px", paddingLeft: "10px" }}
+                />
+              </div>
             )}
             {isAdmin && (
               <div
-                onClick={setDeleteWarn}
+                onClick={() => setDeleteWarn(!deleteWarn)}
                 style={{
                   paddingLeft: "15px",
                   cursor: "pointer",
@@ -122,9 +136,22 @@ function IssueTitleNDesc({ issue, isIssue, isAdmin, handlePopIssue, page }) {
               message={"The post will be deleted. This cannot be undone."}
               onClickFunc={deletePost}
               popup={deleteWarn}
-              handlePop={setDeleteWarn}
+              handlePop={() => setDeleteWarn(!deleteWarn)}
             />
           )}
+          {privateWarn && (
+            <NotifPopup
+              message={
+                "The post will be changed from private to public. This cannot be undone."
+              }
+              onClickFunc={makePostPublic}
+              popup={privateWarn}
+              handlePop={() => {
+                setPrivateWarn(!privateWarn);
+              }}
+            />
+          )}
+
           <p style={{ fontSize: "12px", color: "gray" }}>
             Created by: {issue.userEmail} | {issue.createdAt.split("T")[0]}
           </p>

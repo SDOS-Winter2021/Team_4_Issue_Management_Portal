@@ -73,6 +73,8 @@ function MyAnnouncements() {
   };
 
   const author = userData.user ? userData.user.email : "";
+  const isAdmin = userData.user ? userData.user.role === "admin" : false;
+
   const showAnnounce = FilterIssues(selectedFilters, allAnnouncementsData);
   const commentedAnnounce = ArrayAND(
     showAnnounce,
@@ -97,18 +99,21 @@ function MyAnnouncements() {
         <div style={{ display: "flex", justifyContent: "space-between" }}>
           {categories.map((category, index) => {
             return (
-              <MyPostLabels
-                selected={anounceCategories[index]}
-                onClick={() => setAnnounceCat(index)}
-              >
-                {category.icon}
-                {category.name}
-              </MyPostLabels>
+              (category.name === "Authored" ? isAdmin : true) && (
+                <MyPostLabels
+                  selected={anounceCategories[index]}
+                  onClick={() => setAnnounceCat(index)}
+                >
+                  {category.icon}
+                  {category.name}
+                </MyPostLabels>
+              )
             );
           })}
         </div>
-        {categories.map((_, index) => {
+        {categories.map((category, index) => {
           return (
+            (category.name === "Authored" ? isAdmin : true) &&
             anounceCategories[index] && (
               <CategorizedIssues
                 issues={allAnnouncementsData}

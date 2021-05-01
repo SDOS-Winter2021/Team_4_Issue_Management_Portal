@@ -75,6 +75,7 @@ function MyIssues() {
   };
 
   const author = userData.user ? userData.user.email : "";
+  const isAdmin = userData.user ? userData.user.role === "admin" : false;
   const showIssues = FilterIssues(selectedFilters, allIssuesData);
   const likedIssues = ArrayAND(showIssues, LikedPost(allIssuesData, author));
   const commentedIssues = ArrayAND(
@@ -100,18 +101,21 @@ function MyIssues() {
         <div style={{ display: "flex", justifyContent: "space-between" }}>
           {categories.map((category, index) => {
             return (
-              <MyPostLabels
-                selected={issueCategories[index]}
-                onClick={() => setIssueCat(index)}
-              >
-                {category.icon}
-                {category.name}
-              </MyPostLabels>
+              (category.name === "Authored" ? !isAdmin : true) && (
+                <MyPostLabels
+                  selected={issueCategories[index]}
+                  onClick={() => setIssueCat(index)}
+                >
+                  {category.icon}
+                  {category.name}
+                </MyPostLabels>
+              )
             );
           })}
         </div>
-        {categories.map((_, index) => {
+        {categories.map((category, index) => {
           return (
+            (category.name === "Authored" ? !isAdmin : true) &&
             issueCategories[index] && (
               <CategorizedIssues
                 issues={allIssuesData}

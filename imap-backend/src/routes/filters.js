@@ -49,6 +49,26 @@ router.post("/AddFilters", (req, res) => {
     });
 });
 
+router.post("/DeleteFilters", (req, res) => {
+  var name = req.body.name;
+  var types = req.body.types;
+  filters
+    .findOneAndUpdate(
+      { Tags: name },
+      {
+        $pull: {
+          Types: types,
+        },
+      }
+    )
+    .then((result) => {
+      res.send(result);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+});
+
 router.get("/GetFilters", (req, res) => {
   filters
     .find()

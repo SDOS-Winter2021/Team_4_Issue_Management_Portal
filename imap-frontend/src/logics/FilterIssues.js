@@ -20,6 +20,5 @@ export default function FilterIssues(filters, issues) {
     }
     showIssues.push(showIssue);
   }
-  console.log(showIssues);
   return showIssues;
 }

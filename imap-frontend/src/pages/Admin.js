@@ -36,7 +36,7 @@ const StyledDropdown = styled(Dropdown)`
 `;
 
 const Admin = () => {
-  const { updateRole, addFilter } = useContext(AuthContext);
+  const { updateRole, addFilter, delFilter } = useContext(AuthContext);
   const notMobileView = useMediaPredicate("(min-width: 800px)");
   const [sidebar, setSidebar] = useState(true);
   const showSidebar = () => setSidebar(!sidebar);
@@ -51,6 +51,8 @@ const Admin = () => {
   const [role, setRole] = useState("");
   const [filter, setFilter] = useState("");
   const [filterType, setFilterType] = useState("");
+  const [deleteFilter, setDeleteFilter] = useState("");
+  const [deleteFilterType, setDeleteFilterType] = useState("");
 
   const [updateWarn, _setUpdateWarn] = useState(false);
   const setUpdateWarn = () => _setUpdateWarn(!updateWarn);
@@ -58,15 +60,16 @@ const Admin = () => {
   const handleSubmitAdmin = () => {
     if (filter !== "" && filterType !== "") {
       addFilter({ types: filter, name: filterType });
-      console.log(filter, filterType);
+    }
+    if (deleteFilter !== "" && deleteFilterType !== "") {
+      delFilter({ types: deleteFilter, name: deleteFilterType });
     }
     if (email !== "" && role !== "") {
       updateRole({ email: email, newRole: role });
-
-      console.log(email, role);
     }
     setFilter("");
     setEmail("");
+    setDeleteFilter("");
   };
 
   return (
@@ -111,6 +114,31 @@ const Admin = () => {
               selection
               options={filters}
               onChange={(event, { value }) => setFilterType(value)}
+            />
+          </div>
+          <br />
+          <Label for="AddFilter">Delete Filters</Label>
+          <br />
+          <div
+            style={{
+              display: "flex",
+              flexDirection: !notMobileView ? "column" : "row",
+            }}
+          >
+            <Input
+              value={deleteFilter}
+              onChange={(evt) => setDeleteFilter(evt.target.value)}
+              type="text"
+              placeholder="filter"
+              id="title"
+              style={{ marginLeft: "10px", width: "300px" }}
+            />
+            <StyledDropdown
+              placeholder="Filter type"
+              search
+              selection
+              options={filters}
+              onChange={(event, { value }) => setDeleteFilterType(value)}
             />
           </div>
           <br />

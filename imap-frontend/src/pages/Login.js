@@ -34,38 +34,50 @@ const Login = () => {
       method: "POST",
       url: "login/googlelogin",
       data: { tokenId: response.tokenId },
-    }).then((response) => {
-      var run = async () => {
-        try {
-          setLoggedIn(true);
-          await localStorage.setItem("loggedIn", true);
-          await localStorage.setItem("userData", JSON.stringify(response.data));
-          const filtersData = await getFiltersData();
-          const issueData = await getIssuesData();
-          const announcementData = await getAnnouncementsData();
-          await localStorage.setItem(
-            "allFiltersData",
-            JSON.stringify(filtersData)
-          );
-          await localStorage.setItem(
-            "allIssuesData",
-            JSON.stringify(issueData)
-          );
-          await localStorage.setItem(
-            "allAnnouncementsData",
-            JSON.stringify(announcementData)
-          );
+    })
+      .then((response) => {
+        var run = async () => {
+          try {
+            if (response.data.message == "Successful") {
+              setLoggedIn(true);
+              await localStorage.setItem("loggedIn", true);
+              await localStorage.setItem(
+                "userData",
+                JSON.stringify(response.data)
+              );
+              const filtersData = await getFiltersData();
+              const issueData = await getIssuesData();
+              const announcementData = await getAnnouncementsData();
+              await localStorage.setItem(
+                "allFiltersData",
+                JSON.stringify(filtersData)
+              );
+              await localStorage.setItem(
+                "allIssuesData",
+                JSON.stringify(issueData)
+              );
+              await localStorage.setItem(
+                "allAnnouncementsData",
+                JSON.stringify(announcementData)
+              );
 
-          history.push("/issues");
-        } catch (err) {
-          console.log(err);
-        }
-      };
-      run();
-    });
+              history.push("/issues");
+            } else {
+              alert(response.data.message);
+            }
+          } catch (err) {
+            alert("Something went wrong!");
+          }
+        };
+        run();
+      })
+      .catch((err) => {
+        alert("Something went wrong!");
+      });
   };
   const responseErrorGoogle = (response) => {
-    console.log(response);
+    alert("Something went wrong");
+    // console.log(response);
   };
   return (
     <div className="page-container">

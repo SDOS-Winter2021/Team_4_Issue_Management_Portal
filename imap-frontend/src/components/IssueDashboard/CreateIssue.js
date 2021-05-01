@@ -1,7 +1,6 @@
 import React, { useEffect, useState, useContext } from "react";
 import { AuthContext } from "../../context/auth-context";
 import Modal from "react-modal";
-import Tags from "./Tags";
 import * as FaIcons from "react-icons/fa";
 import SimilarIssue from "../Notifications/SimilarIssue";
 import {
@@ -13,6 +12,17 @@ import {
   SubmitButton,
   LabelR,
 } from "./CreateIssueDesign";
+import styled from "styled-components";
+import { Dropdown } from "semantic-ui-react";
+import "semantic-ui-css/components/dropdown.min.css";
+
+const StyledDropdown = styled(Dropdown)`
+  &.ui.selection.dropdown {
+    .menu.visible {
+      display: block;
+    }
+  }
+`;
 
 const CreateIssue = ({ page }) => {
   const {
@@ -62,18 +72,19 @@ const CreateIssue = ({ page }) => {
   var programsS = allFiltersData.Programs ? allFiltersData.Programs : [];
   var i;
   for (i = 0; i < batchS.length; i++) {
-    batchSuggestions.push({ id: i, name: batchS[i] });
+    batchSuggestions.push({ id: i, text: batchS[i], value: batchS[i] });
   }
   for (i = 0; i < departmentS.length; i++) {
-    departmentSuggestions.push({ id: i, name: departmentS[i] });
+    departmentSuggestions.push({ id: i, text: departmentS[i],value: departmentS[i] });
   }
   for (i = 0; i < administrationS.length; i++) {
-    administrationSuggestions.push({ id: i, name: administrationS[i] });
+    administrationSuggestions.push({ id: i, text: administrationS[i], value: administrationS[i] });
   }
   for (i = 0; i < programsS.length; i++) {
-    programsSuggestions.push({ id: i, name: programsS[i] });
+    programsSuggestions.push({ id: i, text: programsS[i], value: programsS[i] });
   }
   const clearData = () => {
+    console.log("clearing....");
     setTitle("");
     setDescription("");
     setBatch([]);
@@ -86,13 +97,26 @@ const CreateIssue = ({ page }) => {
     const title_ = title.trim();
     const description_ = description.trim();
     const batch_ = [];
-    batch.forEach((element) => batch_.push(element.name));
+    console.log("batch array");
+    const batchset = new Set(batch);
+    console.log(batchset)
+    const departmentset = new Set(department);
+    console.log("dept array");
+    console.log(departmentset)
+    const administrationset = new Set(administration);
+    console.log("admin array");
+    console.log(administrationset)
+    const programsset = new Set(programs);
+    console.log("prog array");
+    console.log(programsset)
+    batchset.forEach((element) => {batch_.push(element)});
     const department_ = [];
-    department.forEach((element) => department_.push(element.name));
+    
+    departmentset.forEach((element) => {department_.push(element)});
     const administration_ = [];
-    administration.forEach((element) => administration_.push(element.name));
+    administrationset.forEach((element) => administration_.push(element));
     const programs_ = [];
-    programs.forEach((element) => programs_.push(element.name));
+    programsset.forEach((element) => programs_.push(element));
     const isPublic_ = isPublic;
 
     setIsPopup(false);
@@ -147,7 +171,7 @@ const CreateIssue = ({ page }) => {
             right: "20px",
             cursor: "pointer",
           }}
-          onClick={() => setIsPopup(false)}
+          onClick={() => {setIsPopup(false);clearData();}}
         >
           <FaIcons.FaTimes />
         </button>
@@ -171,7 +195,6 @@ const CreateIssue = ({ page }) => {
 
           {{ page }.page === "Issues" && (
             <>
-              {/* <Label> Public / Private</Label> */}
               <br></br>
               <br></br>
               <tbody>
@@ -195,7 +218,7 @@ const CreateIssue = ({ page }) => {
                       type="radio"
                       value="private"
                       name="isPublic"
-                      onChange={() => setIsPublic(false)}
+                      onChange={() => {setIsPublic(false);clearData()}}
                     />{" "}
                     <Label style={{ display: "inline-block" }}>
                       {" "}
@@ -209,22 +232,48 @@ const CreateIssue = ({ page }) => {
           )}
 
           <Label for="Batch">Batch:</Label>
-          <Tags suggestions={batchSuggestions} update={setBatch}></Tags>
+          <StyledDropdown
+            placeholder = "Choose Batch"
+            search
+            selection
+            multiple
+            options={batchSuggestions}
+            onChange={(event, { value }) => setBatch(batch.concat(value))}
+          />
+          <br></br>
           <br></br>
           <Label for="Department">Department:</Label>
-          <Tags
-            suggestions={departmentSuggestions}
-            update={setDepartment}
-          ></Tags>
+          <StyledDropdown
+            placeholder = "Choose Department"
+            search
+            selection
+            multiple
+            options={departmentSuggestions}
+            onChange={(event, { value }) => setDepartment(department.concat(value))}
+          />
+          <br></br>
           <br></br>
           <Label for="Administration">Administration:</Label>
-          <Tags
-            suggestions={administrationSuggestions}
-            update={setAdministration}
-          ></Tags>
+          <StyledDropdown
+            placeholder = "Choose Administration"
+            search
+            selection
+            multiple
+            options={administrationSuggestions}
+            onChange={(event, { value }) => setAdministration(administration.concat(value))}
+          />
+          <br></br>
           <br></br>
           <Label for="Programs">Programs:</Label>
-          <Tags suggestions={programsSuggestions} update={setPrograms}></Tags>
+          <StyledDropdown
+            placeholder = "Choose Program"
+            search
+            selection
+            multiple
+            options={programsSuggestions}
+            onChange={(event, { value }) => setPrograms(programs.concat(value))}
+          />
+          <br></br>
           <br></br>
           <SubmitButton
             onClick={isIssue ? setWarningPopup : handleSubmitIssue}

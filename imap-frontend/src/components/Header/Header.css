@@ -12,15 +12,14 @@
   align-items: left;
   justify-content: left;
   margin-left: 0;
-  width: 20vw;
+  width: 5vw;
 }
 .container-center {
   display: flex;
-  padding-left: 12em;
+  width: 100%;
   text-align: center;
   justify-content: center;
   align-items: center;
-  width: fit-content;
 }
 .logo {
   width: 170px;
@@ -39,7 +38,7 @@
   color: #808080;
 }
 
-@media screen and (min-width: 540px) and (max-width: 1000px) {
+@media screen and (min-width: 560px) and (max-width: 1040px) {
   .container-left {
     display: flex;
     align-items: left;
@@ -70,7 +69,7 @@
   }
 }
 
-@media screen and (min-width: 220px) and (max-width: 540px) {
+@media screen and (min-width: 220px) and (max-width: 560px) {
   .container-left {
     display: flex;
     align-items: center;

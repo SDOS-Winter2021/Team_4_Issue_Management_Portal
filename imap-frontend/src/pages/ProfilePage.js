@@ -8,6 +8,7 @@ import {
   MyPostButtons,
 } from "../components/IssueDashboard/IssueDesigns";
 import Sidebar from "../components/Navigation/Sidebar";
+import { useHistory } from "react-router-dom";
 
 const style = {
   height: "100vh",
@@ -34,8 +35,9 @@ const ProfilePage = () => {
   const [sidebar, setSidebar] = useState(true);
   const showSidebar = () => setSidebar(!sidebar);
   const page = "Profile";
+  let history = useHistory();
 
-  const { userData, tryLocalLogin } = useContext(AuthContext);
+  const { userData, tryLocalLogin, logout } = useContext(AuthContext);
   useEffect(() => {
     tryLocalLogin();
   }, []);
@@ -61,12 +63,16 @@ const ProfilePage = () => {
         style={{ background: "inherit", flexDirection: "column" }}
       >
         <div style={labelHolderStyle}>
+          <MyPostButtons onClick={() => logout({ history })}>
+            <p>Logout</p>
+          </MyPostButtons>
           <MyPostButtons to="/myissues">
             <p>My Issues</p>
           </MyPostButtons>
           <MyPostButtons to="/myannouncements">
             <p>My Announcements</p>
           </MyPostButtons>
+
           {isAdmin && (
             <MyPostButtons to="/adminroles">
               <p>Admin</p>

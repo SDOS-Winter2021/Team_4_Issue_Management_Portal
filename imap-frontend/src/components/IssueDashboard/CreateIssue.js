@@ -218,7 +218,7 @@ const CreateIssue = ({ page }) => {
                       type="radio"
                       value="private"
                       name="isPublic"
-                      onChange={() => {setIsPublic(false);clearData()}}
+                      onChange={() => setIsPublic(false)}
                     />{" "}
                     <Label style={{ display: "inline-block" }}>
                       {" "}

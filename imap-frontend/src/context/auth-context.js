@@ -4,7 +4,7 @@ import axios from "axios";
 const AuthContext = createContext();
 
 const logout = async ({ history }) => {
-  await localStorage.clear();
+  await sessionStorage.clear();
   history.push("/");
 };
 
@@ -54,6 +54,17 @@ const updateIssueDb = async (props) => {
     } catch (err) {
       console.log(err);
     }
+  }
+  else if(props.type == "Visibility"){
+    try {
+      const res = await axios.post(
+        `dashboard/VisibilityIssue/${props.id}`,
+        props
+      );
+    } catch (err) {
+      console.log(err);
+    }
+
   }
 };
 
@@ -143,18 +154,18 @@ const AuthProvider = (props) => {
 
   const tryLocalLogin = async () => {
     try {
-      const loggedIn = await localStorage.getItem("loggedIn");
+      const loggedIn = await sessionStorage.getItem("loggedIn");
       const userData = await JSON.parse(
-        localStorage.getItem("userData") || "{}"
+        sessionStorage.getItem("userData") || "{}"
       );
       const allIssues = await JSON.parse(
-        localStorage.getItem("allIssuesData") || "[]"
+        sessionStorage.getItem("allIssuesData") || "[]"
       );
       const allAnnouncements = await JSON.parse(
-        localStorage.getItem("allAnnouncementsData") || "[]"
+        sessionStorage.getItem("allAnnouncementsData") || "[]"
       );
       const allFilters = await JSON.parse(
-        localStorage.getItem("allFiltersData") || "{}"
+        sessionStorage.getItem("allFiltersData") || "{}"
       );
       setLoggedIn(loggedIn);
       setUserData(userData);

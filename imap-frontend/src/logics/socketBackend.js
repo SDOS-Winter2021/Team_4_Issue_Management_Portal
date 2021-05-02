@@ -26,7 +26,7 @@ function SocketBack() {
     socket.on("updateFilter", async (props) => {
       try {
         const filterData = await getFiltersData();
-        await localStorage.setItem(
+        await sessionStorage.setItem(
           "allFiltersData",
           JSON.stringify(filterData)
         );
@@ -39,7 +39,7 @@ function SocketBack() {
     socket.on("newIssue", async (issue_) => {
       try {
         const issueData = await getIssuesData();
-        await localStorage.setItem("allIssuesData", JSON.stringify(issueData));
+        await sessionStorage.setItem("allIssuesData", JSON.stringify(issueData));
         tryLocalLogin();
       } catch (err) {
         console.log(err);
@@ -49,7 +49,7 @@ function SocketBack() {
     socket.on("deleteIssue", async (issue_) => {
       try {
         const issueData = await getIssuesData();
-        await localStorage.setItem("allIssuesData", JSON.stringify(issueData));
+        await sessionStorage.setItem("allIssuesData", JSON.stringify(issueData));
         tryLocalLogin();
       } catch (err) {
         console.log(err);
@@ -59,7 +59,7 @@ function SocketBack() {
     socket.on("updateIssue", async (issue_) => {
       try {
         const issueData = await getIssuesData();
-        await localStorage.setItem("allIssuesData", JSON.stringify(issueData));
+        await sessionStorage.setItem("allIssuesData", JSON.stringify(issueData));
         tryLocalLogin();
       } catch (err) {
         console.log(err);
@@ -69,7 +69,7 @@ function SocketBack() {
     socket.on("newAnnouncement", async (issue_) => {
       try {
         const announcementData = await getAnnouncementsData();
-        await localStorage.setItem(
+        await sessionStorage.setItem(
           "allAnnouncementsData",
           JSON.stringify(announcementData)
         );
@@ -81,7 +81,7 @@ function SocketBack() {
     socket.on("updateAnnouncement", async (issue_) => {
       try {
         const announcementData = await getAnnouncementsData();
-        await localStorage.setItem(
+        await sessionStorage.setItem(
           "allAnnouncementsData",
           JSON.stringify(announcementData)
         );
@@ -93,7 +93,7 @@ function SocketBack() {
     socket.on("deleteAnnouncement", async (issue_) => {
       try {
         const announcementData = await getAnnouncementsData();
-        await localStorage.setItem(
+        await sessionStorage.setItem(
           "allAnnouncementsData",
           JSON.stringify(announcementData)
         );

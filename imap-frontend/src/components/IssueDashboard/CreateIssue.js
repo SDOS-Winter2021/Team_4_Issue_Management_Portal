@@ -107,17 +107,13 @@ const CreateIssue = ({ page }) => {
     const title_ = title.trim();
     const description_ = description.trim();
     const batch_ = [];
-    const batchset = new Set(batch);
-    const departmentset = new Set(department);
-    const administrationset = new Set(administration);
-    const programsset = new Set(programs);
-    batchset.forEach((element) => {batch_.push(element)});
+    batch.forEach((element) => {batch_.push(element)});
     const department_ = [];
-    departmentset.forEach((element) => {department_.push(element)});
+    department.forEach((element) => {department_.push(element)});
     const administration_ = [];
-    administrationset.forEach((element) => administration_.push(element));
+    administration.forEach((element) => administration_.push(element));
     const programs_ = [];
-    programsset.forEach((element) => programs_.push(element));
+    programs.forEach((element) => programs_.push(element));
     const isPublic_ = isPublic;
 
     setIsPopup(false);
@@ -239,7 +235,7 @@ const CreateIssue = ({ page }) => {
             selection
             multiple
             options={batchSuggestions}
-            onChange={(event, { value }) => setBatch(batch.concat(value))}
+            onChange={(event, { value }) => setBatch(value)}
           />
           <br></br>
           <br></br>
@@ -250,7 +246,7 @@ const CreateIssue = ({ page }) => {
             selection
             multiple
             options={departmentSuggestions}
-            onChange={(event, { value }) => setDepartment(department.concat(value))}
+            onChange={(event, { value }) => setDepartment(value)}
           />
           <br></br>
           <br></br>
@@ -261,7 +257,7 @@ const CreateIssue = ({ page }) => {
             selection
             multiple
             options={administrationSuggestions}
-            onChange={(event, { value }) => setAdministration(administration.concat(value))}
+            onChange={(event, { value }) => setAdministration(value)}
           />
           <br></br>
           <br></br>
@@ -272,7 +268,7 @@ const CreateIssue = ({ page }) => {
             selection
             multiple
             options={programsSuggestions}
-            onChange={(event, { value }) => setPrograms(programs.concat(value))}
+            onChange={(event, { value }) => setPrograms(value)}
           />
           <br></br>
           <br></br>

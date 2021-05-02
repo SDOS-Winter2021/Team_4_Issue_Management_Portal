@@ -91,13 +91,13 @@ function SimilarIssue({ title, description, onClickFunc, popup, handlePop }) {
               }}
               checked={consentSigned}
             />
-            <p>I have looked for my issue in the portal. Similar issue doesn't exist.</p>
+            <p>I acknowledge that I have read, and do hereby consider my issue different from the above listed.</p>
           </div>
           <SubmitButton
             onClick={consentSigned ? proceedFunc : () => {}}
             type="submit"
             style={{
-              cursor: "pointer",
+              cursor: consentSigned ? "pointer" : "not-allowed",
             }}
           >
             Proceed

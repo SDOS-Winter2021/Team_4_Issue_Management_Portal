@@ -47,9 +47,8 @@ function IssueTitleNDesc({ issue, isIssue, isAdmin, handlePopIssue, page }) {
     setDeleteWarn();
   };
 
-  const makePostPublic = () => {
-    console.log("make public");
-    issue.Tags.Public = true;
+  const makePostPublic = async() => {
+    await updateIssueDb({id: issue._id, type: "Visibility"});
   };
 
   return (

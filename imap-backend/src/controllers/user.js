@@ -69,7 +69,7 @@ exports.updateRole = (req, res) => {
         text:
           "Hi there,\n Your role has been updated to " +
           newRole +
-          " by the admins." +
+          " by the admins. Please logout and login on the portal to get the access." +
           " \n\n ------------------------ \n Issue Management Portal (IMAP)",
       };
 

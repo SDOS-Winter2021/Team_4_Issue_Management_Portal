@@ -91,7 +91,7 @@ function SimilarIssue({ title, description, onClickFunc, popup, handlePop }) {
               }}
               checked={consentSigned}
             />
-            <p>Placeholder student's agreement</p>
+            <p>I have looked for my issue in the portal. Similar issue doesn't exist.</p>
           </div>
           <SubmitButton
             onClick={consentSigned ? proceedFunc : () => {}}

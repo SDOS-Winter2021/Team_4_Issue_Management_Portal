@@ -114,6 +114,10 @@ const CreateIssue = ({ page }) => {
     administration.forEach((element) => administration_.push(element));
     const programs_ = [];
     programs.forEach((element) => programs_.push(element));
+    batch_.sort();
+    department_.sort();
+    administration_.sort();
+    programs_.sort();
     const isPublic_ = isPublic;
 
     setIsPopup(false);

@@ -26,8 +26,6 @@ This portal will have the following major functionalities.
 
 * Email notification when new announcement is posted or liked issues are updated.
 
-* Users have the option to sort the issues based on the tags present in the issues/announcements.
-
 * The administration is able to modify the roles of the Email IDs registered on the platform.
 
 * The administration is able to add/delete filters present on the portal.

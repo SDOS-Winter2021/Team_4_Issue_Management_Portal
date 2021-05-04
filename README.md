@@ -8,25 +8,25 @@ This project aims to build a centralized system to discuss all the students' iss
 
 This portal will have the following major functionalities.
 
-1.  Issue creation
+* Issue creation
 
-2.  Provision for making announcements by the administration so that it gets to the required student body.
+* Provision for making announcements by the administration so that it gets to the required student body.
 
-3.  Tagging the issue with appropriate labels.
+* Tagging the issue with appropriate labels.
 
-4.  Filtering the issues based on tag.
+* Filtering the issues based on tag.
 
-5.  Resolving/deleting issues.
+* Resolving/deleting issues.
 
-6.  Comment section for discussion on issue and announcements.
+* Comment section for discussion on issue and announcements.
 
-7.  Ways to control duplicate and unnecessary issues.
+* Ways to control duplicate and unnecessary issues.
 
-8.  Authentication using IIITD account.
+* Authentication using IIITD account.
 
-9.  Email notification when new announcement is posted or liked issues are updated.
+* Email notification when new announcement is posted or liked issues are updated.
 
-10. Users have the option to sort the issues based on the tags present in the issues/announcements.
+* Users have the option to sort the issues based on the tags present in the issues/announcements.
 
 * The administration is able to modify the roles of the Email IDs registered on the platform.
 

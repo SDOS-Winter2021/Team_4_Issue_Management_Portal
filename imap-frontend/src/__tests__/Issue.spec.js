@@ -36,7 +36,7 @@ describe("Issue component for Issues", () => {
 
   it("first child of issue component for unresolved Issue is a Spinner", () => {
     expect(result.props.children[0].props.children[0].props.children).toEqual(
-      <FaSpinner style={{ color: "#ab6a6a" }} />
+      <FaSpinner style={{ color: "#ab6a6a" }} title="Pending" />
     );
   });
 
@@ -47,7 +47,7 @@ describe("Issue component for Issues", () => {
     );
     const result = renderer.getRenderOutput();
     expect(result.props.children[0].props.children[0].props.children).toEqual(
-      <FaCheckSquare style={{ color: "#6fad80" }} />
+      <FaCheckSquare style={{ color: "#6fad80" }} title="Resolved" />
     );
   });
 });

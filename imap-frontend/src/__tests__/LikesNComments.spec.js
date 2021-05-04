@@ -65,7 +65,5 @@ describe("Like button", () => {
     );
     button.find("div").at(0).simulate("click");
     expect(like).toEqual(true);
-    button.find("div").at(1).simulate("click");
-    expect(commentArea).toEqual(true);
   });
 });

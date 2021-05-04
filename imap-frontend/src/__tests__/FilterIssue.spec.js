@@ -12,10 +12,11 @@ describe("Filter function", () => {
       },
       { Filter: { Batch: ["2019"], Department: ["CSE"], Programs: ["PhD"] } },
     ];
-    const filters = [
-      { title: "Batch", filterDetails: [{ title: "2020", isChecked: true }] },
-      { title: "Programs", filterDetails: [{ title: "PhD", isChecked: true }] },
-    ];
+    const filters = {
+      Batch: ["2020"],
+      Programs: ["PhD"],
+      Department: [],
+    };
     const output = [true, false, false, false];
 
     expect(FilterIssues(filters, issues)).toEqual(output);

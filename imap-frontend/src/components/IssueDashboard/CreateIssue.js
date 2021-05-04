@@ -75,15 +75,27 @@ const CreateIssue = ({ page }) => {
     batchSuggestions.push({ id: i, text: batchS[i], value: batchS[i] });
   }
   for (i = 0; i < departmentS.length; i++) {
-    departmentSuggestions.push({ id: i, text: departmentS[i],value: departmentS[i] });
+    departmentSuggestions.push({
+      id: i,
+      text: departmentS[i],
+      value: departmentS[i],
+    });
   }
   for (i = 0; i < administrationS.length; i++) {
-    administrationSuggestions.push({ id: i, text: administrationS[i], value: administrationS[i] });
+    administrationSuggestions.push({
+      id: i,
+      text: administrationS[i],
+      value: administrationS[i],
+    });
   }
   for (i = 0; i < programsS.length; i++) {
-    programsSuggestions.push({ id: i, text: programsS[i], value: programsS[i] });
+    programsSuggestions.push({
+      id: i,
+      text: programsS[i],
+      value: programsS[i],
+    });
   }
-  
+
   const clearData = () => {
     setTitle("");
     setDescription("");
@@ -95,7 +107,7 @@ const CreateIssue = ({ page }) => {
   };
 
   const handleSubmitIssue = async () => {
-    if (!isIssue){
+    if (!isIssue) {
       if (title === "") {
         alert("Title is mandatory");
         return;
@@ -107,9 +119,13 @@ const CreateIssue = ({ page }) => {
     const title_ = title.trim();
     const description_ = description.trim();
     const batch_ = [];
-    batch.forEach((element) => {batch_.push(element)});
+    batch.forEach((element) => {
+      batch_.push(element);
+    });
     const department_ = [];
-    department.forEach((element) => {department_.push(element)});
+    department.forEach((element) => {
+      department_.push(element);
+    });
     const administration_ = [];
     administration.forEach((element) => administration_.push(element));
     const programs_ = [];
@@ -168,7 +184,10 @@ const CreateIssue = ({ page }) => {
             right: "20px",
             cursor: "pointer",
           }}
-          onClick={() => {setIsPopup(false);clearData();}}
+          onClick={() => {
+            setIsPopup(false);
+            clearData();
+          }}
         >
           <FaIcons.FaTimes />
         </button>
@@ -230,7 +249,7 @@ const CreateIssue = ({ page }) => {
 
           <Label for="Batch">Batch:</Label>
           <StyledDropdown
-            placeholder = "Choose Batch"
+            placeholder="Choose Batch"
             search
             selection
             multiple
@@ -241,7 +260,7 @@ const CreateIssue = ({ page }) => {
           <br></br>
           <Label for="Department">Department:</Label>
           <StyledDropdown
-            placeholder = "Choose Department"
+            placeholder="Choose Department"
             search
             selection
             multiple
@@ -252,7 +271,7 @@ const CreateIssue = ({ page }) => {
           <br></br>
           <Label for="Administration">Administration:</Label>
           <StyledDropdown
-            placeholder = "Choose Administration"
+            placeholder="Choose Administration"
             search
             selection
             multiple
@@ -263,7 +282,7 @@ const CreateIssue = ({ page }) => {
           <br></br>
           <Label for="Programs">Programs:</Label>
           <StyledDropdown
-            placeholder = "Choose Program"
+            placeholder="Choose Program"
             search
             selection
             multiple

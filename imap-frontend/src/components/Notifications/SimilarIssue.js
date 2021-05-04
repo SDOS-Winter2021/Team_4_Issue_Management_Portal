@@ -91,7 +91,10 @@ function SimilarIssue({ title, description, onClickFunc, popup, handlePop }) {
               }}
               checked={consentSigned}
             />
-            <p>I acknowledge that I have read, and do hereby consider my issue different from the above listed.</p>
+            <p>
+              I acknowledge that I have read, and do hereby consider my issue
+              different from the above listed.
+            </p>
           </div>
           <SubmitButton
             onClick={consentSigned ? proceedFunc : () => {}}

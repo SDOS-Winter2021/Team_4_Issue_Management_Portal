@@ -104,9 +104,9 @@ function SubMenu({ item, page, setFilterState, selectedFilters, applyFilter }) {
    */
   const isFilter = item.title === "Filters";
   const isPage = item.title === page;
-  const isProfile = page==="Profile";
-  const isSupport = page==="Support";
-  const isAdmin = page==="Admin";
+  const isProfile = page === "Profile";
+  const isSupport = page === "Support";
+  const isAdmin = page === "Admin";
   const isPosts =
     page.toLowerCase().includes("issue") ||
     page.toLowerCase().includes("announcement");
@@ -121,24 +121,29 @@ function SubMenu({ item, page, setFilterState, selectedFilters, applyFilter }) {
 
   return (
     <>
-      {<SidebarLink
-        to={item.path}
-        onClick={isFilter ? showSubnav : () => {}}
-        isPage={isPage}
-        style={{display : ((isSupport||isProfile||isAdmin)&&isFilter)? "none" : "flex"}}
-      >
-        <div style={{ display:"flex" }}>
-          {item.icon}
-          <SidebarLabel >{item.title}</SidebarLabel>
-        </div>
-        <div >
-          {isFilter && subnav
-            ? item.iconOpened
-            : filterNames
-            ? item.iconClosed
-            : null}
-        </div>
-      </SidebarLink>}
+      {
+        <SidebarLink
+          to={item.path}
+          onClick={isFilter ? showSubnav : () => {}}
+          isPage={isPage}
+          style={{
+            display:
+              (isSupport || isProfile || isAdmin) && isFilter ? "none" : "flex",
+          }}
+        >
+          <div style={{ display: "flex" }}>
+            {item.icon}
+            <SidebarLabel>{item.title}</SidebarLabel>
+          </div>
+          <div>
+            {isFilter && subnav
+              ? item.iconOpened
+              : filterNames
+              ? item.iconClosed
+              : null}
+          </div>
+        </SidebarLink>
+      }
 
       {subnav &&
         isFilter &&

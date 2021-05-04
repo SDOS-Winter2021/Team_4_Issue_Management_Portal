@@ -13,6 +13,7 @@ import {
   LabelR,
 } from "./CreateIssueDesign";
 import styled from "styled-components";
+import PropTypes from "prop-types";
 import { Dropdown } from "semantic-ui-react";
 import "semantic-ui-css/components/dropdown.min.css";
 
@@ -24,6 +25,10 @@ const StyledDropdown = styled(Dropdown)`
   }
 `;
 
+/**
+ * Pop up form to create a new post
+ * @component
+ */
 const CreateIssue = ({ page }) => {
   const {
     addIssueDb,
@@ -328,6 +333,13 @@ const CreateIssue = ({ page }) => {
       {popup}
     </div>
   );
+};
+
+CreateIssue.propTypes = {
+  /**
+   * name of the page {issue, announcement}
+   */
+  page: PropTypes.string.isRequired,
 };
 
 export default CreateIssue;

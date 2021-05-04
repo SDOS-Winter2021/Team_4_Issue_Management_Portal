@@ -15,6 +15,7 @@ import PropTypes from "prop-types";
 
 /**
  * returns the entire sidebar components.
+ * @component
  */
 function Sidebar({
   notMobileView,

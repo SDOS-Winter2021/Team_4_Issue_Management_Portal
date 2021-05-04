@@ -13,6 +13,8 @@ import { getFilterNames } from "./SidebarData";
 
 /**
  * Create checkbox component for the given item. Helper function for SubMenu.
+ * @component
+ *
  */
 function CheckboxItem({
   item,
@@ -48,6 +50,8 @@ function CheckboxItem({
 /**
  * returns the Filter options in the dropdown menu of
  * `Filters`. Helper function for SubMenu.
+ * @component
+ *
  */
 function Filter({ filter, setFilterState, selectedFilters, applyFilter }) {
   /**
@@ -91,6 +95,8 @@ function Filter({ filter, setFilterState, selectedFilters, applyFilter }) {
 /**
  * Returns the individual components on the sidebar,
  * with their dropdown components, if required.
+ * @component
+ *
  */
 function SubMenu({ item, page, setFilterState, selectedFilters, applyFilter }) {
   /**

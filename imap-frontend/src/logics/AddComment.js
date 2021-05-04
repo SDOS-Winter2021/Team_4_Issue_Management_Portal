@@ -1,3 +1,13 @@
+/**
+ * Function to add comment to the database
+ * @param {string} userComment
+ * @param {object} issue
+ * @param {string} userEmail
+ * @param {boolean} isIssue
+ * @param {Function} updateIssueDb
+ * @param {Function} updateAnnouncementDb
+ * @method
+ */
 export const AddComment = async (
   userComment,
   issue,

@@ -13,6 +13,13 @@ import {
   SidebarToggleIcon,
 } from "./NavigationDesigns";
 
+/**
+ * Component responsible for all the Navigations.
+ * Includes both sidebar and top navigation bar.
+ *
+ * @component
+ */
+
 const Header = ({
   notMobileView,
   showSidebar,

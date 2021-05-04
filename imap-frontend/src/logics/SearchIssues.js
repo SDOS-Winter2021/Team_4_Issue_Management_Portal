@@ -28,6 +28,14 @@ function SearchIssues(userQuery, issues, privateFilter) {
   return keyValues;
 }
 
+/**
+ * Returns a list of top Issues that matches the userquery
+ * @param {string} userQuery - The text representing user query
+ * @param {Array} issues - list of issues
+ * @param {Array} privateFilter - list of boolean set true if issue is private
+ * @returns {Array} - Top issues matching user query
+ * @method
+ */
 export default function getTopIssues(userQuery, issues, privateFilter) {
   var topIssues = [];
   var topIssueIDs = SearchIssues(userQuery, issues, privateFilter);

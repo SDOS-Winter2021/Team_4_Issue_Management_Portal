@@ -10,6 +10,10 @@ import GoogleLogin from "react-google-login";
 import { useHistory, Redirect } from "react-router-dom";
 import { AuthContext } from "../context/auth-context";
 
+/**
+ * Login page.
+ * @component
+ */
 const Login = () => {
   let history = useHistory();
   const {

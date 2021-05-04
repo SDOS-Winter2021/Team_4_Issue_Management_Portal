@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>components/Navigation/SubMenu.js</title>
+
+    <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="./build/entry.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto:100,400,700|Inconsolata,700"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+      integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/"
+      crossorigin="anonymous"
+    />
+    <link
+      type="text/css"
+      rel="stylesheet"
+      href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/tomorrow-night.min.css"
+    />
+    <link type="text/css" rel="stylesheet" href="styles/app.min.css" />
+    <link type="text/css" rel="stylesheet" href="styles/iframe.css" />
+    <link type="text/css" rel="stylesheet" href="" />
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+  </head>
+
+  <body class="layout small-header">
+    <div id="stickyNavbarOverlay"></div>
+
+    <div class="top-nav">
+      <div class="inner">
+        <a
+          id="hamburger"
+          role="button"
+          class="navbar-burger"
+          aria-label="menu"
+          aria-expanded="false"
+        >
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+        <div class="logo">
+          <a href="index.html">
+            <h1 class="navbar-item">My React components</h1>
+          </a>
+        </div>
+        <div class="menu">
+          <div class="navigation">
+            <a href="index.html" class="link"> API Documentation </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="main">
+      <div class="sidebar" id="sidebarNav">
+        <nav>
+          <h2><a href="index.html">Documentation</a></h2>
+          <div class="category">
+            <h3>Components</h3>
+            <ul>
+              <li><a href="Admin.html">Admin</a></li>
+              <li><a href="Announcements.html">Announcements</a></li>
+              <li><a href="CategorizedIssues.html">CategorizedIssues</a></li>
+              <li><a href="CheckboxItem.html">CheckboxItem</a></li>
+              <li><a href="CommentBox.html">CommentBox</a></li>
+              <li><a href="CommentInput.html">CommentInput</a></li>
+              <li><a href="CreateIssue.html">CreateIssue</a></li>
+              <li><a href="Filter.html">Filter</a></li>
+              <li><a href="Header.html">Header</a></li>
+              <li><a href="IndividualIssue.html">IndividualIssue</a></li>
+              <li><a href="Issues.html">Issues</a></li>
+              <li><a href="Login.html">Login</a></li>
+              <li><a href="MyAnnouncements.html">MyAnnouncements</a></li>
+              <li><a href="MyIssues.html">MyIssues</a></li>
+              <li><a href="ProfilePage.html">ProfilePage</a></li>
+              <li><a href="SearchBar.html">SearchBar</a></li>
+              <li><a href="Sidebar.html">Sidebar</a></li>
+              <li><a href="SubMenu.html">SubMenu</a></li>
+              <li><a href="Support.html">Support</a></li>
+            </ul>
+            <h3>Global</h3>
+            <ul>
+              <li><a href="global.html#AddComment">AddComment</a></li>
+              <li><a href="global.html#DropdownLabel">DropdownLabel</a></li>
+              <li><a href="global.html#FilterLabel">FilterLabel</a></li>
+              <li><a href="global.html#FilterOptLabel">FilterOptLabel</a></li>
+              <li><a href="global.html#IssueContainer">IssueContainer</a></li>
+              <li><a href="global.html#LogoCompartment">LogoCompartment</a></li>
+              <li><a href="global.html#NavHead">NavHead</a></li>
+              <li><a href="global.html#Profile">Profile</a></li>
+              <li><a href="global.html#ProfileDropdown">ProfileDropdown</a></li>
+              <li><a href="global.html#SidebarData">SidebarData</a></li>
+              <li><a href="global.html#SidebarLabel">SidebarLabel</a></li>
+              <li><a href="global.html#SidebarLink">SidebarLink</a></li>
+              <li><a href="global.html#SidebarNav">SidebarNav</a></li>
+              <li><a href="global.html#SidebarNoLink">SidebarNoLink</a></li>
+              <li>
+                <a href="global.html#SidebarToggleIcon">SidebarToggleIcon</a>
+              </li>
+              <li><a href="global.html#SidebarWrap">SidebarWrap</a></li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+      <div class="core" id="main-content-wrapper">
+        <div class="content">
+          <header class="page-title">
+            <p>Source</p>
+            <h1>components/Navigation/SubMenu.js</h1>
+          </header>
+
+          <section>
+            <article>
+              <pre
+                class="prettyprint source linenums"
+              ><code>import React, { useEffect, useState, useContext } from "react";
+import { AuthContext } from "../../context/auth-context";
+import {
+  SidebarLink,
+  SidebarNoLink,
+  SidebarLabel,
+  FilterLabel,
+  FilterOptLabel,
+} from "./NavigationDesigns";
+import PropTypes from "prop-types";
+import * as RiIcons from "react-icons/ri";
+import { getFilterNames } from "./SidebarData";
+
+/**
+ * Create checkbox component for the given item. Helper function for SubMenu.
+ * @component
+ * 
+ */
+function CheckboxItem({
+  item,
+  setFilterState,
+  selectedFilter,
+  filterTitle,
+  applyFilter,
+}) {
+  /**
+   * State to toggle the checkbox options.
+   */
+  const [checked, setCheckBox] = useState(
+    selectedFilter[filterTitle].includes(item.title)
+  );
+  const checkboxHandler = () => {
+    setCheckBox(!checked);
+    applyFilter(filterTitle, item.title);
+    setFilterState();
+  };
+  return (
+    &lt;>
+      &lt;input
+        type="checkbox"
+        name={item.title}
+        onClick={checkboxHandler}
+        checked={checked}
+      />
+      &lt;SidebarLabel>{item.title}&lt;/SidebarLabel>
+    &lt;/>
+  );
+}
+
+/**
+ * returns the Filter options in the dropdown menu of
+ * `Filters`. Helper function for SubMenu.
+ * @component
+ * 
+ */
+function Filter({ filter, setFilterState, selectedFilters, applyFilter }) {
+  /**
+   * State to toggle the dropdown options of Filter components.
+   */
+  const [_usefilter, _setSubnav] = useState(false);
+  const _showFilter = () => _setSubnav(!_usefilter);
+  return (
+    &lt;>
+      &lt;SidebarNoLink onClick={_showFilter}>
+        &lt;div>
+          &lt;FilterLabel>{filter.title}&lt;/FilterLabel>
+        &lt;/div>
+        &lt;div>
+          {filter.filterDetails &amp;&amp; _usefilter ? (
+            &lt;RiIcons.RiArrowUpSFill />
+          ) : filter.filterDetails ? (
+            &lt;RiIcons.RiArrowDownSFill />
+          ) : null}
+        &lt;/div>
+      &lt;/SidebarNoLink>
+
+      {_usefilter &amp;&amp;
+        filter.filterDetails.map((item, index) => {
+          return (
+            &lt;FilterOptLabel>
+              &lt;CheckboxItem
+                item={item}
+                setFilterState={setFilterState}
+                selectedFilter={selectedFilters}
+                filterTitle={filter.title}
+                applyFilter={applyFilter}
+              />
+            &lt;/FilterOptLabel>
+          );
+        })}
+    &lt;/>
+  );
+}
+
+/**
+ * Returns the individual components on the sidebar,
+ * with their dropdown components, if required.
+ * @component
+ * 
+ */
+function SubMenu({ item, page, setFilterState, selectedFilters, applyFilter }) {
+  /**
+   * State to toggle the dropdown options of submenu components.
+   */
+  const [subnav, setSubnav] = useState(false);
+  const showSubnav = () => setSubnav(!subnav);
+  /**
+   * Checks if the component being returned corresponds to the page
+   * that is currently being displayed.
+   */
+  const isFilter = item.title === "Filters";
+  const isPage = item.title === page;
+  const isProfile = page === "Profile";
+  const isSupport = page === "Support";
+  const isAdmin = page === "Admin";
+  const isPosts =
+    page.toLowerCase().includes("issue") ||
+    page.toLowerCase().includes("announcement");
+
+  const { allFiltersData, tryLocalLogin } = useContext(AuthContext);
+
+  useEffect(async () => {
+    tryLocalLogin();
+  }, []);
+
+  const filterNames = getFilterNames(allFiltersData ? allFiltersData : {});
+
+  return (
+    &lt;>
+      {
+        &lt;SidebarLink
+          to={item.path}
+          onClick={isFilter ? showSubnav : () => {}}
+          isPage={isPage}
+          style={{
+            display:
+              (isSupport || isProfile || isAdmin) &amp;&amp; isFilter ? "none" : "flex",
+          }}
+        >
+          &lt;div style={{ display: "flex" }}>
+            {item.icon}
+            &lt;SidebarLabel>{item.title}&lt;/SidebarLabel>
+          &lt;/div>
+          &lt;div>
+            {isFilter &amp;&amp; subnav
+              ? item.iconOpened
+              : filterNames
+              ? item.iconClosed
+              : null}
+          &lt;/div>
+        &lt;/SidebarLink>
+      }
+
+      {subnav &amp;&amp;
+        isFilter &amp;&amp;
+        isPosts &amp;&amp;
+        filterNames.map((filter, index) => {
+          return (
+            &lt;Filter
+              filter={filter}
+              key={index}
+              setFilterState={setFilterState}
+              selectedFilters={selectedFilters}
+              applyFilter={applyFilter}
+            />
+          );
+        })}
+    &lt;/>
+  );
+}
+
+SubMenu.propTypes = {
+  /**
+   * Object containing the information for the components
+   * to be displayed in the sidebar. Taken from SidebarData.js
+   */
+  item: PropTypes.object,
+
+  /**
+   * Name of the page that is currently being rendered.
+   */
+  page: PropTypes.string,
+};
+
+export default SubMenu;
+</code></pre>
+            </article>
+          </section>
+        </div>
+
+        <footer class="footer">
+          <div class="content has-text-centered">
+            <p>
+              Documentation generated by
+              <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.6</a>
+            </p>
+            <p class="sidebar-created-by">
+              <a
+                href="https://github.com/SoftwareBrothers/better-docs"
+                target="_blank"
+                >BetterDocs theme</a
+              >
+              provided with <i class="fas fa-heart"></i> by
+              <a href="http://softwarebrothers.co" target="_blank"
+                >SoftwareBrothers - JavaScript Development Agency</a
+              >
+            </p>
+          </div>
+        </footer>
+      </div>
+      <div id="side-nav" class="side-nav"></div>
+    </div>
+    <script src="scripts/app.min.js"></script>
+    <script>
+      PR.prettyPrint();
+    </script>
+    <script src="scripts/linenumber.js"></script>
+  </body>
+</html>

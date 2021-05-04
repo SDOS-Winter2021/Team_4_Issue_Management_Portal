@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>components/IssueDashboard/IssueDesigns.js</title>
+
+    <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="./build/entry.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto:100,400,700|Inconsolata,700"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+      integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/"
+      crossorigin="anonymous"
+    />
+    <link
+      type="text/css"
+      rel="stylesheet"
+      href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/tomorrow-night.min.css"
+    />
+    <link type="text/css" rel="stylesheet" href="styles/app.min.css" />
+    <link type="text/css" rel="stylesheet" href="styles/iframe.css" />
+    <link type="text/css" rel="stylesheet" href="" />
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+  </head>
+
+  <body class="layout small-header">
+    <div id="stickyNavbarOverlay"></div>
+
+    <div class="top-nav">
+      <div class="inner">
+        <a
+          id="hamburger"
+          role="button"
+          class="navbar-burger"
+          aria-label="menu"
+          aria-expanded="false"
+        >
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+        <div class="logo">
+          <a href="index.html">
+            <h1 class="navbar-item">My React components</h1>
+          </a>
+        </div>
+        <div class="menu">
+          <div class="navigation">
+            <a href="index.html" class="link"> API Documentation </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="main">
+      <div class="sidebar" id="sidebarNav">
+        <nav>
+          <h2><a href="index.html">Documentation</a></h2>
+          <div class="category">
+            <h3>Components</h3>
+            <ul>
+              <li><a href="Admin.html">Admin</a></li>
+              <li><a href="Announcements.html">Announcements</a></li>
+              <li><a href="CategorizedIssues.html">CategorizedIssues</a></li>
+              <li><a href="CheckboxItem.html">CheckboxItem</a></li>
+              <li><a href="CommentBox.html">CommentBox</a></li>
+              <li><a href="CommentInput.html">CommentInput</a></li>
+              <li><a href="CreateIssue.html">CreateIssue</a></li>
+              <li><a href="Filter.html">Filter</a></li>
+              <li><a href="Header.html">Header</a></li>
+              <li><a href="IndividualIssue.html">IndividualIssue</a></li>
+              <li><a href="Issues.html">Issues</a></li>
+              <li><a href="Login.html">Login</a></li>
+              <li><a href="MyAnnouncements.html">MyAnnouncements</a></li>
+              <li><a href="MyIssues.html">MyIssues</a></li>
+              <li><a href="ProfilePage.html">ProfilePage</a></li>
+              <li><a href="SearchBar.html">SearchBar</a></li>
+              <li><a href="Sidebar.html">Sidebar</a></li>
+              <li><a href="SubMenu.html">SubMenu</a></li>
+              <li><a href="Support.html">Support</a></li>
+            </ul>
+            <h3>Global</h3>
+            <ul>
+              <li><a href="global.html#AddComment">AddComment</a></li>
+              <li><a href="global.html#DropdownLabel">DropdownLabel</a></li>
+              <li><a href="global.html#FilterLabel">FilterLabel</a></li>
+              <li><a href="global.html#FilterOptLabel">FilterOptLabel</a></li>
+              <li><a href="global.html#IssueContainer">IssueContainer</a></li>
+              <li><a href="global.html#LogoCompartment">LogoCompartment</a></li>
+              <li><a href="global.html#NavHead">NavHead</a></li>
+              <li><a href="global.html#Profile">Profile</a></li>
+              <li><a href="global.html#ProfileDropdown">ProfileDropdown</a></li>
+              <li><a href="global.html#SidebarData">SidebarData</a></li>
+              <li><a href="global.html#SidebarLabel">SidebarLabel</a></li>
+              <li><a href="global.html#SidebarLink">SidebarLink</a></li>
+              <li><a href="global.html#SidebarNav">SidebarNav</a></li>
+              <li><a href="global.html#SidebarNoLink">SidebarNoLink</a></li>
+              <li>
+                <a href="global.html#SidebarToggleIcon">SidebarToggleIcon</a>
+              </li>
+              <li><a href="global.html#SidebarWrap">SidebarWrap</a></li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+      <div class="core" id="main-content-wrapper">
+        <div class="content">
+          <header class="page-title">
+            <p>Source</p>
+            <h1>components/IssueDashboard/IssueDesigns.js</h1>
+          </header>
+
+          <section>
+            <article>
+              <pre
+                class="prettyprint source linenums"
+              ><code>import styled from "styled-components";
+import { Link } from "react-router-dom";
+
+/** Style: Styling the container that holds all the components
+ * for an issue.
+ * Takes in a prop called `notMobileView` to decide the
+ * size and position based on screen resolution.
+ */
+export const IssueContainer = styled.section`
+  background: #fff;
+  overflow-x: hidden;
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 10px;
+  margin-left: ${({ notMobileView }) => (notMobileView ? "250px" : "0")};
+  transition: 300ms;
+  width: ${({ notMobileView }) =>
+    notMobileView ? "calc(100% - 250px)" : "100%"};
+  justify-content: flex-start;
+  align-items: flex-start;
+`;
+
+export const IssueHead = styled.header`
+  background: #fff;
+  display: flex;
+  width: 100%;
+  margin-top: 10px;
+  padding: 10px;
+  height: 80px;
+  align-items: center;
+`;
+
+export const TitleSearchContainer = styled.section`
+  width: 100%;
+  font-size: 24px;
+  font-weight: 500;
+  display: flex;
+  position: relative;
+  padding: 30px 0 5px 5px;
+  @media screen and (min-width: 200px) and (max-width: 430px) {
+    font-size: 18px;
+  }
+`;
+
+export const TitleContainer = styled.section`
+  display: flex;
+  position: relative;
+  padding-left: 10px;
+  /* padding-top: 3px; */
+  width: 50%;
+`;
+export const SearchContainer = styled.section`
+  display: flex;
+  position: relative;
+  justify-content: right;
+  width: 50%;
+`;
+
+export const IssueBox = styled(Link)`
+  display: flex;
+  width: 95%;
+  min-height: 80px;
+  justify-content: flex-start;
+  text-decoration: none;
+  color: #121212;
+  margin: 5px 5px 5px 20px;
+  margin-bottom: 0px;
+  border-bottom: 5px solid #eee;
+
+  &amp;:hover {
+    border-left: 4px solid #ccc;
+    background: #f5f5f5;
+    cursor: pointer;
+  }
+  &amp;:focus {
+    outline: none;
+  }
+`;
+
+export const IssueTitle = styled.section`
+  width: 100%;
+  padding: 5px;
+  align-items: top;
+  margin: 5px;
+`;
+
+export const IssueAccessory = styled.section`
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  width: ${({ likeComments }) => (likeComments ? "80px" : "30px")};
+  padding: 5px;
+  justify-content: space-between;
+  align-items: center;
+  margin: 5px;
+`;
+
+export const LabelBox = styled.section`
+  width: 100%;
+  padding: 0px;
+  align-items: top;
+  margin-right: 5px;
+`;
+
+export const Label = styled.div`
+  background: ${({ bgcolor }) => bgcolor};
+  color: ${({ color }) => color};
+  min-width: 20px;
+  display: inline-block;
+  padding: 6px;
+  align-items: center;
+  font-size: 12px;
+  font-weight: bold;
+  border-radius: 12px;
+  margin: 5px;
+`;
+
+export const IssueStatusLabel = styled.div`
+  background: ${({ color }) => color};
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  border-radius: 20px;
+  margin: 5px;
+  height: 22px;
+  width: 70px;
+  /* padding: 3px 8px; */
+  color: #fff;
+`;
+
+export const SubmitButton = styled.button`
+  margin-left: 5px;
+  border: none;
+  font-size: 18px;
+  padding: 5px 10px;
+  background: #78c8fa;
+  border-radius: 30%;
+  cursor: pointer;
+`;
+
+export const MyPostLabels = styled.span`
+  background: #eee;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  padding: 0px 10px;
+  padding-right: 50px;
+  width: 100%;
+  text-decoration: none;
+  font-size: 16px;
+  border-bottom: ${({ selected }) =>
+    selected ? "2px solid blue" : "2px solid #eee"};
+
+  &amp;:hover {
+    background: #ddd;
+    cursor: pointer;
+  }
+`;
+
+export const MyPostButtons = styled(Link)`
+  width: 20%;
+  height: 100%;
+  background: inherit;
+  color: #000;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin-right: 10px;
+  border-radius: 32px;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 18px;
+  transition: all 0.1s ease-in-out;
+  border: 2px solid #1f3b94;
+
+  &amp;:hover {
+    opacity: 0.8;
+    box-shadow: -6px -6px 10px rgba(255, 255, 255, 0.8),
+      6px 6px 10px rgba(0, 0, 0, 0.2);
+
+    &amp;:active {
+      opacity: 1;
+      color: #aaa;
+    }
+  }
+  @media screen and (min-width: 470px) and (max-width: 960px) {
+    font-size: 14px;
+    width: 30%;
+  }
+
+  @media screen and (min-width: 150px) and (max-width: 470px) {
+    font-size: 11px;
+    width: 30%;
+  }
+`;
+
+export const IssueCategorized = styled.div`
+  max-height: 70vh;
+  border: 2px solid #ccc;
+  width: 90%;
+  border-radius: 20px;
+  overflow-y: auto;
+  margin: 20px 0px;
+  padding: 20px;
+  text-align: left;
+`;
+
+export const filter_colors = {
+  Department: ["#D79922", "#fff"],
+  Batch: ["#116466", "#fff"],
+  Administration: ["#4056A1", "#fff"],
+  Programs: ["#B7410E", "#fff"],
+};
+</code></pre>
+            </article>
+          </section>
+        </div>
+
+        <footer class="footer">
+          <div class="content has-text-centered">
+            <p>
+              Documentation generated by
+              <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.6</a>
+            </p>
+            <p class="sidebar-created-by">
+              <a
+                href="https://github.com/SoftwareBrothers/better-docs"
+                target="_blank"
+                >BetterDocs theme</a
+              >
+              provided with <i class="fas fa-heart"></i> by
+              <a href="http://softwarebrothers.co" target="_blank"
+                >SoftwareBrothers - JavaScript Development Agency</a
+              >
+            </p>
+          </div>
+        </footer>
+      </div>
+      <div id="side-nav" class="side-nav"></div>
+    </div>
+    <script src="scripts/app.min.js"></script>
+    <script>
+      PR.prettyPrint();
+    </script>
+    <script src="scripts/linenumber.js"></script>
+  </body>
+</html>

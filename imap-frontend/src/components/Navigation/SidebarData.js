@@ -46,6 +46,7 @@ export const getFilterNames = (dbfilters) => {
       filter_i.filterDetails.push(fil);
     }
     filtersName.push(filter_i);
+    // sorting for correct order of filters
     filter_i.filterDetails.sort(
       function(a,b){
         const obj1 = a.title.toUpperCase()

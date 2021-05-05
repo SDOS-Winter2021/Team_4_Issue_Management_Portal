@@ -23,13 +23,12 @@ jobs:
         
     steps:
       - uses: actions/checkout@v2
-      - run: cd imap-frontend
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
       - run: npm install
-      - run: npm run test
+      - run: cd imap-frontend/ && npm run test
 #     steps:
 
 #       # 1: setup node

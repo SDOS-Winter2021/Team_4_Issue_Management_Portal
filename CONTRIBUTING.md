@@ -6,6 +6,8 @@ This site is powered by Node.js. MERN stack is used as the technical stack for t
 Check out the existing issues before creating your own issue.
 If you wish to make a change, discuss it first by creating an issue.
 
+The code documentation can be found [here](https://sdos-winter2021.github.io/Team_4_Issue_Management_Portal/).
+
 ### To make changes
 
 1. Fork the repository.

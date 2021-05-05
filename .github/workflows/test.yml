@@ -1,0 +1,55 @@
+# This is a basic workflow to help you get started with Actions
+
+name: CI
+
+# Controls when the action will run. 
+on:
+  # Triggers the workflow on push or pull request events but only for the main branch
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+ # install dependencies and run test command
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    
+    strategy:
+      matrix:
+        node-version: [12.x, 14.x]
+        
+    steps:
+      - uses: actions/checkout@v2
+      - run: cd imap-frontend
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - run: npm install
+      - run: npm run test
+#     steps:
+
+#       # 1: setup node
+#       - name: Setup Node.js
+#         uses: actions/setup-node@v1
+#         with:
+#           node-version: 12
+
+#       # 2: Checkout repository in the CWD
+#       - name: Checkout repository
+#         uses: actions/checkout@v2
+        
+#       # 3: Move to frontend dir
+#       - name: Checkout frontend
+#         run: cd imap-frontend
+
+#       # 4: install NPM dependencies
+#       - name: Install dependencies
+#         run: npm install
+      
+#       # 5: run test command
+#       - name: Run test command
+#         run: npm run test

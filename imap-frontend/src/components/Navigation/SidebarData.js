@@ -46,6 +46,21 @@ export const getFilterNames = (dbfilters) => {
       filter_i.filterDetails.push(fil);
     }
     filtersName.push(filter_i);
+    // sorting for correct order of filters
+    filter_i.filterDetails.sort(
+      function(a,b){
+        const obj1 = a.title.toUpperCase()
+        const obj2 = b.title.toUpperCase()
+  
+        if (obj1 < obj2) {
+          return -1
+        }
+        if (obj1 > obj2) {
+          return 1
+        }
+        return 0
+      }
+      );
   }
   return filtersName;
 };

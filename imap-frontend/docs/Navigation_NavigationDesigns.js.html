@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Navigation/NavigationDesigns.js</title>
+
+    <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="./build/entry.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto:100,400,700|Inconsolata,700"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+      integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/"
+      crossorigin="anonymous"
+    />
+    <link
+      type="text/css"
+      rel="stylesheet"
+      href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/tomorrow-night.min.css"
+    />
+    <link type="text/css" rel="stylesheet" href="styles/app.min.css" />
+    <link type="text/css" rel="stylesheet" href="styles/iframe.css" />
+    <link type="text/css" rel="stylesheet" href="" />
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+  </head>
+
+  <body class="layout small-header">
+    <div id="stickyNavbarOverlay"></div>
+
+    <div class="top-nav">
+      <div class="inner">
+        <a
+          id="hamburger"
+          role="button"
+          class="navbar-burger"
+          aria-label="menu"
+          aria-expanded="false"
+        >
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+        <div class="logo">
+          <a href="index.html">
+            <h1 class="navbar-item">My React components</h1>
+          </a>
+        </div>
+        <div class="menu">
+          <div class="navigation">
+            <a href="index.html" class="link"> API Documentation </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="main">
+      <div class="sidebar" id="sidebarNav">
+        <nav>
+          <h2><a href="index.html">Documentation</a></h2>
+          <div class="category">
+            <h3>Components</h3>
+            <ul>
+              <li><a href="Header.html">Header</a></li>
+            </ul>
+            <h3>Global</h3>
+            <ul>
+              <li><a href="global.html#CheckboxItem">CheckboxItem</a></li>
+              <li><a href="global.html#DropdownLabel">DropdownLabel</a></li>
+              <li><a href="global.html#Filter">Filter</a></li>
+              <li><a href="global.html#FilterLabel">FilterLabel</a></li>
+              <li><a href="global.html#FilterOptLabel">FilterOptLabel</a></li>
+              <li><a href="global.html#IssueContainer">IssueContainer</a></li>
+              <li><a href="global.html#LogoCompartment">LogoCompartment</a></li>
+              <li><a href="global.html#NavHead">NavHead</a></li>
+              <li><a href="global.html#Profile">Profile</a></li>
+              <li><a href="global.html#ProfileDropdown">ProfileDropdown</a></li>
+              <li><a href="global.html#Sidebar">Sidebar</a></li>
+              <li><a href="global.html#SidebarData">SidebarData</a></li>
+              <li><a href="global.html#SidebarLabel">SidebarLabel</a></li>
+              <li><a href="global.html#SidebarLink">SidebarLink</a></li>
+              <li><a href="global.html#SidebarNav">SidebarNav</a></li>
+              <li>
+                <a href="global.html#SidebarToggleIcon">SidebarToggleIcon</a>
+              </li>
+              <li><a href="global.html#SidebarWrap">SidebarWrap</a></li>
+              <li><a href="global.html#SubMenu">SubMenu</a></li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+      <div class="core" id="main-content-wrapper">
+        <div class="content">
+          <header class="page-title">
+            <p>Source</p>
+            <h1>Navigation/NavigationDesigns.js</h1>
+          </header>
+
+          <section>
+            <article>
+              <pre
+                class="prettyprint source linenums"
+              ><code>import styled from "styled-components";
+import { Link } from "react-router-dom";
+
+// CSS for NavBar
+
+/**
+ * Styling for the Navigation bar on the top.
+ */
+export const NavHead = styled.header`
+  background: #f2eee9;
+  height: 60px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  top: 0;
+`;
+
+/**
+ * Styling for the Profile Button on NavBar.
+ */
+export const Profile = styled.button`
+  position: absolute;
+  right: 0;
+  margin: 20px;
+  border: none;
+  font-size: 18px;
+  padding: 7px 10px;
+  background: #d1cac0;
+  border-radius: 50%;
+  cursor: pointer;
+`;
+
+/**
+ * Styling for the dropdown profile menu.
+ */
+export const ProfileDropdown = styled.nav`
+  background: #f2eee9;
+  width: 150px;
+  height: 80px;
+  justify-content: center;
+  position: absolute;
+  top: 60px;
+  visibility: ${({ showProfile }) => (showProfile ? "visible" : "hidden")};
+  right: 5px;
+  transition: 350ms;
+  z-index: 10;
+`;
+
+/**
+ * Styling for the components rendered in Profile Dropdown.
+ */
+export const DropdownLabel = styled(Link)`
+  background: #d1cac0;
+  height: 40px;
+  width: 150px;
+  align-items: center;
+  justify-content: center;
+  padding-left: 10px;
+  display: flex;
+  text-decoration: none;
+  color: #000000;
+  font-size: 14px;
+
+  &amp;:hover {
+    background: #3fada8;
+    color: #fff;
+    cursor: pointer;
+  }
+`;
+
+// Sidebar CSS
+
+/**
+ * Hamburger icon to toggle the sidebar on smaller display.
+ */
+export const SidebarToggleIcon = styled(Link)`
+  margin-left: 1rem;
+  font-size: 1.5rem;
+  height: 60px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  top: 0;
+`;
+
+/**
+ * Sidebar container
+ */
+export const SidebarNav = styled.nav`
+  background: #3fada8;
+  width: 250px;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  left: ${({ sidebar }) => (sidebar ? "0" : "-100%")};
+  transition: 350ms;
+  z-index: 10;
+`;
+
+/**
+ * Wrapper for all the sidebar components.
+ */
+export const SidebarWrap = styled.div`
+  width: 100%;
+`;
+
+// CSS for components within Sidebar
+
+/**
+ * Component on the sidebar that holds logo and sidebar toggle.
+ */
+export const LogoCompartment = styled.div`
+  color: #ffffff;
+  justify-content: space-between;
+  padding: 20px;
+  padding-left: 10px;
+  list-style: none;
+  height: 30px;
+  text-decoration: none;
+  font-size: 18px;
+`;
+
+/**
+ * Sidebar component that holds the link to other pages.
+ */
+export const SidebarLink = styled(Link)`
+  display: flex;
+  color: #ffffff;
+  background: ${({ isPage }) => (isPage ? "#646466" : " #3fada8")};
+  justify-content: space-between;
+  align-items: left;
+  padding: 20px;
+  list-style: none;
+  height: 25px;
+  text-decoration: none;
+  font-size: 20px;
+  font-weight: bold;
+
+  &amp;:hover {
+    background: #646466;
+    border-left: 4px solid #632ce4;
+    cursor: pointer;
+  }
+`;
+
+export const SidebarNoLink = styled.span`
+  display: flex;
+  color: #ffffff;
+  background: ${({ isPage }) => (isPage ? "#646466" : " #3fada8")};
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  list-style: none;
+  height: 25px;
+  text-decoration: none;
+  font-size: 20px;
+  font-weight: bold;
+
+  &amp;:hover {
+    background: #646466;
+    border-left: 4px solid #632ce4;
+    cursor: pointer;
+  }
+`;
+
+/**
+ * Text Labels that appear on sidebar.
+ */
+export const SidebarLabel = styled.span`
+  margin-left: 20px;
+`;
+
+/**
+ * Text Labels that appear inside Filter Label.
+ */
+export const FilterLabel = styled.span`
+  margin-left: 20px;
+`;
+
+/**
+ * Text Labels for individual filter options.
+ */
+export const FilterOptLabel = styled.span`
+  background: #328f8a;
+  height: 40px;
+  padding-left: 2.5rem;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: #f5f5f5;
+  font-size: 16px;
+
+  &amp;:hover {
+    background: #646466;
+    cursor: pointer;
+  }
+`;
+</code></pre>
+            </article>
+          </section>
+        </div>
+
+        <footer class="footer">
+          <div class="content has-text-centered">
+            <p>
+              Documentation generated by
+              <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.6</a>
+            </p>
+            <p class="sidebar-created-by">
+              <a
+                href="https://github.com/SoftwareBrothers/better-docs"
+                target="_blank"
+                >BetterDocs theme</a
+              >
+              provided with <i class="fas fa-heart"></i> by
+              <a href="http://softwarebrothers.co" target="_blank"
+                >SoftwareBrothers - JavaScript Development Agency</a
+              >
+            </p>
+          </div>
+        </footer>
+      </div>
+      <div id="side-nav" class="side-nav"></div>
+    </div>
+    <script src="scripts/app.min.js"></script>
+    <script>
+      PR.prettyPrint();
+    </script>
+    <script src="scripts/linenumber.js"></script>
+  </body>
+</html>

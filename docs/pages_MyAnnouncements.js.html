@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>pages/MyAnnouncements.js</title>
+
+    <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="./build/entry.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto:100,400,700|Inconsolata,700"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+      integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/"
+      crossorigin="anonymous"
+    />
+    <link
+      type="text/css"
+      rel="stylesheet"
+      href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/tomorrow-night.min.css"
+    />
+    <link type="text/css" rel="stylesheet" href="styles/app.min.css" />
+    <link type="text/css" rel="stylesheet" href="styles/iframe.css" />
+    <link type="text/css" rel="stylesheet" href="" />
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+  </head>
+
+  <body class="layout small-header">
+    <div id="stickyNavbarOverlay"></div>
+
+    <div class="top-nav">
+      <div class="inner">
+        <a
+          id="hamburger"
+          role="button"
+          class="navbar-burger"
+          aria-label="menu"
+          aria-expanded="false"
+        >
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+        <div class="logo">
+          <a href="index.html">
+            <h1 class="navbar-item">My React components</h1>
+          </a>
+        </div>
+        <div class="menu">
+          <div class="navigation">
+            <a href="index.html" class="link"> API Documentation </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="main">
+      <div class="sidebar" id="sidebarNav">
+        <nav>
+          <h2><a href="index.html">Documentation</a></h2>
+          <div class="category">
+            <h3>Components</h3>
+            <ul>
+              <li><a href="Admin.html">Admin</a></li>
+              <li><a href="Announcements.html">Announcements</a></li>
+              <li><a href="CategorizedIssues.html">CategorizedIssues</a></li>
+              <li><a href="CheckboxItem.html">CheckboxItem</a></li>
+              <li><a href="CommentBox.html">CommentBox</a></li>
+              <li><a href="CommentInput.html">CommentInput</a></li>
+              <li><a href="CreateIssue.html">CreateIssue</a></li>
+              <li><a href="Filter.html">Filter</a></li>
+              <li><a href="Header.html">Header</a></li>
+              <li><a href="IndividualIssue.html">IndividualIssue</a></li>
+              <li><a href="Issues.html">Issues</a></li>
+              <li><a href="Login.html">Login</a></li>
+              <li><a href="MyAnnouncements.html">MyAnnouncements</a></li>
+              <li><a href="MyIssues.html">MyIssues</a></li>
+              <li><a href="ProfilePage.html">ProfilePage</a></li>
+              <li><a href="SearchBar.html">SearchBar</a></li>
+              <li><a href="Sidebar.html">Sidebar</a></li>
+              <li><a href="SubMenu.html">SubMenu</a></li>
+              <li><a href="Support.html">Support</a></li>
+            </ul>
+            <h3>Global</h3>
+            <ul>
+              <li><a href="global.html#AddComment">AddComment</a></li>
+              <li><a href="global.html#DropdownLabel">DropdownLabel</a></li>
+              <li><a href="global.html#FilterLabel">FilterLabel</a></li>
+              <li><a href="global.html#FilterOptLabel">FilterOptLabel</a></li>
+              <li><a href="global.html#IssueContainer">IssueContainer</a></li>
+              <li><a href="global.html#LogoCompartment">LogoCompartment</a></li>
+              <li><a href="global.html#NavHead">NavHead</a></li>
+              <li><a href="global.html#Profile">Profile</a></li>
+              <li><a href="global.html#ProfileDropdown">ProfileDropdown</a></li>
+              <li><a href="global.html#SidebarData">SidebarData</a></li>
+              <li><a href="global.html#SidebarLabel">SidebarLabel</a></li>
+              <li><a href="global.html#SidebarLink">SidebarLink</a></li>
+              <li><a href="global.html#SidebarNav">SidebarNav</a></li>
+              <li><a href="global.html#SidebarNoLink">SidebarNoLink</a></li>
+              <li>
+                <a href="global.html#SidebarToggleIcon">SidebarToggleIcon</a>
+              </li>
+              <li><a href="global.html#SidebarWrap">SidebarWrap</a></li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+      <div class="core" id="main-content-wrapper">
+        <div class="content">
+          <header class="page-title">
+            <p>Source</p>
+            <h1>pages/MyAnnouncements.js</h1>
+          </header>
+
+          <section>
+            <article>
+              <pre
+                class="prettyprint source linenums"
+              ><code>import { useMediaPredicate } from "react-media-hook";
+import React, { useState, useEffect, useContext } from "react";
+import { AuthContext } from "../context/auth-context";
+import Header from "../components/Navigation/Header";
+import FilterIssues from "../logics/FilterIssues";
+import {
+  IssueContainer,
+  MyPostLabels,
+} from "../components/IssueDashboard/IssueDesigns";
+import * as FaIcons from "react-icons/fa";
+import {
+  AuthoredPost,
+  LikedPost,
+  CommentedOnPost,
+  ArrayAND,
+} from "../logics/PostCategorization";
+import CategorizedIssues from "../components/IssueDashboard/CategorizedIssues";
+
+const iconStyles = {
+  paddingRight: "10px",
+  color: "#999",
+};
+const categories = [
+  {
+    name: "Authored",
+    icon: &lt;FaIcons.FaPen style={iconStyles} />,
+  },
+  {
+    name: "Commented",
+    icon: &lt;FaIcons.FaComment style={iconStyles} />,
+  },
+];
+
+/**
+ * My Announcement page. 
+ * Personalized page including the announcments
+ * a user has authored or commented on.
+ * @component
+ */
+function MyAnnouncements() {
+  const { tryLocalLogin, allAnnouncementsData, userData } = useContext(
+    AuthContext
+  );
+  useEffect(async () => {
+    tryLocalLogin();
+  }, []);
+  const notMobileView = useMediaPredicate("(min-width: 800px)");
+  const [sidebar, setSidebar] = useState(false);
+  const showSidebar = () => setSidebar(!sidebar);
+  const page = "My Announcements";
+  const isIssue = false;
+
+  const [filterState, _setFilterState] = useState(false);
+  const setFilterState = () => _setFilterState(!filterState);
+
+  const [selectedFilters, _applyFilter] = useState({
+    Batch: [],
+    Department: [],
+    Programs: [],
+    Administration: [],
+  });
+  const applyFilter = (type, filter) => {
+    const filList = selectedFilters[type];
+    if (filList.includes(filter)) filList.splice(filList.indexOf(filter), 1);
+    else filList.push(filter);
+  };
+
+  const sidebarToggles = {
+    notMobileView: notMobileView,
+    showSidebar: showSidebar,
+    sidebar: sidebar,
+  };
+
+  const [anounceCategories, _setAnnounceCat] = useState([true, false]);
+  const setAnnounceCat = (i) => {
+    let cat = [false, false];
+    cat[i] = true;
+    _setAnnounceCat(cat);
+  };
+
+  const author = userData.user ? userData.user.email : "";
+  const isAdmin = userData.user ? userData.user.role === "admin" : false;
+
+  const showAnnounce = FilterIssues(selectedFilters, allAnnouncementsData);
+  const commentedAnnounce = ArrayAND(
+    showAnnounce,
+    CommentedOnPost(allAnnouncementsData, author)
+  );
+  const authoredPost = ArrayAND(
+    showAnnounce,
+    AuthoredPost(allAnnouncementsData, author)
+  );
+  const categorizedPosts = [authoredPost, commentedAnnounce];
+
+  return (
+    &lt;div style={{ overflowX: "hidden" }}>
+      &lt;Header
+        {...sidebarToggles}
+        page={page}
+        setFilterState={setFilterState}
+        selectedFilters={selectedFilters}
+        applyFilter={applyFilter}
+      />
+      &lt;IssueContainer notMobileView={notMobileView} style={{ padding: "20px" }}>
+        &lt;div style={{ display: "flex", justifyContent: "space-between" }}>
+          {categories.map((category, index) => {
+            return (
+              (category.name === "Authored" ? isAdmin : true) &amp;&amp; (
+                &lt;MyPostLabels
+                  selected={anounceCategories[index]}
+                  onClick={() => setAnnounceCat(index)}
+                >
+                  {category.icon}
+                  {category.name}
+                &lt;/MyPostLabels>
+              )
+            );
+          })}
+        &lt;/div>
+        {categories.map((category, index) => {
+          return (
+            (category.name === "Authored" ? isAdmin : true) &amp;&amp;
+            anounceCategories[index] &amp;&amp; (
+              &lt;CategorizedIssues
+                issues={allAnnouncementsData}
+                showIssues={categorizedPosts[index]}
+                isIssue={isIssue}
+                notMobileView={notMobileView}
+              />
+            )
+          );
+        })}
+      &lt;/IssueContainer>
+    &lt;/div>
+  );
+}
+
+export default MyAnnouncements;
+</code></pre>
+            </article>
+          </section>
+        </div>
+
+        <footer class="footer">
+          <div class="content has-text-centered">
+            <p>
+              Documentation generated by
+              <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.6</a>
+            </p>
+            <p class="sidebar-created-by">
+              <a
+                href="https://github.com/SoftwareBrothers/better-docs"
+                target="_blank"
+                >BetterDocs theme</a
+              >
+              provided with <i class="fas fa-heart"></i> by
+              <a href="http://softwarebrothers.co" target="_blank"
+                >SoftwareBrothers - JavaScript Development Agency</a
+              >
+            </p>
+          </div>
+        </footer>
+      </div>
+      <div id="side-nav" class="side-nav"></div>
+    </div>
+    <script src="scripts/app.min.js"></script>
+    <script>
+      PR.prettyPrint();
+    </script>
+    <script src="scripts/linenumber.js"></script>
+  </body>
+</html>

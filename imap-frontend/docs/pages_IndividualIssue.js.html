@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>pages/IndividualIssue.js</title>
+
+    <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="./build/entry.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto:100,400,700|Inconsolata,700"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+      integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/"
+      crossorigin="anonymous"
+    />
+    <link
+      type="text/css"
+      rel="stylesheet"
+      href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/tomorrow-night.min.css"
+    />
+    <link type="text/css" rel="stylesheet" href="styles/app.min.css" />
+    <link type="text/css" rel="stylesheet" href="styles/iframe.css" />
+    <link type="text/css" rel="stylesheet" href="" />
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+  </head>
+
+  <body class="layout small-header">
+    <div id="stickyNavbarOverlay"></div>
+
+    <div class="top-nav">
+      <div class="inner">
+        <a
+          id="hamburger"
+          role="button"
+          class="navbar-burger"
+          aria-label="menu"
+          aria-expanded="false"
+        >
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+        <div class="logo">
+          <a href="index.html">
+            <h1 class="navbar-item">My React components</h1>
+          </a>
+        </div>
+        <div class="menu">
+          <div class="navigation">
+            <a href="index.html" class="link"> API Documentation </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="main">
+      <div class="sidebar" id="sidebarNav">
+        <nav>
+          <h2><a href="index.html">Documentation</a></h2>
+          <div class="category">
+            <h3>Components</h3>
+            <ul>
+              <li><a href="Admin.html">Admin</a></li>
+              <li><a href="Announcements.html">Announcements</a></li>
+              <li><a href="CategorizedIssues.html">CategorizedIssues</a></li>
+              <li><a href="CheckboxItem.html">CheckboxItem</a></li>
+              <li><a href="CommentBox.html">CommentBox</a></li>
+              <li><a href="CommentInput.html">CommentInput</a></li>
+              <li><a href="CreateIssue.html">CreateIssue</a></li>
+              <li><a href="Filter.html">Filter</a></li>
+              <li><a href="Header.html">Header</a></li>
+              <li><a href="IndividualIssue.html">IndividualIssue</a></li>
+              <li><a href="Issues.html">Issues</a></li>
+              <li><a href="Login.html">Login</a></li>
+              <li><a href="MyAnnouncements.html">MyAnnouncements</a></li>
+              <li><a href="MyIssues.html">MyIssues</a></li>
+              <li><a href="ProfilePage.html">ProfilePage</a></li>
+              <li><a href="SearchBar.html">SearchBar</a></li>
+              <li><a href="Sidebar.html">Sidebar</a></li>
+              <li><a href="SubMenu.html">SubMenu</a></li>
+              <li><a href="Support.html">Support</a></li>
+            </ul>
+            <h3>Global</h3>
+            <ul>
+              <li><a href="global.html#AddComment">AddComment</a></li>
+              <li><a href="global.html#DropdownLabel">DropdownLabel</a></li>
+              <li><a href="global.html#FilterLabel">FilterLabel</a></li>
+              <li><a href="global.html#FilterOptLabel">FilterOptLabel</a></li>
+              <li><a href="global.html#IssueContainer">IssueContainer</a></li>
+              <li><a href="global.html#LogoCompartment">LogoCompartment</a></li>
+              <li><a href="global.html#NavHead">NavHead</a></li>
+              <li><a href="global.html#Profile">Profile</a></li>
+              <li><a href="global.html#ProfileDropdown">ProfileDropdown</a></li>
+              <li><a href="global.html#SidebarData">SidebarData</a></li>
+              <li><a href="global.html#SidebarLabel">SidebarLabel</a></li>
+              <li><a href="global.html#SidebarLink">SidebarLink</a></li>
+              <li><a href="global.html#SidebarNav">SidebarNav</a></li>
+              <li><a href="global.html#SidebarNoLink">SidebarNoLink</a></li>
+              <li>
+                <a href="global.html#SidebarToggleIcon">SidebarToggleIcon</a>
+              </li>
+              <li><a href="global.html#SidebarWrap">SidebarWrap</a></li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+      <div class="core" id="main-content-wrapper">
+        <div class="content">
+          <header class="page-title">
+            <p>Source</p>
+            <h1>pages/IndividualIssue.js</h1>
+          </header>
+
+          <section>
+            <article>
+              <pre
+                class="prettyprint source linenums"
+              ><code>import { IssueContainer } from "../components/IssueDashboard/IssueDesigns";
+import CommentInput from "../components/IssuePopup/CommentInput";
+import CommentBox from "../components/IssuePopup/CommentBox";
+import IssueTitleNDesc from "../components/IssuePopup/IssueTitleNDesc";
+import LikesNComments from "../components/IssuePopup/LikesNComments";
+import { AddComment } from "../logics/AddComment";
+import { SetLike } from "../logics/LikePost";
+import Modal from "react-modal";
+import PropTypes from "prop-types";
+import * as FaIcons from "react-icons/fa";
+import React, { useState, useContext } from "react";
+import { AuthContext } from "../context/auth-context";
+
+if (process.env.NODE_ENV !== "test") Modal.setAppElement("#root");
+
+const customStyle = {
+  content: {
+    border: "none",
+    maxWidth: "1000px",
+    margin: "10px auto",
+    padding: "10px 20px 0px",
+    borderRadius: "8px",
+  },
+  overlay: { zIndex: "1001", backgroundColor: "rgba(52, 52, 52, 0.8)" },
+};
+
+/**
+ * Indiviual post popup. Opens up when a post is clicked.
+ * Has details about post like title, description, likes,
+ * comments. Has admin privileges like resolve and delete.
+ * @component
+ * @example
+ * const issue = {Title: "New Issue",
+ *                Desc:"Description",
+ *                 Tags: {Public: false, Resolved: false},
+ *                  Likes: {studEmail:["abc@gmail.com"]},
+ *                  Comments: {userEmail:["abc@gmail.com"], 
+ *                              comments:["yes"]}}
+ * const popupIssue = true;
+ * const handlePopIssue = () => popupIssue = false;
+ * isIssue: true;
+ * isMobileView: false;
+ * return (
+ *   &lt;IndividualIssue issue={issue} popupIssue={popupIssue}
+ *          handlePopIssue={handlePopIssue} isIssue={isIssue}
+ *           isMobileView={isMobileView}  />
+ * )
+ */
+function IndividualIssue({
+  issue,
+  popupIssue,
+  handlePopIssue,
+  isIssue,
+  isMobileView,
+}) {
+  const { userData, updateIssueDb, updateAnnouncementDb } = useContext(
+    AuthContext
+  );
+  const userEmail = userData.user.email;
+  const isAdmin = userData.user.role !== "student";
+  const likes_list = isIssue ? issue.Likes.studEmail : [];
+  const has_liked = isIssue ? likes_list.indexOf(userEmail) >= 0 : false;
+
+  const [userComment, _readComment] = useState("");
+  const readComment = (e) => _readComment(e.target.value);
+  const [like, setLike] = useState(has_liked);
+
+  const setLikeFunc = () => {
+    setLike(!like);
+    SetLike(
+      isIssue,
+      has_liked,
+      like,
+      issue,
+      likes_list,
+      userEmail,
+      updateIssueDb
+    );
+  };
+
+  const addComment = () => {
+    AddComment(
+      userComment,
+      issue,
+      userEmail,
+      isIssue,
+      updateIssueDb,
+      updateAnnouncementDb
+    );
+    _readComment("");
+  };
+
+  return (
+    &lt;>
+      &lt;Modal isOpen={popupIssue} style={customStyle}>
+        &lt;button
+          onClick={handlePopIssue}
+          style={{
+            position: "absolute",
+            border: "none",
+            top: "20px",
+            right: "20px",
+            cursor: "pointer",
+            padding: "3px",
+          }}
+        >
+          &lt;FaIcons.FaTimes />
+        &lt;/button>
+        &lt;IssueTitleNDesc
+          issue={issue}
+          isIssue={isIssue}
+          isAdmin={isAdmin}
+          handlePopIssue={handlePopIssue}
+        />
+        &lt;LikesNComments
+          issue={issue}
+          isIssue={isIssue}
+          setLike={setLikeFunc}
+          like={like}
+        />
+        &lt;CommentInput
+          readComment={readComment}
+          userComment={userComment}
+          addComment={addComment}
+        />
+
+        &lt;IssueContainer>
+          {issue.Comments.userEmail.map((commenter, index) => {
+            const comment = issue.Comments.comment[index];
+            return &lt;CommentBox commenter={commenter} comment={comment} />;
+          })}
+        &lt;/IssueContainer>
+      &lt;/Modal>
+    &lt;/>
+  );
+}
+
+IndividualIssue.propTypes = {
+ 
+  /**
+   * Issue object
+   */
+   issue: PropTypes.object.isRequired,
+
+  /**
+   * Boolean flag for the popup status.
+   */
+   popupIssue: PropTypes.bool.isRequired,
+
+  /**
+   * Function to control popup status.
+   */
+   handlePopIssue: PropTypes.func.isRequired,
+
+  /**
+   * Boolean, true for issue and false for announcement.
+   */
+   isIssue: PropTypes.bool.isRequired,
+
+  /**
+   * Boolean that state whether the current screen dimension
+   * is a mobile phone resolution. It is set to `false` if it has
+   * a smaller dimension than a given threshold.
+   */
+   isMobileView: PropTypes.bool,
+};
+
+export default IndividualIssue;
+</code></pre>
+            </article>
+          </section>
+        </div>
+
+        <footer class="footer">
+          <div class="content has-text-centered">
+            <p>
+              Documentation generated by
+              <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.6</a>
+            </p>
+            <p class="sidebar-created-by">
+              <a
+                href="https://github.com/SoftwareBrothers/better-docs"
+                target="_blank"
+                >BetterDocs theme</a
+              >
+              provided with <i class="fas fa-heart"></i> by
+              <a href="http://softwarebrothers.co" target="_blank"
+                >SoftwareBrothers - JavaScript Development Agency</a
+              >
+            </p>
+          </div>
+        </footer>
+      </div>
+      <div id="side-nav" class="side-nav"></div>
+    </div>
+    <script src="scripts/app.min.js"></script>
+    <script>
+      PR.prettyPrint();
+    </script>
+    <script src="scripts/linenumber.js"></script>
+  </body>
+</html>

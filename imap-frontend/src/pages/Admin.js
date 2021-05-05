@@ -35,6 +35,10 @@ const StyledDropdown = styled(Dropdown)`
   }
 `;
 
+/**
+ * Admin page. Reserved for users with special privileges.
+ * @component
+ */
 const Admin = () => {
   const { updateRole, addFilter, delFilter } = useContext(AuthContext);
   const notMobileView = useMediaPredicate("(min-width: 800px)");

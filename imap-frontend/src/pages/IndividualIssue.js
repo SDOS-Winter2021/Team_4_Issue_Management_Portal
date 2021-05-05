@@ -6,6 +6,7 @@ import LikesNComments from "../components/IssuePopup/LikesNComments";
 import { AddComment } from "../logics/AddComment";
 import { SetLike } from "../logics/LikePost";
 import Modal from "react-modal";
+import PropTypes from "prop-types";
 import * as FaIcons from "react-icons/fa";
 import React, { useState, useContext } from "react";
 import { AuthContext } from "../context/auth-context";
@@ -23,6 +24,28 @@ const customStyle = {
   overlay: { zIndex: "1001", backgroundColor: "rgba(52, 52, 52, 0.8)" },
 };
 
+/**
+ * Indiviual post popup. Opens up when a post is clicked.
+ * Has details about post like title, description, likes,
+ * comments. Has admin privileges like resolve and delete.
+ * @component
+ * @example
+ * const issue = {Title: "New Issue",
+ *                Desc:"Description",
+ *                 Tags: {Public: false, Resolved: false},
+ *                  Likes: {studEmail:["abc@gmail.com"]},
+ *                  Comments: {userEmail:["abc@gmail.com"],
+ *                              comments:["yes"]}}
+ * const popupIssue = true;
+ * const handlePopIssue = () => popupIssue = false;
+ * isIssue: true;
+ * isMobileView: false;
+ * return (
+ *   <IndividualIssue issue={issue} popupIssue={popupIssue}
+ *          handlePopIssue={handlePopIssue} isIssue={isIssue}
+ *           isMobileView={isMobileView}  />
+ * )
+ */
 function IndividualIssue({
   issue,
   popupIssue,
@@ -111,5 +134,34 @@ function IndividualIssue({
     </>
   );
 }
+
+IndividualIssue.propTypes = {
+  /**
+   * Issue object
+   */
+  issue: PropTypes.object.isRequired,
+
+  /**
+   * Boolean flag for the popup status.
+   */
+  popupIssue: PropTypes.bool.isRequired,
+
+  /**
+   * Function to control popup status.
+   */
+  handlePopIssue: PropTypes.func.isRequired,
+
+  /**
+   * Boolean, true for issue and false for announcement.
+   */
+  isIssue: PropTypes.bool.isRequired,
+
+  /**
+   * Boolean that state whether the current screen dimension
+   * is a mobile phone resolution. It is set to `false` if it has
+   * a smaller dimension than a given threshold.
+   */
+  isMobileView: PropTypes.bool,
+};
 
 export default IndividualIssue;

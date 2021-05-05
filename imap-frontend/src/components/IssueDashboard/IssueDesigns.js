@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
-/** Styling the container that holds all the components
+/** Style: Styling the container that holds all the components
  * for an issue.
  * Takes in a prop called `notMobileView` to decide the
  * size and position based on screen resolution.

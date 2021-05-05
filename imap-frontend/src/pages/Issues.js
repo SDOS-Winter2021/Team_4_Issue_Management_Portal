@@ -4,6 +4,10 @@ import { AuthContext } from "../context/auth-context";
 import Header from "../components/Navigation/Header";
 import AllIssues from "../components/IssueDashboard/AllIssues";
 
+/**
+ * Announcement page.
+ * @component
+ */
 function Issues() {
   const { tryLocalLogin, allIssuesData } = useContext(AuthContext);
   useEffect(async () => {

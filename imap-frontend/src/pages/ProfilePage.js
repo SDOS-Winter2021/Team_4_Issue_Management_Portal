@@ -29,6 +29,11 @@ const welcomeMsg = {
   student: "You are logged in as a Student.",
 };
 
+/**
+ * My Profile page.
+ * Dashboard for User specific details.
+ * @component
+ */
 const ProfilePage = () => {
   const notMobileView = useMediaPredicate("(min-width: 800px)");
   const [sidebar, setSidebar] = useState(true);

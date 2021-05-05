@@ -4,6 +4,10 @@ import { AuthContext } from "../context/auth-context";
 import Header from "../components/Navigation/Header";
 import AllIssues from "../components/IssueDashboard/AllIssues";
 
+/**
+ * Announcement page.
+ * @component
+ */
 function Announcements() {
   const { tryLocalLogin, allAnnouncementsData } = useContext(AuthContext);
   useEffect(async () => {

@@ -182,4 +182,32 @@ router.post("/ResolveIssue/:id", (req, res) => {
     });
 });
 
+router.post("/VisibilityIssue/:id", (req, res) => {
+  issues
+    .findByIdAndUpdate(req.params.id, { "Tags.Public": true })
+    .then((result) => {
+      var mail = {
+        from: "no-reply-issuemanagement@iiitd.ac.in",
+        to: result.userEmail,
+        subject: "Issue Made Public - IMAP",
+        text:
+          "Hi there,\n Your Issue " +
+          result.Title +
+          " has been made public by the admins. \n\n ------------------------ \n Issue Management Portal (IMAP)",
+      };
+
+      transport.sendMail(mail, function (error, info) {
+        if (error) {
+          console.log(error);
+        } else {
+          console.log("email send: " + info.response);
+        }
+      });
+      res.send(result);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+});
+
 module.exports = router;

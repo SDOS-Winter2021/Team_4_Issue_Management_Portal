@@ -26,7 +26,7 @@ const Login = () => {
   } = useContext(AuthContext);
 
   useEffect(async () => {
-    let isAuth = await localStorage.getItem("loggedIn");
+    let isAuth = await sessionStorage.getItem("loggedIn");
     if (isAuth) {
       history.push("/issues");
     }
@@ -44,23 +44,23 @@ const Login = () => {
           try {
             if (response.data.message == "Successful") {
               setLoggedIn(true);
-              await localStorage.setItem("loggedIn", true);
-              await localStorage.setItem(
+              await sessionStorage.setItem("loggedIn", true);
+              await sessionStorage.setItem(
                 "userData",
                 JSON.stringify(response.data)
               );
               const filtersData = await getFiltersData();
               const issueData = await getIssuesData();
               const announcementData = await getAnnouncementsData();
-              await localStorage.setItem(
+              await sessionStorage.setItem(
                 "allFiltersData",
                 JSON.stringify(filtersData)
               );
-              await localStorage.setItem(
+              await sessionStorage.setItem(
                 "allIssuesData",
                 JSON.stringify(issueData)
               );
-              await localStorage.setItem(
+              await sessionStorage.setItem(
                 "allAnnouncementsData",
                 JSON.stringify(announcementData)
               );

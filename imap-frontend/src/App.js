@@ -27,7 +27,7 @@ function PrivateRoute({ children, ...rest }) {
     <Route
       {...rest}
       render={({ location }) =>
-        localStorage.getItem("loggedIn") ? (
+        sessionStorage.getItem("loggedIn") ? (
           children
         ) : (
           <Redirect
@@ -42,6 +42,7 @@ function PrivateRoute({ children, ...rest }) {
   );
 }
 function App() {
+
   const { tryLocalLogin } = useContext(AuthContext);
   useEffect(() => {
     tryLocalLogin();

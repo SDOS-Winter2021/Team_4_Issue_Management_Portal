@@ -2,27 +2,36 @@
 
 ## 1. Overview
 
-This project aims to build a centralized system to discuss all the students' issues that require administrative help. This way, all the important information and discussions will be stored in one place and referred to by anyone in the future.
+This project aims to build a centralized system to discuss all the students' issues that require administrative help. This way, all the important information and discussions will be stored in one place and referred to by anyone in the future. One of the major functions of this system is to avoid facing duplicate emails from the users regarding various topics.
 
 ## 2. Functionalities
 
 This portal will have the following major functionalities.
 
-1.  Issue creation
-2.  Provision for making announcements by the administration so that it gets to the required student body.
+* Issue creation
 
-3.  Tagging the issue with appropriate labels.
+* Provision for making announcements by the administration so that it gets to the required student body.
 
-4.  Filtering the issues based on tag.
+* Tagging the issue with appropriate labels.
 
-5.  Resolving/deleting issues.
+* Filtering the issues based on tag.
 
-6.  Comment section for discussion on issue and announcements.
-7.  Ways to control duplicate and unnecessary issues.
+* Resolving/deleting issues.
 
-8.  Authentication using IIITD account.
+* Comment section for discussion on issue and announcements.
 
-9.  Email notification when new announcement is posted or liked issues are updated.
+* Ways to control duplicate and unnecessary issues.
+
+* Authentication using IIITD account.
+
+* Email notification when new announcement is posted or liked issues are updated.
+
+* The administration is able to modify the roles of the Email IDs registered on the platform.
+
+* The administration is able to add/delete filters present on the portal.
+
+
+
 
 ## 3. Instructions
 
@@ -40,24 +49,27 @@ Note: For generating a Google Client ID, refer to this [link](https://developers
 
 5. Run `npm start`
 
-6. Generate your MongoDB URI.
+6. Create a dedicated gmail account which will be used for sending emails to the users.
+
+7. Generate your MongoDB URI.
 
 Note: For generating a Mongo URI, refer to this [link](https://docs.mongodb.com/guides/server/drivers/)
 
-7. Navigate to `imap-backend/` in a separate command prompt.
+8. Navigate to `imap-backend/` in a separate command prompt.
 
 ```
 $ vim .env
 ```
 
 ```
-PORT = 5000
 MONGO_URI = YOUR_MONGO_URI
 GOOGLE_OAUTH = YOUR_GOOGLE_CLIENT_ID
+NODE_ENV = development
+EMAIL_PASSWORD = DEDICATED_EMAIL_PASSWORD
 ```
 
-8. Run `npm install`
+9. Run `npm install`
 
-9. Run `npm start`
+10. Run `npm start`
 
 Navigate to http://localhost:3000 to view the client side.

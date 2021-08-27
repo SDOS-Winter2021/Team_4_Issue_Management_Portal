@@ -1,6 +1,5 @@
 require("dotenv").config();
 const User = require("../models/user");
-const jwt = require("jsonwebtoken");
 const { OAuth2Client } = require("google-auth-library");
 const { response } = require("express");
 const client = new OAuth2Client(process.env.GOOGLE_OAUTH);

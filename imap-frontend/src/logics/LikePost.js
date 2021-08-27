@@ -10,7 +10,7 @@ export const SetLike = async (
   if (!isIssue) return;
   if (has_liked) return;
   const _id = issue._id;
-  // setLike(!like);
+
   if (!like) {
     likes_list.push(userEmail);
     const type = "Like";
@@ -18,6 +18,6 @@ export const SetLike = async (
   } else {
     likes_list.pop(userEmail);
     const type = "Unlike";
-    // await updateIssueDb({ userEmail, type, _id });
+    await updateIssueDb({ userEmail, type, _id });
   }
 };

@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 // CSS for NavBar
 
 /**
- * Styling for the Navigation bar on the top.
+ * Style: Styling for the Navigation bar on the top.
  */
 export const NavHead = styled.header`
   background: #f2eee9;
@@ -17,7 +17,7 @@ export const NavHead = styled.header`
 `;
 
 /**
- * Styling for the Profile Button on NavBar.
+ * Style: Styling for the Profile Button on NavBar.
  */
 export const Profile = styled.button`
   position: absolute;
@@ -32,7 +32,7 @@ export const Profile = styled.button`
 `;
 
 /**
- * Styling for the dropdown profile menu.
+ * Style: Styling for the dropdown profile menu.
  */
 export const ProfileDropdown = styled.nav`
   background: #f2eee9;
@@ -48,7 +48,7 @@ export const ProfileDropdown = styled.nav`
 `;
 
 /**
- * Styling for the components rendered in Profile Dropdown.
+ * Style: Styling for the components rendered in Profile Dropdown.
  */
 export const DropdownLabel = styled(Link)`
   background: #d1cac0;
@@ -72,7 +72,7 @@ export const DropdownLabel = styled(Link)`
 // Sidebar CSS
 
 /**
- * Hamburger icon to toggle the sidebar on smaller display.
+ * Style: Hamburger icon to toggle the sidebar on smaller display.
  */
 export const SidebarToggleIcon = styled(Link)`
   margin-left: 1rem;
@@ -85,7 +85,7 @@ export const SidebarToggleIcon = styled(Link)`
 `;
 
 /**
- * Sidebar container
+ * Style: Sidebar container
  */
 export const SidebarNav = styled.nav`
   background: #3fada8;
@@ -101,7 +101,7 @@ export const SidebarNav = styled.nav`
 `;
 
 /**
- * Wrapper for all the sidebar components.
+ * Style:  Wrapper for all the sidebar components.
  */
 export const SidebarWrap = styled.div`
   width: 100%;
@@ -110,7 +110,7 @@ export const SidebarWrap = styled.div`
 // CSS for components within Sidebar
 
 /**
- * Component on the sidebar that holds logo and sidebar toggle.
+ * Style: Component on the sidebar that holds logo and sidebar toggle.
  */
 export const LogoCompartment = styled.div`
   color: #ffffff;
@@ -124,7 +124,7 @@ export const LogoCompartment = styled.div`
 `;
 
 /**
- * Sidebar component that holds the link to other pages.
+ * Style: Sidebar component that holds the link to other pages.
  */
 export const SidebarLink = styled(Link)`
   display: flex;
@@ -145,7 +145,9 @@ export const SidebarLink = styled(Link)`
     cursor: pointer;
   }
 `;
-
+/**
+ * Style: Sidebar component that doesn't link to other pages.
+ */
 export const SidebarNoLink = styled.span`
   display: flex;
   color: #ffffff;
@@ -167,21 +169,21 @@ export const SidebarNoLink = styled.span`
 `;
 
 /**
- * Text Labels that appear on sidebar.
+ * Style: Text Labels that appear on sidebar.
  */
 export const SidebarLabel = styled.span`
   margin-left: 20px;
 `;
 
 /**
- * Text Labels that appear inside Filter Label.
+ * Style: Text Labels that appear inside Filter Label.
  */
 export const FilterLabel = styled.span`
   margin-left: 20px;
 `;
 
 /**
- * Text Labels for individual filter options.
+ * Style: Text Labels for individual filter options.
  */
 export const FilterOptLabel = styled.span`
   background: #328f8a;

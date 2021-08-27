@@ -35,6 +35,12 @@ const categories = [
   },
 ];
 
+/**
+ * My Issue page.
+ * Personalized page including the issues
+ * a user has authored, liked or commented on.
+ * @component
+ */
 function MyIssues() {
   const { tryLocalLogin, allIssuesData, userData } = useContext(AuthContext);
   useEffect(async () => {

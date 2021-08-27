@@ -2,6 +2,11 @@ import { useMediaPredicate } from "react-media-hook";
 import React, { useState, useEffect, useContext } from "react";
 import Header from "../components/Navigation/Header";
 
+/**
+ * Support page.
+ * Has general description on how to use the portal
+ * @component
+ */
 function Support() {
   const notMobileView = useMediaPredicate("(min-width: 800px)");
   const [sidebar, setSidebar] = useState(true);

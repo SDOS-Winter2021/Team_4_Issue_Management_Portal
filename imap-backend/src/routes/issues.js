@@ -138,6 +138,19 @@ router.post("/LikedIssue/:id", (req, res) => {
     });
 });
 
+router.post("/UnlikedIssue/:id", (req, res) => {
+  issues
+    .findByIdAndUpdate(req.params.id, {
+      $pop: { "Likes.studEmail": req.body.userEmail },
+    })
+    .then((result) => {
+      res.send(result);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+});
+
 router.post("/CommentedIssue/:id", (req, res) => {
   issues
     .findByIdAndUpdate(req.params.id, {

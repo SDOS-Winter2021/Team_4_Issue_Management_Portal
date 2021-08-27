@@ -10,6 +10,10 @@ import GoogleLogin from "react-google-login";
 import { useHistory, Redirect } from "react-router-dom";
 import { AuthContext } from "../context/auth-context";
 
+/**
+ * Login page.
+ * @component
+ */
 const Login = () => {
   let history = useHistory();
   const {
@@ -67,17 +71,19 @@ const Login = () => {
             }
           } catch (err) {
             alert("Something went wrong!");
+            console.log(err);
           }
         };
         run();
       })
       .catch((err) => {
         alert("Something went wrong!");
+        console.log(err);
       });
   };
   const responseErrorGoogle = (response) => {
+    console.log(response);
     alert("Something went wrong");
-    // console.log(response);
   };
   return (
     <div className="page-container">

@@ -93,6 +93,9 @@ function IssueTitleNDesc({ issue, isIssue, isAdmin, handlePopIssue, page }) {
                 </p>
               </IssueStatusLabel>
             )}
+
+            {/* remove private public option */}
+            {/* 
             {isIssue && !issue.Tags.Public && (
               <div
                 onClick={
@@ -108,6 +111,8 @@ function IssueTitleNDesc({ issue, isIssue, isAdmin, handlePopIssue, page }) {
                 />
               </div>
             )}
+             */}
+             
             {isAdmin && (
               <div
                 onClick={() => setDeleteWarn(!deleteWarn)}

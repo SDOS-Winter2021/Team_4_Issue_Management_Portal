@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>pages/Support.js</title>
+
+    <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="./build/entry.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto:100,400,700|Inconsolata,700"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+      integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/"
+      crossorigin="anonymous"
+    />
+    <link
+      type="text/css"
+      rel="stylesheet"
+      href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/tomorrow-night.min.css"
+    />
+    <link type="text/css" rel="stylesheet" href="styles/app.min.css" />
+    <link type="text/css" rel="stylesheet" href="styles/iframe.css" />
+    <link type="text/css" rel="stylesheet" href="" />
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+  </head>
+
+  <body class="layout small-header">
+    <div id="stickyNavbarOverlay"></div>
+
+    <div class="top-nav">
+      <div class="inner">
+        <a
+          id="hamburger"
+          role="button"
+          class="navbar-burger"
+          aria-label="menu"
+          aria-expanded="false"
+        >
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+        <div class="logo">
+          <a href="index.html">
+            <h1 class="navbar-item">My React components</h1>
+          </a>
+        </div>
+        <div class="menu">
+          <div class="navigation">
+            <a href="index.html" class="link"> API Documentation </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="main">
+      <div class="sidebar" id="sidebarNav">
+        <nav>
+          <h2><a href="index.html">Documentation</a></h2>
+          <div class="category">
+            <h3>Components</h3>
+            <ul>
+              <li><a href="Admin.html">Admin</a></li>
+              <li><a href="Announcements.html">Announcements</a></li>
+              <li><a href="CategorizedIssues.html">CategorizedIssues</a></li>
+              <li><a href="CheckboxItem.html">CheckboxItem</a></li>
+              <li><a href="CommentBox.html">CommentBox</a></li>
+              <li><a href="CommentInput.html">CommentInput</a></li>
+              <li><a href="CreateIssue.html">CreateIssue</a></li>
+              <li><a href="Filter.html">Filter</a></li>
+              <li><a href="Header.html">Header</a></li>
+              <li><a href="IndividualIssue.html">IndividualIssue</a></li>
+              <li><a href="Issues.html">Issues</a></li>
+              <li><a href="Login.html">Login</a></li>
+              <li><a href="MyAnnouncements.html">MyAnnouncements</a></li>
+              <li><a href="MyIssues.html">MyIssues</a></li>
+              <li><a href="ProfilePage.html">ProfilePage</a></li>
+              <li><a href="SearchBar.html">SearchBar</a></li>
+              <li><a href="Sidebar.html">Sidebar</a></li>
+              <li><a href="SubMenu.html">SubMenu</a></li>
+              <li><a href="Support.html">Support</a></li>
+            </ul>
+            <h3>Global</h3>
+            <ul>
+              <li><a href="global.html#AddComment">AddComment</a></li>
+              <li><a href="global.html#DropdownLabel">DropdownLabel</a></li>
+              <li><a href="global.html#FilterLabel">FilterLabel</a></li>
+              <li><a href="global.html#FilterOptLabel">FilterOptLabel</a></li>
+              <li><a href="global.html#IssueContainer">IssueContainer</a></li>
+              <li><a href="global.html#LogoCompartment">LogoCompartment</a></li>
+              <li><a href="global.html#NavHead">NavHead</a></li>
+              <li><a href="global.html#Profile">Profile</a></li>
+              <li><a href="global.html#ProfileDropdown">ProfileDropdown</a></li>
+              <li><a href="global.html#SidebarData">SidebarData</a></li>
+              <li><a href="global.html#SidebarLabel">SidebarLabel</a></li>
+              <li><a href="global.html#SidebarLink">SidebarLink</a></li>
+              <li><a href="global.html#SidebarNav">SidebarNav</a></li>
+              <li><a href="global.html#SidebarNoLink">SidebarNoLink</a></li>
+              <li>
+                <a href="global.html#SidebarToggleIcon">SidebarToggleIcon</a>
+              </li>
+              <li><a href="global.html#SidebarWrap">SidebarWrap</a></li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+      <div class="core" id="main-content-wrapper">
+        <div class="content">
+          <header class="page-title">
+            <p>Source</p>
+            <h1>pages/Support.js</h1>
+          </header>
+
+          <section>
+            <article>
+              <pre
+                class="prettyprint source linenums"
+              ><code>import { useMediaPredicate } from "react-media-hook";
+import React, { useState, useEffect, useContext } from "react";
+import Header from "../components/Navigation/Header";
+
+/**
+ * Support page. 
+ * Has general description on how to use the portal
+ * @component
+ */
+function Support() {
+  const notMobileView = useMediaPredicate("(min-width: 800px)");
+  const [sidebar, setSidebar] = useState(true);
+  const showSidebar = () => setSidebar(!sidebar);
+  const page = "Support";
+
+  const sidebarToggles = {
+    notMobileView: notMobileView,
+    showSidebar: showSidebar,
+    sidebar: sidebar,
+  };
+
+  return (
+    &lt;>
+      &lt;Header
+        {...sidebarToggles}
+        page={page}
+        setFilterState={() => {}}
+        selectedFilters={{}}
+        applyFilter={() => {}}
+      />
+      &lt;div
+        className="Instructions"
+        style={{
+          position: "relative",
+          justifyContent: "center",
+          alignItems: "center",
+          wordWrap: "break-word",
+          width: "70%",
+          marginLeft: 260,
+          fontFamily: "Ubuntu",
+          fontSize: 16,
+        }}
+      >
+        &lt;h2>General Instructions for Issue Management Portal&lt;/h2>
+        &lt;ul>
+          &lt;li>Always login onto the platform using a IIITD account.&lt;/li>
+          &lt;li>
+            Kindly maintain the decorum of the portal by posting professional
+            and relevant content.
+          &lt;/li>
+          &lt;li>
+            The Issue Management Portal is made with the intention of reducing
+            the number of duplicate emails received by the administration
+            regarding various issues faced by the students. Kindly make
+            effective use of the portal and refrain from emailing the concerned
+            authorities directly.
+          &lt;/li>
+          &lt;li>
+            Kindly be patient, the issues posted by you will be resolved by the
+            concerned authority at the earliest.
+          &lt;/li>
+        &lt;/ul>
+        &lt;h2>Portal User Profiles&lt;/h2>
+        &lt;p>
+          There are two types of users in the Issue Management Portal: students
+          and administrative users. Users in these two profiles have the
+          following permissions in the portal: &lt;br /> &lt;br /> A student can:
+          &lt;ul>
+            &lt;li>
+              Create new issues and see whether their issues are resolved or are
+              still pending.
+            &lt;/li>
+            &lt;li>
+              Like and comment on issues posted by them or other students.{" "}
+            &lt;/li>
+            &lt;li>Comment on announcements posted by administrators.&lt;/li>
+          &lt;/ul>
+          An administrative user can:
+          &lt;ul>
+            &lt;li>Create new issues and announcements.&lt;/li>
+            &lt;li>Add new tags to the already existing set of tags.&lt;/li>
+            &lt;li>Edit the tags on existing issues and announcements.&lt;/li>
+            &lt;li>Resolve the issues posted by students on the portal.&lt;/li>
+            &lt;li>
+              Close or Delete issues that are not relevant to the portal or have
+              been resolved earlier.
+            &lt;/li>
+            &lt;li>Add comments to issues or announcements.&lt;/li>
+            &lt;li>
+              Block a student as a result of not following the instructions or
+              for any sort of misbehaviour on the portal.
+            &lt;/li>
+          &lt;/ul>
+        &lt;/p>
+        &lt;h2>Issues&lt;/h2>
+        &lt;ul>
+          &lt;li>
+            On this page, you can view all the issues posted by you and your
+            fellow students. The issues will be resolved by the concerned
+            administration.
+          &lt;/li>
+          &lt;br />
+          &lt;center>
+            &lt;img
+              src={process.env.PUBLIC_URL + "/images/issue_pg.png"}
+              width="80%"
+              height="80%"
+            />
+          &lt;/center>
+          &lt;br />
+          &lt;br />
+          &lt;li>
+            You can search for issues posted on the portal by writing some
+            keywords of the issue into the search bar.
+          &lt;/li>
+        &lt;/ul>
+        &lt;h2>Announcements&lt;/h2>
+        &lt;ul>
+          &lt;li>
+            On this page, you can view all the announcements posted by the
+            administration.
+          &lt;/li>
+          &lt;br />
+          &lt;center>
+            &lt;img
+              src={process.env.PUBLIC_URL + "/images/announcement_pg.png"}
+              width="80%"
+              height="80%"
+            />
+          &lt;/center>
+          &lt;br />
+          &lt;br />
+          &lt;li>
+            You can search for announcements posted on the portal by writing
+            some keywords of the announcements into the search bar.
+          &lt;/li>
+        &lt;/ul>
+        &lt;h2>Tags&lt;/h2>
+        &lt;ul>
+          &lt;li>
+            Issues and Announcements may have tags associated with them, which
+            make them easier to identify, filter and search.
+          &lt;/li>
+          &lt;li>
+            There are four fields, each of which has a different meaning and a
+            set of tags along with it :
+            &lt;ul>
+              &lt;li>
+                Batch - This field is representative of the Academic Year of the
+                students, i.e. the year of their joining IIIT-Delhi. Eg: 2018,
+                2019, 2020, 2021.
+              &lt;/li>
+              &lt;li>
+                Department - This field is representative of the Branch of the
+                students to which this issue concerns. Eg: CSE, CSAI, CSSS,
+                CSAM, CSD, CSB, ECE.
+              &lt;/li>
+              &lt;li>
+                Administration - This field is representative of the concerned
+                authorities for this issue. Eg: Academic, Financial, Placements,
+                etc.
+              &lt;/li>
+              &lt;li>
+                Programme - This field is representative of the Programme of the
+                students to which the issue concerns. Eg: B-Tech, M-Tech, PhD.
+              &lt;/li>
+            &lt;/ul>
+          &lt;/li>
+        &lt;/ul>
+        &lt;h2>Creating Issues&lt;/h2>
+        &lt;ul>
+          &lt;li>
+            Before creating an issue, search for the issue on the portal. It may
+            already be present and resolved by an administrator. If a similar
+            issue has been posted and not resolved, kindly wait for the
+            administrator to resolve the same. Do NOT create a new issue in this
+            case.
+          &lt;/li>
+          &lt;li>
+            If you feel that your issue is not present on the portal, you can
+            create a new issue by clicking on the Create Issue button at the
+            bottom of the issues page.
+          &lt;/li>
+          &lt;li>
+            &lt;b>
+              Please refrain from adding duplicate issues on the portal, failing
+              to do so may result in facing strict consequences as decided by
+              the administrator.
+            &lt;/b>
+          &lt;/li>
+          &lt;li>
+            While adding an issue make sure to put in a suitable title and
+            description of the issue. Additionally, you can add tags to the new
+            issue. For example, if you are posting an issue that concerns the
+            CSE branch, you can add CSE as a tag in the branch field. Similarly,
+            you can add tags in other fields as well. The submit button, submits
+            the issue to the portal.
+          &lt;/li>
+          &lt;br />
+          &lt;center>
+            &lt;img
+              src={process.env.PUBLIC_URL + "/images/issue_form.png"}
+              width="60%"
+              height="60%"
+            />
+          &lt;/center>
+        &lt;/ul>
+
+        &lt;h2>Creating Announcements&lt;/h2>
+        &lt;b>*Only for administrative users&lt;/b>
+        &lt;ul>
+          &lt;li>
+            On the announcements page, you can create a new announcement by
+            clicking on the Create Announcement button at the bottom of the
+            announcements page.
+          &lt;/li>
+          &lt;br />
+          &lt;center>
+            &lt;img
+              src={process.env.PUBLIC_URL + "/images/create_announcement.png"}
+              width="80%"
+              height="80%"
+            />
+          &lt;/center>
+          &lt;br />
+          &lt;br />
+          &lt;li>
+            While adding an announcement make sure to put in a suitable title
+            and description of the announcement. Additionally, you can add tags
+            to the new announcement. For example, if you are posting an
+            Announcement that concerns the CSE branch, you can add CSE as a tag
+            in the branch field. Similarly, you can add tags in other fields as
+            well.
+          &lt;/li>
+          &lt;br />
+          &lt;center>
+            &lt;img
+              src={process.env.PUBLIC_URL + "/images/announcement_form.png"}
+              width="60%"
+              height="60%"
+            />
+          &lt;/center>
+        &lt;/ul>
+      &lt;/div>
+    &lt;/>
+  );
+}
+
+export default Support;
+</code></pre>
+            </article>
+          </section>
+        </div>
+
+        <footer class="footer">
+          <div class="content has-text-centered">
+            <p>
+              Documentation generated by
+              <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.6</a>
+            </p>
+            <p class="sidebar-created-by">
+              <a
+                href="https://github.com/SoftwareBrothers/better-docs"
+                target="_blank"
+                >BetterDocs theme</a
+              >
+              provided with <i class="fas fa-heart"></i> by
+              <a href="http://softwarebrothers.co" target="_blank"
+                >SoftwareBrothers - JavaScript Development Agency</a
+              >
+            </p>
+          </div>
+        </footer>
+      </div>
+      <div id="side-nav" class="side-nav"></div>
+    </div>
+    <script src="scripts/app.min.js"></script>
+    <script>
+      PR.prettyPrint();
+    </script>
+    <script src="scripts/linenumber.js"></script>
+  </body>
+</html>

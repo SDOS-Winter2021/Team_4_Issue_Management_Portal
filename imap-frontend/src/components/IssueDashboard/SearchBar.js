@@ -4,7 +4,13 @@ import "./SearchBar.css";
 import getTopIssues, { getSearchedIssue } from "../../logics/SearchIssues";
 import IndividualIssue from "../../pages/IndividualIssue";
 import * as FcIcons from "react-icons/fc";
+import PropTypes from "prop-types";
 
+/**
+ * Search bar for issue and announcemnt page.
+ * source: https://github.com/moroshko/react-autosuggest#input-props-prop
+ * @component
+ */
 const SearchBar = ({ page, issues, privateFilter }) => {
   const isIssue = page === "Issues";
   const [suggestions, setSuggestions] = useState([]);
@@ -91,6 +97,21 @@ const SearchBar = ({ page, issues, privateFilter }) => {
   );
 };
 
-export default SearchBar;
+SearchBar.propTypes = {
+  /**
+   * Name of the page that is currently being rendered.
+   */
+  page: PropTypes.string.isRequired,
 
-// source: https://github.com/moroshko/react-autosuggest#input-props-prop
+  /**
+   * List of issue objects
+   */
+  issues: PropTypes.array.isRequired,
+
+  /**
+   * List of booleans that are true for private issues
+   */
+  privateFilter: PropTypes.array.isRequired,
+};
+
+export default SearchBar;

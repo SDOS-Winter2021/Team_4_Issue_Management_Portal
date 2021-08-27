@@ -22,6 +22,7 @@ exports.googlelogin = (req, res) => {
       if (email_verified && hd == "iiitd.ac.in") {
         User.findOne({ email }).exec((error, user) => {
           if (error) {
+            console.log(error);
             return res.json({
               message: "Something went wrong!",
             });

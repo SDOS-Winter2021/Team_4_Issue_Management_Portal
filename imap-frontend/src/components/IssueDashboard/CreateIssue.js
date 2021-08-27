@@ -13,6 +13,7 @@ import {
   LabelR,
 } from "./CreateIssueDesign";
 import styled from "styled-components";
+import PropTypes from "prop-types";
 import { Dropdown } from "semantic-ui-react";
 import "semantic-ui-css/components/dropdown.min.css";
 
@@ -24,6 +25,10 @@ const StyledDropdown = styled(Dropdown)`
   }
 `;
 
+/**
+ * Pop up form to create a new post
+ * @component
+ */
 const CreateIssue = ({ page }) => {
   const {
     addIssueDb,
@@ -209,6 +214,8 @@ const CreateIssue = ({ page }) => {
             id="description"
           ></TextArea>
 
+          {/* remove public and private issue option */}
+          {/* 
           {{ page }.page === "Issues" && (
             <>
               <br></br>
@@ -246,6 +253,7 @@ const CreateIssue = ({ page }) => {
               <br></br>
             </>
           )}
+           */}
 
           <Label for="Batch">Batch:</Label>
           <StyledDropdown
@@ -298,11 +306,7 @@ const CreateIssue = ({ page }) => {
           >
             Submit
           </SubmitButton>
-          <Label style={{ marginTop: "10px" }}>
-            {page === "Issues" && (
-              <i>Note: Private Issues are only visible to Admins.</i>
-            )}
-          </Label>
+          <Label style={{ marginTop: "10px" }} />
         </fieldset>
         {warningPopup && (
           <SimilarIssue
@@ -328,6 +332,13 @@ const CreateIssue = ({ page }) => {
       {popup}
     </div>
   );
+};
+
+CreateIssue.propTypes = {
+  /**
+   * name of the page {issue, announcement}
+   */
+  page: PropTypes.string.isRequired,
 };
 
 export default CreateIssue;

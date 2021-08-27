@@ -31,6 +31,12 @@ const categories = [
   },
 ];
 
+/**
+ * My Announcement page.
+ * Personalized page including the announcments
+ * a user has authored or commented on.
+ * @component
+ */
 function MyAnnouncements() {
   const { tryLocalLogin, allAnnouncementsData, userData } = useContext(
     AuthContext

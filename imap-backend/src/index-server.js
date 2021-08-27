@@ -2,12 +2,11 @@ const express = require("express");
 const env = require("dotenv");
 const app = express();
 var stream = require("./dbChangeStream");
-const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 
 var cors = require("cors");
 app.use(express.json());
-app.use(cors()); // Use this after the variable declaration
+app.use(cors()); 
 
 // Routes
 const userRoutes = require("./routes/user");
@@ -56,7 +55,7 @@ connection.once("open", () => {
   stream.announcementStream(announcementsChangeStream, io);
 });
 
-app.use("/login", userRoutes); // prefixing all api's with keyword api
+app.use("/login", userRoutes); 
 app.use("/dashboard", issueRoutes);
 app.use("/announcement", announcementRoutes);
 app.use("/filter", filterRoutes);

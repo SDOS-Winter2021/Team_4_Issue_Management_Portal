@@ -27,10 +27,14 @@ function AllIssues({ notMobileView, page, issues, filtersName }) {
 
   var showIssues = FilterIssues(filtersName, issues);
   var privateFilter = null;
+
+  //  remove private public option
+  /* 
   if (isIssue) {
     privateFilter = PrivateFilter(issues, email, isAdmin);
     showIssues = ArrayAND(showIssues, privateFilter);
   }
+  */
   return (
     <>
       <IssueContainer notMobileView={notMobileView}>

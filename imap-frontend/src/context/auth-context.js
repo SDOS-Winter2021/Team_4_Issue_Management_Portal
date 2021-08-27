@@ -39,7 +39,15 @@ const updateIssueDb = async (props) => {
     } catch (err) {
       console.log(err);
     }
-  } else if (props.type == "Comment") {
+  } 
+  else if (props.type == "Unlike") {
+    try {
+      const res = await axios.post(`dashboard/UnlikedIssue/${props._id}`, props);
+    } catch (err) {
+      console.log(err);
+    }
+  }   
+  else if (props.type == "Comment") {
     try {
       const res = await axios.post(
         `dashboard/CommentedIssue/${props._id}`,

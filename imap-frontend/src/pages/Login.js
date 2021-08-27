@@ -71,17 +71,19 @@ const Login = () => {
             }
           } catch (err) {
             alert("Something went wrong!");
+            console.log(err);
           }
         };
         run();
       })
       .catch((err) => {
         alert("Something went wrong!");
+        console.log(err);
       });
   };
   const responseErrorGoogle = (response) => {
+    console.log(response);
     alert("Something went wrong");
-    // console.log(response);
   };
   return (
     <div className="page-container">

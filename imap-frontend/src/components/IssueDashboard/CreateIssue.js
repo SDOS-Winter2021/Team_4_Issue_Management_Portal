@@ -214,6 +214,8 @@ const CreateIssue = ({ page }) => {
             id="description"
           ></TextArea>
 
+          {/* remove public and private issue option */}
+          {/* 
           {{ page }.page === "Issues" && (
             <>
               <br></br>
@@ -251,6 +253,7 @@ const CreateIssue = ({ page }) => {
               <br></br>
             </>
           )}
+           */}
 
           <Label for="Batch">Batch:</Label>
           <StyledDropdown
@@ -303,11 +306,7 @@ const CreateIssue = ({ page }) => {
           >
             Submit
           </SubmitButton>
-          <Label style={{ marginTop: "10px" }}>
-            {page === "Issues" && (
-              <i>Note: Private Issues are only visible to Admins.</i>
-            )}
-          </Label>
+          <Label style={{ marginTop: "10px" }} />
         </fieldset>
         {warningPopup && (
           <SimilarIssue

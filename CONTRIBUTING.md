@@ -32,3 +32,33 @@ This can be done using Github Desktop or using command line.
    ```
 
 4. After careful analysis of the changes proposed, they will be merged if these changes do not conflict with existing files.
+
+
+
+### Deploying (only for admins)
+1. Login to the renote server and pull the changes. Build the latest changes in imap-frontend.
+   ```
+   git pull origin main
+   npm run build
+   ```
+2. Run the following commands to restart nginx and verify the same.
+   ```
+   sudo systemctl restart nginx
+   sudo systemctl status nginx
+   ```
+3. Run the following commands to restart pm2 and verify the same.
+   ```
+   pm2 restart imap-app
+   pm2 status
+   ```
+
+List of other useful commands:
+   ```
+   vim /etc/nginx/sites-available/default
+   pm2 start imap-backend/src/index-server.js --name "imap-app"
+   ```
+
+Debugging:
+   ```
+   pm2 logs
+   ```

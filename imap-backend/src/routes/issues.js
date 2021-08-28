@@ -77,53 +77,6 @@ router.post("/deleteIssue/:id", (req, res) => {
     });
 });
 
-router.get("/Issue", (req, res) => {
-  issues
-    .find({ StudentID: 2 })
-    .then((result) => {
-      res.send(result);
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-});
-
-router.get("/LikedIssue", (req, res) => {
-  issues
-    .find({ "Likes.studID": 2 })
-    .then((result) => {
-      res.send(result);
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-});
-
-router.get("/CommentedIssue", (req, res) => {
-  issues
-    .find({ "Comments.userID": 2 })
-    .then((result) => {
-      res.send(result);
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-});
-
-router.get("/FilteredIssue", (req, res) => {
-  issues
-    .find({
-      "Filter.Batch": { $in: ["2019", "2018"] },
-      "Filter.ProgType": "Btech",
-    })
-    .sort({ createdAt: -1 })
-    .then((result) => {
-      res.send(result);
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-});
 
 router.post("/LikedIssue/:id", (req, res) => {
   issues

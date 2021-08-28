@@ -15,11 +15,13 @@ function IssueTitleNDesc({ issue, isIssue, isAdmin, handlePopIssue, page }) {
 
   const [resolvedWarn, setResolvedWarn] = useState(false);
   const [deleteWarn, setDeleteWarn] = useState(false);
-  const [privateWarn, setPrivateWarn] = useState(false);
+  // const [privateWarn, setPrivateWarn] = useState(false);
 
-  const { deleteIssueDb, deleteAnnouncementDb, updateIssueDb } = useContext(
+  const { userData, deleteIssueDb, deleteAnnouncementDb, updateIssueDb } = useContext(
     AuthContext
   );
+  const userEmail = userData.user.email;
+  const isAuthor = issue.userEmail === userEmail;
 
   const resolvePost = async () => {
     if (isAdmin) {
@@ -47,9 +49,9 @@ function IssueTitleNDesc({ issue, isIssue, isAdmin, handlePopIssue, page }) {
     setDeleteWarn();
   };
 
-  const makePostPublic = async() => {
-    await updateIssueDb({id: issue._id, type: "Visibility"});
-  };
+  // const makePostPublic = async() => {
+  //   await updateIssueDb({id: issue._id, type: "Visibility"});
+  // };
 
   return (
     <>
@@ -113,7 +115,7 @@ function IssueTitleNDesc({ issue, isIssue, isAdmin, handlePopIssue, page }) {
             )}
              */}
              
-            {isAdmin && (
+            {(isAdmin || isAuthor) && (
               <div
                 onClick={() => setDeleteWarn(!deleteWarn)}
                 style={{
@@ -143,7 +145,7 @@ function IssueTitleNDesc({ issue, isIssue, isAdmin, handlePopIssue, page }) {
               handlePop={() => setDeleteWarn(!deleteWarn)}
             />
           )}
-          {privateWarn && (
+          {/* {privateWarn && (
             <NotifPopup
               message={
                 "The post will be changed from private to public. This cannot be undone."
@@ -154,7 +156,7 @@ function IssueTitleNDesc({ issue, isIssue, isAdmin, handlePopIssue, page }) {
                 setPrivateWarn(!privateWarn);
               }}
             />
-          )}
+          )} */}
 
           <p style={{ fontSize: "12px", color: "gray" }}>
             Created by: {issue.userEmail} | {issue.createdAt.split("T")[0]}

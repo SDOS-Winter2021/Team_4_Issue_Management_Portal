@@ -141,7 +141,7 @@ router.post("/LikedIssue/:id", (req, res) => {
 router.post("/UnlikedIssue/:id", (req, res) => {
   issues
     .findByIdAndUpdate(req.params.id, {
-      $pop: { "Likes.studEmail": req.body.userEmail },
+      $pull: { "Likes.studEmail": req.body.userEmail },
     })
     .then((result) => {
       res.send(result);

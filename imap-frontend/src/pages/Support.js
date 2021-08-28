@@ -38,9 +38,23 @@ function Support() {
           width: "70%",
           marginLeft: 260,
           fontFamily: "Ubuntu",
-          fontSize: 16,
+          fontSize: 18,
+          lineHeight: 1.7
         }}
       >
+        <div
+        style={{
+          padding: "20px",
+          margin: "20px",
+          background: "#c7e0c3"
+        }}>
+          If you have any feature requests or if you want to report any issues,
+          please visit:   
+          <a href="https://github.com/SDOS-Winter2021/Team_4_Issue_Management_Portal">
+               https://github.com/SDOS-Winter2021/Team_4_Issue_Management_Portal
+          </a> 
+        </div>
+
         <h2>General Instructions for Issue Management Portal</h2>
         <ul>
           <li>Always login onto the platform using a IIITD account.</li>

@@ -75,37 +75,6 @@ router.get("/MyAnnouncements", (req, res) => {
     });
 });
 
-router.get("/CommentedAnnouncement", (req, res) => {
-  announcements
-    .find({ "Comments.userID": 2 })
-    .then((result) => {
-      res.send(result);
-      //res.render('page_name',{issues:result})
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-});
-
-router.get("/FilteredAnnouncement", (req, res) => {
-  batch = ["", "2018"];
-  prog = ["", "Btech"];
-  dept = ["", "CSE"];
-  announcements
-    .find({
-      "Filter.Batch": { $in: batch },
-      "Filter.Dept": { $in: dept },
-      "Filter.ProgType": { $in: prog },
-    })
-    .sort({ createdAt: -1 })
-    .then((result) => {
-      res.send(result);
-      //res.render('page_name',{issues:result})
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-});
 
 router.post("/CommentedAnnouncement/:id", (req, res) => {
   announcements

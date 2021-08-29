@@ -63,18 +63,6 @@ router.post("/deleteAnnouncement/:id", (req, res) => {
     });
 });
 
-router.get("/MyAnnouncements", (req, res) => {
-  announcements
-    .find({ AdminID: 2 })
-    .then((result) => {
-      res.send(result);
-      //res.render('page_name',{issues:result})
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-});
-
 
 router.post("/CommentedAnnouncement/:id", (req, res) => {
   announcements
